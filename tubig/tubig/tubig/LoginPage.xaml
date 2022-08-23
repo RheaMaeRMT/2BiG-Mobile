@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="tubig.LoginPage">
+    <ContentPage.Content>
+        
+        
+        <StackLayout BackgroundColor="gray">
+            <StackLayout BackgroundColor="red" HorizontalOptions="Center" Margin="0,30">
+                <Label Text="2Big"
+                 FontSize="40"
+                 FontAttributes="Bold" 
+                 FontFamily="DynaPuff"
+                
+                 />
+            </StackLayout>
+
+            <StackLayout Background="black" HorizontalOptions="Center" HeightRequest="80" WidthRequest="100">
+                <Label Text="for pic" TextColor="white"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
