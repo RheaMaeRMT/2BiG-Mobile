@@ -4,10 +4,10 @@
              xmlns:CI="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="tubig.LoginPage">
     <ContentPage.Content>
-        
-        
-        <StackLayout BackgroundColor="LightSlateGray">
-            <StackLayout BackgroundColor="red" HorizontalOptions="Center" Margin="0,30">
+
+
+        <StackLayout BackgroundColor="#040c24">
+            <StackLayout BackgroundColor="Red" HorizontalOptions="Center" Margin="0,30">
                 <Label Text="2Big"
                  FontSize="40"
                  FontAttributes="Bold" 
@@ -21,9 +21,35 @@
                                 Aspect="AspectFill"
                                 Source="water.png"
                                 BorderColor="Red"
-                                BorderThickness="5"
-                                
+                                BorderThickness="5"                             
                  />
+            </StackLayout>
+
+            <StackLayout BackgroundColor="Green" HeightRequest="200" WidthRequest="200" >
+                <!--username entry -->
+                <Frame BackgroundColor="Transparent" Margin="0,20" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
+                            <Image Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" Aspect="AspectFill" Margin="0" />
+                        </Frame>
+
+                        <Entry Placeholder="Username" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="White" />
+                    </StackLayout>
+                   
+                </Frame>
+                <!--password entry -->
+                <Frame BackgroundColor="Transparent" Margin="0" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
+                            <Image Source="https://icon-library.com/images/show-password-icon/show-password-icon-7.jpg" Aspect="AspectFill" Margin="0" />
+                        </Frame>
+
+                        <Entry Placeholder="Password" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="White" IsPassword="True" Keyboard="Text"/>
+                    </StackLayout>
+
+                </Frame>
+
+
             </StackLayout>
             
         </StackLayout>
