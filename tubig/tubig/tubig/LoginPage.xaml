@@ -7,27 +7,30 @@
 
 
         <StackLayout BackgroundColor="#040c24">
-            <StackLayout BackgroundColor="Red" HorizontalOptions="Center" Margin="0,30">
-                <Label Text="2Big"
-                 FontSize="40"
-                 FontAttributes="Bold" 
-                 FontFamily="DynaPuff"
-                />
-            </StackLayout>
-            <StackLayout  HorizontalOptions="Center" HeightRequest="160" WidthRequest="160" Margin="0,-10">
-                <!--<Label Text="eawdawdawd" TextColor="White"/>-->
-                <CI:CircleImage WidthRequest="150"
-                                HeightRequest="150"
-                                Aspect="AspectFill"
-                                Source="water.png"
-                                BorderColor="Red"
-                                BorderThickness="5"                             
+           
+            <StackLayout  HorizontalOptions="Center" HeightRequest="160" WidthRequest="160" Margin="0,-30">
+                <!--<Label Text="eawdawdawd"  #040c24 TextColor="White"/>-->
+                <CI:CircleImage WidthRequest="200"
+                                HeightRequest="200"
+                                Aspect="AspectFit"
+                                Source="ownlogo.png"
+                                BorderColor="Gray"
+                                BorderThickness="3"  
+                                Margin="0,40"
                  />
+               
+            </StackLayout>
+            <StackLayout BackgroundColor="Red" Orientation="Horizontal" HorizontalOptions="Center" Margin="0">
+                <StackLayout BackgroundColor="Blue" Orientation="Horizontal" HorizontalOptions="Center" Margin="0,20">
+                    
+                </StackLayout>
+
+
             </StackLayout>
 
-            <StackLayout BackgroundColor="Green" HeightRequest="200" WidthRequest="200" >
-                <!--username entry -->
-                <Frame BackgroundColor="Transparent" Margin="0,20" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
+            <!--<StackLayout BackgroundColor="Green" HeightRequest="250" WidthRequest="200" Margin="0,100">
+                --><!--username entry --><!--
+                <Frame BackgroundColor="red" Margin="0,20" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
                     <StackLayout Orientation="Horizontal">
                         <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
                             <Image Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" Aspect="AspectFill" Margin="0" />
@@ -37,8 +40,8 @@
                     </StackLayout>
                    
                 </Frame>
-                <!--password entry -->
-                <Frame BackgroundColor="Transparent" Margin="0" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
+                --><!--password entry --><!--
+                <Frame BackgroundColor="Transparent" Margin="0,-15" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
                     <StackLayout Orientation="Horizontal">
                         <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
                             <Image Source="https://icon-library.com/images/show-password-icon/show-password-icon-7.jpg" Aspect="AspectFill" Margin="0" />
@@ -48,10 +51,20 @@
                     </StackLayout>
 
                 </Frame>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout BackgroundColor="Red" HorizontalOptions="Center" >
+                        
+                    </StackLayout>
+                </StackLayout>
+                
+            </StackLayout>-->
+            <!--<StackLayout BackgroundColor="Red" Margin="0,-10" HorizontalOptions="FillAndExpand" HeightRequest="100" WidthRequest="250" >
+
+                <Button Text="Login" TextColor="Black" FontSize="25" Padding="10" BorderColor="Black" BorderWidth="1" Margin="0,10" FontAttributes="Bold" CornerRadius="40" HorizontalOptions="Center" WidthRequest="340"></Button>
+            </StackLayout>-->
 
 
-            </StackLayout>
-            
         </StackLayout>
+       
     </ContentPage.Content>
 </ContentPage>
