@@ -15,6 +15,41 @@ namespace tubig
         public LoginPage()
         {
             InitializeComponent();
+            // labelClickFunction();
+           //   ToolbarItem.IsEnabledProperty = false;
         }
+
+        async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+           await Navigation.PushAsync(new ForgotPasswordPage());
+        }
+
+         async  private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CreateAcc());
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+          //  await btn_login.FadeTo(0, 1000, Easing.Linear);
+           // await btn_login.FadeTo(1, 1000, Easing.Linear);
+        }
+
+        //async public void labelClickFunction()
+        //{
+        //    //lbl_forgotpass.GestureRecognizers.Add(new TapGestureRecognizer()
+        //    //{
+        //    //    Command = new Command(() =>
+        //    //      {
+        //    //        // await Navigation.PushAsync(new ForgotPasswordPage());
+        //    //        // DisplayAlert("Warning", "Test", "Ok");
+        //    //    })
+
+        //    //});
+
+
+        //}
+
+
     }
 }

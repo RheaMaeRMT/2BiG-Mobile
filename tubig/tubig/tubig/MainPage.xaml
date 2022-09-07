@@ -1,9 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="tubig.MainPage">
-
-    <StackLayout>
+             x:Class="tubig.MainPage"
+            xmlns:local="clr-namespace:tubig"
+            NavigationPage.HasNavigationBar="False"
+            BackgroundColor="LightCoral"
+            SelectedTabColor="red"
+            UnselectedTabColor="White"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            >
+    <local:HomePage Title="Home" IconImageSource="homepage"/>
+    <local:AccountSetting Title="Account Setting" IconImageSource="homepage"/>
+    <!--<StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
@@ -19,6 +28,8 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-    </StackLayout>
+    </StackLayout>-->
+    
+    
 
-</ContentPage>
+</TabbedPage>

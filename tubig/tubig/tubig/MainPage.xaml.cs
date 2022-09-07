@@ -8,11 +8,11 @@ using Xamarin.Forms;
 
 namespace tubig
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : TabbedPage
     {
         public MainPage()
         {
-            // InitializeComponent();
+             InitializeComponent();
             //LoginPage = new NavigationPage(LoginPage);
             //MainPage = new NavigationPage(new LoginPage());
             //LoginPage();

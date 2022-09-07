@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <!-- https://go.microsoft.com/fwlink/?linkid=2124038
+    <issue id="HardcodedText" severity="error">
+        <ignore path="Resources\layout\content_main.xml" />
+    </issue>
+    -->
+
+  <resources>
+    <style name="Project.Main" parent="android:Theme.Holo.Light">
+      <!--<item name="android:windowTranslucentStatus">true</item>
+      <item name="android:windowTranslucentNavigation">true</item>
+      <item name="android:fitsSystemWindows">true</item>-->
+      <!--<item name="android:textCursorDrawable">@null</item>-->
+    </style>
+  </resources>
+</configuration>

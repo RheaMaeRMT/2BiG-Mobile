@@ -14,5 +14,13 @@
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
     <!--<item name="colorAccent">#FF4081</item>-->
+    
+      <!--<item name="android:windowTranslucentStatus">true</item>
+      <item name="android:windowTranslucentNavigation">true</item>
+      <item name="android:fitsSystemWindows">true</item>-->
+      <!--<item name="android:textCursorDrawable">true</item> -->
+    <item name="colorAccent">#000000</item>
+    
+      
   </style>
 </resources>

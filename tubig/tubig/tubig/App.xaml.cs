@@ -11,7 +11,11 @@ namespace tubig
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            //MainPage = new NavigationPage(new LoginPage());
+            //  MainPage = new NavigationPage(new ForgotPasswordPage());
+            // MainPage = new NavigationPage(new MainPage());
+            // MainPage = new NavigationPage( new MainPage());
+            MainPage = new NavigationPage(new CreateAcc());
         }
 
         protected override void OnStart()
@@ -22,7 +26,7 @@ namespace tubig
         {
         }
 
-        protected override void OnResume()
+        protected override void OnResume()  
         {
         }
     }
