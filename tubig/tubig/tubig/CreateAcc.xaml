@@ -23,7 +23,7 @@
                 HorizontalOptions="Center"/>
 
 
-                <StackLayout Margin="5,5,5,5" BackgroundColor="White" HeightRequest="600">
+                <StackLayout Margin="5,5,5,5" BackgroundColor="White" HeightRequest="5000">
                     <!--First Name entry -->
                     <Frame BackgroundColor="Transparent"  Margin="0,25" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
                         <StackLayout Orientation="Horizontal">
@@ -98,6 +98,7 @@
                     </Frame>
                     <!-- BUTTON --> 
                     <Button Text="SIGN IN" TextColor="White" BackgroundColor="Blue" FontSize="20" Padding="8" BorderColor="Black" BorderWidth="1" Margin="0,10" FontAttributes="Bold" CornerRadius="40" HorizontalOptions="Center" WidthRequest="340"></Button>
+                    <Button Text="Log in with Existing account" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="16" Padding="2" BorderColor="Black"  BorderWidth="1" Margin="0,10" CornerRadius="20" HorizontalOptions="Center" WidthRequest="340"></Button>
 
                 </StackLayout>
 
