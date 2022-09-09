@@ -14,8 +14,8 @@ namespace tubig
             //MainPage = new NavigationPage(new LoginPage());
             //  MainPage = new NavigationPage(new ForgotPasswordPage());
             // MainPage = new NavigationPage(new MainPage());
-            // MainPage = new NavigationPage( new MainPage());
-            MainPage = new NavigationPage(new CreateAcc());
+             MainPage = new NavigationPage( new MainPage());
+           //MainPage = new NavigationPage(new CreateAcc());
         }
 
         protected override void OnStart()

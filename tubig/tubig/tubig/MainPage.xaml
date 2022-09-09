@@ -5,13 +5,15 @@
             xmlns:local="clr-namespace:tubig"
             NavigationPage.HasNavigationBar="False"
             BackgroundColor="LightCoral"
-            SelectedTabColor="red"
+            SelectedTabColor="black"
             UnselectedTabColor="White"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
             >
-    <local:HomePage Title="Home" IconImageSource="homepage"/>
-    <local:AccountSetting Title="Account Setting" IconImageSource="homepage"/>
+    <local:Order Title="Orders" IconImageSource="ordernewimg"/>
+    <local:HomePage Title="Homepage" IconImageSource="homepage"/>
+    <local:NotificationPage Title="Notification" IconImageSource="notification"/>
+    <local:AccountSetting Title="Profile" IconImageSource="profileimg" />
     <!--<StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
