@@ -9,6 +9,8 @@
             UnselectedTabColor="White"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
+            NavigationPage.HasBackButton="False"
+            
             >
     <local:Order Title="Orders" IconImageSource="ordernewimg"/>
     <local:HomePage Title="Homepage" IconImageSource="homepage"/>

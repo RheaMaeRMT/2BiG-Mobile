@@ -31,8 +31,9 @@ namespace tubig
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-          //  await btn_login.FadeTo(0, 1000, Easing.Linear);
-           // await btn_login.FadeTo(1, 1000, Easing.Linear);
+            //  await btn_login.FadeTo(0, 1000, Easing.Linear);
+            // await btn_login.FadeTo(1, 1000, Easing.Linear);
+            await Navigation.PushAsync(new MainPage());
         }
 
         //async public void labelClickFunction()
