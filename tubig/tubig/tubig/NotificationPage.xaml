@@ -2,22 +2,78 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="tubig.NotificationPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
-            <ListView Background="red"
-                      WidthRequest="380"
-                      HeightRequest="150"
-                      HorizontalOptions="CenterAndExpand"        
-                      Margin="0,10,0,0">
-
-                
-
-
-            </ListView>
-            <StackLayout>
-                <Label Text="tsste"/>
+           
+            <StackLayout BackgroundColor="Gray" HorizontalOptions="FillAndExpand" Margin="0"  HeightRequest="50" >
+                <Label Text="Notifications" TextColor="Black" FontSize="20" FontAttributes="None" Padding="10"/>
             </StackLayout>
+            <!--<ListView Background="white"
+                      HorizontalOptions="FillAndExpand"
+                      HeightRequest="300"
+                      Margin="0,-7,0,0"
+                      x:Name="MyListView"
+                      SeparatorColor="Red">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding StationName}"
+                                  
+                                   Detail="{Binding status}"
+                                   ImageSource="{Binding ImageURL}"
+                                  />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+
+            </ListView>-->
+            
+            <CollectionView x:Name="myCollectionView" SelectionMode="Single" SelectionChanged="myCollectionView_SelectionChanged" BackgroundColor="Aquamarine" HeightRequest="180" >
+                
+                <CollectionView.ItemTemplate >
+                    
+                    
+                    <DataTemplate>
+                        <Grid Padding="0" BackgroundColor="Red">
+                            <Grid.RowDefinitions >
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.RowSpan="6"
+                                   Source="shopnew.png"
+                                   Aspect="AspectFit"
+                                   WidthRequest="50"
+                                   HeightRequest="50"
+                                   Margin="5,0,0,0"
+                                   BackgroundColor="Transparent"
+                                    />
+                            <Label Grid.Column="1"
+                                   Text="{Binding StationName}"
+                                   FontAttributes="Bold"
+                                   x:Name="lbl_stationName"/>
+                            <Label Grid.Column="1"
+                                   Grid.Row="1"
+                                   Text="{Binding Estimatedime_Distance}"
+                                   FontAttributes="None"
+                                   VerticalOptions="End"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+           
         </StackLayout>
-        
+      
     </ContentPage.Content>
 </ContentPage>

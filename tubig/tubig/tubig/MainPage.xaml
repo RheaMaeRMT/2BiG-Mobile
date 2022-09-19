@@ -12,8 +12,10 @@
             >
     <local:Order Title="Orders" IconImageSource="ordernewimg"/>
     <local:HomePage Title="Homepage" IconImageSource="homepage"/>
+    <local:MapPage Title="Map" IconImageSource="homepin"/>
     <local:NotificationPage Title="Notification" IconImageSource="notification"/>
     <local:AccountSetting Title="Profile" IconImageSource="profileimg" />
+    
     <!--<StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>

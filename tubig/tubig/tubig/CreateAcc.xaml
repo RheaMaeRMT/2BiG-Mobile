@@ -6,13 +6,13 @@
               NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-      <ScrollView> 
-            <StackLayout BackgroundColor="White">
+      <ScrollView>
+            <StackLayout BackgroundColor="#F8E2CF">
                 <!--for logo-->
                 <CI:CircleImage    
                                 WidthRequest="150"
                                 HeightRequest="150"              
-                                Source="ownlogo.png"
+                                Source="logo_dic.png"
                                 BorderColor="Transparent"
                                 BorderThickness="5"  
                                 Margin="0,5"
@@ -23,7 +23,7 @@
                 HorizontalOptions="Center"/>
 
 
-                <StackLayout Margin="5,5,5,5" BackgroundColor="White" HeightRequest="5000">
+                <StackLayout Margin="5,5,5,5" BackgroundColor="#F8E2CF" HeightRequest="1150">
                     <!--First Name entry -->
                     <Frame BackgroundColor="Transparent"  Margin="0,25" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
                         <StackLayout Orientation="Horizontal">
@@ -96,8 +96,8 @@
                             <Entry Placeholder="Password" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" IsPassword="True" Keyboard="Text"/>
                         </StackLayout>
                     </Frame>
-                    <!-- BUTTON --> 
-                    <Button Text="SIGN IN" TextColor="White" BackgroundColor="Blue" FontSize="20" Padding="8" BorderColor="Black" BorderWidth="1" Margin="0,10" FontAttributes="Bold" CornerRadius="40" HorizontalOptions="Center" WidthRequest="340"></Button>
+                    <!-- BUTTON -->
+                    <Button Text="SIGN IN" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="20" Padding="8" BorderColor="Black" BorderWidth="1" Margin="0,10" FontAttributes="Bold" CornerRadius="40" HorizontalOptions="Center" WidthRequest="340"></Button>
                     <Button Text="Log in with Existing account" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="16" Padding="2" BorderColor="Black"  BorderWidth="1" Margin="0,10" CornerRadius="20" HorizontalOptions="Center" WidthRequest="340"></Button>
 
                 </StackLayout>
