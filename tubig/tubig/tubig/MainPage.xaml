@@ -12,11 +12,23 @@
             NavigationPage.HasBackButton="False"
             
             >
-    <local:Order Title="Orders" IconImageSource="ordernewimg"/>
-    <local:HomePage Title="Homepage" IconImageSource="homepage"/>
+    <local:Order  Title="Orders" IconImageSource="ordernewimg"/>
+   
     <local:MapPage Title="Map" IconImageSource="homepin"/>
+    <local:HomePage Title="Homepage" IconImageSource="homepage"/>
     <local:NotificationPage Title="Notification" IconImageSource="notification"/>
     <local:AccountSetting Title="Profile" IconImageSource="profileimg" />
+  
+    <!--<NavigationPage  >
+        <x:Arguments>
+            <ContentPage x:Name="orderpage">
+                <local:Order Title="Orders" BackgroundColor="Aquamarine" IconImageSource="ordernewimg"/>
+                <Button/>
+            </ContentPage>
+        </x:Arguments>
+    </NavigationPage>-->
+    
+    
     
     <!--<StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">

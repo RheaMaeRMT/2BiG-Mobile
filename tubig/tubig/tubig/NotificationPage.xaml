@@ -1,10 +1,90 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="tubig.NotificationPage">
+             x:Class="tubig.NotificationPage"
+             NavigationPage.HasNavigationBar="False"
+             >
     <ContentPage.Resources>
+        
         <ResourceDictionary>
-            
+            <!--station name-->
+            <Style x:Key="NameLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <!--style for distance and estimated label-->
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <!--<Style x:Key="imageLableStackLayout" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal" />
+            </Style>-->
+
+            <Style x:Key="detailsStackLayout" TargetType="StackLayout">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Spacing" Value="2" />
+            </Style>
+
+            <Style x:Key="imageStyle" TargetType="Image">
+                <Setter Property="WidthRequest" Value="8" />
+                <Setter Property="HeightRequest" Value="8" />
+            </Style>
+
+            <!--style for station logo-->
+            <Style x:Key="stationImageStyle" TargetType="Image">
+                <Setter Property="WidthRequest" Value="60" />
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="Aspect" Value="AspectFit" />
+               
+                <!--<Setter Property="BackgroundColor" Value="Black"/>-->
+            </Style>
+
+            <!--frame style for station logo-->
+            <Style x:Key="stationImageFrameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="50" />
+                <Setter Property="BorderColor" Value="red"/>
+                
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Padding" Value="2" />
+                <Setter Property="IsClippedToBounds" Value="True" />
+                <Setter Property="BackgroundColor" Value="Aquamarine"/>
+            </Style>
+
+            <Style x:Key="FrameCardViewStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="OutlineColor" Value="LightGray" />
+                <Setter Property="BorderColor" Value="LightGray" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="BackgroundColor" Value="GreenYellow"/>
+            </Style>
+
+            <Style x:Key="itemsCardViewStackLayoutStyle" TargetType="StackLayout">
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="Spacing" Value="8" />
+                <!--<Setter Property="BackgroundColor" Value="DarkSlateGray"/>-->
+            </Style>
+
+            <Style x:Key="itemsInsideCardViewStackLayoutStyle" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="Spacing" Value="8" />
+                <!--<Setter Property="BackgroundColor" Value="Red"/>-->
+            </Style>
+
+
+            <Style x:Key="swipeItemStyle" TargetType="SwipeView">
+                <Setter Property="BackgroundColor" Value="Red"/>
+               
+            </Style>
+          
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -33,7 +113,7 @@
 
             </ListView>-->
             
-            <CollectionView x:Name="myCollectionView" SelectionMode="Single" SelectionChanged="myCollectionView_SelectionChanged" BackgroundColor="Aquamarine" HeightRequest="180" >
+            <!--<CollectionView x:Name="myCollectionView" SelectionMode="Single" SelectionChanged="myCollectionView_SelectionChanged" BackgroundColor="Aquamarine" HeightRequest="180" >
                 
                 <CollectionView.ItemTemplate >
                     
@@ -70,6 +150,56 @@
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+            </CollectionView>-->
+            <CollectionView x:Name="collectionViewListVertical" SelectionMode="Single" BackgroundColor="red" Margin="0,-6,0,0" HeightRequest="200" SelectionChanged="collectionViewListVertical_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        
+                        <StackLayout Spacing="10" BackgroundColor="Violet">
+                            <Frame Style="{StaticResource FrameCardViewStyle}" >
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems >
+                                            <SwipeItem Text="Open"
+                                                      BackgroundColor="Aquamarine"
+                                                      
+                                                       Invoked="SwipeItem_Invoked"
+                                                />
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                               
+                                <StackLayout Style="{StaticResource itemsCardViewStackLayoutStyle}">
+                                    <StackLayout Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
+                                        <Frame Style="{StaticResource stationImageFrameStyle}">
+                                            <Image Style="{StaticResource stationImageStyle}" Source="{Binding ImageURL}" />
+                                        </Frame>
+                                        <StackLayout Style="{StaticResource detailsStackLayout}">
+                                            <Label Text="{Binding StationName}" Style="{StaticResource NameLabel}" />
+                                            <!--<StackLayout Style="{StaticResource imageLableStackLayout}">
+                                                <Image Source="phone.png" Style="{StaticResource imageStyle}"></Image>
+                                                <Label Text="{Binding Phone}" Style="{StaticResource LabelStyle}" />
+                                            </StackLayout>
+                                            <StackLayout Style="{StaticResource imageLableStackLayout}">
+                                                <Image Source="mail.png" Style="{StaticResource imageStyle}"></Image>
+                                                <Label Text="{Binding Email}" Style="{StaticResource LabelStyle}" />
+                                            </StackLayout>-->
+                                            <StackLayout >
+                                                <!--<Image Source="location.png" Style="{StaticResource imageStyle}"></Image>-->
+                                                <Label Text="{Binding Estimatedime_Distance}" Style="{StaticResource LabelStyle}" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                                </SwipeView>
+                            </Frame>
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
             </CollectionView>
 
            

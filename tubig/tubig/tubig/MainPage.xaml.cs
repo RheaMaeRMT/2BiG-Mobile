@@ -17,8 +17,8 @@ namespace tubig
             //MainPage = new NavigationPage(new LoginPage());
             //LoginPage();
             CurrentPage = Children[2];
-           
-
+        //  TabbedPage.
+       // android: TabbedPage.ToolbarPlacement = "Bottom";
         }
 
        // public NavigationPage MainPage { get; }

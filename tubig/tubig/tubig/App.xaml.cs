@@ -11,12 +11,12 @@ namespace tubig
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new NavigationPage(new LoginPage());
             //  MainPage = new NavigationPage(new ForgotPasswordPage());
             // MainPage = new NavigationPage(new MainPage());
-           // MainPage = new NavigationPage( new MainPage());
+             MainPage = new NavigationPage( new MainPage());
             //MainPage = new NavigationPage(new CreateAcc());
-            // MainPage = new NotificationPageNew();
+           // MainPage = new NavigationPage( new NotificationPage());
            // Forms.SetFlags("CollectionView_Experimental");
         }
 
