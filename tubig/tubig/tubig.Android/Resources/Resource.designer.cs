@@ -15677,6 +15677,7 @@ namespace tubig.Droid
 			public const int mtrl_popupmenu_background_dark = 2131165346;
 			
 			// aapt resource value: 0x7F0700A3
+<<<<<<< HEAD
 			public const int mtrl_tabs_default_indicator = 2131165347;
 			
 			// aapt resource value: 0x7F0700A4
@@ -15771,6 +15772,15 @@ namespace tubig.Droid
 			
 			// aapt resource value: 0x7F0700C2
 			public const int water = 2131165378;
+=======
+			public const int upload = 2131165347;
+			
+			// aapt resource value: 0x7F0700A4
+			public const int verify = 2131165348;
+			
+			// aapt resource value: 0x7F0700A5
+			public const int water = 2131165349;
+>>>>>>> 5d05034bf756f7e6ff3eebd43e86ca058d1a5789
 			
 			static Drawable()
 			{
