@@ -23,7 +23,7 @@
                 HorizontalOptions="Center"/>
 
 
-                <StackLayout Margin="5,5,5,5" BackgroundColor="#F8E2CF" HeightRequest="1150">
+                <StackLayout Margin="5,5,5,5" BackgroundColor="#F8E2CF" HeightRequest="1350">
                     <!--First Name entry -->
                     <Frame BackgroundColor="Transparent"  Margin="0,25" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
                         <StackLayout Orientation="Horizontal">
@@ -96,10 +96,52 @@
                             <Entry Placeholder="Password" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" IsPassword="True" Keyboard="Text"/>
                         </StackLayout>
                     </Frame>
-                    <!-- BUTTON -->
-                    <Button Text="SIGN IN" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="20" Padding="8" BorderColor="Black" BorderWidth="1" Margin="0,10" FontAttributes="Bold" CornerRadius="40" HorizontalOptions="Center" WidthRequest="340"></Button>
-                    <Button Text="Log in with Existing account" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="16" Padding="2" BorderColor="Black"  BorderWidth="1" Margin="0,10" CornerRadius="20" HorizontalOptions="Center" WidthRequest="340"></Button>
 
+                    <Frame BackgroundColor="#0e3663" Margin="0,25" HeightRequest="32" HorizontalOptions="Center" WidthRequest="400" Padding="2" BorderColor="Black">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="VERIFICATION" FontSize="22" TextColor="White" Margin="0,0,40,0" HorizontalOptions="CenterAndExpand">
+                                
+                            </Label>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="Transparent" HeightRequest="470" HorizontalOptions="Center" WidthRequest="330" Padding="2">
+                        <StackLayout>
+                            <Label Text="Verify Your Identity!" FontSize="22" FontAttributes="Bold" TextColor="Black" Margin="0,0,40,0" HorizontalOptions="Fill">
+
+                            </Label>
+                            <Image Source="verify.PNG" Aspect="AspectFit" WidthRequest="150" HeightRequest="100"/>
+                            <Label Text="In order to complete your registration, please upload a copy of your valid ID" FontSize="18" TextColor="Black"></Label>
+                            <Label Text="Choose your ID Type:" FontSize="18" TextColor="Black"></Label>
+
+                            <RadioButton Content="National ID"/>
+                            <RadioButton Content="Voters ID"/>
+                            <RadioButton Content="Drivers License"/>
+                            <RadioButton Content="PRC ID"/>
+                            <RadioButton Content="Postal ID"/>
+
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="Transparent" HeightRequest="200" HorizontalOptions="Center" WidthRequest="280" Padding="2" BorderColor="Black">
+                        <StackLayout Padding="10">
+                            <Image x:Name="Imgresult" HeightRequest="100" />
+                            <Button Text="Upload Valid ID" FontSize="18" HeightRequest="45" TextColor="White" HorizontalOptions="CenterAndExpand" BackgroundColor="#0e3663" Clicked="ImageButton_Clicked"/>
+
+                        </StackLayout>
+                    </Frame>
+
+
+
+                    <!-- BUTTON -->
+                    <Button Text="SIGN IN" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="20" Padding="8" BorderColor="Black" BorderWidth="1" Margin="0,10" FontAttributes="Bold" CornerRadius="40" HorizontalOptions="Center" WidthRequest="340" Clicked="Button_Clicked"></Button>
+                   <!-- <Button Text="Log in with Existing account" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="16" Padding="2" BorderColor="Black"  BorderWidth="1" Margin="0,10" CornerRadius="20" HorizontalOptions="Center" WidthRequest="340" Clicked="Button_Clicked_1"></Button> -->
+                    <Label Text="Log-in with Existing Account" FontSize="18" TextColor="Black" FontAttributes="Bold" Margin="0,0,40,0" HorizontalOptions="CenterAndExpand"  x:Name="existingAcc">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
+
+                            </TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
 
             </StackLayout>
