@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tubig.Android", "tubig\tubi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tubig.iOS", "tubig\tubig.iOS\tubig.iOS.csproj", "{52DA15B0-5BA7-4A77-A836-AB40A129A9AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tubig", "tubig\tubig\tubig.csproj", "{44357044-E5BC-4FCF-92E0-9F23ACABD8AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tubig", "tubig\tubig\tubig.csproj", "{44357044-E5BC-4FCF-92E0-9F23ACABD8AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

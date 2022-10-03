@@ -25,11 +25,9 @@ namespace tubig.DataModel
 
              public string StationName { get; set; }
              public string estimatedtime { get; set; }
-              public string distance { get; set; }
-
-               public string ImageURL { get; set; }
-
-                 public string Estimatedime_Distance => $"{estimatedtime} | {distance}";
+             public string distance { get; set; }
+             public string ImageURL { get; set; }
+             public string Estimatedime_Distance => $"{estimatedtime} | {distance}";
 
    
 

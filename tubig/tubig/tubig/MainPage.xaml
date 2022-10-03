@@ -4,17 +4,18 @@
              x:Class="tubig.MainPage"
             xmlns:local="clr-namespace:tubig"
             NavigationPage.HasNavigationBar="False"
-            BackgroundColor="LightCoral"
-            SelectedTabColor="black"
-            UnselectedTabColor="White"
+            BackgroundColor="#73a9c2"
+            SelectedTabColor="#E8F9FD"
+            UnselectedTabColor="Black"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
             NavigationPage.HasBackButton="False"
+            android:TabbedPage.IsSwipePagingEnabled="False"
             
             >
-    <local:Order  Title="Orders" IconImageSource="ordernewimg"/>
+    <local:Order  Title="Orders" IconImageSource="ordernewimg.png"/>
    
-    <local:MapPage Title="Map" IconImageSource="homepin"/>
+    <local:MapPage Title="Map" IconImageSource="homepin" />
     <local:HomePage Title="Homepage" IconImageSource="homepage"/>
     <local:NotificationPage Title="Notification" IconImageSource="notification"/>
     <local:AccountSetting Title="Profile" IconImageSource="profileimg" />
@@ -51,3 +52,52 @@
     
 
 </TabbedPage>
+<!--<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="tubig.MainPage"
+        xmlns:local="clr-namespace:tubig"
+        xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+       >
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#2196f3</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                --><!--<Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}"/>
+                <Setter Property="Shell.ForegroundColor" Value="Yellow"/>
+                <Setter Property="Shell.Title" Value="White"/>
+                <Setter Property="Shell.DisabledColor" Value="red"/>
+                <Setter Property="Shell.UnselectedColor" Value="Orange"/>
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#73a9c2"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="red"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="black"/>
+               
+                <Setter Property="Shell.TabBarTitleColor" Value="black"/>--><!--
+                <Setter Property="Shell.NavBarIsVisible" Value="False"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}"/>
+
+           
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar Shell.TabBarBackgroundColor="Red">
+        <Tab Title="Order" Icon="ordernewimg.png" >
+            <ShellContent ContentTemplate="{DataTemplate local:Order}"/>
+        </Tab>
+        <Tab Title="Map" Icon="homepin.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MapPage}" />
+        </Tab>
+
+        <Tab Title="Hompage" Icon="homepage.png">
+            <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
+        </Tab>
+
+        <Tab Title="Notificaton" Icon="notification.png">
+            <ShellContent ContentTemplate="{DataTemplate local:NotificationPage}" />
+        </Tab>
+       
+
+    </TabBar>
+        
+</Shell>-->

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
   </PropertyGroup>
 
@@ -12,16 +12,19 @@
 
   <ItemGroup>
     <None Remove="fonts\DynaPuff-VariableFont_wdth,wght.ttf" />
+    <None Remove="MapResources\MapTheme.json" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="fonts\DynaPuff-VariableFont_wdth,wght.ttf" />
+    <EmbeddedResource Include="MapResources\MapTheme.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="GoogleApi" Version="4.2.6" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2515" />
   </ItemGroup>
 
