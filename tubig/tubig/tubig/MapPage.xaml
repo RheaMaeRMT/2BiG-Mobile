@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             x:Class="tubig.MapPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" xmlns:local="clr-namespace:tubig"
+             x:Class="tubig.MapPage"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout BackgroundColor="White" x:Name="container">
-            
-                <maps:Map  x:Name="map" HasZoomEnabled="True" IsShowingUser="True" MapType="Hybrid"   MapClicked="map_MapClicked"/>
+
+            <!--<maps:Map  x:Name="map" HasZoomEnabled="True" IsShowingUser="True" MapType="Hybrid"   MapClicked="map_MapClicked"/>-->
+            <local:BindMape MapType="Street" MapPosition="{Binding MyPosition}" MapPins="{Binding PinCollection}" />
+
+
+
 
             <!--<maps:Map>
                 <x:Arguments>

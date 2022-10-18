@@ -9,8 +9,8 @@ using tubig.Constants;
 #else
 	[Application(Debuggable = false)]
 #endif
-[MetaData("com.google.android.maps.v2.API_KEY",
-			  Value = GoogleMap_APIkey.GoogleMapKey)]
+//[MetaData("com.google.android.maps.v2.API_KEY",
+//			  Value = GoogleMap_APIkey.GoogleMapKey)]
 
 public class MainApplication : Application
 {

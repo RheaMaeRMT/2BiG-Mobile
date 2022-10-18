@@ -18,19 +18,25 @@ namespace tubig
     public partial class MapPage : ContentPage
     {
        // StationInfo myvalue = new StationInfo();
-        public MapPage()
+        public  MapPage()
         {
             InitializeComponent();
             //location();
             //  pinloc();
             // getlocation();
-            DisplayCurrentLocation();
+           // DisplayCurrentLocation();
             //  Map.OpenAsync(10.367180176504233, 123.91768852643828);
             //Position position = new Position(36.9628066, -122.0194722);
             // MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
             //Map map = new Map(mapSpan);
             //  Map map = new Map(mapSpan);   10.36741934533169, 123.91710302006388
             // DisplayCurrentLocation();
+            //map.as
+        }
+
+        private async void  MapView()
+        {
+            
 
         }
 
@@ -61,8 +67,8 @@ namespace tubig
 
 
             };
-            map.Pins.Add(pintalamban);
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(pintalamban.Position, Distance.FromMeters(500)));
+            //map.Pins.Add(pintalamban);
+           // map.MoveToRegion(MapSpan.FromCenterAndRadius(pintalamban.Position, Distance.FromMeters(500)));
         }
 
         public async void DisplayCurrentLocation()
@@ -79,7 +85,7 @@ namespace tubig
                  //  Position p = new Position(10.367032849285907, 123.91804016846208);
 
                     MapSpan mapSpan = MapSpan.FromCenterAndRadius(p, Distance.FromKilometers(.444));
-                    map.MoveToRegion(mapSpan);
+                    //map.MoveToRegion(mapSpan);
                   //  Console.WriteLine($"Latitude: { location.Latitude},Longitude: { location.Longitude},Altitude: { location:altitude}");
                 }                      
             

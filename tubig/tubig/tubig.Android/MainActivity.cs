@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.OS;
 using Xamarin.Forms;
 using Plugin.CurrentActivity;
+using Xamarin;
 
 namespace tubig.Droid
 {
@@ -17,6 +18,9 @@ namespace tubig.Droid
             Forms.SetFlags("CollectionView_Experimental");
             base.OnCreate(savedInstanceState);
             //Xamarin.FormsMaps.Init(this, savedInstanceState);
+            Rg.Plugins.Popup.Popup.Init(this);
+
+            FormsMaps.Init(this, savedInstanceState);
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
@@ -28,6 +32,20 @@ namespace tubig.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public override void OnBackPressed()
+        {
+            Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed);
+
+            //if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))
+            //{
+            //    // Do something if there are some pages in the `PopupStack`
+            //}
+            //else
+            //{
+            //    // Do something if there are not any pages in the `PopupStack`
+            //}
         }
     }
 }

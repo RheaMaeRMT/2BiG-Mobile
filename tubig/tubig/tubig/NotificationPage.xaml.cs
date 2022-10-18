@@ -13,10 +13,10 @@ namespace tubig
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotificationPage : ContentPage
     {
-        public List<StationInfo> AllContacts { get; set; }
+        public List<DeliveryInfo> AllContacts { get; set; }
         public NotificationPage()
         {
-            ObservableCollection<StationInfo>   station;
+            ObservableCollection<DeliveryInfo>   station;
             InitializeComponent();
             //List<StationInfo> MyList = new List<StationInfo>
             //{
@@ -38,7 +38,7 @@ namespace tubig
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            AllContacts = new List<StationInfo>(StationInfo.Get());
+            AllContacts = new List<DeliveryInfo>(DeliveryInfo.Get());
            // collectionViewListHorizontal.ItemsSource = AllContacts;
             collectionViewListVertical.ItemsSource = AllContacts;
         }
@@ -70,7 +70,17 @@ namespace tubig
         private async void SwipeItem_Invoked(object sender, EventArgs e)
         {
             //await NavigationPage = new NavigationPage(new Order());
+            // await Navigation.PopAsync(Order());
+            //await Navigation.PopAsync(Order);
+            //NavigationPage.SetHasNavigationBar(new MainPage());
             await Navigation.PushAsync(new Order());
+            //await NavigationPage = new NavigationPage(new Order());
+            //  await Navigation.PopAsync(new Order());
+            //   await NavigationPage = new NavigationPage(new Order());
+            // await Navigation.PopAsync(new Order());
+            //public System.Threading.Tasks.Task<Xamarin.Forms.Page> PopAsync(bool animated);
+
+           // await _page.CurrentPage.Navigation.PopToRootAsync();
         }
     }
 }

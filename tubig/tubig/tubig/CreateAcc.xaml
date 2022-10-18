@@ -23,7 +23,7 @@
                 HorizontalOptions="Center"/>
 
 
-                <StackLayout Margin="5,5,5,5" BackgroundColor="#F8E2CF" HeightRequest="1350">
+                <StackLayout Margin="5,5,5,5" BackgroundColor="#F8E2CF" HeightRequest="1580">
                     <!--First Name entry -->
                     <Frame BackgroundColor="Transparent"  Margin="0,25" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
                         <StackLayout Orientation="Horizontal">
@@ -75,10 +75,29 @@
                             <Entry Placeholder="Birthdate" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" />
                         </StackLayout>
                     </Frame>
-                    <!--Username entry -->
+                    
+                    <!-- Address entry -->
+
                     <Frame BackgroundColor="Transparent" Margin="0,-15" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
                         <StackLayout Orientation="Horizontal">
-                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
+                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="7" Margin="0" HorizontalOptions="Start" BorderColor="Black">
+                                <Image Source="https://img.icons8.com/ios-filled/2x/address.png" Aspect="AspectFill" Margin="0" />
+                            </Frame>
+                            <Grid BackgroundColor="Red" HorizontalOptions="Start" WidthRequest="257">
+                                <Entry Placeholder="Address" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" />
+                                <ImageButton VerticalOptions="Center" Margin="0,0,13,0" HeightRequest="30 " HorizontalOptions="End" 
+                            Source="showlocation    .png" BackgroundColor="Transparent" CornerRadius="0">
+                                    
+                                </ImageButton>
+                            </Grid>
+
+                            
+                        </StackLayout>
+                    </Frame>
+                    <!--Username entry -->
+                    <Frame BackgroundColor="Transparent" Margin="0,25" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="7" Margin="0" HorizontalOptions="Start" BorderColor="Black">
                                 <Image Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" Aspect="AspectFill" Margin="0" />
                             </Frame>
 
@@ -87,9 +106,9 @@
                     </Frame>
 
                     <!--password entry -->
-                    <Frame BackgroundColor="Transparent" Margin="0,25" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
+                    <Frame BackgroundColor="Transparent" Margin="0,-13" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
                         <StackLayout Orientation="Horizontal">
-                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
+                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="7" Margin="0" HorizontalOptions="Start" BorderColor="Black">
                                 <Image Source="https://icon-library.com/images/show-password-icon/show-password-icon-7.jpg" Aspect="AspectFill" Margin="0" />
                             </Frame>
 
@@ -97,7 +116,7 @@
                         </StackLayout>
                     </Frame>
 
-                    <Frame BackgroundColor="#0e3663" Margin="0,25" HeightRequest="32" HorizontalOptions="Center" WidthRequest="400" Padding="2" BorderColor="Black">
+                    <Frame BackgroundColor="#0e3663" Margin="0,100" HeightRequest="32" HorizontalOptions="Center" WidthRequest="400" Padding="2" BorderColor="Black">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="VERIFICATION" FontSize="22" TextColor="White" Margin="0,0,40,0" HorizontalOptions="CenterAndExpand">
                                 
@@ -105,12 +124,12 @@
                         </StackLayout>
                     </Frame>
 
-                    <Frame BackgroundColor="Transparent" HeightRequest="470" HorizontalOptions="Center" WidthRequest="330" Padding="2">
+                    <Frame BackgroundColor="Transparent" HeightRequest="470" HorizontalOptions="Center" WidthRequest="330" Padding="2" Margin="0,-80">
                         <StackLayout>
                             <Label Text="Verify Your Identity!" FontSize="22" FontAttributes="Bold" TextColor="Black" Margin="0,0,40,0" HorizontalOptions="Fill">
 
                             </Label>
-                            <Image Source="verify.PNG" Aspect="AspectFit" WidthRequest="150" HeightRequest="100"/>
+                            <Image Source="verifypic.PNG" Aspect="AspectFit" WidthRequest="150" HeightRequest="100"/>
                             <Label Text="In order to complete your registration, please upload a copy of your valid ID" FontSize="18" TextColor="Black"></Label>
                             <Label Text="Choose your ID Type:" FontSize="18" TextColor="Black"></Label>
 
@@ -119,28 +138,56 @@
                             <RadioButton Content="Drivers License"/>
                             <RadioButton Content="PRC ID"/>
                             <RadioButton Content="Postal ID"/>
+                            <RadioButton Content="Others:"/>
+                            <StackLayout Margin="90,-47,0,0" HorizontalOptions="StartAndExpand" WidthRequest="220">
+                                <Entry Placeholder="Please specify.." BackgroundColor="Transparent"   />
+                            </StackLayout>
+                                
+                           
+                           
 
                         </StackLayout>
                     </Frame>
-                    <Frame BackgroundColor="Transparent" HeightRequest="200" HorizontalOptions="Center" WidthRequest="280" Padding="2" BorderColor="Black">
+
+                    <StackLayout BackgroundColor="Transparent" Margin="0,65,0,0"  HorizontalOptions="Center" WidthRequest="330" Padding="2">
+                        <Frame BackgroundColor="Transparent" HeightRequest="200" HorizontalOptions="Center" WidthRequest="280" Padding="2" BorderColor="Black" >
+                            <StackLayout Padding="10">
+                                <Image x:Name="Imgresult" HeightRequest="100" />
+                                <Button Text="Upload Valid ID" FontSize="18" HeightRequest="45" TextColor="White" HorizontalOptions="CenterAndExpand" BackgroundColor="#0e3663" Clicked="ImageButton_Clicked" Margin="0,25,0,0"/>
+
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                    <!--<Frame BackgroundColor="yellow" HeightRequest="200" HorizontalOptions="Center" WidthRequest="280" Padding="2" BorderColor="Black">
                         <StackLayout Padding="10">
                             <Image x:Name="Imgresult" HeightRequest="100" />
-                            <Button Text="Upload Valid ID" FontSize="18" HeightRequest="45" TextColor="White" HorizontalOptions="CenterAndExpand" BackgroundColor="#0e3663" Clicked="ImageButton_Clicked"/>
+                            <Button Text="Upload Valid ID" FontSize="18" HeightRequest="45" TextColor="White" HorizontalOptions="CenterAndExpand" BackgroundColor="#0e3663" Clicked="ImageButton_Clicked" Margin="0,25,0,0"/>
 
                         </StackLayout>
-                    </Frame>
+                    </Frame>-->
 
 
 
-                    <!-- BUTTON -->
-                    <Button Text="SIGN IN" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="20" Padding="8" BorderColor="Black" BorderWidth="1" Margin="0,10" FontAttributes="Bold" CornerRadius="40" HorizontalOptions="Center" WidthRequest="340" Clicked="Button_Clicked"></Button>
-                   <!-- <Button Text="Log in with Existing account" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="16" Padding="2" BorderColor="Black"  BorderWidth="1" Margin="0,10" CornerRadius="20" HorizontalOptions="Center" WidthRequest="340" Clicked="Button_Clicked_1"></Button> -->
-                    <Label Text="Log-in with Existing Account" FontSize="18" TextColor="Black" FontAttributes="Bold" Margin="0,0,40,0" HorizontalOptions="CenterAndExpand"  x:Name="existingAcc">
+                    <!-- BUTTON upload valid ID-->
+                    <!--<button text="sign in" textcolor="black" backgroundcolor="lightskyblue" fontsize="20" padding="8" bordercolor="black" borderwidth="1" margin="0,5" fontattributes="bold" cornerradius="40" horizontaloptions="center" widthrequest="340" clicked="button_clicked"></button>-->
+                    
+                        <Button Text="sign in" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="20" BorderColor="Black" BorderWidth="1" FontAttributes="Bold" CornerRadius="40" HorizontalOptions="Center"  WidthRequest="340" Margin="0,20,0,0">
+
+                        </Button>
+                    <!--<StackLayout Margin="0,-30" Padding="5" BackgroundColor="Transparent">
+                    </StackLayout>-->
+
+                    <!--<StackLayout BackgroundColor="Red" HorizontalOptions="CenterAndExpand" Margin="0,-10,0,0">
+                        <Label Text="123"/>
+                    </StackLayout>-->
+                    <!--<Button Text="Log in with Existing account" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="16" Padding="2" BorderColor="Black"  BorderWidth="1" Margin="0,10" CornerRadius="20" HorizontalOptions="Center" WidthRequest="340" Clicked="Button_Clicked_1"></Button>--> 
+                    <Label Text="Log-in with Existing Account" FontSize="18" TextColor="Black" FontAttributes="Bold" Margin="40,10,40,0" HorizontalOptions="CenterAndExpand"  x:Name="existingAcc" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
 
                             </TapGestureRecognizer>
                         </Label.GestureRecognizers>
+                    
                     </Label>
                 </StackLayout>
 

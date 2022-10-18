@@ -4,9 +4,194 @@
              x:Class="tubig.HomePage"
              NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--station name-->
+            <Style x:Key="NameLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Black" />
+                <!--<Setter Property="HorizontalTextAlignment" Value="Center"/>-->
+            </Style>
+
+            <!--style for status-->
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <!--<Style x:Key="imageLableStackLayout" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal" />
+            </Style>-->
+
+            <Style x:Key="detailsStackLayout" TargetType="StackLayout">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Spacing" Value="2" />
+                <!--<Setter Property="HasShadow" Value="True" />-->
+            </Style>
+
+            <Style x:Key="imageStyle" TargetType="Image">
+                <Setter Property="WidthRequest" Value="8" />
+                <Setter Property="HeightRequest" Value="8" />
+            </Style>
+
+            <!--style for Wr station logo-->
+            <Style x:Key="stationImageStyle" TargetType="Image">
+                <Setter Property="WidthRequest" Value="60" />
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="Aspect" Value="AspectFit" />
+
+                <!--<Setter Property="BackgroundColor" Value="Black"/>-->
+            </Style>
+
+            <!--frame style for station logo-->
+            <Style x:Key="stationImageFrameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="50" />
+                <Setter Property="BorderColor" Value="Black"></Setter>
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Padding" Value="4" />
+                <Setter Property="IsClippedToBounds" Value="True" />
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+
+            <Style x:Key="FrameCardViewStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="Margin" Value="3" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="OutlineColor" Value="Transparent" />
+                <Setter Property="BorderColor" Value="Transparent" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+
+            <Style x:Key="itemsCardViewStackLayoutStyle" TargetType="StackLayout">
+                <Setter Property="Margin" Value="5" />
+                <!--<Setter Property="CornerRadius" Value="15" />-->
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="Spacing" Value="8" />
+                <!--<Setter Property="BackgroundColor" Value="Blue"/>-->
+                <!--<Setter Property="HasShadow" Value="True" />-->
+
+            </Style>
+
+            <Style x:Key="itemsInsideCardViewStackLayoutStyle" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="Spacing" Value="8" />
+                
+                <!--<Setter Property="HasShadow" Value="True" />-->
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+
+
+            <Style x:Key="swipeItemStyle" TargetType="SwipeView">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+
+            </Style>
+
+            <!--<style name="MyTheme" parent="android:style/Theme.Material.Light.DarkActionBar">
+                <item name="android:colorPressedHighlight">@color/ListViewSelected</item>
+                <item name="android:colorLongPressedHighlight">@color/ListViewHighlighted</item>
+                <item name="android:colorFocusedHighlight">@color/ListViewSelected</item>
+                <item name="android:colorActivatedHighlight">@color/ListViewSelected</item>
+                <item name="android:activatedBackgroundIndicator">@color/ListViewSelected</item>
+            </style>
+            <color name="ListViewSelected">#96BCE3</color>
+            <color name="ListViewHighlighted">#E39696</color>-->
+
+          
+        </ResourceDictionary>
+    </ContentPage.Resources>
   <ContentPage.Content>
-      <StackLayout BackgroundColor="White">
-          <Label Text="This Iz it Panzit!" TextColor="Red" FontSize="35" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-      </StackLayout>
+        <RefreshView RefreshColor="#73a9c2" Refreshing="RefreshView_Refreshing" x:Name="refreshview" >
+            <ScrollView>
+                <StackLayout BackgroundColor="WhiteSmoke">
+                    <!--<VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="White" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="LightBlue" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                   
+                    </VisualStateManager.VisualStateGroups>-->
+                    <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Margin="0"  HeightRequest="50" >
+                        <Label Text="Nearby me" TextColor="Black" FontSize="20" FontAttributes="Bold" Padding="10" Margin="7,0,0,0"/>
+                      
+                    </StackLayout>
+
+                    <CollectionView x:Name="collectionViewListVertical" SelectionMode="Single" BackgroundColor="Transparent" Margin="0,-6,0,0" HeightRequest="700"  >
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+
+                        
+                        <CollectionView.ItemTemplate >
+                            <DataTemplate>
+                                <StackLayout BackgroundColor="Transparent" Spacing="10">
+                                  
+                                    <Frame Style="{StaticResource FrameCardViewStyle}" >
+                                        <SwipeView>
+                                            <!--<SwipeView.RightItems>
+                                        <SwipeItems >
+                                            <SwipeItem Text="Open"
+                                                      BackgroundColor="#73a9c2"
+                                                      
+                                                       Invoked="SwipeItem_Invoked"
+                                                />
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>-->
+
+                                            <StackLayout Style="{StaticResource itemsCardViewStackLayoutStyle}" BackgroundColor="Transparent">
+                                                <StackLayout Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                                    </StackLayout.GestureRecognizers>
+                                                    <Frame Style="{StaticResource stationImageFrameStyle}">
+                                                        <Image Style="{StaticResource stationImageStyle}" Source="{Binding ImageURL}" />
+                                                    </Frame>
+                                                    <StackLayout Style="{StaticResource detailsStackLayout}">
+                                                        <Label Text="{Binding storename}" Style="{StaticResource NameLabel}" HorizontalOptions="CenterAndExpand" Margin="-40,0,0,0"/>
+                                                        <!--<StackLayout Style="{StaticResource imageLableStackLayout}">
+                                                <Image Source="phone.png" Style="{StaticResource imageStyle}"></Image>
+                                                <Label Text="{Binding Phone}" Style="{StaticResource LabelStyle}" />
+                                            </StackLayout>
+                                            <StackLayout Style="{StaticResource imageLableStackLayout}">
+                                                <Image Source="mail.png" Style="{StaticResource imageStyle}"></Image>
+                                                <Label Text="{Binding Email}" Style="{StaticResource LabelStyle}" />
+                                            </StackLayout>-->
+                                                        <StackLayout >
+                                                            <!--<Image Source="location.png" Style="{StaticResource imageStyle}"></Image>-->
+                                                            <Label Text="{Binding status}" Style="{StaticResource LabelStyle}" HorizontalOptions="CenterAndExpand" Margin="-40,0,0,0" />
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </SwipeView>
+                                    </Frame>
+
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+
+                </StackLayout>
+            </ScrollView>
+            
+        </RefreshView>
+       
+       
+      
   </ContentPage.Content>
 </ContentPage>

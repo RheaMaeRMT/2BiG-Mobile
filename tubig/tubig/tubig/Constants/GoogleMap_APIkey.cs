@@ -6,6 +6,6 @@ namespace tubig.Constants
 {
     public class GoogleMap_APIkey
     {
-        public const string GoogleMapKey = "AIzaSyBLuyjDeSDgytcFW3FYt57c9XpxsgopiL8";
+       // public const string GoogleMapKey = "AIzaSyBLuyjDeSDgytcFW3FYt57c9XpxsgopiL8";
     }
 }

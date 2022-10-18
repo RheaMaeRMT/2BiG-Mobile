@@ -19,8 +19,18 @@ namespace tubig
            CurrentPage =Children[2];
         //  TabbedPage.
        // android: TabbedPage.ToolbarPlacement = "Bottom";
+
+           // OpenMap.
+        }
+        async void OnPreviousPageButtonClicked(object sender, EventArgs e)
+        {
+           // await Navigation.PopAsync(new Order());
         }
 
-       // public NavigationPage MainPage { get; }
+        async void OnRootPageButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PopToRootAsync();
+        }
+        // public NavigationPage MainPage { get; }
     }
 }

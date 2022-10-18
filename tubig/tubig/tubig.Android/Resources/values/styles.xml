@@ -19,8 +19,16 @@
       <item name="android:windowTranslucentNavigation">true</item>
       <item name="android:fitsSystemWindows">true</item>-->
       <!--<item name="android:textCursorDrawable">true</item> -->
+    <item name="android:colorPressedHighlight">@color/ListViewSelected</item>
+    <item name="android:colorLongPressedHighlight">@color/ListViewHighlighted</item>
+    <item name="android:colorFocusedHighlight">@color/ListViewSelected</item>
+    <item name="android:colorActivatedHighlight">@color/ListViewSelected</item>
+    <item name="android:activatedBackgroundIndicator">@color/ListViewSelected</item>
     <item name="colorAccent">#000000</item>
     
       
   </style>
+  <!--<color name="ListViewSelected">#FF0000</color>-->
+  <color name="ListViewSelected">#f5f5f5</color>
+  <color name="ListViewHighlighted">#f5f5f5</color>
 </resources>

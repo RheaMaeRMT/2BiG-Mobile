@@ -13,14 +13,55 @@
             android:TabbedPage.IsSwipePagingEnabled="False"
             
             >
-    <local:Order  Title="Orders" IconImageSource="ordernewimg.png"/>
+    <!--<local:Order  Title="Orders" IconImageSource="ordernewimg.png"/>
    
-    <local:MapPage Title="Map" IconImageSource="homepin" />
+    <local:MapPage Title="Map" IconImageSource="homepin" x:Name="OpenMap"/>
     <local:HomePage Title="Homepage" IconImageSource="homepage"/>
     <local:NotificationPage Title="Notification" IconImageSource="notification"/>
-    <local:AccountSetting Title="Profile" IconImageSource="profileimg" />
-  
-    <!--<NavigationPage  >
+    <local:AccountSetting Title="Profile" IconImageSource="profileimg" />-->
+
+    <TabbedPage.Children>
+        <NavigationPage Title="Order" IconImageSource="ordernewimg.png">
+            <x:Arguments>
+                <local:Order />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Map" IconImageSource="homepin.png">
+            <x:Arguments >
+                <local:MapPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        
+        <NavigationPage Title="Homepage" IconImageSource="homepage.png">
+            <x:Arguments>
+                <local:HomePage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Notification" IconImageSource="notification" >
+           
+            <x:Arguments >
+                <local:NotificationPage  />
+            </x:Arguments>
+            
+        </NavigationPage>
+
+        <NavigationPage Title="Profile" IconImageSource="profileimg">
+            <x:Arguments>
+                <local:AccountSetting/>
+            </x:Arguments>        
+        </NavigationPage>
+    </TabbedPage.Children>
+
+<!--<TabbedPage.ToolbarItems>
+        <ToolbarItem NavigationPage.IconColor="Red" Name="Order" Order="Primary" Icon="ordernewimg.png" Priority="1"/>
+        <ToolbarItem NavigationPage.IconColor="Red" Name="Map" Order="Primary" Icon="homepin.png" Priority="1"/>
+        <ToolbarItem NavigationPage.IconColor="Red" Name="Homepage" Order="Primary" Icon="homepage.png" Priority="1"/>
+    </TabbedPage.ToolbarItems>-->
+
+       
+<!--<NavigationPage  >
         <x:Arguments>
             <ContentPage x:Name="orderpage">
                 <local:Order Title="Orders" BackgroundColor="Aquamarine" IconImageSource="ordernewimg"/>
