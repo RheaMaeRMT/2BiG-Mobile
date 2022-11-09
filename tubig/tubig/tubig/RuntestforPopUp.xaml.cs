@@ -14,7 +14,7 @@ namespace tubig
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RuntestforPopUp : ContentPage
     {
-        private OrderPagePopUp _loginPopup;
+        private OrderProductReviewPagePopUp _loginPopup;
         public RuntestforPopUp()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace tubig
             PopupNavigation.Instance.Popping += (sender, e) => Debug.WriteLine($"[Popup] Popping: {e.Page.GetType().Name}");
             PopupNavigation.Instance.Popped += (sender, e) => Debug.WriteLine($"[Popup] Popped: {e.Page.GetType().Name}");
 
-            _loginPopup = new OrderPagePopUp();
+            _loginPopup = new OrderProductReviewPagePopUp();
         }
 
         private async void OnOpenPupup(object sender, EventArgs e)

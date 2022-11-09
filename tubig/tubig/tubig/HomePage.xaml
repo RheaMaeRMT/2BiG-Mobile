@@ -106,9 +106,13 @@
         </ResourceDictionary>
     </ContentPage.Resources>
   <ContentPage.Content>
-        <RefreshView RefreshColor="#73a9c2" Refreshing="RefreshView_Refreshing" x:Name="refreshview" >
+        <RefreshView 
+            RefreshColor="#73a9c2"
+            Refreshing="RefreshView_Refreshing" 
+            x:Name="refreshview" >
             <ScrollView>
-                <StackLayout BackgroundColor="WhiteSmoke">
+                <StackLayout
+                    BackgroundColor="WhiteSmoke">
                     <!--<VisualStateManager.VisualStateGroups>
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
@@ -124,12 +128,27 @@
                         </VisualStateGroup>
                    
                     </VisualStateManager.VisualStateGroups>-->
-                    <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Margin="0"  HeightRequest="50" >
-                        <Label Text="Nearby me" TextColor="Black" FontSize="20" FontAttributes="Bold" Padding="10" Margin="7,0,0,0"/>
+                    <StackLayout 
+                        BackgroundColor="Transparent" 
+                        HorizontalOptions="FillAndExpand"
+                        Margin="0" 
+                        HeightRequest="50" >
+                        <Label
+                            Text="Nearby me" 
+                            TextColor="Black" 
+                            FontSize="20"
+                            FontAttributes="Bold" 
+                            Padding="10" 
+                            Margin="7,0,0,0"/>
                       
                     </StackLayout>
 
-                    <CollectionView x:Name="collectionViewListVertical" SelectionMode="Single" BackgroundColor="Transparent" Margin="0,-6,0,0" HeightRequest="700"  >
+                    <CollectionView
+                        x:Name="collectionViewListVertical" 
+                        SelectionMode="Single" 
+                        BackgroundColor="Transparent" 
+                        Margin="0,-6,0,0" 
+                        HeightRequest="700"  >
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Vertical" />
                         </CollectionView.ItemsLayout>
@@ -137,7 +156,9 @@
                         
                         <CollectionView.ItemTemplate >
                             <DataTemplate>
-                                <StackLayout BackgroundColor="Transparent" Spacing="10">
+                                <StackLayout 
+                                    BackgroundColor="Transparent"
+                                    Spacing="10">
                                   
                                     <Frame Style="{StaticResource FrameCardViewStyle}" >
                                         <SwipeView>
@@ -151,16 +172,27 @@
                                         </SwipeItems>
                                     </SwipeView.RightItems>-->
 
-                                            <StackLayout Style="{StaticResource itemsCardViewStackLayoutStyle}" BackgroundColor="Transparent">
-                                                <StackLayout Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
+                                            <StackLayout 
+                                                Style="{StaticResource itemsCardViewStackLayoutStyle}" 
+                                                BackgroundColor="Transparent">
+                                                <StackLayout 
+                                                    Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
                                                     <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                                                     </StackLayout.GestureRecognizers>
-                                                    <Frame Style="{StaticResource stationImageFrameStyle}">
-                                                        <Image Style="{StaticResource stationImageStyle}" Source="{Binding ImageURL}" />
+                                                    <Frame 
+                                                        Style="{StaticResource stationImageFrameStyle}">
+                                                        <Image 
+                                                            Style="{StaticResource stationImageStyle}" 
+                                                            Source="{Binding ImageURL}" />
                                                     </Frame>
-                                                    <StackLayout Style="{StaticResource detailsStackLayout}">
-                                                        <Label Text="{Binding storename}" Style="{StaticResource NameLabel}" HorizontalOptions="CenterAndExpand" Margin="-40,0,0,0"/>
+                                                    <StackLayout 
+                                                        Style="{StaticResource detailsStackLayout}">
+                                                        <Label 
+                                                            Text="{Binding storename}" 
+                                                            Style="{StaticResource NameLabel}" 
+                                                            HorizontalOptions="CenterAndExpand" 
+                                                            Margin="-40,0,0,0"/>
                                                         <!--<StackLayout Style="{StaticResource imageLableStackLayout}">
                                                 <Image Source="phone.png" Style="{StaticResource imageStyle}"></Image>
                                                 <Label Text="{Binding Phone}" Style="{StaticResource LabelStyle}" />
@@ -171,7 +203,11 @@
                                             </StackLayout>-->
                                                         <StackLayout >
                                                             <!--<Image Source="location.png" Style="{StaticResource imageStyle}"></Image>-->
-                                                            <Label Text="{Binding status}" Style="{StaticResource LabelStyle}" HorizontalOptions="CenterAndExpand" Margin="-40,0,0,0" />
+                                                            <Label 
+                                                                Text="{Binding Status_Distance}"
+                                                                Style="{StaticResource LabelStyle}" 
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                Margin="-40,0,0,0" />
                                                         </StackLayout>
                                                     </StackLayout>
                                                 </StackLayout>

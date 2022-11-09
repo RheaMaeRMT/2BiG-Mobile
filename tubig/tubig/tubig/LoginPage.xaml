@@ -24,7 +24,12 @@
         <StackLayout BackgroundColor="#F8E2CF">
 
             <!--for logo and label below-->
-            <StackLayout  HorizontalOptions="CenterAndExpand" HeightRequest="220" WidthRequest="400" Margin="0,30" BackgroundColor="Transparent" Padding="0">
+            <StackLayout 
+                HorizontalOptions="CenterAndExpand"
+                HeightRequest="220" 
+                WidthRequest="400" Margin="0,30"
+                BackgroundColor="Transparent" 
+                Padding="0">
                 <!--<Label Text="eawdawdawd"  #040c24 TextColor="White"/>-->
                 <CI:CircleImage    
                                 WidthRequest="200"
@@ -37,36 +42,112 @@
                                 BackgroundColor="Transparent"   
                    
                  />
-                <Label Text="Meet the Expectations." Margin="0,-10" TextColor="Black" FontSize="20" FontFamily="bold" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" WidthRequest="400" HorizontalTextAlignment="Center"/>
+                <Label 
+                    Text="Meet the Expectations." 
+                    Margin="0,-10"
+                    TextColor="Black" 
+                    FontSize="20" 
+                    FontFamily="bold" 
+                    HorizontalOptions="StartAndExpand"
+                    BackgroundColor="Transparent"
+                    WidthRequest="400"
+                    HorizontalTextAlignment="Center"/>
             </StackLayout>
 
 
             <!--for username entry-->
-            <StackLayout BackgroundColor="Transparent" HeightRequest="180" WidthRequest="200" Margin="0,-40">
-                <Frame BackgroundColor="Transparent" Margin="0,20" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
+            <StackLayout 
+                BackgroundColor="Transparent" 
+                HeightRequest="180" 
+                WidthRequest="200" 
+                Margin="0,-40">
+                <Frame 
+                    BackgroundColor="Transparent"
+                    Margin="0,20" HeightRequest="50" 
+                    HorizontalOptions="Center"
+                    WidthRequest="320" 
+                    Padding="5"
+                    BorderColor="Black" 
+                    CornerRadius="50">
                     <StackLayout Orientation="Horizontal">
-                        <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
-                            <Image Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" Aspect="AspectFill" Margin="0" />
+                        <Frame BackgroundColor="Transparent" 
+                               CornerRadius="50"
+                               HeightRequest="35"
+                               WidthRequest="35"
+                               Padding="9"
+                               Margin="0"
+                               HorizontalOptions="Start" 
+                               BorderColor="Black">
+                            <Image
+                                Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" 
+                                Aspect="AspectFill" 
+                                Margin="0" />
                         </Frame>
 
-                        <Entry Placeholder="Username" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" >
+                        <Entry 
+                            Placeholder="Username" 
+                            TextColor="Black" 
+                            HorizontalOptions="FillAndExpand" 
+                            Margin="0,0,15,0" 
+                            PlaceholderColor="Black"
+                            x:Name="usernameTextbox" >
                             
                         </Entry>
                     </StackLayout>
                    
                 </Frame>
                 <!--for  password entry-->
-                <Frame BackgroundColor="Transparent" Margin="0,5" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
-                    <StackLayout Orientation="Horizontal">
-                        <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
-                            <Image Source="https://icon-library.com/images/show-password-icon/show-password-icon-7.jpg" Aspect="AspectFill" Margin="0" />
+                <Frame 
+                    
+                    BackgroundColor="Transparent"
+                    Margin="0,5" 
+                    HeightRequest="50" 
+                    HorizontalOptions="Center"
+                    WidthRequest="320"
+                    Padding="5"
+                    BorderColor="Black" 
+                    CornerRadius="50">
+                    <StackLayout 
+                        Orientation="Horizontal">
+                        <Frame 
+                            BackgroundColor="Transparent" 
+                            CornerRadius="50" 
+                            HeightRequest="35"
+                            WidthRequest="35" 
+                            Padding="9" 
+                            Margin="0" 
+                            HorizontalOptions="Start"
+                            BorderColor="Black">
+                            <Image 
+                                Source="https://icon-library.com/images/show-password-icon/show-password-icon-7.jpg" 
+                                Aspect="AspectFill" 
+                                Margin="0" />
                         </Frame>
 
-                        <Grid BackgroundColor="Transparent" HorizontalOptions="Start" WidthRequest="257">
-                            <Entry Placeholder="Password" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black"  Keyboard="Text" IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger}, Path=HidePassword}" />
+                        <Grid 
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Start"
+                            WidthRequest="257">
+                            <Entry 
+                                Placeholder="Password"
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,15,0" 
+                                PlaceholderColor="Black" 
+                                Keyboard="Text"
+                                IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger},
+                                Path=HidePassword}" 
+                                x:Name="password_Textbox" />
 
-                            <ImageButton VerticalOptions="Center" Margin="0,0,13,0" HeightRequest="30 " HorizontalOptions="End" 
-                            Source="hide_eye_password_new.png" BackgroundColor="Transparent" CornerRadius="0">
+                            <ImageButton 
+                                VerticalOptions="Center"
+                                Margin="0,0,13,0"
+                                HeightRequest="30 "
+                                HorizontalOptions="End" 
+                            
+                                Source="hide_eye_password_new.png" 
+                                BackgroundColor="Transparent"
+                                CornerRadius="0">
                                 <ImageButton.Triggers>
                                     <EventTrigger Event="Clicked">
                                         <local:ShowPasswordTriggerAction ShowIcon="eye_password_new.png"
@@ -83,10 +164,21 @@
                 <!--for forgot password? label-->
 
             </StackLayout>
-            <StackLayout BackgroundColor="Transparent" Margin="0,35"  >
-                <Label Text="Forgot Password?" FontSize="16" TextColor="Black" FontAttributes="Bold" Margin="0,0,54,0" HorizontalOptions="EndAndExpand" TextDecorations="Underline" x:Name="lbl_forgotpass">
+            <StackLayout 
+                BackgroundColor="Transparent"
+                Margin="0,35"  >
+                <Label 
+                    Text="Forgot Password?" 
+                    FontSize="16" 
+                    TextColor="Black" 
+                    FontAttributes="Bold"
+                    Margin="0,0,54,0" 
+                    HorizontalOptions="EndAndExpand" 
+                    TextDecorations="Underline"
+                    x:Name="lbl_forgotpass">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
+                        <TapGestureRecognizer 
+                            Tapped="TapGestureRecognizer_Tapped">
                             
                         </TapGestureRecognizer>
                     </Label.GestureRecognizers>
@@ -106,17 +198,50 @@
         </Label.Effects>
     </Label-->
             <!--for Login Button -->
-            <StackLayout BackgroundColor="Transparent" Margin="0,-20" HorizontalOptions="FillAndExpand" HeightRequest="70" WidthRequest="200" Padding="0">
+            <StackLayout
+                BackgroundColor="Transparent"
+                Margin="0,-20" 
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="70"
+                WidthRequest="200"
+                Padding="0">
 
-                <Button Text="Login" TextColor="Black" FontSize="25" Padding="10" BorderColor="Black" BorderWidth="1" Margin="0,10" FontAttributes="Bold" CornerRadius="40" HorizontalOptions="Center" WidthRequest="340" Clicked="Button_Clicked" x:Name="btn_login" BackgroundColor="LightSkyBlue"></Button>
+                <Button 
+                    Text="Login"
+                    TextColor="Black" 
+                    FontSize="25" Padding="10"
+                    BorderColor="Black"
+                    BorderWidth="1"
+                    Margin="0,10" 
+                    FontAttributes="Bold" 
+                    CornerRadius="40" 
+                    HorizontalOptions="Center"
+                    WidthRequest="340"
+                    Clicked="Button_Clicked" 
+                    x:Name="btn_login"
+                    BackgroundColor="LightSkyBlue"></Button>
             </StackLayout>
             <!--for label -->
-            <StackLayout BackgroundColor="Transparent" Margin="0,35">
-                <Label Text="Don't have an account?" HorizontalOptions="Center" TextColor="Black" FontSize="18" />
+            <StackLayout 
+                BackgroundColor="Transparent"
+                Margin="0,35">
+                <Label 
+                    Text="Don't have an account?"
+                    HorizontalOptions="Center" 
+                    TextColor="Black"
+                    FontSize="18" />
             </StackLayout>
             <!--for clickable label, sign up-->
-            <StackLayout BackgroundColor="Transparent" Margin="0,-35">
-                <Label Text="Sign up" TextColor="Black" FontSize="18" HorizontalTextAlignment="Center" FontAttributes="Bold" TextDecorations="Underline">
+            <StackLayout 
+                BackgroundColor="Transparent" 
+                Margin="0,-35">
+                <Label 
+                    Text="Sign up" 
+                    TextColor="Black"
+                    FontSize="18" 
+                    HorizontalTextAlignment="Center"
+                    FontAttributes="Bold"
+                    TextDecorations="Underline">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1">
 

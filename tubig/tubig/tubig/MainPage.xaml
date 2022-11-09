@@ -21,25 +21,33 @@
     <local:AccountSetting Title="Profile" IconImageSource="profileimg" />-->
 
     <TabbedPage.Children>
-        <NavigationPage Title="Order" IconImageSource="ordernewimg.png">
+        <NavigationPage 
+            Title="Order" 
+            IconImageSource="ordernewimg.png">
             <x:Arguments>
                 <local:Order />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Map" IconImageSource="homepin.png">
+        <NavigationPage
+            Title="Map" 
+            IconImageSource="homepin.png">
             <x:Arguments >
                 <local:MapPage />
             </x:Arguments>
         </NavigationPage>
 
         
-        <NavigationPage Title="Homepage" IconImageSource="homepage.png">
+        <NavigationPage
+            Title="Homepage"
+            IconImageSource="homepage.png">
             <x:Arguments>
                 <local:HomePage />
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage Title="Notification" IconImageSource="notification" >
+        <NavigationPage 
+            Title="Notification" 
+            IconImageSource="notification" >
            
             <x:Arguments >
                 <local:NotificationPage  />
@@ -47,7 +55,9 @@
             
         </NavigationPage>
 
-        <NavigationPage Title="Profile" IconImageSource="profileimg">
+        <NavigationPage 
+            Title="Profile"
+            IconImageSource="profileimg">
             <x:Arguments>
                 <local:AccountSetting/>
             </x:Arguments>        

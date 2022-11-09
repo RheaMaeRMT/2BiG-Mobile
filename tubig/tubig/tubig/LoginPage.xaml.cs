@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms.Xaml;
 
 namespace tubig
@@ -33,7 +34,22 @@ namespace tubig
         {
             //  await btn_login.FadeTo(0, 1000, Easing.Linear);
             // await btn_login.FadeTo(1, 1000, Easing.Linear);
-            await Navigation.PushAsync(new MainPage());
+
+
+
+            var userName = usernameTextbox.Text;
+            var password = password_Textbox.Text;
+            string UserName = "admin";
+            string Password = "admin";
+
+            //if((userName != UserName) && (password != Password))
+            //{
+            //    await this.DisplayToastAsync("Invalid Username and Password", 10000);
+            //}
+             await Navigation.PushAsync(new MainPage());
+            //await this.DisplayPromptAsync("Hellow world", "10000");
+          //  await this.DisplayToastAsync("Invalid Username and Password", 10000);
+
         }
 
         //async public void labelClickFunction()

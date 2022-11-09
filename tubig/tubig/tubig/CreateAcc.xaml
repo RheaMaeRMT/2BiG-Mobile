@@ -3,8 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:CI="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="tubig.CreateAcc"
-              NavigationPage.HasBackButton="False"
+            
+             xmlns:local="clr-namespace:tubig.Control"
+             xmlns:behavior="clr-namespace:tubig"
+             NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="PickerItemStyle" TargetType="Picker">
+                <Setter
+                    Property="TextColor"
+                    Value="Red"/>
+            </Style>
+
+         
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
       <ScrollView>
             <StackLayout BackgroundColor="#F8E2CF">
@@ -17,76 +34,262 @@
                                 BorderThickness="5"  
                                 Margin="0,5"
                                 BackgroundColor="Transparent" />
-                <Label Text="Create Account" TextColor="DarkBlue" FontAttributes="Bold" FontSize="30" 
-                Margin="25,10,15,10"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"/>
+                <Label 
+                    Text="Create Account" 
+                    TextColor="DarkBlue" 
+                    FontAttributes="Bold"
+                    FontSize="30" 
+                    Margin="25,10,15,10"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"/>
 
-
-                <StackLayout Margin="5,5,5,5" BackgroundColor="#F8E2CF" HeightRequest="1580">
+                <StackLayout 
+                    Margin="5,5,5,5 "
+                    BackgroundColor="#F8E2CF"
+                    HeightRequest="1750">
                     <!--First Name entry -->
-                    <Frame BackgroundColor="Transparent"  Margin="0,25" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
-                        <StackLayout Orientation="Horizontal">
-                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
-                                <Image Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" Aspect="AspectFill" Margin="0" />
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,25" 
+                        HeightRequest="50"
+                        HorizontalOptions="Center"
+                        WidthRequest="320"
+                        Padding="5"
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout 
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent" 
+                                CornerRadius="50"
+                                HeightRequest="35" 
+                                WidthRequest="35" 
+                                Padding="9" 
+                                Margin="0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image
+                                    Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" 
+                                    Aspect="AspectFill" 
+                                    Margin="0" />
                             </Frame>
 
-                            <Entry Placeholder="First Name" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" />
+                            <Entry 
+                                Placeholder="First Name" 
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,15,0" 
+                                PlaceholderColor="Black" />
                         </StackLayout>
                     </Frame>
                     <!--Last Name entry -->
-                    <Frame BackgroundColor="Transparent" Margin="0,-15" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
-                        <StackLayout Orientation="Horizontal">
-                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
-                                <Image Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" Aspect="AspectFill" Margin="0" />
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,-15" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center"
+                        WidthRequest="320" 
+                        Padding="5"
+                        BorderColor="Black"
+                        CornerRadius="50">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35"
+                                WidthRequest="35" 
+                                Padding="9" 
+                                Margin="0"
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" 
+                                    Aspect="AspectFill"
+                                    Margin="0" />
                             </Frame>
 
-                            <Entry Placeholder="Last Name" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" />
+                            <Entry 
+                                Placeholder="Last Name" 
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,15,0" 
+                                PlaceholderColor="Black" />
                         </StackLayout>
                     </Frame>
 
                     <!--Phone Number entry -->
-                    <Frame BackgroundColor="Transparent" Margin="0,25" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
-                        <StackLayout Orientation="Horizontal">
-                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
-                                <Image Source="https://icon-library.com/images/phone-number-icon-png/phone-number-icon-png-18.jpg" Aspect="AspectFill" Margin="0" />
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,25" 
+                        HeightRequest="50"
+                        HorizontalOptions="Center" 
+                        WidthRequest="320" 
+                        Padding="5" 
+                        BorderColor="Black"
+                        CornerRadius="50">
+                        <StackLayout 
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent"
+                                CornerRadius="50" 
+                                HeightRequest="35"
+                                
+                                WidthRequest="35" 
+                                Padding="9"
+                                Margin="0"
+                                HorizontalOptions="Start"
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/phone-number-icon-png/phone-number-icon-png-18.jpg"
+                                    Aspect="AspectFill"
+                                    Margin="0" />
                             </Frame>
 
-                            <Entry Placeholder="Phone Number" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" />
+                            <Entry
+                                Placeholder="Phone Number" 
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand" 
+                                Margin="0,0,15,0" 
+                                PlaceholderColor="Black" 
+                                Keyboard="Telephone">
+                                <Entry.Behaviors>
+                                    <behavior:PhoneNumberMaskBehavior x:Name="PhoneMask" />
+                                    <behavior:EntryLengthValidator MaxLength="13"/>
+                                </Entry.Behaviors>
+                            </Entry>
                         </StackLayout>
                     </Frame>
                     <!--Email Add entry -->
-                    <Frame BackgroundColor="Transparent" Margin="0,-15" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
-                        <StackLayout Orientation="Horizontal">
-                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
-                                <Image Source="https://icon-library.com/images/flat-email-icon/flat-email-icon-21.jpg" Aspect="AspectFill" Margin="0" />
+                    <Frame
+                        BackgroundColor="Transparent" 
+                        Margin="0,-15"
+                        HeightRequest="50"
+                        HorizontalOptions="Center" 
+                        WidthRequest="320"
+                        Padding="5" 
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent"
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="35" 
+                                Padding="9" 
+                                Margin="0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/flat-email-icon/flat-email-icon-21.jpg"
+                                    Aspect="AspectFill" 
+                                    Margin="0" />
                             </Frame>
 
-                            <Entry Placeholder="Email" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" />
+                            <Entry
+                                Placeholder="Email" 
+                                TextColor="Black"
+                                HorizontalOptions="FillAndExpand" 
+                                Margin="0,0,15,0"
+                                PlaceholderColor="Black" />
                         </StackLayout>
                     </Frame>
                     <!--Date of Birth entry -->
-                    <Frame BackgroundColor="Transparent" Margin="0,25" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
-                        <StackLayout Orientation="Horizontal">
-                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="9" Margin="0" HorizontalOptions="Start" BorderColor="Black">
-                                <Image Source="https://icon-library.com/images/up-to-date-icon/up-to-date-icon-14.jpg" Aspect="AspectFill" Margin="0" />
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,25"
+                        HeightRequest="50"
+                        HorizontalOptions="Center" 
+                        WidthRequest="320" 
+                        Padding="5" 
+                        BorderColor="Black"
+                        CornerRadius="50">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="35" 
+                                Padding="9" 
+                                Margin="0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/up-to-date-icon/up-to-date-icon-14.jpg" 
+                                    Aspect="AspectFill" 
+                                    Margin="0" />
                             </Frame>
 
-                            <Entry Placeholder="Birthdate" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" />
+                            <!--<Entry 
+                                Placeholder="Birthdate"
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand" 
+                                Margin="0,0,15,0" 
+                                PlaceholderColor="Black" />-->
+                            <Grid BackgroundColor="Transparent"
+                                  HorizontalOptions="Start"
+                                  WidthRequest="248">
+                                <local:BirthdayDatePickerControl/>
+                                <Image Source="https://img.icons8.com/windows/2x/calendar-week.png"
+                                       WidthRequest="40"
+                                       HeightRequest="40"
+                                       Aspect="AspectFit"
+                                       HorizontalOptions="End"/>
+
+
+
+                            </Grid>
+                           
+
                         </StackLayout>
                     </Frame>
                     
                     <!-- Address entry -->
 
-                    <Frame BackgroundColor="Transparent" Margin="0,-15" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
-                        <StackLayout Orientation="Horizontal">
-                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="7" Margin="0" HorizontalOptions="Start" BorderColor="Black">
-                                <Image Source="https://img.icons8.com/ios-filled/2x/address.png" Aspect="AspectFill" Margin="0" />
+                    <Frame
+                        BackgroundColor="Transparent"
+                        Margin="0,-15"
+                        HeightRequest="50" 
+                        HorizontalOptions="Center"
+                        WidthRequest="320" Padding="5"
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout 
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent"
+                                CornerRadius="50" 
+                                HeightRequest="35"
+                                WidthRequest="35" 
+                                Padding="7" Margin="0" 
+                                HorizontalOptions="Start"
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://img.icons8.com/ios-filled/2x/address.png" 
+                                    Aspect="AspectFill" 
+                                    Margin="0" />
                             </Frame>
-                            <Grid BackgroundColor="Red" HorizontalOptions="Start" WidthRequest="257">
-                                <Entry Placeholder="Address" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" />
-                                <ImageButton VerticalOptions="Center" Margin="0,0,13,0" HeightRequest="30 " HorizontalOptions="End" 
-                            Source="showlocation    .png" BackgroundColor="Transparent" CornerRadius="0">
+                            <Grid
+                                BackgroundColor="Red"
+                                HorizontalOptions="Start"
+                                WidthRequest="257">
+                                <Entry 
+                                    Placeholder="Address" 
+                                    TextColor="Black"
+                                    HorizontalOptions="FillAndExpand" 
+                                    Margin="0,0,15,0" 
+                                    PlaceholderColor="Black" />
+                                <ImageButton 
+                                    VerticalOptions="Center" 
+                                    Margin="0,0,13,0"
+                                    HeightRequest="30 "
+                                    HorizontalOptions="End" 
+                           
+                                    Source="showlocation    .png" 
+                                    BackgroundColor="Transparent" 
+                                    CornerRadius="0">
                                     
                                 </ImageButton>
                             </Grid>
@@ -95,43 +298,278 @@
                         </StackLayout>
                     </Frame>
                     <!--Username entry -->
-                    <Frame BackgroundColor="Transparent" Margin="0,25" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
-                        <StackLayout Orientation="Horizontal">
-                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="7" Margin="0" HorizontalOptions="Start" BorderColor="Black">
-                                <Image Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" Aspect="AspectFill" Margin="0" />
+                    <Frame
+                        BackgroundColor="Transparent" 
+                        Margin="0,25" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center"
+                        WidthRequest="320" 
+                        Padding="5" 
+                        BorderColor="Black"
+                        CornerRadius="50">
+                        <StackLayout 
+                            Orientation="Horizontal">
+                            <Frame
+                                BackgroundColor="Transparent"
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="35" 
+                                Padding="7" Margin="0"
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" 
+                                    Aspect="AspectFill" 
+                                    Margin="0" />
                             </Frame>
 
-                            <Entry Placeholder="Username" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" />
+                            <Entry 
+                                Placeholder="Username"
+                                TextColor="Black"
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,15,0"
+                                PlaceholderColor="Black" />
                         </StackLayout>
                     </Frame>
 
                     <!--password entry -->
-                    <Frame BackgroundColor="Transparent" Margin="0,-13" HeightRequest="50" HorizontalOptions="Center" WidthRequest="320" Padding="5" BorderColor="Black" CornerRadius="50">
-                        <StackLayout Orientation="Horizontal">
-                            <Frame BackgroundColor="Transparent" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="7" Margin="0" HorizontalOptions="Start" BorderColor="Black">
-                                <Image Source="https://icon-library.com/images/show-password-icon/show-password-icon-7.jpg" Aspect="AspectFill" Margin="0" />
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,-13" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center" 
+                        
+                        WidthRequest="320"
+                        Padding="5" 
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="35"
+                                Padding="7" 
+                                Margin="0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/show-password-icon/show-password-icon-7.jpg" 
+                                    Aspect="AspectFill" 
+                                    
+                                    Margin="0" />
                             </Frame>
 
-                            <Entry Placeholder="Password" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" PlaceholderColor="Black" IsPassword="True" Keyboard="Text"/>
+                            <Grid
+                                  BackgroundColor="Transparent"
+                                  HorizontalOptions="Start" 
+                                  WidthRequest="257">
+                                <Entry 
+                                Placeholder="Password"
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,0,0" 
+                                PlaceholderColor="Black" 
+                               
+                                Keyboard="Text" 
+                                IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger2}, 
+                                 Path=HidePassword}" 
+                               />
+                                <ImageButton
+                                    VerticalOptions="Center" 
+                                    Margin="0,0,13,0" 
+                                    HeightRequest="30 "
+                                    HorizontalOptions="End" 
+                                    Source="hide_eye_password_new.png" 
+                                    BackgroundColor="Transparent" 
+                                    CornerRadius="0">
+                                    <ImageButton.Triggers>
+                                        <EventTrigger Event="Clicked">
+                                            <behavior:ShowPasswordTriggerAction 
+                                                ShowIcon="eye_password_new.png"                         
+                                                HideIcon="hide_eye_password_new.png" 
+                                                x:Name="ShowPasswordActualTrigger2"/>
+                                        </EventTrigger>
+                                    </ImageButton.Triggers>
+                                    
+                                </ImageButton>
+
+                            </Grid>
+                          
+                        </StackLayout>
+                    </Frame>
+                    <!--security question-->
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,25,0,0" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center" 
+                        
+                        WidthRequest="320"
+                        Padding="5" 
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame  BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="37"
+                                Padding="7" 
+                                Margin="0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icons.iconarchive.com/icons/icons8/ios7/256/Very-Basic-Help-Filled-icon.png"
+                                    Aspect="AspectFill" 
+                                    
+                                    Margin="0" />
+
+                            </Frame>
+                            <Picker 
+                                Title="Select Security Question" 
+                                TextColor="Black"
+                                HorizontalOptions="StartAndExpand"
+                                FontSize="Medium"
+                                WidthRequest="250"
+                                >
+                                <Picker.Items >
+                                
+                                <x:String>
+                                        Who is your first love?
+                                    </x:String>
+                                    <x:String>
+                                        Asa ka nakaigit pag elementary?
+                                    </x:String>
+
+                                    <x:String>
+                                        What is your Grandmother's name in your father side ?
+                                    </x:String>
+
+                                    <x:String>
+                                        What is your Grandfather’s name in your father side?
+                                    </x:String>
+
+                                    <x:String>
+                                        What is the name of your first dog?
+                                    </x:String>
+
+                                    <x:String>
+                                        What subject did you fail?
+                                    </x:String>
+
+                                    <x:String>
+                                        What was the name of the boy or the girl you first kissed?
+                                    </x:String>
+
+                                    <x:String>
+                                        Where were you when you had your first kiss?
+                                    </x:String>
+
+                                    <x:String>
+                                        What is the middle name of your youngest child/brother/sister?
+                                    </x:String>
+
+                                    <x:String>
+                                        In what city or town did your mother and father meet?
+                                    </x:String>
+                                </Picker.Items>
+                                
+                            </Picker>
+                            
+                        </StackLayout>
+                        
+                    </Frame>
+
+                    <!--answer entry field-->
+                    <Frame BackgroundColor="Transparent" 
+                        Margin="0,15,0,0" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center" 
+                        
+                        WidthRequest="320"
+                        Padding="5" 
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame  BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="37"
+                                Padding="7" 
+                                Margin="0,0,0,0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://img.icons8.com/fluency-systems-filled/452/stack-exchange-answer.png"
+                                    Aspect="AspectFill" 
+                                   
+                                    Margin="0,2,0,0" />
+                            </Frame>
+                            <Entry 
+                                Placeholder="Answer"
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,15,0" 
+                                PlaceholderColor="Black" 
+                                IsPassword="True" 
+                                Keyboard="Text"/>
                         </StackLayout>
                     </Frame>
 
-                    <Frame BackgroundColor="#0e3663" Margin="0,100" HeightRequest="32" HorizontalOptions="Center" WidthRequest="400" Padding="2" BorderColor="Black">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="VERIFICATION" FontSize="22" TextColor="White" Margin="0,0,40,0" HorizontalOptions="CenterAndExpand">
+                    <Frame 
+                        BackgroundColor="#0e3663"
+                        Margin="0,100" 
+                        HeightRequest="32" 
+                        HorizontalOptions="Center" 
+                        WidthRequest="400"
+                        Padding="2"
+                        BorderColor="Black">
+                        <StackLayout 
+                            Orientation="Horizontal">
+                            <Label 
+                                
+                                Text="VERIFICATION"
+                                FontSize="22" 
+                                TextColor="White"
+                                Margin="30,0,40,0" 
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand">
                                 
                             </Label>
                         </StackLayout>
                     </Frame>
 
-                    <Frame BackgroundColor="Transparent" HeightRequest="470" HorizontalOptions="Center" WidthRequest="330" Padding="2" Margin="0,-80">
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        HeightRequest="470" 
+                        HorizontalOptions="Center"
+                        WidthRequest="330" 
+                        Padding="2"
+                        Margin="0,-80">
                         <StackLayout>
-                            <Label Text="Verify Your Identity!" FontSize="22" FontAttributes="Bold" TextColor="Black" Margin="0,0,40,0" HorizontalOptions="Fill">
+                            <Label 
+                                Text="Verify Your Identity!" 
+                                FontSize="22" 
+                                FontAttributes="Bold"
+                                TextColor="Black"
+                                Margin="0,0,40,0" 
+                                HorizontalOptions="Fill">
 
                             </Label>
-                            <Image Source="verifypic.PNG" Aspect="AspectFit" WidthRequest="150" HeightRequest="100"/>
-                            <Label Text="In order to complete your registration, please upload a copy of your valid ID" FontSize="18" TextColor="Black"></Label>
-                            <Label Text="Choose your ID Type:" FontSize="18" TextColor="Black"></Label>
+                            <Image 
+                                Source="verifypic.PNG" 
+                                Aspect="AspectFit" 
+                                WidthRequest="150" 
+                                HeightRequest="100"/>
+                            <Label 
+                                Text="In order to complete your registration, please upload a copy of your valid ID"
+                                FontSize="18" 
+                                TextColor="Black"></Label>
+                            <Label 
+                                Text="Choose your ID Type:" 
+                                FontSize="18"                           
+                                TextColor="Black"></Label>
 
                             <RadioButton Content="National ID"/>
                             <RadioButton Content="Voters ID"/>
@@ -139,8 +577,13 @@
                             <RadioButton Content="PRC ID"/>
                             <RadioButton Content="Postal ID"/>
                             <RadioButton Content="Others:"/>
-                            <StackLayout Margin="90,-47,0,0" HorizontalOptions="StartAndExpand" WidthRequest="220">
-                                <Entry Placeholder="Please specify.." BackgroundColor="Transparent"   />
+                            <StackLayout 
+                                Margin="90,-47,0,0" 
+                                HorizontalOptions="StartAndExpand" 
+                                WidthRequest="220">
+                                <Entry 
+                                    Placeholder="Please specify.." 
+                                    BackgroundColor="Transparent"   />
                             </StackLayout>
                                 
                            
@@ -149,15 +592,40 @@
                         </StackLayout>
                     </Frame>
 
-                    <StackLayout BackgroundColor="Transparent" Margin="0,65,0,0"  HorizontalOptions="Center" WidthRequest="330" Padding="2">
-                        <Frame BackgroundColor="Transparent" HeightRequest="200" HorizontalOptions="Center" WidthRequest="280" Padding="2" BorderColor="Black" >
-                            <StackLayout Padding="10">
-                                <Image x:Name="Imgresult" HeightRequest="100" />
-                                <Button Text="Upload Valid ID" FontSize="18" HeightRequest="45" TextColor="White" HorizontalOptions="CenterAndExpand" BackgroundColor="#0e3663" Clicked="ImageButton_Clicked" Margin="0,25,0,0"/>
+                    <StackLayout
+                        BackgroundColor="Transparent"
+                        Margin="0,50,0,0" 
+                        HorizontalOptions="Center"
+                        WidthRequest="330" 
+                        Padding="2">
+                        <Frame 
+                            BackgroundColor="Transparent"
+                            HeightRequest="200" 
+                            HorizontalOptions="Center"
+                            
+                            WidthRequest="280"
+                            Padding="2"
+                            BorderColor="Black" >
+                            <StackLayout
+                                Padding="10">
+                                <Image 
+                                    x:Name="Imgresult" 
+                                    HeightRequest="100" />
+                                <Button 
+                                    Text="Upload Valid ID" 
+                                    FontSize="18"
+                                    HeightRequest="45"
+                                    TextColor="White" 
+                                    HorizontalOptions="CenterAndExpand" 
+                                    BackgroundColor="#0e3663" 
+                                    Clicked="ImageButton_Clicked"
+                                    Margin="0,25,0,0"/>
 
                             </StackLayout>
                         </Frame>
                     </StackLayout>
+                    
+                    <!--WALA NANI-->
                     <!--<Frame BackgroundColor="yellow" HeightRequest="200" HorizontalOptions="Center" WidthRequest="280" Padding="2" BorderColor="Black">
                         <StackLayout Padding="10">
                             <Image x:Name="Imgresult" HeightRequest="100" />
@@ -171,9 +639,24 @@
                     <!-- BUTTON upload valid ID-->
                     <!--<button text="sign in" textcolor="black" backgroundcolor="lightskyblue" fontsize="20" padding="8" bordercolor="black" borderwidth="1" margin="0,5" fontattributes="bold" cornerradius="40" horizontaloptions="center" widthrequest="340" clicked="button_clicked"></button>-->
                     
-                        <Button Text="sign in" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="20" BorderColor="Black" BorderWidth="1" FontAttributes="Bold" CornerRadius="40" HorizontalOptions="Center"  WidthRequest="340" Margin="0,20,0,0">
+                    <!--CURRENT BUTTON-->
+                    <StackLayout VerticalOptions="CenterAndExpand" Margin="0,0,0,0">
+                        <Button
+                            Text="sign in" 
+                            TextColor="Black" 
+                            BackgroundColor="LightSkyBlue"
+                            FontSize="20" 
+                            BorderColor="Black" 
+                            BorderWidth="1" 
+                            FontAttributes="Bold" 
+                            CornerRadius="40"
+                            HorizontalOptions="Center" 
+                            WidthRequest="340" 
+                            Margin="0,10,0,0">
 
                         </Button>
+                    </StackLayout>
+                        
                     <!--<StackLayout Margin="0,-30" Padding="5" BackgroundColor="Transparent">
                     </StackLayout>-->
 
@@ -181,7 +664,14 @@
                         <Label Text="123"/>
                     </StackLayout>-->
                     <!--<Button Text="Log in with Existing account" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="16" Padding="2" BorderColor="Black"  BorderWidth="1" Margin="0,10" CornerRadius="20" HorizontalOptions="Center" WidthRequest="340" Clicked="Button_Clicked_1"></Button>--> 
-                    <Label Text="Log-in with Existing Account" FontSize="18" TextColor="Black" FontAttributes="Bold" Margin="40,10,40,0" HorizontalOptions="CenterAndExpand"  x:Name="existingAcc" >
+                    <Label 
+                        Text="Log-in with Existing Account" 
+                        FontSize="18" 
+                        TextColor="Black" 
+                        FontAttributes="Bold"
+                        Margin="40,0,40,20"
+                        HorizontalOptions="CenterAndExpand"
+                        x:Name="existingAcc" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
 

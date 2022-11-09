@@ -15,6 +15,8 @@ namespace tubig
         public ForgotPasswordPage()
         {
             InitializeComponent();
+           // NewPassTextBox.IsVisible = false;
+
         }
 
        async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

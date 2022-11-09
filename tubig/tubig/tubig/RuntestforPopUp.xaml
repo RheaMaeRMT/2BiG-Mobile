@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="tubig.RuntestforPopUp">
+             x:Class="tubig.RuntestforPopUp"
+             xmlns:local="clr-namespace:tubig.Control"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+              xmlns:custom="clr-namespace:tubig.Control;assembly=tubig"  
+             >
+
 
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#7dbbe6" />
-                <Setter Property="TextColor" Value="White" />
-            </Style>
+            <Color x:Key="primary">#3ec3d5</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ScrollView VerticalOptions="Fill">
+    <!--<ScrollView VerticalOptions="Fill">
         <StackLayout Spacing="20" Margin="10, 15">
             <Button Text="Open Popup" Clicked="OnOpenPupup" />
             <Button Text="Open User Animation Popup"  />
@@ -26,5 +28,37 @@
             <Button Text="Open MvvmPage" />
             <Button Text="Open TestCurrentViewController" />
         </StackLayout>
-    </ScrollView>
+    </ScrollView>-->
+    <ContentPage.Content>
+
+        <StackLayout Margin="0,20,0,0" VerticalOptions="Start" >
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" >
+                    <Frame>
+                        <Image Source="popup_reservedateIcon.png" HeightRequest="40" WidthRequest="40"/>
+                    </Frame>
+                    <Grid>
+                      
+                        <DatePicker HorizontalOptions="CenterAndExpand" Format="D" />
+                    </Grid>
+                    <ImageButton 
+                                    VerticalOptions="Center" 
+                                    Margin="0,0,13,0" 
+                                    HeightRequest="30 "
+                                    HorizontalOptions="End" 
+                                    Source="hide_eye_password_new.png" 
+                                    BackgroundColor="Transparent" 
+                                    CornerRadius="0">
+                      
+
+                    </ImageButton>
+                </StackLayout>
+                <Label Margin="0,-5,0,0" BackgroundColor="red" HorizontalOptions="FillAndExpand" HeightRequest="1"/>
+                <local:DatePickerCtrl  />
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+    
+    
 </ContentPage>

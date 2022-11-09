@@ -94,10 +94,21 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="WhiteSmoke">
+        <StackLayout 
+            BackgroundColor="WhiteSmoke">
            
-            <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Margin="0"  HeightRequest="50" >
-                <Label Text="Notifications" TextColor="Black" FontSize="20" FontAttributes="Bold" Padding="10" Margin="7,0,0,0"/>
+            <StackLayout 
+                BackgroundColor="Transparent" 
+                HorizontalOptions="FillAndExpand" 
+                Margin="0" 
+                HeightRequest="50" >
+                <Label
+                    Text="Notifications" 
+                    TextColor="Black"
+                    FontSize="20"
+                    FontAttributes="Bold" 
+                    Padding="10" 
+                    Margin="7,0,0,0"/>
             </StackLayout>
             <!--<ListView Background="white"
                       HorizontalOptions="FillAndExpand"
@@ -157,34 +168,51 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>-->
-            <CollectionView x:Name="collectionViewListVertical" SelectionMode="Single" BackgroundColor="Transparent" Margin="0,-6,0,0" HeightRequest="200" SelectionChanged="collectionViewListVertical_SelectionChanged">
+            <CollectionView 
+                x:Name="collectionViewListVertical"
+                SelectionMode="Single" 
+                BackgroundColor="Transparent"
+                Margin="0,-6,0,0"
+                HeightRequest="200" 
+                SelectionChanged="collectionViewListVertical_SelectionChanged">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         
-                        <StackLayout Spacing="10" BackgroundColor="Transparent"
+                        <StackLayout
+                            Spacing="10" 
+                            BackgroundColor="Transparent"
                                      >
-                            <Frame Style="{StaticResource FrameCardViewStyle}" >
+                            <Frame
+                                Style="{StaticResource FrameCardViewStyle}" >
                                 <SwipeView>
                                     <SwipeView.RightItems>
                                         <SwipeItems >
                                             <SwipeItem Text="Open"
-                                                      BackgroundColor="#73a9c2"
+                                                       BackgroundColor="#73a9c2"
                                                       
                                                        Invoked="SwipeItem_Invoked"
                                                 />
                                         </SwipeItems>
                                     </SwipeView.RightItems>
                                
-                                <StackLayout Style="{StaticResource itemsCardViewStackLayoutStyle}">
-                                    <StackLayout Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
-                                        <Frame Style="{StaticResource stationImageFrameStyle}">
-                                            <Image Style="{StaticResource stationImageStyle}" Source="{Binding ImageURL}" />
+                                <StackLayout 
+                                    Style="{StaticResource itemsCardViewStackLayoutStyle}">
+                                    <StackLayout
+                                        Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
+                                        <Frame 
+                                            Style="{StaticResource stationImageFrameStyle}">
+                                            <Image 
+                                                Style="{StaticResource stationImageStyle}" 
+                                                Source="{Binding ImageURL}" />
                                         </Frame>
-                                        <StackLayout Style="{StaticResource detailsStackLayout}">
-                                            <Label Text="{Binding StationName}" Style="{StaticResource NameLabel}" />
+                                        <StackLayout
+                                            Style="{StaticResource detailsStackLayout}">
+                                            <Label 
+                                                Text="{Binding StationName}" 
+                                                Style="{StaticResource NameLabel}" />
                                             <!--<StackLayout Style="{StaticResource imageLableStackLayout}">
                                                 <Image Source="phone.png" Style="{StaticResource imageStyle}"></Image>
                                                 <Label Text="{Binding Phone}" Style="{StaticResource LabelStyle}" />
@@ -195,7 +223,9 @@
                                             </StackLayout>-->
                                             <StackLayout >
                                                 <!--<Image Source="location.png" Style="{StaticResource imageStyle}"></Image>-->
-                                                <Label Text="{Binding Estimatedime_Distance}" Style="{StaticResource LabelStyle}" />
+                                                <Label 
+                                                    Text="{Binding Estimatedime_Distance}"
+                                                    Style="{StaticResource LabelStyle}" />
                                             </StackLayout>
                                         </StackLayout>
                                     </StackLayout>

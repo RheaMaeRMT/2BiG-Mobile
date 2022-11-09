@@ -9,25 +9,53 @@ using Rg.Plugins.Popup.Services;
 
 
 using Rg.Plugins.Popup.Pages;
+using tubig.DataModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Diagnostics;
 
 namespace tubig
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OrderPagePopUp : Rg.Plugins.Popup.Pages.PopupPage
+    public partial class OrderProductReviewPagePopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
-        public OrderPagePopUp()
+        public List<StationWaterProduct> AllStationInfo { get; set; }
+        public List<StationGallonProducts> AllGallonProduct { get; set; }
+        public OrderProductReviewPagePopUp()
         {
             InitializeComponent();
+            //entryfieldReservationDate.IsEnabled = true;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            AllStationInfo = new List<StationWaterProduct>(StationWaterProduct.Get());
+            AllGallonProduct = new List<StationGallonProducts>(StationGallonProducts.Get());
+           collectionViewListHorizontal.ItemsSource = AllStationInfo;
+            CollectionViewList_GallonProduct.ItemsSource = AllGallonProduct;
+        }
+
+        //void CollectionViewListSelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    UpdateSelectionData(e.PreviousSelection, e.CurrentSelection);
+        //}
+
+        void UpdateSelectionData(IEnumerable<object> previousSelectedContact, IEnumerable<object> currentSelectedContact)
+        {
+            var selectedContact = currentSelectedContact.FirstOrDefault() as Contacts;
+            Debug.WriteLine("FullName: " + selectedContact.FullName);
+            Debug.WriteLine("Email: " + selectedContact.Email);
+            Debug.WriteLine("Phone: " + selectedContact.Phone);
+            Debug.WriteLine("Country: " + selectedContact.Country);
         }
 
         protected override void OnAppearingAnimationBegin()
         {
             base.OnAppearingAnimationBegin();
 
-            FrameContainer.HeightRequest = -1; //-1
+          //  FrameContainer.HeightRequest = -1; //-1
 
             if (!IsAnimationEnabled)
             {
@@ -145,6 +173,40 @@ namespace tubig
         {
             await PopupNavigation.Instance.PopAllAsync();
         }
+
+        private void PickerMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //string pickermode = PickerMode.Items;
+            //if (pickermode == "Express")
+            //{
+
+            //}
+            
+            Picker picker = sender as Picker;
+            var selectedItem = picker.SelectedItem;
+
+            if (selectedItem == "Standard")
+            {
+                // entryfieldReservationDate
+                entryfieldReservationDate.IsEnabled = true;
+        
+            }
+            else if (selectedItem == "Reservation")
+            {
+                entryfieldReservationDate.IsEnabled = true;
+            }
+            else
+            {
+                entryfieldReservationDate.IsEnabled = false;
+            }
+        }
+
+
+
+        //private void collectionViewListHorizontal_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        //{
+        //    UpdateSelectionData(e.PreviousSelection, e.CurrentSelection);
+        //}
 
         //protected override void OnAppearing()
         //{

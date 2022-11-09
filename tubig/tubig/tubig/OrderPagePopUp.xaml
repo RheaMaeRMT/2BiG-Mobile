@@ -5,64 +5,422 @@
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+       xmlns:local="clr-namespace:tubig.Control"
+    
      xmlns:xyt="http://xamarin.com/schemas/2020/toolkit"
-    x:Class="tubig.OrderPagePopUp"
+    x:Class="tubig.OrderProductReviewPagePopUp"
     xmlns:rg="http://rotorgames.com"
     NavigationPage.HasNavigationBar="False"
+   
     AndroidTalkbackAccessibilityWorkaround="True">
     <rg:PopupPage.Resources>
         <ResourceDictionary>
-
-            <ControlTemplate x:Key="CustomTab">
-
-                
-                <Grid>
+            <!--<ControlTemplate
+                x:Key="TabItemTemplate">
+                <Grid
+                    RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Text="{TemplateBinding Text}" Grid.Row="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-                    <BoxView Color="red" HeightRequest="10" WidthRequest="30" CornerRadius="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1"
-                             IsVisible="{TemplateBinding IsSelected}"/>
+                    --><!--<Image
+                        Grid.Row="0"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        WidthRequest="24"
+                        HeightRequest="24"
+                        Margin="6"
+                        Source="{TemplateBinding CurrentIcon}" />-->
+                    <!--set ` TextTransform="Lowercase"` for Label here
                     
+                   
+                       
+                        TextColor="{TemplateBinding CurrentTextColor}"
                     
+                    --><!--
+                    <Label
+                       
+                          Grid.Row="1"
+                        HorizontalOptions="Center"
+                       
+                        Text="{TemplateBinding Text}"
+                         TextTransform="Default"/>
                 </Grid>
-            </ControlTemplate>
+            </ControlTemplate>-->
+            
+            
+            <!--Water product label stacklayout code style start here-->
+            <Style x:Key="WaterProdLabelStacklayout" TargetType="StackLayout">
+              
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent"/>
 
-            <!--<Style  x:Key="CustomTab" TargetType="TableView">
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Start"/>
 
-                <Setter Property="Margin" Value="0,-10,0,0"/>
-                <Setter Property="BackgroundColor" Value="Violet"/>
+                <Setter
+                    Property="WidthRequest"
+                    Value="400"/>
+
+                <Setter Property="HeightRequest"
+                        Value="25"/>
+
+                <Setter
+                    Property="Margin"
+                    Value="2,5,0,0"/>
+            </Style>
+            <!--Water product label stacklayout code style end here-->
+
+            <!--Water product label code style start here-->
+            <Style x:Key="WaterProductLabel" TargetType="Label">
+                 
+                <Setter
+                    Property="FontSize"
+                    Value="18"/>
+
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold"/>
+
+                <Setter 
+                    Property="TextColor"
+                    Value="Black"/>
+
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="StartAndExpand"/>
+
+                <Setter 
+                    Property="WidthRequest"
+                    Value="400"/>
+            </Style>
+            <!--Water product label code style end here-->
+
+
+            <!--Gallons Label Stacklayout code start here!-->
+            <Style x:Key="GallonLabelStacklayout" TargetType="StackLayout">
+                <!--BackgroundColor="Transparent" 
+                                    HorizontalOptions="Start"
+                                    WidthRequest="400"
+                                    HeightRequest="25"
+                                    Margin="2,5,0,0"-->
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent"/>
+
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Start"/>
+
+                <Setter
+                    Property="WidthRequest"
+                    Value="400"/>
+
+                <Setter Property="HeightRequest"
+                        Value="25"/>
+
+                <Setter
+                    Property="Margin"
+                    Value="0,0,0,0"/>
+            </Style>
+            <!--Gallons Label Stacklayout code end here!-->
+
+
+            <!--Water product Collection View-->
+            <!--Horizontal Style Code Start here!-->
+            <Style x:Key="ProductNameLabel" TargetType="Label">
+                <Setter 
+                    Property="FontSize" 
+                    Value="16" />
+                <Setter 
+                    Property="FontAttributes" 
+                    Value="Bold" />
+                <Setter 
+                    Property="TextColor" 
+                    Value="Black" />
+
+                <Setter
+                    Property="Margin"
+                    Value="0,3,0,0"/>
+
+
+            </Style>
+            <Style x:Key="PriceStyle" TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="15"/>
+                <Setter 
+                    Property="TextColor" 
+                    Value="Black" />
+                <Setter 
+                    Property="HorizontalOptions" 
+                    Value="Center" />
+                <Setter
+                    Property="Margin"
+                    Value="0,2,0,0"/>
+
+            </Style>
+
+            <!--<Style x:Key="LabelStyle" TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="14" />
             </Style>-->
-            <Style
-		        x:Key="CustomTabStyle" 
-		        TargetType="xyt:TabView">
-                <Setter
-			        Property="IsTabTransitionEnabled"
-			        Value="True" />
-                <Setter
-			        Property="TabStripHeight"
-			        Value="48" />
-                <Setter
-			        Property="TabContentBackgroundColor"
-			        Value="Black" />
-                <Setter
-			        Property="TabStripPlacement"
-			        Value="Top" />
-                <Setter Property="BackgroundColor" Value="Yellow"/>
-                <Setter Property="Margin" Value="0,-15,0,0"/>
+
+            <Style x:Key="imageLableStackLayout" TargetType="StackLayout">
+                <Setter 
+                    Property="Orientation" 
+                    Value="Horizontal" />
             </Style>
 
-            <Style x:Key="EntryStyle" TargetType="Entry">
-                <Setter Property="PlaceholderColor" Value="Red" />
-                <Setter Property="TextColor" Value="#7dbbe6" />
-                <!-- #9cdaf1-->
+            <Style x:Key="detailsStackLayout" TargetType="StackLayout">
+                <Setter 
+                    Property="HorizontalOptions"
+                    Value="CenterAndExpand" />
+                <Setter 
+                    Property="VerticalOptions" 
+                    Value="CenterAndExpand" />
+                <Setter 
+                    Property="Spacing" 
+                        Value="2" />
+                <Setter 
+                    Property="Margin"
+                    Value="0,0,0,0"/>
             </Style>
+
+            <Style x:Key="imageStyle" TargetType="Image">
+                <Setter 
+                    Property="WidthRequest"
+                    Value="8" />
+                <Setter 
+                    Property="HeightRequest" 
+                    Value="8" />
+            </Style>
+
+            <Style x:Key="profileImageStyle" TargetType="Image">
+                <Setter 
+                    Property="WidthRequest" 
+                    Value="80" />
+                <Setter
+                    Property="HeightRequest" 
+                    Value="60" />
+                <Setter 
+                    Property="Aspect" 
+                    Value="AspectFill" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent"/>
+            </Style>
+
+            <Style x:Key="profileImageFrameStyle" TargetType="Frame">
+                <Setter 
+                    Property="CornerRadius" 
+                    Value="5" />
+                <Setter 
+                    Property="Margin" 
+                    Value="0,0,0,0" />
+                <Setter 
+                    Property="Padding" 
+                    Value="0" />
+                <Setter 
+                    Property="IsClippedToBounds" 
+                    Value="True" />
+                <Setter 
+                    Property="WidthRequest" 
+                    Value="130"/>
+                <Setter 
+                    Property="HeightRequest" 
+                    Value="100"/>
+
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent"/>
+                <Setter 
+                    Property="HasShadow"
+                    Value="True"/>
+                
+            </Style>
+
+            <Style x:Key="FrameCardViewStyle" TargetType="Frame">
+                <Setter 
+                    Property="CornerRadius" 
+                    Value="5" />
+                <Setter 
+                    Property="Margin" 
+                    
+                    Value="5,2,0,0" />
+                <Setter 
+                    Property="Padding"
+                    Value="5" />
+                <Setter 
+                    Property="HorizontalOptions" 
+                    Value="FillAndExpand" />
+                <Setter 
+                    Property="OutlineColor" 
+                    Value="Black" />
+                <Setter 
+                    Property="BorderColor" 
+                    Value="Black" />
+                <Setter
+                    Property="HasShadow" 
+                    Value="True" />
+                <Setter 
+                    Property="WidthRequest" 
+                    Value="110"/>
+                <Setter
+                    Property="HeightRequest" 
+                    Value="155"/>
+                <Setter 
+                    Property="BackgroundColor" 
+                    Value="Transparent"/>
+            </Style>
+
+            <Style x:Key="itemsCardViewStackLayoutStyle" TargetType="StackLayout">
+                <Setter
+                    Property="Margin"
+                    Value="5" />
+                <Setter 
+                    Property="HorizontalOptions" 
+                    Value="FillAndExpand" />
+                <Setter 
+                    Property="Spacing" 
+                    Value="0"  />
+                <Setter
+                    Property="BackgroundColor" 
+                    Value="Transparent"/>
+                <Setter
+                    Property="WidthRequest"
+                    Value="120"/>
+            </Style>
+
+            <Style x:Key="itemsInsideCardViewStackLayoutStyle" TargetType="StackLayout">
+                <Setter 
+                    Property="Orientation" 
+                    Value="Horizontal" />
+                <Setter 
+                    Property="Spacing" 
+                    Value="8" />
+                <Setter
+                    Property="BackgroundColor" 
+                    Value="Transparent"/>
+                <Setter
+                    Property="WidthRequest"
+                    Value="10"/>
+
+            </Style>
+            <!--Horizontal Style Code End here!-->
+            
+            <!--Frame collectionview for water products code start here-->
+            <Style x:Key="FrameCollectionViewWaterProduct" TargetType="Frame">
+                <!--BackgroundColor="Transparent"
+                                    HorizontalOptions="CenterAndExpand"
+                                    WidthRequest="350" 
+                                    HeightRequest="150" 
+                                    Margin="0,-10,0,0">-->
+
+                <Setter 
+                    Property="BackgroundColor"
+                    Value="Transparent"/>
+
+                <Setter
+                   Property="HorizontalOptions"
+                    Value="CenterAndExpand"/>
+
+                <Setter
+                    Property="WidthRequest"
+                    Value="350"/>
+
+                <Setter
+                    Property="HeightRequest"
+                    Value="150"/>
+
+                <Setter
+                    Property="Margin"
+                    Value="0,-10,0,0"/>
+
+
+            </Style>
+            <!--Frame collectionview for water products code end here-->
+
+            <!--Frame Collectionview for gallon product code start here-->
+            <Style x:Key="FrameCollecionViewGallonProduct" TargetType="Frame">
+                <Setter 
+                    Property="BackgroundColor"
+                    Value="Transparent"/>
+
+                <Setter
+                   Property="HorizontalOptions"
+                    Value="CenterAndExpand"/>
+
+                <Setter
+                    Property="WidthRequest"
+                    Value="350"/>
+
+                <Setter
+                    Property="HeightRequest"
+                    Value="150"/>
+
+                <Setter
+                    Property="Margin"
+                    Value="0,0,0,0"/>
+                <Setter
+                    Property="HasShadow"
+                    Value="True"/>
+
+            </Style>
+             
+            <!--Frame Collectionview for gallon product code end here-->
+            
+            <!--Rating/reviews stacklayout code start here-->
+
+            <Style x:Key="RatingsLabelStacklayout" TargetType="StackLayout">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent"/>
+
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Start"/>
+
+                <Setter
+                    Property="WidthRequest"
+                    Value="400"/>
+
+                <Setter Property="HeightRequest"
+                        Value="25"/>
+
+                <Setter
+                    Property="Margin"
+                    Value="-2,0,0,0"/>
+            </Style>
+            <!--Rating/reviews stacklayout code end here-->
+            
+            <!--Rating/review label style code start here-->
+            <Style x:Key="RatingLabelStyle" TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="18"/>
+
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold"/>
+
+                <Setter 
+                    Property="TextColor"
+                    Value="Black"/>
+
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="StartAndExpand"/>
+
+                <Setter 
+                    Property="WidthRequest"
+                    Value="400"/>
+            </Style>
+            <!--Rating/review label style code end here-->
+
         </ResourceDictionary>
     </rg:PopupPage.Resources>
     <rg:PopupPage.Animation>
@@ -75,80 +433,538 @@
             ScaleOut="0.7" />
     </rg:PopupPage.Animation>
     <ScrollView HorizontalOptions="Center" VerticalOptions="Center" >
-        <AbsoluteLayout >
+        <AbsoluteLayout BackgroundColor="Transparent">
             <Frame
                 x:Name="FrameContainer"
-                WidthRequest="300"
-                HeightRequest="600"
-                Margin="15" 
-                BackgroundColor="red"
+                WidthRequest="320"
+                HeightRequest="450"
+                Margin="12" 
+                BackgroundColor="White"
                 HorizontalOptions="Center"
+                HasShadow="True"
+                CornerRadius="10"
                >
                 <StackLayout
-                    Padding="0"
-                    IsClippedToBounds="True"
-                    Spacing="3"
-                    Margin="0,-10,0,0"
-                    >
+                    Padding="10,5,0,0"
                     
-                    <!--<Image
-                        x:Name="OctocatImage"
-                        Margin="10"
-                        HeightRequest="150"
-                        HorizontalOptions="Center"
-                        WidthRequest="150">
-                        <Image.Source>
-                            <OnPlatform
-                                x:TypeArguments="ImageSource"
-                                Android="github_octocat.png"
-                                WinPhone="Assets/github_octocat.png"
-                                iOS="github_octocat.png" />
-                        </Image.Source>
-                    </Image>
-                    <Entry
-                        x:Name="UsernameEntry"
-                        HorizontalOptions="Center"
-                        Placeholder="Username"
-                        Style="{StaticResource EntryStyle}" />
-                    <Entry
-                        x:Name="PasswordEntry"
-                        HorizontalOptions="Center"
-                        IsPassword="True"
-                        Placeholder="Password"
-                        Style="{StaticResource EntryStyle}" />
-                    <Button
-                        x:Name="LoginButton"
-                        Margin="10,5"
-                        BackgroundColor="#7dbbe6"
-                        Clicked="OnLogin"
-                        HorizontalOptions="Fill"
-                        Text="Login">
-                        <Button.HeightRequest>
-                            <OnPlatform
-                                x:TypeArguments="x:Double"
-                                Android="50"
-                                WinPhone="30"
-                                iOS="30" />
-                        </Button.HeightRequest>
-                    </Button>-->
-                    <!--<Grid VerticalOptions="FillAndExpand" Margin="0,0,0,0" Padding="0" BackgroundColor="Red">-->
-                        <Frame>
-                            <Grid>
-                                <xyt:TabView Style="{StaticResource CustomTabStyle}">
-                                    <xyt:TabViewItem ControlTemplate="{StaticResource CustomTab}"
-                                Text="Products" TextColorSelected="Orange" FontSize="30" TextColor="Black" Icon="homepin.png">
+                    Spacing="0"
+                    Margin="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    WidthRequest="350"
+                    MinimumWidthRequest="0"
+                    HeightRequest="700"
+                    HorizontalOptions="StartAndExpand"
+                   
+                    
+                    >
+                    <xct:TabView
+                            TabContentBackgroundColor="Transparent"
+                            TabIndicatorColor="#73a9c2"
+                            TabIndicatorWidth="50"
+                            IsSwipeEnabled="false"
+                            IsTabTransitionEnabled="True"
+                            xyt:CornerRadiusEffect.CornerRadius="15"
+                            Margin="0,-20,0,0"
+                            HeightRequest="400"
+                            WidthRequest="350"
+                            HorizontalOptions="StartAndExpand"
+                        
+                            >
+
+                        <xct:TabViewItem  Text="Products"
+                            TextColor="DarkGray"
+                            TextColorSelected="Black"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Margin="0,0,0,0"
+                            
+                            FontSizeSelected="18" >
+
+
+                            <StackLayout>
+                                <StackLayout Style="{StaticResource WaterProdLabelStacklayout}" >
+                                    <Label Style="{StaticResource WaterProductLabel}"
+                                           Text="Water Products" >
+                                    </Label>
+                                </StackLayout>
+                                <Frame 
+                                    Style="{StaticResource FrameCollectionViewWaterProduct}">
+                                    <CollectionView
+                                            x:Name="collectionViewListHorizontal" 
+                                            HeightRequest="150" 
+                                            WidthRequest="400"
+                                            BackgroundColor="Transparent" 
+                                            Margin="-23,-10,0,0"
+                                            HorizontalOptions="StartAndExpand"
+                                      >
+                                        <CollectionView.ItemsLayout>
+                                            <LinearItemsLayout Orientation="Horizontal"/>
+                                        </CollectionView.ItemsLayout>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout Spacing="8" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" Margin="-5,0,0,0">
+                                                    <Frame 
+                                                        Style="{StaticResource FrameCardViewStyle}">
+
+                                                        <StackLayout 
+                                                            Style="{StaticResource itemsCardViewStackLayoutStyle}">
+
+                                                            <StackLayout 
+                                                                Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
+
+                                                                <Frame 
+                                                                    Style="{StaticResource profileImageFrameStyle}">
+
+                                                                    <Image 
+                                                                        Style="{StaticResource profileImageStyle}" 
+                                                                        Source="{Binding PhotoUrl}" />
+                                                                </Frame>
+
+                                                            </StackLayout>
+                                                            <StackLayout 
+                                                                    Style="{StaticResource detailsStackLayout}">
+                                                                <Label 
+                                                                            Text="{Binding ProdDescription}" 
+                                                                    Style="{StaticResource ProductNameLabel}"
+                                                                             />
+                                                                <Label Text="{Binding WaterPrice}"
+                                                                       Style="{StaticResource PriceStyle}"/>
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                </StackLayout>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+
+                                    </CollectionView>
+                                </Frame>
+
+                                <StackLayout Style="{StaticResource GallonLabelStacklayout}">
+                                    <Label Style="{StaticResource WaterProductLabel}"
+                                           Text="Gallons" >
+                                    </Label>
+                                </StackLayout>
+                                <Frame Style="{StaticResource FrameCollecionViewGallonProduct}">
+                                    <CollectionView  
+                                            x:Name="CollectionViewList_GallonProduct"
+                                            HeightRequest="150" 
+                                            WidthRequest="400"
+                                            BackgroundColor="Transparent" 
+                                            Margin="-23,-15,0,0"
+                                            HorizontalOptions="StartAndExpand"
+                                      >
+                                        <CollectionView.ItemsLayout>
+                                            <LinearItemsLayout Orientation="Horizontal"/>
+                                        </CollectionView.ItemsLayout>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout 
+                                                    Spacing="8" 
+                                                    HorizontalOptions="FillAndExpand" 
+                                                    BackgroundColor="Transparent"
+                                                    Margin="-5,0,0,0">
+                                                    <Frame 
+                                                        Style="{StaticResource FrameCardViewStyle}">
+
+                                                        <StackLayout 
+                                                            Style="{StaticResource itemsCardViewStackLayoutStyle}">
+
+                                                            <StackLayout 
+                                                                Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
+
+                                                                <Frame 
+                                                                    Style="{StaticResource profileImageFrameStyle}">
+
+                                                                    <Image 
+                                                                        Style="{StaticResource profileImageStyle}" 
+                                                                        Source="{Binding PhotoUrl}" />
+                                                                </Frame>
+
+                                                            </StackLayout>
+                                                            <StackLayout 
+                                                                    Style="{StaticResource detailsStackLayout}">
+                                                                <Label 
+                                                                            Text="{Binding GallonDescription}" 
+                                                                    Style="{StaticResource ProductNameLabel}"
+                                                                             />
+                                                                <Label Text="{Binding GallonPrice}"
+                                                                       Style="{StaticResource PriceStyle}"/>
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                </StackLayout>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+
+                                    </CollectionView>
+                                </Frame>
+                            </StackLayout>
+                        </xct:TabViewItem>
+                       
+
+                        
+                        
+                        <!--Order Tab View-->
+                        <xct:TabViewItem
+                            Text="Order"
+                            TextColor="DarkGray"
+                            TextColorSelected="Black"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            FontSizeSelected="18"
+                            Margin="0,0,0,0"
+                            >
+                            <ScrollView>
+                                
+                                <StackLayout
+                                Padding="0,0,0,0"
+                                Spacing="0"
+                                Margin="0,0,0,0"
+                                BackgroundColor="Transparent"
+                                WidthRequest="530"
+                                MinimumWidthRequest="0"
+                                HeightRequest="550"
+                                HorizontalOptions="CenterAndExpand">
+                                    <StackLayout BackgroundColor="Transparent"
+                                                 HeightRequest="600">
                                         
-                                    </xyt:TabViewItem>
+                                        <!--type of order entryfield-->
+                                        <Frame
+                       
+                                            BackgroundColor="Transparent" 
+                                            Margin="0,10,10,0" 
+                                            HeightRequest="50" 
+                                            HorizontalOptions="Center"
+                                            WidthRequest="300" 
+                                            Padding="5" 
+                                            BorderColor="Black"
+                                            CornerRadius="10" >
 
+                                            <StackLayout
+                           
+                                                Orientation="Horizontal">
+                                                <Image 
+                                                    Source="popup_orderIcon.png"
+                                                    Aspect="AspectFill" 
+                                                    Margin="0" />
+                                                
+                                                <Grid 
+                                                    BackgroundColor="Transparent" 
+                                                    HorizontalOptions="Start" 
+                                                    WidthRequest="257">
 
+                                                    <Picker 
+                                
+                                                        Title="Type of Order"                                                           TitleColor="Black"
+                                                        TextColor="Black"
+                                                        HorizontalOptions="StartAndExpand"                                 
+                                                        FontSize="18"
+                                                        WidthRequest="250"
+                                                        x:Name="PickerMode"
+                                                        SelectedIndexChanged="PickerMode_SelectedIndexChanged"
+                                >
+                                                        <Picker.Items >
 
-                                <xyt:TabViewItem ControlTemplate="{StaticResource CustomTab}" Text="Order" TextColorSelected="Orange" FontSize="30">
+                                                            <x:String>
+                                                               Standard
+                                                            </x:String>
+                                                            <x:String>
+                                                               Reservation
+                                                            </x:String>
+
+                                                            <x:String>
+                                                               Express
+                                                            </x:String>
+
+                                                        </Picker.Items>
+
+                                                    </Picker>
+                                                   
+                                                </Grid>
+
+                                            </StackLayout>
+
+                                        </Frame>
+                                        
+                                        <!--Entry field for Quantity-->
+                                        <Frame
+                                            BackgroundColor="Transparent"
                                             
-                                        </xyt:TabViewItem>
-                                </xyt:TabView>
-                            </Grid>  
-                        </Frame>
+                                            Margin="0,10,10,0" 
+                                            HeightRequest="50" 
+                                            HorizontalOptions="Center"
+                                            WidthRequest="440" 
+                                            Padding="5" 
+                                            BorderColor="Black"
+                                            CornerRadius="10" >
+                                            <StackLayout
+                           
+                                                Orientation="Horizontal">
+                                              
+                                                    <Image 
+                                                    
+                                                    Source="popup_quantityIcon.png"                              
+                                                    Aspect="AspectFill" 
+                                                    Margin="0" />
+                                               
+                                                
+                                                <Grid 
+                                                    BackgroundColor="Transparent"
+                                                    HorizontalOptions="Start" 
+                                                    WidthRequest="257">
+
+                                                    <Entry 
+                                                        Placeholder="Quantity"
+                                                        TextColor="Black" 
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Margin="0,12,0,0" 
+                                                        PlaceholderColor="Black"                                                      WidthRequest="150"
+                                                        Keyboard="Numeric" 
+                                 
+                               />
+                                                </Grid>
+
+                                            </StackLayout>
+
+                                        </Frame>
+                                        
+                                        <!--Entry field for borrow gallons-->
+                                        <Frame
+                                            BackgroundColor="Transparent"
+                                            
+                                            Margin="0,10,10,0" 
+                                            HeightRequest="50" 
+                                            HorizontalOptions="Center"
+                                            WidthRequest="420" 
+                                            Padding="5" 
+                                            BorderColor="Black"
+                                            CornerRadius="10"
+                                            >
+                                            <StackLayout
+                                                Orientation="Horizontal">
+                                                <Image 
+                                                    Source="popup_gallonIcon.png"                              
+                                                    Aspect="AspectFill" 
+                                                    Margin="0"/>
+                                                <Grid 
+                                                    BackgroundColor="Transparent"
+                                                    HorizontalOptions="Start" 
+                                                    WidthRequest="257">
+                                                    <Entry 
+                                                        Placeholder="Borrow Gallons"
+                                                        TextColor="Black" 
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Margin="0,12,0,0" 
+                                                        PlaceholderColor="Black"                                   
+                                                        Keyboard="Numeric" />
+
+                                                </Grid>
+                                                
+
+                                            </StackLayout>
+                                            
+                                        </Frame>
+                                        
+                                        <!--Entry field for own gallons-->
+                                        
+                                        <Frame 
+                                            BackgroundColor="Transparent"
+                                            Margin="0,10,10,0" 
+                                            HeightRequest="50" 
+                                            HorizontalOptions="Center"
+                                            WidthRequest="420" 
+                                            Padding="5" 
+                                            BorderColor="Black"
+                                            CornerRadius="10">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image
+                                                    Source="popup_gallonIcon.png"                              
+                                                    Aspect="AspectFill" 
+                                                    Margin="0"/>
+                                                <Grid 
+                                                    BackgroundColor="Transparent"
+                                                    HorizontalOptions="Start" 
+                                                    WidthRequest="257">
+                                                    <Entry 
+                                                        Placeholder="Own Gallons"
+                                                        TextColor="Black" 
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Margin="0,12,0,0" 
+                                                        PlaceholderColor="Black"                                   
+                                                        Keyboard="Numeric" />
+
+                                                </Grid>
+                                                
+                                            </StackLayout>
+                                            
+                                        </Frame>
+                                        
+                                        <!-- entry fields for type of water-->
+                                        <Frame  BackgroundColor="Transparent" 
+                                            Margin="0,10,10,0" 
+                                            HeightRequest="50" 
+                                            HorizontalOptions="Center"
+                                            WidthRequest="300" 
+                                            Padding="5" 
+                                            BorderColor="Black"
+                                            CornerRadius="10">
+                                            <StackLayout
+                                                Orientation="Horizontal">
+                                                <Image   Source="popup_waterIcon.png"
+                                                         Aspect="AspectFill" 
+                                                         Margin="0"/>
+                                                <Grid  
+                                                    BackgroundColor="Transparent" 
+                                                    HorizontalOptions="Start" 
+                                                    WidthRequest="257">
+                                                    <Picker 
+                                                        Title="Water Type"                                
+                                                        TextColor="Black"
+                                                        HorizontalOptions="StartAndExpand"                                               TitleColor="Black"
+                                                        FontSize="18"
+                                                        WidthRequest="250">
+
+                                                        <Picker.Items>
+
+                                                            <x:String>
+                                                                Alkaline
+                                                            </x:String>
+                                                            <x:String>
+                                                                Mineral
+                                                            </x:String>
+                                                        </Picker.Items>
+                                                    </Picker>
+                                                  
+                                                        
+
+
+                                                </Grid>
+
+                                            </StackLayout>
+
+                                        </Frame>
+
+                                        <!--Entry field for reservation date-->
+                                        <Frame 
+                                            BackgroundColor="Transparent"
+                                            Margin="0,10,10,0" 
+                                            HeightRequest="50" 
+                                            HorizontalOptions="Center"
+                                            WidthRequest="420" 
+                                            Padding="5" 
+                                            BorderColor="Black"
+                                            CornerRadius="10"
+                                            >
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image  
+                                                    Source="popup_reservedateIcon.png"                     
+                                                    Aspect="AspectFill" 
+                                                    Margin="0"/>
+                                                <Grid
+                                                    BackgroundColor="Transparent"
+                                                    HorizontalOptions="Start" 
+                                                    WidthRequest="257">
+                                                    <!--<Entry
+                                                        Placeholder="Reservation Date"
+                                                        TextColor="Black" 
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Margin="0,12,0,0" 
+                                                        PlaceholderColor="Black"                                   
+                                                        Keyboard="Numeric">
+                                                        
+                                                    </Entry>-->
+                                                    <local:DatePickerCtrl
+                                                        Format="d"
+                                                       x:Name="entryfieldReservationDate"
+                                                        />
+                                                    <Image Source="https://img.icons8.com/windows/2x/calendar-week.png"
+                                                       HeightRequest="35"
+                                                       WidthRequest="35"
+                                                       Aspect="AspectFit"
+                                                       HorizontalOptions="End"
+                                                           />
+
+
+                                                </Grid>
+                                                
+                                            </StackLayout>
+                                            
+                                        </Frame>
+                                        
+                                        <!--button for place order-->
+                                        <Frame
+                                             BackgroundColor="#73a9c2"
+                                            Margin="0,30,10,0" 
+                                            HeightRequest="40" 
+                                            HorizontalOptions="Center"
+                                            WidthRequest="200" 
+                                            Padding="5" 
+                                            BorderColor="Black"
+                                            CornerRadius="50"
+                                            HasShadow="True">
+                                            <Button Text="Place order"
+                                                    FontSize="16"
+                                                    TextColor="Black"
+                                                    BackgroundColor="Transparent"
+                                                    TextTransform="None"
+                                                    FontAttributes="Bold"
+                                                    
+                                                    />
+
+                                        </Frame>
+
+                                    </StackLayout>
+
+
+
+                                </StackLayout>
+                            </ScrollView>
+                          
+
+                        </xct:TabViewItem>
+
+
+                        <xct:TabViewItem
+                            Text="Reviews"
+                            TextColor="DarkGray"
+                            TextColorSelected="Black"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            FontSizeSelected="18"
+                            Margin="0,0,0,0"
+                            >
+
+                            <StackLayout    
+                                Padding="10,5,0,0" 
+                                Spacing="0"
+                                Margin="0,0,0,0"
+                                BackgroundColor="Transparent"
+                                WidthRequest="350"
+                                MinimumWidthRequest="0"
+                                HeightRequest="700"
+                                HorizontalOptions="StartAndExpand"
+                                >
+                                <StackLayout Style="{StaticResource RatingsLabelStacklayout}" >
+                                    <Label Style="{StaticResource RatingLabelStyle}"
+                                           Text="Ratings and Reviews" >
+                                    </Label>
+                                </StackLayout>
+
+                            </StackLayout>
+                               
+
+                        </xct:TabViewItem>
+
+
+
+                    </xct:TabView>
+
+
                   
+
+                 
+                  
+                                                         
                 </StackLayout>
             </Frame>
             <ContentView AbsoluteLayout.LayoutBounds="1, 0, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
@@ -172,26 +988,4 @@
         </AbsoluteLayout>
     </ScrollView>
 </rg:PopupPage >
-    <!--You can set an animation in the xaml file or in the csharp code behind  MyProject.MyPopupPage 
-    <pages:PopupPage.Animation>
-        <animations:ScaleAnimation 
-            PositionIn="Center"
-            PositionOut="Center"
-            ScaleIn="1.2"
-            ScaleOut="0.8"
-            DurationIn="400"
-            DurationOut="300"
-            EasingIn="SinOut"
-            EasingOut="SinIn"
-            HasBackgroundAnimation="True"/>
-    </pages:PopupPage.Animation>
-    You can use any elements here which are extended from Xamarin.Forms.View
-    <StackLayout 
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" 
-        Padding="20, 20, 20, 20">
-        <Label
-            Text="Test"/>
-    </StackLayout>
-</pages:PopupPage>-->
-
+   

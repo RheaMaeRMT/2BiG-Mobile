@@ -35,7 +35,7 @@ namespace tubig
 
             var stream = await result.OpenReadAsync();
 
-            Imgresult.Source = ImageSource.FromStream(() =>stream);
+            //Imgresult.Source = ImageSource.FromStream(() =>stream);
         }
     }
 }
