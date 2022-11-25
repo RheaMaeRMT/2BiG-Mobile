@@ -47,6 +47,8 @@
                     Margin="5,5,5,5 "
                     BackgroundColor="#F8E2CF"
                     HeightRequest="1750">
+                    
+                    
                     <!--First Name entry -->
                     <Frame 
                         BackgroundColor="Transparent" 
@@ -79,9 +81,11 @@
                                 TextColor="Black" 
                                 HorizontalOptions="FillAndExpand"
                                 Margin="0,0,15,0" 
-                                PlaceholderColor="Black" />
+                                PlaceholderColor="Black"
+                                x:Name="entryField_Firstname"/>
                         </StackLayout>
                     </Frame>
+                    
                     <!--Last Name entry -->
                     <Frame 
                         BackgroundColor="Transparent" 
@@ -114,7 +118,8 @@
                                 TextColor="Black" 
                                 HorizontalOptions="FillAndExpand"
                                 Margin="0,0,15,0" 
-                                PlaceholderColor="Black" />
+                                PlaceholderColor="Black" 
+                                x:Name="entryField_Lastname"/>
                         </StackLayout>
                     </Frame>
 
@@ -152,7 +157,8 @@
                                 HorizontalOptions="FillAndExpand" 
                                 Margin="0,0,15,0" 
                                 PlaceholderColor="Black" 
-                                Keyboard="Telephone">
+                                Keyboard="Telephone"
+                                x:Name="entryField_PhoneNumber">
                                 <Entry.Behaviors>
                                     <behavior:PhoneNumberMaskBehavior x:Name="PhoneMask" />
                                     <behavior:EntryLengthValidator MaxLength="13"/>
@@ -160,6 +166,7 @@
                             </Entry>
                         </StackLayout>
                     </Frame>
+                    
                     <!--Email Add entry -->
                     <Frame
                         BackgroundColor="Transparent" 
@@ -192,9 +199,11 @@
                                 TextColor="Black"
                                 HorizontalOptions="FillAndExpand" 
                                 Margin="0,0,15,0"
-                                PlaceholderColor="Black" />
+                                PlaceholderColor="Black" 
+                                x:Name="entryField_EmailAddress"/>
                         </StackLayout>
                     </Frame>
+                    
                     <!--Date of Birth entry -->
                     <Frame 
                         BackgroundColor="Transparent" 
@@ -231,14 +240,14 @@
                             <Grid BackgroundColor="Transparent"
                                   HorizontalOptions="Start"
                                   WidthRequest="248">
-                                <local:BirthdayDatePickerControl/>
+                                <local:BirthdayDatePickerControl x:Name="entryField_DateOfBirth">
+                                    
+                                </local:BirthdayDatePickerControl>
                                 <Image Source="https://img.icons8.com/windows/2x/calendar-week.png"
                                        WidthRequest="40"
                                        HeightRequest="40"
                                        Aspect="AspectFit"
                                        HorizontalOptions="End"/>
-
-
 
                             </Grid>
                            
@@ -272,22 +281,34 @@
                                     Margin="0" />
                             </Frame>
                             <Grid
-                                BackgroundColor="Red"
+                                BackgroundColor="Transparent"
                                 HorizontalOptions="Start"
                                 WidthRequest="257">
                                 <Entry 
                                     Placeholder="Address" 
                                     TextColor="Black"
                                     HorizontalOptions="FillAndExpand" 
-                                    Margin="0,0,15,0" 
-                                    PlaceholderColor="Black" />
+                                    Margin="0,0,10,0" 
+                                    PlaceholderColor="Black" 
+                                    IsEnabled="False"
+                                    x:Name="entryField_Address">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Disabled">
+                                                <VisualState.Setters>
+                                                    <Setter Property="TextColor" Value="black" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Entry>
                                 <ImageButton 
                                     VerticalOptions="Center" 
                                     Margin="0,0,13,0"
                                     HeightRequest="30 "
                                     HorizontalOptions="End" 
-                           
-                                    Source="showlocation    .png" 
+                                    Clicked="ImageButton_ClickedAddress"
+                                    Source="showlocation.png" 
                                     BackgroundColor="Transparent" 
                                     CornerRadius="0">
                                     
@@ -297,6 +318,7 @@
                             
                         </StackLayout>
                     </Frame>
+                    
                     <!--Username entry -->
                     <Frame
                         BackgroundColor="Transparent" 
@@ -328,7 +350,8 @@
                                 TextColor="Black"
                                 HorizontalOptions="FillAndExpand"
                                 Margin="0,0,15,0"
-                                PlaceholderColor="Black" />
+                                PlaceholderColor="Black"
+                                x:Name="entryField_Username"/>
                         </StackLayout>
                     </Frame>
 
@@ -371,7 +394,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 Margin="0,0,0,0" 
                                 PlaceholderColor="Black" 
-                               
+                                x:Name="entryField_Password"
                                 Keyboard="Text" 
                                 IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger2}, 
                                  Path=HidePassword}" 
@@ -432,8 +455,12 @@
                                 HorizontalOptions="StartAndExpand"
                                 FontSize="Medium"
                                 WidthRequest="250"
+                                TitleColor="Black"
+                                x:Name="entryField_SecurityQuestion"
                                 >
-                                <Picker.Items >
+                                <Picker.Items 
+                                
+                                    >
                                 
                                 <x:String>
                                         Who is your first love?
@@ -513,10 +540,12 @@
                                 Margin="0,0,15,0" 
                                 PlaceholderColor="Black" 
                                 IsPassword="True" 
-                                Keyboard="Text"/>
+                                Keyboard="Text"
+                                x:Name="entryField_SecurityQuestionAnswer"/>
                         </StackLayout>
                     </Frame>
 
+                    
                     <Frame 
                         BackgroundColor="#0e3663"
                         Margin="0,100" 
@@ -541,7 +570,7 @@
                     </Frame>
 
                     <Frame 
-                        BackgroundColor="Transparent" 
+                        BackgroundColor="red" 
                         HeightRequest="470" 
                         HorizontalOptions="Center"
                         WidthRequest="330" 
@@ -570,13 +599,28 @@
                                 Text="Choose your ID Type:" 
                                 FontSize="18"                           
                                 TextColor="Black"></Label>
+                            
+                            <StackLayout RadioButtonGroup.GroupName="ID_type">
+                                <RadioButton Content="National ID"/>
+                                <RadioButton Content="Voters ID"/>
+                                <RadioButton Content="Drivers License"/>
+                                <RadioButton Content="PRC ID"/>
+                                <RadioButton Content="Postal ID"/>
 
-                            <RadioButton Content="National ID"/>
-                            <RadioButton Content="Voters ID"/>
-                            <RadioButton Content="Drivers License"/>
-                            <RadioButton Content="PRC ID"/>
-                            <RadioButton Content="Postal ID"/>
-                            <RadioButton Content="Others:"/>
+                                <RadioButton Content="Others:"/>
+                            </StackLayout>
+
+
+                            <!--<StackLayout RadioButtonGroup.GroupName="animals">
+                                <RadioButton Content="cat"/>
+                                <RadioButton Content="dog"/>
+                                <RadioButton Content="fish"/>
+                                <RadioButton Content="frog"/>
+                                
+
+                                <RadioButton Content="Others:"/>
+                            </StackLayout>-->
+
                             <StackLayout 
                                 Margin="90,-47,0,0" 
                                 HorizontalOptions="StartAndExpand" 
@@ -624,22 +668,8 @@
                             </StackLayout>
                         </Frame>
                     </StackLayout>
-                    
-                    <!--WALA NANI-->
-                    <!--<Frame BackgroundColor="yellow" HeightRequest="200" HorizontalOptions="Center" WidthRequest="280" Padding="2" BorderColor="Black">
-                        <StackLayout Padding="10">
-                            <Image x:Name="Imgresult" HeightRequest="100" />
-                            <Button Text="Upload Valid ID" FontSize="18" HeightRequest="45" TextColor="White" HorizontalOptions="CenterAndExpand" BackgroundColor="#0e3663" Clicked="ImageButton_Clicked" Margin="0,25,0,0"/>
 
-                        </StackLayout>
-                    </Frame>-->
-
-
-
-                    <!-- BUTTON upload valid ID-->
-                    <!--<button text="sign in" textcolor="black" backgroundcolor="lightskyblue" fontsize="20" padding="8" bordercolor="black" borderwidth="1" margin="0,5" fontattributes="bold" cornerradius="40" horizontaloptions="center" widthrequest="340" clicked="button_clicked"></button>-->
-                    
-                    <!--CURRENT BUTTON-->
+                    <!--sign-in button-->
                     <StackLayout VerticalOptions="CenterAndExpand" Margin="0,0,0,0">
                         <Button
                             Text="sign in" 
@@ -657,13 +687,7 @@
                         </Button>
                     </StackLayout>
                         
-                    <!--<StackLayout Margin="0,-30" Padding="5" BackgroundColor="Transparent">
-                    </StackLayout>-->
-
-                    <!--<StackLayout BackgroundColor="Red" HorizontalOptions="CenterAndExpand" Margin="0,-10,0,0">
-                        <Label Text="123"/>
-                    </StackLayout>-->
-                    <!--<Button Text="Log in with Existing account" TextColor="Black" BackgroundColor="LightSkyBlue" FontSize="16" Padding="2" BorderColor="Black"  BorderWidth="1" Margin="0,10" CornerRadius="20" HorizontalOptions="Center" WidthRequest="340" Clicked="Button_Clicked_1"></Button>--> 
+                 
                     <Label 
                         Text="Log-in with Existing Account" 
                         FontSize="18" 

@@ -16,60 +16,22 @@ namespace tubig
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapPage : ContentPage
+
     {
+        private readonly Geocoder _geocoder = new Geocoder();
        // StationInfo myvalue = new StationInfo();
-        public  MapPage()
+         public  MapPage()
         {
             InitializeComponent();
-            //location();
-            //  pinloc();
-            // getlocation();
-           // DisplayCurrentLocation();
-            //  Map.OpenAsync(10.367180176504233, 123.91768852643828);
-            //Position position = new Position(36.9628066, -122.0194722);
-            // MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
-            //Map map = new Map(mapSpan);
-            //  Map map = new Map(mapSpan);   10.36741934533169, 123.91710302006388
-            // DisplayCurrentLocation();
-            //map.as
-        }
-
-        private async void  MapView()
-        {
-            
-
-        }
-
-        public async void getlocation()
-        {
-            Location location = await Geolocation.GetLastKnownLocationAsync();
-            if (location != null)
-            {
-                location = await Geolocation.GetLocationAsync(new GeolocationRequest
-                {
-                    DesiredAccuracy = GeolocationAccuracy.Medium
-                });
-            }
-            // System.Diagnostics.Debug.WriteLine($"MapClick: {Position.Latitude}, {Position.Longitude}");
+            DisplayCurrentLocation();
           
         }
 
-        public void pinloc()
-        {
-            Pin pintalamban = new Pin()
-            {
-                Type = PinType.Place,
-                Label = "Talamban",
-                Address = "Talamban, Cebu City",
-                Position = new Position(10.367032849285907, 123.91804016846208),
-                //10.366520235711947, 123.91815160087579    10.3671 , 123.9174
-                //10.367180176504233, 123.91768852643828
+      
 
+       
 
-            };
-            //map.Pins.Add(pintalamban);
-           // map.MoveToRegion(MapSpan.FromCenterAndRadius(pintalamban.Position, Distance.FromMeters(500)));
-        }
+       
 
         public async void DisplayCurrentLocation()
         {
@@ -80,13 +42,10 @@ namespace tubig
                 if (location != null)
                     
                 {
-
-                       Position p = new Position(location.Latitude, location.Longitude);
-                 //  Position p = new Position(10.367032849285907, 123.91804016846208);
-
+                    Position p = new Position(location.Latitude, location.Longitude);
                     MapSpan mapSpan = MapSpan.FromCenterAndRadius(p, Distance.FromKilometers(.444));
-                    //map.MoveToRegion(mapSpan);
-                  //  Console.WriteLine($"Latitude: { location.Latitude},Longitude: { location.Longitude},Altitude: { location:altitude}");
+                    myMap.MoveToRegion(mapSpan);
+               
                 }                      
             
             }
@@ -105,23 +64,23 @@ namespace tubig
            
         }
 
-    
-        public void ApplyMapTheme()
+   
+        async private void map_MapClicked_1(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {
-            var assembly = typeof(MapPage).GetTypeInfo().Assembly;
-            var stream = assembly.GetManifestResourceStream($"tubig.MapResources.MapTheme.json");
-            string themeFile;
+             
+            await DisplayAlert("Coordinates", $"Lat:{e.Position.Latitude},Long:{e.Position.Longitude}", "Ok");
+                
+            var address = await _geocoder.GetAddressesForPositionAsync(e.Position);
+           // myMap.MoveToRegion(MapSpan.FromCenterAndRadius(address.First(), Distance.FromMeters(500)));
+            await DisplayAlert("Address", address.FirstOrDefault()?.ToString(), "OK");
 
-            using (var reader = new System.IO.StreamReader(stream))
-            {
-                themeFile = reader.ReadToEnd();
-              //  map
-            }
-        }
+            var positions = await _geocoder.GetPositionsForAddressAsync("Cebu,Labangon,Philippines");
+            await DisplayAlert("Position", $"Lat:{positions.First().Latitude},Long:{positions.First().Longitude}", "Ok");
 
-        private void map_MapClicked(object sender, MapClickedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine($"MapClick: {e.Position.Latitude}, {e.Position.Longitude}");
+           // myMap.MoveToRegion(MapSpan.FromCenterAndRadius(address.First(), Distance.FromKilometers(1)));
+
+
+            // await DisplayAlert("Coordinates", $"Lat:{e.Position.Latitude},Long:{e.Position.Longitude}", "Ok");
         }
     }
 }

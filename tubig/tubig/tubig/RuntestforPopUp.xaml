@@ -5,6 +5,7 @@
              xmlns:local="clr-namespace:tubig.Control"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
               xmlns:custom="clr-namespace:tubig.Control;assembly=tubig"  
+             NavigationPage.HasNavigationBar="False"
              >
 
 
@@ -31,8 +32,141 @@
     </ScrollView>-->
     <ContentPage.Content>
 
-        <StackLayout Margin="0,20,0,0" VerticalOptions="Start" >
-            <StackLayout>
+        <StackLayout  Margin="5,0,5,5 "
+                    BackgroundColor="#F8E2CF"
+                    HeightRequest="300" >
+
+            <Frame
+                        BackgroundColor="Transparent"
+                        Margin="0,20"
+                        HeightRequest="50" 
+                        HorizontalOptions="Center"
+                        WidthRequest="320" Padding="5"
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                <StackLayout 
+                            Orientation="Horizontal">
+                    <Frame 
+                                BackgroundColor="Transparent"
+                                CornerRadius="50" 
+                                HeightRequest="35"
+                                WidthRequest="35" 
+                                Padding="7" Margin="0" 
+                                HorizontalOptions="Start"
+                                BorderColor="Black">
+                        <Image 
+                                    Source="https://img.icons8.com/ios-filled/2x/address.png" 
+                                    Aspect="AspectFill" 
+                                    Margin="0" />
+                    </Frame>
+                    <Grid
+                                BackgroundColor="Red"
+                                HorizontalOptions="Start"
+                                WidthRequest="257">
+                        <Entry 
+                                    Placeholder="Address" 
+                                    TextColor="Black"
+                                    HorizontalOptions="FillAndExpand" 
+                                    Margin="0,0,15,0" 
+                                    PlaceholderColor="Black"
+                                    IsEnabled="False"
+                            x:Name="entryAddress">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Disabled">
+                                        <VisualState.Setters>
+                                            <Setter Property="TextColor" Value="black" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Entry>
+                           
+                           
+                        <ImageButton 
+                                    VerticalOptions="Center" 
+                                    Margin="0,0,13,0"
+                                    HeightRequest="30 "
+                                    HorizontalOptions="End" 
+                           
+                                    Source="showlocation.png" 
+                                    BackgroundColor="Transparent" 
+                                    CornerRadius="0"
+                            Clicked="ImageButton_Clicked_GetPlacemark"/>
+
+
+
+                    </Grid>
+
+                   
+                  
+
+
+                </StackLayout>
+               
+            </Frame>
+            <StackLayout BackgroundColor="Orange"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         HeightRequest="400"
+                         WidthRequest="400"
+                         >
+                <Label Text="test"
+                       FontSize="20"
+                       TextColor="Black"
+                       x:Name="lbl_LongLat"
+                       BackgroundColor="Green"/>
+                
+            </StackLayout>
+            <!--<StackLayout BackgroundColor="Aqua"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                          HeightRequest="50"
+                         WidthRequest="400">
+                <Button Text="Detect Place Mark"
+                        FontSize="20"
+                       TextColor="Black"
+                        x:Name="btn_GetPlacemark"
+                        Clicked="btn_GetPlacemark_Clicked"/>
+            </StackLayout>-->
+            <!--<StackLayout BackgroundColor="Aqua"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                          HeightRequest="200"
+                         WidthRequest="400">
+                <Label Text="test"
+                       FontSize="20"
+                       TextColor="Black"
+                       x:Name="lbl_Placemark"
+                       BackgroundColor="Yellow"/>
+            </StackLayout>-->
+            
+
+            <!--<Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" Padding="5" BackgroundColor="Red"
+                             HeightRequest="450">
+                    <Label x:Name="lblLocationInfo" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                   TextColor="Black"    FontSize="16"
+                                   HeightRequest="250"
+                                   BackgroundColor="Orange"/>
+                </StackLayout>
+            </Grid>-->
+            <!--<StackLayout BackgroundColor="Yellow"
+                         Margin="0,20,0,0"
+                         HeightRequest="50">
+                <Button
+                    Text="Get current location"
+                    x:Name="btnGetCurrentLocation"
+                    Clicked="btnGetCurrentLocation_Clicked">
+                   
+                </Button>
+            </StackLayout>-->
+            <!--<StackLayout>
                 <StackLayout Orientation="Horizontal" >
                     <Frame>
                         <Image Source="popup_reservedateIcon.png" HeightRequest="40" WidthRequest="40"/>
@@ -55,7 +189,7 @@
                 </StackLayout>
                 <Label Margin="0,-5,0,0" BackgroundColor="red" HorizontalOptions="FillAndExpand" HeightRequest="1"/>
                 <local:DatePickerCtrl  />
-            </StackLayout>
+            </StackLayout>-->
         </StackLayout>
 
     </ContentPage.Content>
