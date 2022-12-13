@@ -26,6 +26,7 @@ namespace tubig
         {
             InitializeComponent();
             //entryfieldReservationDate.IsEnabled = true;
+            
         }
 
         protected override void OnAppearing()
@@ -33,8 +34,9 @@ namespace tubig
             base.OnAppearing();
             AllStationInfo = new List<StationWaterProduct>(StationWaterProduct.Get());
             AllGallonProduct = new List<StationGallonProducts>(StationGallonProducts.Get());
+
            collectionViewListHorizontal.ItemsSource = AllStationInfo;
-            CollectionViewList_GallonProduct.ItemsSource = AllGallonProduct;
+           CollectionViewList_GallonProduct.ItemsSource = AllGallonProduct;
         }
 
         //void CollectionViewListSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -147,14 +149,14 @@ namespace tubig
            // await taskSource.Task;
         }
 
-        private async void OnLogin(object sender, EventArgs e)
-        {
-            var loadingPage = new LoadingPopupPage();
-            await Navigation.PushPopupAsync(loadingPage);
-            await Task.Delay(2000);
-            await Navigation.RemovePopupPageAsync(loadingPage);
-            await Navigation.PushPopupAsync(new LoginSuccessPopupPage());
-        }
+        //private async void OnLogin(object sender, EventArgs e)
+        //{
+        //    var loadingPage = new LoadingPopupPage();
+        //    await Navigation.PushPopupAsync(loadingPage);
+        //    await Task.Delay(2000);
+        //    await Navigation.RemovePopupPageAsync(loadingPage);
+        //    await Navigation.PushPopupAsync(new LoginSuccessPopupPage());
+        //}
 
         private void OnCloseButtonTapped(object sender, EventArgs e)
         {
@@ -188,16 +190,17 @@ namespace tubig
             if (selectedItem == "Standard")
             {
                 // entryfieldReservationDate
-                entryfieldReservationDate.IsEnabled = true;
+
+               // entryfieldReservationDate.IsEnabled = true;
         
             }
             else if (selectedItem == "Reservation")
             {
-                entryfieldReservationDate.IsEnabled = true;
+                //entryfieldReservationDate.IsEnabled = true;
             }
             else
             {
-                entryfieldReservationDate.IsEnabled = false;
+               // entryfieldReservationDate.IsEnabled = false;
             }
         }
 

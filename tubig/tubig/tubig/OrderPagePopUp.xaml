@@ -229,10 +229,10 @@
                     Value="True" />
                 <Setter 
                     Property="WidthRequest" 
-                    Value="130"/>
+                    Value="100"/>
                 <Setter 
                     Property="HeightRequest" 
-                    Value="100"/>
+                    Value="150"/>
 
                 <Setter
                     Property="BackgroundColor"
@@ -241,6 +241,35 @@
                     Property="HasShadow"
                     Value="True"/>
                 
+            </Style>
+
+
+            <Style x:Key="profileImageFrameStyleNew" TargetType="Frame">
+                <Setter 
+                    Property="CornerRadius" 
+                    Value="5" />
+                <Setter 
+                    Property="Margin" 
+                    Value="0,0,0,0" />
+                <Setter 
+                    Property="Padding" 
+                    Value="0" />
+                <Setter 
+                    Property="IsClippedToBounds" 
+                    Value="True" />
+                <Setter 
+                    Property="WidthRequest" 
+                    Value="100"/>
+                <Setter 
+                    Property="HeightRequest" 
+                    Value="150"/>
+
+                <Setter
+                    Property="BackgroundColor"
+                    Value="Transparent"/>
+                <Setter 
+                    Property="HasShadow"
+                    Value="True"/>
             </Style>
 
             <Style x:Key="FrameCardViewStyle" TargetType="Frame">
@@ -452,11 +481,25 @@
                     BackgroundColor="Transparent"
                     WidthRequest="350"
                     MinimumWidthRequest="0"
-                    HeightRequest="700"
+                    HeightRequest="740"
                     HorizontalOptions="StartAndExpand"
                    
                     
                     >
+                    <StackLayout BackgroundColor="Transparent"
+                                 HorizontalOptions="StartAndExpand"
+                                 VerticalOptions="Center"
+                                 
+                                 WidthRequest="200"
+                                 HeightRequest="35"
+                                 Margin="2,0,0,0">
+                        <Label Text="{Binding storename}" 
+                               FontSize="20" 
+                               TextColor="Black"
+                               x:Name="lblTextStorname" 
+                               FontAttributes="Bold"/>
+
+                    </StackLayout>
                     <xct:TabView
                             TabContentBackgroundColor="Transparent"
                             TabIndicatorColor="#73a9c2"
@@ -479,126 +522,130 @@
                             Margin="0,0,0,0"
                             
                             FontSizeSelected="18" >
-
-
-                            <StackLayout>
-                                <StackLayout Style="{StaticResource WaterProdLabelStacklayout}" >
-                                    <Label Style="{StaticResource WaterProductLabel}"
+                            <ScrollView>
+                                <StackLayout>
+                                    <StackLayout Style="{StaticResource WaterProdLabelStacklayout}" >
+                                        <Label Style="{StaticResource WaterProductLabel}"
                                            Text="Water Products" >
-                                    </Label>
-                                </StackLayout>
-                                <Frame 
+                                        </Label>
+                                    </StackLayout>
+                                    <Frame 
                                     Style="{StaticResource FrameCollectionViewWaterProduct}">
-                                    <CollectionView
+                                        <CollectionView
                                             x:Name="collectionViewListHorizontal" 
-                                            HeightRequest="150" 
+                                            HeightRequest="350" 
                                             WidthRequest="400"
                                             BackgroundColor="Transparent" 
                                             Margin="-23,-10,0,0"
                                             HorizontalOptions="StartAndExpand"
                                       >
-                                        <CollectionView.ItemsLayout>
-                                            <LinearItemsLayout Orientation="Horizontal"/>
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackLayout Spacing="8" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" Margin="-5,0,0,0">
-                                                    <Frame 
+                                            <CollectionView.ItemsLayout>
+                                                <LinearItemsLayout Orientation="Horizontal"/>
+                                            </CollectionView.ItemsLayout>
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout Spacing="8" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" Margin="-5,0,0,0">
+                                                        <Frame 
                                                         Style="{StaticResource FrameCardViewStyle}">
 
-                                                        <StackLayout 
+                                                            <StackLayout 
                                                             Style="{StaticResource itemsCardViewStackLayoutStyle}">
 
-                                                            <StackLayout 
+                                                                <StackLayout 
                                                                 Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
 
-                                                                <Frame 
+                                                                    <Frame 
                                                                     Style="{StaticResource profileImageFrameStyle}">
 
-                                                                    <Image 
+                                                                        <Image 
                                                                         Style="{StaticResource profileImageStyle}" 
                                                                         Source="{Binding PhotoUrl}" />
-                                                                </Frame>
+                                                                    </Frame>
 
-                                                            </StackLayout>
-                                                            <StackLayout 
+                                                                </StackLayout>
+                                                                <StackLayout 
                                                                     Style="{StaticResource detailsStackLayout}">
-                                                                <Label 
+                                                                    <Label 
                                                                             Text="{Binding ProdDescription}" 
                                                                     Style="{StaticResource ProductNameLabel}"
                                                                              />
-                                                                <Label Text="{Binding WaterPrice}"
+                                                                    <Label Text="{Binding WaterPrice}"
                                                                        Style="{StaticResource PriceStyle}"/>
+                                                                </StackLayout>
                                                             </StackLayout>
-                                                        </StackLayout>
-                                                    </Frame>
-                                                </StackLayout>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
+                                                        </Frame>
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
 
-                                    </CollectionView>
-                                </Frame>
+                                        </CollectionView>
+                                    </Frame>
 
-                                <StackLayout Style="{StaticResource GallonLabelStacklayout}">
-                                    <Label Style="{StaticResource WaterProductLabel}"
+                                    <!--Gallons Product-->
+                                    <StackLayout Style="{StaticResource GallonLabelStacklayout}">
+                                        <Label Style="{StaticResource WaterProductLabel}"
                                            Text="Gallons" >
-                                    </Label>
-                                </StackLayout>
-                                <Frame Style="{StaticResource FrameCollecionViewGallonProduct}">
-                                    <CollectionView  
+                                        </Label>
+                                    </StackLayout>
+                                    <Frame Style="{StaticResource FrameCollecionViewGallonProduct}">
+                                        <CollectionView  
                                             x:Name="CollectionViewList_GallonProduct"
-                                            HeightRequest="150" 
+                                            HeightRequest="250" 
                                             WidthRequest="400"
                                             BackgroundColor="Transparent" 
                                             Margin="-23,-15,0,0"
                                             HorizontalOptions="StartAndExpand"
                                       >
-                                        <CollectionView.ItemsLayout>
-                                            <LinearItemsLayout Orientation="Horizontal"/>
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackLayout 
+                                            <CollectionView.ItemsLayout>
+                                                <LinearItemsLayout Orientation="Horizontal"/>
+                                            </CollectionView.ItemsLayout>
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout 
                                                     Spacing="8" 
                                                     HorizontalOptions="FillAndExpand" 
                                                     BackgroundColor="Transparent"
                                                     Margin="-5,0,0,0">
-                                                    <Frame 
+                                                        <Frame 
                                                         Style="{StaticResource FrameCardViewStyle}">
 
-                                                        <StackLayout 
+                                                            <StackLayout 
                                                             Style="{StaticResource itemsCardViewStackLayoutStyle}">
 
-                                                            <StackLayout 
+                                                                <StackLayout 
                                                                 Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
 
-                                                                <Frame 
-                                                                    Style="{StaticResource profileImageFrameStyle}">
+                                                                    <Frame 
+                                                                    Style="{StaticResource profileImageFrameStyleNew}">
 
-                                                                    <Image 
+                                                                        <Image 
                                                                         Style="{StaticResource profileImageStyle}" 
                                                                         Source="{Binding PhotoUrl}" />
-                                                                </Frame>
+                                                                    </Frame>
 
-                                                            </StackLayout>
-                                                            <StackLayout 
+                                                                </StackLayout>
+                                                                <StackLayout 
                                                                     Style="{StaticResource detailsStackLayout}">
-                                                                <Label 
+                                                                    <Label 
                                                                             Text="{Binding GallonDescription}" 
                                                                     Style="{StaticResource ProductNameLabel}"
                                                                              />
-                                                                <Label Text="{Binding GallonPrice}"
+                                                                    <Label Text="{Binding GallonPrice}"
                                                                        Style="{StaticResource PriceStyle}"/>
+                                                                </StackLayout>
                                                             </StackLayout>
-                                                        </StackLayout>
-                                                    </Frame>
-                                                </StackLayout>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
+                                                        </Frame>
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
 
-                                    </CollectionView>
-                                </Frame>
-                            </StackLayout>
+                                        </CollectionView>
+                                    </Frame>
+                                </StackLayout>
+                            </ScrollView>
+
+
+                           
                         </xct:TabViewItem>
                        
 
@@ -662,7 +709,7 @@
                                                         WidthRequest="250"
                                                         x:Name="PickerMode"
                                                         SelectedIndexChanged="PickerMode_SelectedIndexChanged"
-                                >
+                                                       >
                                                         <Picker.Items >
 
                                                             <x:String>
@@ -720,8 +767,9 @@
                                                         Margin="0,12,0,0" 
                                                         PlaceholderColor="Black"                                                      WidthRequest="150"
                                                         Keyboard="Numeric" 
+                                                              />
                                  
-                               />
+                         
                                                 </Grid>
 
                                             </StackLayout>

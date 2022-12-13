@@ -169,12 +169,25 @@ namespace tubig
                     //$"{placemark.CountryName}\n" + //CountryName-philippines
                     //$"CountryCode: {placemark.CountryCode}\n";// PH   locality subadmin
 
+                    var geocodeAddress_Alert = "\n" +
+                        locationInfo+
+                    $"\n{ placemark.Thoroughfare}\n" +
+                    $"{ placemark.FeatureName}\n" +
+                    $"{ placemark.SubLocality}\n" + //Address area name
+                    $"{placemark.Locality} " +
+                    $"{placemark.SubAdminArea}\n" + //CityName- Cebu City,, SubAdminarea- Cebu
+                    $"{placemark.PostalCode}\n" + //PostalCode
+                    $"{placemark.AdminArea}\n" + //StateName- Central Visayas
+                    $"{placemark.CountryName}\n" + //CountryName-philippines
+                    $"{placemark.CountryCode}\n";// PH   locality subadmin
+                    await DisplayAlert("Your Location", geocodeAddress_Alert, "Ok");
+
                     var geocodeAddress =
                        $"{placemark.FeatureName}"
                        + $" {placemark.Thoroughfare }"
                       + $" {placemark.Locality}"
                        +$" {placemark.SubAdminArea}";
-
+                   
                     entryAddress.Text += geocodeAddress;
                     lbl_LongLat.Text += geocodeAddress;
                 }
@@ -275,6 +288,17 @@ catch (Exception ex)
             var location = await Geolocation.GetLocationAsync(request, cts.Token);
             var placemarks = await Geocoding.GetPlacemarksAsync(lat, longtd);
             var placemark = placemarks?.FirstOrDefault();
+        }
+
+        private void entryField_DateOfBirth_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            //labelDateSelected.Text = e.NewDate.ToString();
+            //var picker = sender as DatePicker;
+            //DateTime? date = picker.DateSelected;
+
+            // labelDateSelected.Text = entryField_DateOfBirth.Date.ToString();
+            var dateOfBirth = entryField_DateOfBirth.Date.ToString().Split(" ")[0];
+            labelDateSelected.Text = dateOfBirth;
         }
     }
 }

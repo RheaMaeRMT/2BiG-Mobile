@@ -148,7 +148,8 @@
                         SelectionMode="Single" 
                         BackgroundColor="Transparent" 
                         Margin="0,-6,0,0" 
-                        HeightRequest="700"  >
+                        HeightRequest="700" 
+                        >
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Vertical" />
                         </CollectionView.ItemsLayout>
@@ -176,9 +177,9 @@
                                                 Style="{StaticResource itemsCardViewStackLayoutStyle}" 
                                                 BackgroundColor="Transparent">
                                                 <StackLayout 
-                                                    Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
-                                                    <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                                    Style="{StaticResource itemsInsideCardViewStackLayoutStyle}" >
+                                                    <StackLayout.GestureRecognizers >
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}"/>
                                                     </StackLayout.GestureRecognizers>
                                                     <Frame 
                                                         Style="{StaticResource stationImageFrameStyle}">

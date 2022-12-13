@@ -240,9 +240,15 @@
                             <Grid BackgroundColor="Transparent"
                                   HorizontalOptions="Start"
                                   WidthRequest="248">
-                                <local:BirthdayDatePickerControl x:Name="entryField_DateOfBirth">
+                                <!--<local:BirthdayDatePickerControl x:Name="entryField_DateOfBirth" >
                                     
-                                </local:BirthdayDatePickerControl>
+                                </local:BirthdayDatePickerControl >-->
+                                <DatePicker x:Name="entryField_DateOfBirth"
+                                            TextColor="Black"
+                                            >
+                                    
+                                </DatePicker>
+                                
                                 <Image Source="https://img.icons8.com/windows/2x/calendar-week.png"
                                        WidthRequest="40"
                                        HeightRequest="40"
@@ -351,7 +357,8 @@
                                 HorizontalOptions="FillAndExpand"
                                 Margin="0,0,15,0"
                                 PlaceholderColor="Black"
-                                x:Name="entryField_Username"/>
+                                x:Name="entryField_Username"
+                               />
                         </StackLayout>
                     </Frame>
 
@@ -398,6 +405,7 @@
                                 Keyboard="Text" 
                                 IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger2}, 
                                  Path=HidePassword}" 
+                                TextTransform="None"
                                />
                                 <ImageButton
                                     VerticalOptions="Center" 
@@ -539,7 +547,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 Margin="0,0,15,0" 
                                 PlaceholderColor="Black" 
-                                IsPassword="True" 
+                                
                                 Keyboard="Text"
                                 x:Name="entryField_SecurityQuestionAnswer"/>
                         </StackLayout>
@@ -569,8 +577,9 @@
                         </StackLayout>
                     </Frame>
 
+                    <!--Valid ID selection-->
                     <Frame 
-                        BackgroundColor="red" 
+                        BackgroundColor="Transparent" 
                         HeightRequest="470" 
                         HorizontalOptions="Center"
                         WidthRequest="330" 
@@ -599,8 +608,8 @@
                                 Text="Choose your ID Type:" 
                                 FontSize="18"                           
                                 TextColor="Black"></Label>
-                            
-                            <StackLayout RadioButtonGroup.GroupName="ID_type">
+
+                            <StackLayout RadioButtonGroup.GroupName="IDtype" x:Name="ID_Type">
                                 <RadioButton Content="National ID"/>
                                 <RadioButton Content="Voters ID"/>
                                 <RadioButton Content="Drivers License"/>
@@ -608,6 +617,7 @@
                                 <RadioButton Content="Postal ID"/>
 
                                 <RadioButton Content="Others:"/>
+                            
                             </StackLayout>
 
 
@@ -641,20 +651,22 @@
                         Margin="0,50,0,0" 
                         HorizontalOptions="Center"
                         WidthRequest="330" 
-                        Padding="2">
+                        Padding="2"
+                        HeightRequest="250">
                         <Frame 
                             BackgroundColor="Transparent"
-                            HeightRequest="200" 
+                            HeightRequest="250" 
                             HorizontalOptions="Center"
-                            
+                            BorderColor="Black"
                             WidthRequest="280"
                             Padding="2"
-                            BorderColor="Black" >
+                             >
                             <StackLayout
-                                Padding="10">
+                                Padding="10" BackgroundColor="Transparent">
                                 <Image 
                                     x:Name="Imgresult" 
-                                    HeightRequest="100" />
+                                    HeightRequest="150" 
+                                    Aspect="AspectFill"/>
                                 <Button 
                                     Text="Upload Valid ID" 
                                     FontSize="18"
@@ -663,7 +675,8 @@
                                     HorizontalOptions="CenterAndExpand" 
                                     BackgroundColor="#0e3663" 
                                     Clicked="ImageButton_Clicked"
-                                    Margin="0,25,0,0"/>
+                                    Margin="0,25,0,0"
+                                    CornerRadius="20"/>
 
                             </StackLayout>
                         </Frame>
@@ -682,7 +695,9 @@
                             CornerRadius="40"
                             HorizontalOptions="Center" 
                             WidthRequest="340" 
-                            Margin="0,10,0,0">
+                            Margin="0,10,0,0"
+                            x:Name="signButton"
+                            Clicked="signButton_Clicked">
 
                         </Button>
                     </StackLayout>

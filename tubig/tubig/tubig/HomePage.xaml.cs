@@ -9,6 +9,7 @@ using tubig.DataModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace tubig
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -24,7 +25,7 @@ namespace tubig
             PopupNavigation.Instance.Popping += (sender, e) => Debug.WriteLine($"[Popup] Popping: {e.Page.GetType().Name}");
             PopupNavigation.Instance.Popped += (sender, e) => Debug.WriteLine($"[Popup] Popped: {e.Page.GetType().Name}");
 
-            OrderPageModal = new OrderProductReviewPagePopUp();
+           OrderPageModal = new OrderProductReviewPagePopUp();
         }
 
         protected override void OnAppearing()
@@ -44,7 +45,7 @@ namespace tubig
 
         async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            //var loadingPage = new LoadingPopupPage();
+            //var loadingPage = new LoadingPopupPage(); TapGestureRecognizer_Tapped
             //await Navigation.PushPopupAsync(loadingPage);
             //await Task.Delay(2000);
             //await Navigation.RemovePopupPageAsync(loadingPage);
@@ -54,7 +55,16 @@ namespace tubig
             //await Navigation.PushModalAsync(loadingPage);
             //await Task.Delay(2000);  await PopupNavigation.Instance.PushAsync(_loginPopup);
 
-            await PopupNavigation.Instance.PushAsync(OrderPageModal);
+            // var current = (e.CurrentSelection.FirstOrDefault() as Subjects);
+            var stationname = ((TappedEventArgs)e).Parameter as WRSinfo;
+            //var stationname = ta
+            // await Navigation.PushAsync(new OrderProductReviewPagePopUp(stationname.storename)); //1st way
+            // await PopupNavigation.Instance.PushAsync(OrderPageModal(stationname.storename));
+
+            var modalpage = new OrderProductReviewPagePopUp();
+            modalpage.BindingContext = stationname;
+            await PopupNavigation.Instance.PushAsync(modalpage);
+            // await PopupNavigation.Instance.PushAsync(OrderPageModal);// original approach
         }
     }
 }

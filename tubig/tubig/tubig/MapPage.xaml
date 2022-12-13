@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             xmlns:local="clr-namespace:tubig"
+             xmlns:local="clr-namespace:tubig" 
+             xmlns:maps1="clr-namespace:Syncfusion.SfMaps.XForms;assembly=Syncfusion.SfMaps.XForms"
              x:Class="tubig.MapPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -10,10 +11,31 @@
 
             <maps:Map  
                 x:Name="myMap"
-               MapType="Hybrid"
+                MapType="Hybrid"
                 IsShowingUser="True"
               
                />
+
+            <!--<maps1:SfMaps x:Name="sfMaps" >
+                <maps1:SfMaps.Layers>
+                    <maps1:ImageryLayer LayerType="OSM"
+                               x:Name="layer">
+
+                        <maps1:ImageryLayer.MarkerTemplate>
+                            <DataTemplate>
+                                <Image x:Name="markerImage"
+                               HorizontalOptions="Center"
+                               Source="{Binding Image}"
+                               VerticalOptions="Center"
+                               HeightRequest="15"
+                               WidthRequest="15" />
+                            </DataTemplate>
+                        </maps1:ImageryLayer.MarkerTemplate>
+                    </maps1:ImageryLayer>
+                </maps1:SfMaps.Layers>
+            </maps1:SfMaps>-->
+
+
             <!--<local:BindMape MapType="Street" 
                             MapPosition="{Binding MyPosition}"
                             MapPins="{Binding PinCollection}"

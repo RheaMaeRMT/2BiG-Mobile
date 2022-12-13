@@ -11,6 +11,9 @@ using Xamarin.Forms.Maps;
 using System.Reflection;
 using GoogleApi.Entities.Maps.StaticMaps.Request;
 using Map = Xamarin.Essentials.Map;
+using System.Collections.ObjectModel;
+
+using System.ComponentModel;
 
 namespace tubig
 {
@@ -19,19 +22,43 @@ namespace tubig
 
     {
         private readonly Geocoder _geocoder = new Geocoder();
-       // StationInfo myvalue = new StationInfo();
-         public  MapPage()
+       
+
+        // StationInfo myvalue = new StationInfo();
+        public  MapPage()
         {
             InitializeComponent();
             DisplayCurrentLocation();
-          
+          // this.AddMarkerInCurrentLocation();
         }
 
-      
+        //private async void AddMarkerInCurrentLocation()
+        //{
+        //    try
+        //    {
+        //        var location = await Geolocation.GetLastKnownLocationAsync();
+        //        if (location != null)
+        //        {
+        //            CustomMarker marker = new CustomMarker();
+        //            marker.Latitude = location.Latitude.ToString();
+        //            marker.Longitude = location.Longitude.ToString();
+        //            this.layer.Markers = new ObservableCollection<Syncfusion.SfMaps.XForms.MapMarker> { marker };
 
-       
+        //            this.layer.GeoCoordinates = new Point(location.Latitude, location.Longitude);
+        //            this.layer.Radius = 700;
+        //            this.layer.DistanceType = DistanceType.KiloMeter;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Handle not supported on device exception
+        //        await Application.Current.MainPage.DisplayAlert("Alert", ex.Message, "Ok");
+        //    }
+        //}
 
-       
+
+
+
 
         public async void DisplayCurrentLocation()
         {
@@ -42,9 +69,9 @@ namespace tubig
                 if (location != null)
                     
                 {
-                    Position p = new Position(location.Latitude, location.Longitude);
-                    MapSpan mapSpan = MapSpan.FromCenterAndRadius(p, Distance.FromKilometers(.444));
-                    myMap.MoveToRegion(mapSpan);
+                   Position p = new Position(location.Latitude, location.Longitude);
+                  MapSpan mapSpan = MapSpan.FromCenterAndRadius(p, Distance.FromKilometers(.444));
+                   myMap.MoveToRegion(mapSpan);
                
                 }                      
             
@@ -54,7 +81,8 @@ namespace tubig
 
             }
             catch   
-                (FeatureNotEnabledException fneEx){
+                (FeatureNotEnabledException fneEx)
+            { 
 
             }
             catch(Exception ex)
@@ -81,6 +109,17 @@ namespace tubig
 
 
             // await DisplayAlert("Coordinates", $"Lat:{e.Position.Latitude},Long:{e.Position.Longitude}", "Ok");
+        }
+
+       
+    }
+
+    public class CustomMarker : Syncfusion.SfMaps.XForms.MapMarker
+    {
+        public ImageSource Image { get; set; }
+        public CustomMarker()
+        {
+            Image = ImageSource.FromResource("pin.png");
         }
     }
 }

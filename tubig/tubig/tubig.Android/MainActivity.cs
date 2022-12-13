@@ -13,6 +13,7 @@ namespace tubig.Droid
     [Activity(Label = "tubig", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+       // FusedLocationProviderClient fusedLocationProviderClient;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Forms.SetFlags("CollectionView_Experimental");
