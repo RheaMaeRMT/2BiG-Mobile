@@ -627,7 +627,7 @@
                                                                 <StackLayout 
                                                                     Style="{StaticResource detailsStackLayout}">
                                                                     <Label 
-                                                                            Text="{Binding GallonDescription}" 
+                                                                            Text="{Binding gallonType}" 
                                                                     Style="{StaticResource ProductNameLabel}"
                                                                              />
                                                                     <Label Text="{Binding GallonPrice}"
@@ -702,12 +702,12 @@
 
                                                     <Picker 
                                 
-                                                        Title="Type of Order"                                                           TitleColor="Black"
+                                                        Title="Type of Order"                                                                TitleColor="Black"
                                                         TextColor="Black"
                                                         HorizontalOptions="StartAndExpand"                                 
                                                         FontSize="18"
                                                         WidthRequest="250"
-                                                        x:Name="PickerMode"
+                                                        x:Name="Picker_OrderType"
                                                         SelectedIndexChanged="PickerMode_SelectedIndexChanged"
                                                        >
                                                         <Picker.Items >
@@ -765,8 +765,9 @@
                                                         TextColor="Black" 
                                                         HorizontalOptions="FillAndExpand"
                                                         Margin="0,12,0,0" 
-                                                        PlaceholderColor="Black"                                                      WidthRequest="150"
+                                                        PlaceholderColor="Black"                                                           WidthRequest="150"
                                                         Keyboard="Numeric" 
+                                                        x:Name="entryField_Quantity"
                                                               />
                                  
                          
@@ -803,7 +804,7 @@
                                                         TextColor="Black" 
                                                         HorizontalOptions="FillAndExpand"
                                                         Margin="0,12,0,0" 
-                                                        PlaceholderColor="Black"                                   
+                                                        PlaceholderColor="Black"                                                           x:Name="entryfield_borrowGallons"
                                                         Keyboard="Numeric" />
 
                                                 </Grid>
@@ -838,7 +839,7 @@
                                                         TextColor="Black" 
                                                         HorizontalOptions="FillAndExpand"
                                                         Margin="0,12,0,0" 
-                                                        PlaceholderColor="Black"                                   
+                                                        PlaceholderColor="Black"                                                             x:Name="entryfield_ownGallons"
                                                         Keyboard="Numeric" />
 
                                                 </Grid>
@@ -866,19 +867,22 @@
                                                     HorizontalOptions="Start" 
                                                     WidthRequest="257">
                                                     <Picker 
-                                                        Title="Water Type"                                
+                                                        Title="Product Type"                                
                                                         TextColor="Black"
-                                                        HorizontalOptions="StartAndExpand"                                               TitleColor="Black"
+                                                        HorizontalOptions="StartAndExpand"                                                  TitleColor="Black"
                                                         FontSize="18"
-                                                        WidthRequest="250">
+                                                        WidthRequest="250"
+                                                        x:Name="Picker_ProductType"
+                                                        ItemsSource="{Binding refillName}"
+                                                        ItemDisplayBinding="{Binding refillName}">
 
-                                                        <Picker.Items>
+                                                        <Picker.Items  >
 
-                                                            <x:String>
-                                                                Alkaline
+                                                            <x:String >
+                                                             
                                                             </x:String>
                                                             <x:String>
-                                                                Mineral
+                                                             
                                                             </x:String>
                                                         </Picker.Items>
                                                     </Picker>
@@ -956,7 +960,7 @@
                                                     BackgroundColor="Transparent"
                                                     TextTransform="None"
                                                     FontAttributes="Bold"
-                                                    
+                                                    Clicked="Button_Clicked"
                                                     />
 
                                         </Frame>

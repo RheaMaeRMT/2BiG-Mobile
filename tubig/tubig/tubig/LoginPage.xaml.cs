@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms.Xaml;
-
+using tubig.DataModel;
 namespace tubig
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        CUSTOMER customer = new CUSTOMER();
+        CustomerRepo CustomerRepo = new CustomerRepo();
         public LoginPage()
         {
             InitializeComponent();
@@ -34,13 +36,17 @@ namespace tubig
         {
             //  await btn_login.FadeTo(0, 1000, Easing.Linear);
             // await btn_login.FadeTo(1, 1000, Easing.Linear);
-
-
-
-            var userName = usernameTextbox.Text;
+            var username = usernameTextbox.Text;
             var password = password_Textbox.Text;
-            string UserName = "admin";
-            string Password = "admin";
+            //var customerUsername = await CustomerRepo.GetCustomerByName(username,password);
+            
+
+            //var customerPassword;
+            //var userName = usernameTextbox.Text;
+            //var password = password_Textbox.Text;
+            //string UserName = "admin";
+            //string Password = "admin";
+
 
             //if((userName != UserName) && (password != Password))
             //{

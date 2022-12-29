@@ -6,6 +6,7 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
               xmlns:custom="clr-namespace:tubig.Control;assembly=tubig"  
              NavigationPage.HasNavigationBar="False"
+             
              >
 
 
@@ -13,6 +14,11 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="primary">#3ec3d5</Color>
+            <Style x:Key="Invalid Style" TargetType="Entry">
+                <Setter
+                    Property="TextColor"
+                    Value="Red"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <!--<ScrollView VerticalOptions="Fill">
@@ -31,12 +37,12 @@
         </StackLayout>
     </ScrollView>-->
     <ContentPage.Content>
-
-        <StackLayout  Margin="5,0,5,5 "
+        <ScrollView>
+            <StackLayout  Margin="5,0,5,5 "
                     BackgroundColor="#F8E2CF"
                     HeightRequest="300" >
 
-            <Frame
+                <Frame
                         BackgroundColor="Transparent"
                         Margin="0,20"
                         HeightRequest="50" 
@@ -44,9 +50,9 @@
                         WidthRequest="320" Padding="5"
                         BorderColor="Black" 
                         CornerRadius="50">
-                <StackLayout 
+                    <StackLayout 
                             Orientation="Horizontal">
-                    <Frame 
+                        <Frame 
                                 BackgroundColor="Transparent"
                                 CornerRadius="50" 
                                 HeightRequest="35"
@@ -54,16 +60,16 @@
                                 Padding="7" Margin="0" 
                                 HorizontalOptions="Start"
                                 BorderColor="Black">
-                        <Image 
+                            <Image 
                                     Source="https://img.icons8.com/ios-filled/2x/address.png" 
                                     Aspect="AspectFill" 
                                     Margin="0" />
-                    </Frame>
-                    <Grid
+                        </Frame>
+                        <Grid
                                 BackgroundColor="Red"
                                 HorizontalOptions="Start"
                                 WidthRequest="257">
-                        <Entry 
+                            <Entry 
                                     Placeholder="Address" 
                                     TextColor="Black"
                                     HorizontalOptions="FillAndExpand" 
@@ -71,19 +77,19 @@
                                     PlaceholderColor="Black"
                                     IsEnabled="False"
                             x:Name="entryAddress">
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Disabled">
-                                        <VisualState.Setters>
-                                            <Setter Property="TextColor" Value="black" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                        </Entry>
-                           
-                           
-                        <ImageButton 
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Disabled">
+                                            <VisualState.Setters>
+                                                <Setter Property="TextColor" Value="black" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Entry>
+
+
+                            <ImageButton 
                                     VerticalOptions="Center" 
                                     Margin="0,0,13,0"
                                     HeightRequest="30 "
@@ -96,44 +102,104 @@
 
 
 
-                    </Grid>
-
-                   
-                  
+                        </Grid>
 
 
-                </StackLayout>
-               
-            </Frame>
-            <StackLayout BackgroundColor="Orange"
+
+
+
+                    </StackLayout>
+
+                </Frame>
+                <StackLayout BackgroundColor="Orange"
                          HorizontalOptions="Center"
                          VerticalOptions="Center"
                          HeightRequest="400"
                          WidthRequest="400"
                          >
-                <Label Text="test"
+                    <Label Text="test"
                        FontSize="20"
                        TextColor="Black"
                        x:Name="lbl_LongLat"
                        BackgroundColor="Green"/>
 
-                <DatePicker x:Name="entryField_DateOfBirth"
+                    <DatePicker x:Name="entryField_DateOfBirth"
                                             TextColor="Black"
                                             DateSelected="entryField_DateOfBirth_DateSelected"
                             >
-                    
 
-                </DatePicker>
 
-                <StackLayout BackgroundColor="Yellow">
-                    <Label Text=""
+                    </DatePicker>
+
+                    <StackLayout BackgroundColor="Yellow">
+                        <Label Text=""
                            HeightRequest="50" 
                            x:Name="labelDateSelected"/>
 
-                </StackLayout>
+                    </StackLayout>
 
-            </StackLayout>
-            <!--<StackLayout BackgroundColor="Aqua"
+                    <StackLayout Background="green
+                             "
+                             HeightRequest="600">
+                        <StackLayout BackgroundColor="Red"
+                             HeightRequest="500">
+                            <ListView HeightRequest="0"
+                              WidthRequest="400"
+                              BackgroundColor="Gray"
+                              x:Name="CustomerListview"
+                              ItemsSource="{Binding productrefill}"
+                              HasUnevenRows="True"
+                              Margin="0,0,0,0">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell >
+                                            <StackLayout Orientation="Horizontal" Padding="5">
+                                                <Image  Source="{Binding CusValiIdImage} "
+                                            HeightRequest="60" 
+                                               WidthRequest="60"/>
+                                                <StackLayout HorizontalOptions="StartAndExpand">
+                                                    <Label Text="{Binding refillName}" FontSize="Medium"/>
+                                                    <Label Text="{Binding refillName}" FontSize="Medium"/>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
+                            </ListView>
+                        </StackLayout>
+
+                        <!--<Entry Placeholder="Firstname" 
+                           HeightRequest="50"
+                           Margin="0,10,0,0"
+                            x:Name="txtbox_firstname"
+                           PlaceholderColor="Wheat">
+                        <Entry.Behaviors>
+                           
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Entry Placeholder="Lastname" 
+                           HeightRequest="50"
+                           Margin="0,10,0,0"
+                           PlaceholderColor="Wheat"
+                           x:Name="txtbox_lastname">
+                        <Entry.Behaviors>
+
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Button Text="test"
+                            Clicked="Button_Clicked"
+                            Margin="0,40,0,0"
+                            IsEnabled="False"
+                            x:Name="btntest"/>-->
+
+                    </StackLayout>
+
+
+                </StackLayout>
+                <!--<StackLayout BackgroundColor="Aqua"
                          HorizontalOptions="Center"
                          VerticalOptions="Center"
                           HeightRequest="50"
@@ -144,7 +210,7 @@
                         x:Name="btn_GetPlacemark"
                         Clicked="btn_GetPlacemark_Clicked"/>
             </StackLayout>-->
-            <!--<StackLayout BackgroundColor="Aqua"
+                <!--<StackLayout BackgroundColor="Aqua"
                          HorizontalOptions="Center"
                          VerticalOptions="Center"
                           HeightRequest="200"
@@ -155,9 +221,9 @@
                        x:Name="lbl_Placemark"
                        BackgroundColor="Yellow"/>
             </StackLayout>-->
-            
 
-            <!--<Grid>
+
+                <!--<Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="9*"/>
                     <RowDefinition Height="1*"/>
@@ -171,7 +237,7 @@
                                    BackgroundColor="Orange"/>
                 </StackLayout>
             </Grid>-->
-            <!--<StackLayout BackgroundColor="Yellow"
+                <!--<StackLayout BackgroundColor="Yellow"
                          Margin="0,20,0,0"
                          HeightRequest="50">
                 <Button
@@ -181,7 +247,7 @@
                    
                 </Button>
             </StackLayout>-->
-            <!--<StackLayout>
+                <!--<StackLayout>
                 <StackLayout Orientation="Horizontal" >
                     <Frame>
                         <Image Source="popup_reservedateIcon.png" HeightRequest="40" WidthRequest="40"/>
@@ -205,8 +271,10 @@
                 <Label Margin="0,-5,0,0" BackgroundColor="red" HorizontalOptions="FillAndExpand" HeightRequest="1"/>
                 <local:DatePickerCtrl  />
             </StackLayout>-->
-        </StackLayout>
+            </StackLayout>
 
+        </ScrollView>
+     
     </ContentPage.Content>
     
     

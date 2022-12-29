@@ -172,6 +172,7 @@
                                                 />
                                         </SwipeItems>
                                     </SwipeView.RightItems>-->
+                                           
 
                                             <StackLayout 
                                                 Style="{StaticResource itemsCardViewStackLayoutStyle}" 
@@ -212,6 +213,7 @@
                                                         </StackLayout>
                                                     </StackLayout>
                                                 </StackLayout>
+                                              
                                             </StackLayout>
                                         </SwipeView>
                                     </Frame>

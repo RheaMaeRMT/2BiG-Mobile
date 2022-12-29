@@ -33,7 +33,6 @@ namespace tubig
         public  string storename { get; set; }
         public string distance { get; set; }
         public string status { get; set; }
-
         public string ImageURL { get; set; }
 
         public string Status_Distance => $"{status} | {distance}";

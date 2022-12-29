@@ -11,7 +11,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
-
+using tubig.DataModel;
 namespace tubig
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -19,6 +19,9 @@ namespace tubig
     {
         private OrderProductReviewPagePopUp _loginPopup;
         CancellationTokenSource cts;
+        CUSTOMER customer = new CUSTOMER();
+        CustomerRepo customerRepos = new CustomerRepo();
+        Product_RefillRepo prodRefill = new Product_RefillRepo();
         public RuntestforPopUp()
         {
             InitializeComponent();
@@ -32,7 +35,13 @@ namespace tubig
             //GetAddressCommand = new Command(async () => await OnGetAddress())
             //     GetAddresscCommand = new Command(async () => await OnGetPosition());
         }
-
+        protected override async void OnAppearing()
+        {
+            // var cus=  await customerRepos.GetAll();
+            //  CustomerListview.ItemsSource = cus;
+            var productrefill = await prodRefill.GetAllProductRefill();
+            CustomerListview.ItemsSource = productrefill;
+        }
         string geoCodeAddress;
         string geoCodePosition;
         public double lat { get; set; }
@@ -300,5 +309,7 @@ catch (Exception ex)
             var dateOfBirth = entryField_DateOfBirth.Date.ToString().Split(" ")[0];
             labelDateSelected.Text = dateOfBirth;
         }
+
+       
     }
 }

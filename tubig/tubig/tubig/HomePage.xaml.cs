@@ -64,6 +64,7 @@ namespace tubig
             var modalpage = new OrderProductReviewPagePopUp();
             modalpage.BindingContext = stationname;
             await PopupNavigation.Instance.PushAsync(modalpage);
+            
             // await PopupNavigation.Instance.PushAsync(OrderPageModal);// original approach
         }
     }
