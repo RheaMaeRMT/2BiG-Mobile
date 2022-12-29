@@ -82,6 +82,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BdayPickerRenderer.cs" />
     <Compile Include="BirthdayDatePickerRenderer.cs" />
     <Compile Include="DatePickerCtrlRenderer.cs" />
     <Compile Include="MainActivity.cs" />

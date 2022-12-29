@@ -22,5 +22,9 @@ namespace tubig.Control
                 ClearRequested(this, EventArgs.Empty);
             }
         }
+
+
+        public string _originalFormat = null;
+
     }
 }

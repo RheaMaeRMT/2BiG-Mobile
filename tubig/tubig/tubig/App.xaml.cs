@@ -21,13 +21,13 @@ namespace tubig
             //  MainPage = new NavigationPage(new MapTest());
 
            
-          MainPage = new NavigationPage(new RuntestforPopUp());
+          //MainPage = new NavigationPage(new RuntestforPopUp());
 
 
           // MainPage = new NavigationPage(new CreateAcc());
           //  MainPage = new NavigationPage(new MapPage());
             //MainPage = new NavigationPage(new LoginPage());
-             //MainPage = new NavigationPage(new MainPage());
+             MainPage = new NavigationPage(new MainPage());
             // MainPage = new MainPage();
         }
 

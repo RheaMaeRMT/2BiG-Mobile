@@ -26,6 +26,7 @@ namespace tubig.Droid
 
         }
         EditText editText;
+        
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.DatePicker> e)
         {
             base.OnElementChanged(e);
@@ -51,7 +52,10 @@ namespace tubig.Droid
         public void DatePickerControl_ClearRequested(object sender, EventArgs e)
         {
             //  editText.Text = string.Empty;
-            editText.Text = DateTime.Now.ToShortDateString();
+            // editText.Text = DateTime.Now.ToShortDateString();
+            BirthdayDatePickerControl birthdayDate = sender as BirthdayDatePickerControl;
+            birthdayDate.Date = DateTime.Now;
+            editText.Text = "Birth Date";
         }
     }
 }
