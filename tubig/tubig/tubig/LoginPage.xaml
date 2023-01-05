@@ -55,7 +55,7 @@
             </StackLayout>
 
 
-            <!--for username entry-->
+            <!--for email entry-->
             <StackLayout 
                 BackgroundColor="Transparent" 
                 HeightRequest="180" 
@@ -85,12 +85,12 @@
                         </Frame>
 
                         <Entry 
-                            Placeholder="Username" 
+                            Placeholder="Email" 
                             TextColor="Black" 
                             HorizontalOptions="FillAndExpand" 
                             Margin="0,0,15,0" 
                             PlaceholderColor="Black"
-                            x:Name="usernameTextbox" >
+                            x:Name="EmailTextbox" >
                             
                         </Entry>
                     </StackLayout>

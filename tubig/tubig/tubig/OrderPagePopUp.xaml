@@ -873,18 +873,11 @@
                                                         FontSize="18"
                                                         WidthRequest="250"
                                                         x:Name="Picker_ProductType"
-                                                        ItemsSource="{Binding refillName}"
-                                                        ItemDisplayBinding="{Binding refillName}">
+                                                        
+                                                        ItemDisplayBinding="{Binding refillName}"
+                                                        >
 
-                                                        <Picker.Items  >
-
-                                                            <x:String >
-                                                             
-                                                            </x:String>
-                                                            <x:String>
-                                                             
-                                                            </x:String>
-                                                        </Picker.Items>
+                                                       
                                                     </Picker>
                                                   
                                                         

@@ -192,120 +192,153 @@ namespace tubig
         {
             Random randomID = new Random();
             int CustomerID = randomID.Next(1, 10000);
-
-            if (file != null)
+            try
             {
-                string image = await customerRepo.Upload(file.GetStream(), Path.GetFileName(file.Path));
-                // string image = await customerRepo.Save(file.GetStream());
-                // var mstream = new MemoryStream();
-                // image.CopyTo(mstream);
-                //var stream = await image.op
-                //var mstream = new MemoryStream();
-                //stream.CopyTo(mstream);
-                //bytes = mstream.ToArray();
-                //base64str = Convert.ToBase64String(bytes, Base64FormattingOptions.InsertLineBreaks);
+                var selectedradioButton = ID_Type.Children.OfType<RadioButton>().FirstOrDefault(x => x.IsChecked);
 
-                customer.CusValiIdImage = image;
+                string firstName = entryField_Firstname.Text;
+                string lastName = entryField_Lastname.Text;
+                string contactNumber = entryField_PhoneNumber.Text;
+                string email = entryField_EmailAddress.Text;
+                var dateOfBirth = entryField_DateOfBirth.Date.ToString().Split(" ")[0];
+                string address = entryField_Address.Text;
+                string password = entryField_Password.Text;
+                string confirmpassword = entryField_ConfirmPassword.Text;
+                string securityQuestion = entryField_SecurityQuestion.SelectedItem.ToString();
+                string securityQuestion_answer = entryField_SecurityQuestionAnswer.Text;
+                string idType = selectedradioButton.Content.ToString();
+                if (file != null)
+                {
+                    string image = await customerRepo.Upload(file.GetStream(), Path.GetFileName(file.Path));
+                    customer.CusValiIdImage = image;
+                }
+
+                if (string.IsNullOrEmpty(firstName))
+                {
+                    // await this.DisplayToastAsync("Please Enter your First Name", 1500);
+                    await this.DisplayAlert("Warning", "Please Enter your First Name", "OK");
+                    return;
+                }
+                if (string.IsNullOrEmpty(lastName))
+                {
+                    // await this.DisplayToastAsync("Please Enter your Last Name", 1500);
+                    await this.DisplayAlert("Warning", "Please Enter your Last Name", "OK");
+                    return;
+                }
+                if (string.IsNullOrEmpty(contactNumber))
+                {
+                    // await this.DisplayToastAsync("Please Enter your Contact Number", 1500);
+                    await this.DisplayAlert("Warning", "Please Enter your Contact Number", "OK");
+                    return;
+                }
+                if (string.IsNullOrEmpty(email))
+                {
+                    // await this.DisplayToastAsync("Please Enter your Email", 1500);
+                    await this.DisplayAlert("Warning", "Please Enter your Email", "OK");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(dateOfBirth))
+                {
+                    // await this.DisplayToastAsync("Please Enter your Date of Birth", 1500);
+                    await this.DisplayAlert("Warning", "Please Enter your Date of Birth", "OK");
+                    return;
+                }
+                if (string.IsNullOrEmpty(address))
+                {
+                    // await this.DisplayToastAsync("Please Enter your Address", 1500);
+                    await this.DisplayAlert("Warning", "Please Enter your Address", "OK");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(password))
+                {
+                    //   await this.DisplayToastAsync("Please Enter your Password", 1500);
+                    await this.DisplayAlert("Warning", "Please Enter your Password", "OK");
+                    return;
+                }
+                if (string.IsNullOrEmpty(confirmpassword))
+                {
+                    //   await this.DisplayToastAsync("Please Enter your Password", 1500);
+                    await this.DisplayAlert("Warning", "Please re-type your password", "OK");
+                    return;
+                }
+                if (confirmpassword != password)
+                {
+                    // await this.DisplayToastAsync("Password does not match", 1500);
+                    await this.DisplayAlert("Warning", "Password does not match", "OK");
+                    return;
+                }
+                if (string.IsNullOrEmpty(securityQuestion))
+                {
+                    // await this.DisplayToastAsync("Please Select a Security Question", 1500);
+                    await this.DisplayAlert("Warning", "Please Select a Security Question", "OK");
+                    return;
+                }
+                if (string.IsNullOrEmpty(securityQuestion_answer))
+                {
+                    // await this.DisplayToastAsync("Please Enter your answer", 1500);
+                    await this.DisplayAlert("Warning", "Please Enter your answer", "OK");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(idType))
+                {
+                    // await this.DisplayToastAsync("Please Select a Valid ID", 1500);
+                    await this.DisplayAlert("Warning", "Please Select a Valid ID", "OK");
+                    return;
+                }
+                //if (Imgresult.Source.IsEmpty)
+                //{
+                //   // await this.DisplayToastAsync("Please Upload an Image", 1500);
+                //    await this.DisplayAlert("Warning", "Please Upload an Image", "OK");
+                //    return;
+                //}
+
+
+                customer.CusID = Convert.ToString(CustomerID);
+                customer.CusFirstName = firstName;
+                customer.CusLastName = lastName;
+                customer.CusEmail = email;
+                customer.CusContactNumber = contactNumber;
+                customer.CusAddress = address;
+
+                customer.CusSecurityQuestion = securityQuestion;
+                customer.CusSecurityQuestionAnswer = securityQuestion_answer;
+
+                customer.CusPassword = password;
+                customer.CusBirthOfDate = dateOfBirth;
+                customer.CusIdType = idType;
+                bool Savedata = await customerRepo.Save(customer);
+                if (Savedata)
+                {
+                    //await this.DisplayToastAsync("Data has been Saved!", 1500);
+                    await this.DisplayAlert("Register User", "Registration successfull", "OK");
+                    ClearData();
+                }
+                else
+                {
+                    // await this.DisplayToastAsync("Data cannot be Save!", 1500);
+                    await this.DisplayAlert("Register User", "Registration failed", "OK");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("EMAIL_EXISTS"))
+                {
+                    // await this.DisplayToastAsync("Email already Exist", 1500);
+                    await DisplayAlert("Warning", "Email already exist.", "OK");
+                  
+                }
+                else
+                {
+                    await DisplayAlert("Warning", ex.Message, "OK");
+                }
             }
 
-            var selectedradioButton = ID_Type.Children.OfType<RadioButton>().FirstOrDefault(x => x.IsChecked);
-
-           // var cusID = CustomerID;
-            string firstName = entryField_Firstname.Text;
-            string lastName = entryField_Lastname.Text;
-            string contactNumber = entryField_PhoneNumber.Text;
-            string email = entryField_EmailAddress.Text;
-
-            var dateOfBirth = entryField_DateOfBirth.Date.ToString().Split(" ")[0];
-            string address = entryField_Address.Text;
-            string userName = entryField_Username.Text;
-            string password = entryField_Password.Text;
-
-            string securityQuestion = entryField_SecurityQuestion.SelectedItem.ToString();
-            string securityQuestion_answer = entryField_SecurityQuestionAnswer.Text;
-            //  string idType = radiobutton.Content.ToString();
-            string idType = selectedradioButton.Content.ToString();
-
-            // if(string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(lastName)&& (string.IsNullOrEmpty(contactNumber)) )
-            //{
-            //    // await this.DisplayToastAsync(ex.Message, 1500);
-            //    await this.DisplayToastAsync("Please check and Enter some Data", 2000);
-            //}
-            // if (string.IsNullOrEmpty(firstName))
-            // {
-            //     await this.DisplayToastAsync("Please Enter your First Name", 1500);
-            // }
-            //else if (string.IsNullOrEmpty(lastName))
-            // {
-            //     await this.DisplayToastAsync("Please Enter your Last Name", 1500);
-            // }
-            // else if(string.IsNullOrEmpty(contactNumber))
-            // {
-            //     await this.DisplayToastAsync("Please Enter your Contact Number", 1500);
-            // }
-            // else  if (string.IsNullOrEmpty(email))
-            // {
-            //     await this.DisplayToastAsync("Please Enter your Email", 1500);
-            // }
-
-            // else if (string.IsNullOrEmpty(dateOfBirth))
-            // {
-            //     await this.DisplayToastAsync("Please Enter your Date of Birth", 1500);
-            // }
-            // else if (string.IsNullOrEmpty(address))
-            // {
-            //     await this.DisplayToastAsync("Please Enter your Address", 1500);
-            // }
-            // else if (string.IsNullOrEmpty(userName))
-            // {
-            //     await this.DisplayToastAsync("Please Enter your Username", 1500);
-            // }
-            // else if (string.IsNullOrEmpty(password))
-            // {
-            //     await this.DisplayToastAsync("Please Enter your Password", 1500);
-            // }
-            // else if (string.IsNullOrEmpty(securityQuestion))
-            // {
-            //     await this.DisplayToastAsync("Please Select a Security Question", 1500);
-            // }
-            // else if(string.IsNullOrEmpty(securityQuestion_answer))
-            // {
-            //     await this.DisplayToastAsync("Please Enter your answer", 1500);
-            // }
-            // else if (string.IsNullOrEmpty(securityQuestion_answer))
-            // {
-            //     await this.DisplayToastAsync("Please Enter your answer", 1500);
-            // }
-            // else if(string.IsNullOrEmpty(idType))
-            // {
-            //     await this.DisplayToastAsync("Please Select a Valid ID", 1500);
-            // }
 
 
-
-            customer.CusID = Convert.ToString(CustomerID);
-            customer.CusFirstName = firstName;
-            customer.CusLastName = lastName;
-            customer.CusEmail = email;
-            customer.CusContactNumber = contactNumber;
-            customer.CusAddress = address;
-
-            customer.CusSecurityQuestion = securityQuestion;
-            customer.CusSecurityQuestionAnswer = securityQuestion_answer;
-            customer.CusUsername = userName;
-            customer.CusPassword = password;
-            customer.CusBirthOfDate = dateOfBirth;
-            customer.CusIdType = idType;
-            var Savedata = await customerRepo.Save(customer);
-            if (Savedata)
-            {
-                await this.DisplayToastAsync("Data has been Saved!", 1500);
-                ClearData();
-            }
-            else
-            {
-                await this.DisplayToastAsync("Data cannot be Save!", 1500);
-            }
 
 
             //if(ex.Message.Contains("USERNAME_EXISTS"))
@@ -337,9 +370,9 @@ namespace tubig
             entryField_DateOfBirth.clear();
             
             entryField_Address.Text = string.Empty;
-            entryField_Username.Text = string.Empty;
+            //entryField_Username.Text = string.Empty;
             entryField_Password.Text = string.Empty;
-
+            entryField_ConfirmPassword.Text = string.Empty;
             entryField_SecurityQuestion.Items.Clear();
 
             entryField_SecurityQuestionAnswer.Text = string.Empty;
@@ -370,19 +403,17 @@ namespace tubig
 
             // var customerName = await customerRepo.GetCustomer(Convert.ToString(entryField_Username.Text));
 
-            var customerUserName = await customerRepo.GetCustomerByName(Convert.ToString(entryField_Username.Text));
-            if (customerUserName.Count != 0)
-            {
+            //var customerUserName = await customerRepo.GetCustomerByName(Convert.ToString(entryField_Username.Text));
+            //if (customerUserName.Count != 0)
+            //{
 
-                // entryField_Username.Text = customer.CusFirstName;
-                // this is a Toast method
-                // await this.DependencyService.Get<Toast>().Show("Username Already Exist!");
-                await this.DisplayToastAsync("Username already exist.", 1500);
-            }
-            else
-            {
+               
+            //    await this.DisplayToastAsync("Username already exist.", 1500);
+            //}
+            //else
+            //{
 
-            }
+            //}
 
 
 

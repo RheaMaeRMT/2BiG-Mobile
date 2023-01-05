@@ -8,20 +8,33 @@ using Firebase.Storage;
 using System.Collections.Generic;
 using System.Linq;
 using tubig.FIREBASETHING;
+using System;
+using System.Diagnostics;
+using tubig.DataModel;
+using Firebase.Auth;
+
 namespace tubig.DataModel
 {
 
     public class CustomerRepo
     {
-        FirebaseClient firebaseClient = new FirebaseClient("https://big-system-64b55-default-rtdb.firebaseio.com/");
-
+         FirebaseClient firebaseClient = new FirebaseClient("https://big-system-64b55-default-rtdb.firebaseio.com/");
+      // FirebaseClient firebaseClient = new FirebaseClient("https://tubigcapstone-default-rtdb.firebaseio.com/");
+         string WebAPIkey = "AIzaSyC3EK1x68TgLdB7wIgpQ9bssBU4jnN7EVs";
+       // string WebAPIkey = "AIzaSyDe9vtJNf0_uCehVdDGJ-MuIIJIHpm-cgs"; 
+        FirebaseAuthProvider authProvider;
         CUSTOMER cus = new CUSTOMER();
+        public CustomerRepo()
+        {
+            authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIkey));
+        }
 
         public ICommand SaveToFireBaseCommand { get; }
 
         FirebaseStorage firebaseStorage = new FirebaseStorage("big-system-64b55.appspot.com", new FirebaseStorageOptions
         {
-            ThrowOnCancel = true
+            //rhona link- "big-system-64b55.appspot.com" "gs://tubigcapstone.appspot.com"
+            ThrowOnCancel = true 
         });
         private readonly firebaseThing firebase = new firebaseThing();
         IList<int> list = new List<int>();
@@ -29,10 +42,12 @@ namespace tubig.DataModel
         //save data to database
         public async Task<bool> Save(CUSTOMER customer)
         {
-           var data= await firebaseClient.Child(nameof(CUSTOMER)).PostAsync(JsonConvert.SerializeObject(customer));
+            //var token = await authProvider.CreateUserWithEmailAndPasswordAsync(customer.CusEmail,customer.CusPassword);&& !string.IsNullOrEmpty(token.FirebaseToken);
+            var token = await authProvider.CreateUserWithEmailAndPasswordAsync(customer.CusEmail, customer.CusPassword);
+            var data = await firebaseClient.Child(nameof(CUSTOMER)).PostAsync(JsonConvert.SerializeObject(customer));
 
 
-            if (!string.IsNullOrEmpty(data.Key))
+            if (!string.IsNullOrEmpty(data.Key) && !string.IsNullOrEmpty(token.FirebaseToken))
             {
                 return true;
             }
@@ -108,7 +123,7 @@ namespace tubig.DataModel
                 CusEmail = item.Object.CusEmail,
                 CusBirthOfDate= item.Object.CusBirthOfDate,
                 CusAddress= item.Object.CusAddress,
-                CusUsername= item.Object.CusUsername,
+              
                 CusPassword= item.Object.CusPassword,
                 CusSecurityQuestion= item.Object.CusSecurityQuestion,
                 CusSecurityQuestionAnswer= item.Object.CusSecurityQuestionAnswer,
@@ -133,14 +148,49 @@ namespace tubig.DataModel
                 CusEmail = item.Object.CusEmail,
                 CusBirthOfDate = item.Object.CusBirthOfDate,
                 CusAddress = item.Object.CusAddress,
-                CusUsername = item.Object.CusUsername,
+               
                 CusPassword = item.Object.CusPassword,
                 CusSecurityQuestion = item.Object.CusSecurityQuestion,
                 CusSecurityQuestionAnswer = item.Object.CusSecurityQuestionAnswer,
                 CusID = item.Key
             }).Where(c => c.CusFirstName.ToLower().Contains(name.ToLower())).ToList();
         }
+        //public async Task<List<CUSTOMER>> GetCustomerByEmauil(string email)
         
+        //{
+        //    try
+        //    {
+        //        var allcustomer = await GetAllCustomerData();
+        //        await firebaseClient
+        //        .Child("CUSTOMER")
+        //        .OnceAsync<CUSTOMER>();
+        //        return allcustomer.Where(a => a.CusEmail == email).FirstOrDefault();
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        Debug.WriteLine($"Error:{e}");
+                
+        //        return null;
+        //    }
+               
+            
+          
+            
+               
+            
+        //}
+        public async Task<string> Signin(string email, string password)
+        {
+            //var authProvider
+            //var token = await authProvider.SignInWithEmailAndPasswordAsync(email, password);        
+            var token = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
+            if (!string.IsNullOrEmpty(token.FirebaseToken))
+            {
+                return token.FirebaseToken;
+            }
+            return "";
+        }
 
+        //pubic async Task<bool> CreateAccount
     }
 }

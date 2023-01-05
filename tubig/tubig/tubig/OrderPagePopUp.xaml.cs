@@ -23,13 +23,19 @@ namespace tubig
     {
         public List<StationWaterProduct> AllStationInfo { get; set; }
         public List<WATER_GALLONS> AllGallonProduct { get; set; }
+
+        public List<Product_RefillRepo> allprodrefill { get; set; }
+
+
+
         WATER_ORDER waterOrder = new WATER_ORDER();
         WRSinfo stationinfo = new WRSinfo();
 
         WaterOrderRepo waterorderRepos = new WaterOrderRepo();
-         WaterGallonRepo watergallonRepos = new WaterGallonRepo();
+        WaterGallonRepo watergallonRepos = new WaterGallonRepo();
         Product_RefillRepo productrefill = new Product_RefillRepo();
        // WATER_GALLONS watergallonrepos = new WaterGallonRepo();
+       
         public OrderProductReviewPagePopUp()
         {
             InitializeComponent();
@@ -49,14 +55,13 @@ namespace tubig
             var watergallonproducts = await watergallonRepos.GetAllWaterProduct();
             CollectionViewList_GallonProduct.ItemsSource = watergallonproducts;
 
-            var productRefill = await productrefill.GetAllProductRefill();
-            Picker_ProductType.ItemsSource = productRefill;
+            allprodrefill = new List<Product_RefillRepo>(Product_RefillRepo.Get());
+            Picker_ProductType.ItemsSource = allprodrefill; 
+            //var productRefill = await productrefill.GetAllProductRefill();
+           // Picker_ProductType.ItemsSource = productRefill;
         }
 
-        //void CollectionViewListSelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    UpdateSelectionData(e.PreviousSelection, e.CurrentSelection);
-        //}
+       
 
         void UpdateSelectionData(IEnumerable<object> previousSelectedContact, IEnumerable<object> currentSelectedContact)
         {
@@ -163,14 +168,7 @@ namespace tubig
            // await taskSource.Task;
         }
 
-        //private async void OnLogin(object sender, EventArgs e)
-        //{
-        //    var loadingPage = new LoadingPopupPage();
-        //    await Navigation.PushPopupAsync(loadingPage);
-        //    await Task.Delay(2000);
-        //    await Navigation.RemovePopupPageAsync(loadingPage);
-        //    await Navigation.PushPopupAsync(new LoginSuccessPopupPage());
-        //}
+       
 
         private void OnCloseButtonTapped(object sender, EventArgs e)
         {
@@ -224,23 +222,22 @@ namespace tubig
             //Picker picker = sender as Picker;
             var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
-          
+            PRODUCT_REFILL prodrefill = Picker_ProductType.SelectedItem as PRODUCT_REFILL;
+
 
             //string orderType = picker.SelectedItem.ToString();
-            string orderStatus = "Pending";
+            //string orderStatus = "Pending";
             string orderType = Picker_OrderType.SelectedItem.ToString();
-            if (selectedIndex != -1)
-            {
-                orderType = (string)picker.ItemsSource[selectedIndex];
-            }
+           
             int orderQuantity = Convert.ToInt32( entryField_Quantity.Text);
             int orderBorrowGallons = Convert.ToInt32(entryfield_borrowGallons.Text);
             int orderOwnGallons = Convert.ToInt32(entryfield_ownGallons.Text);
-            string orderProductType = Picker_ProductType.SelectedItem.ToString();
+             string orderProductType = Picker_ProductType.SelectedItem.ToString();
+           // string orderProductType = prodrefill.refillName;
             var orderDate = entryfieldReservationDate.Date.ToString().Split(" ")[0];
             // var storename = stationinfo.storename;
             //waterOrder.OrderFrom_store = storename;
-            waterOrder.OrderStatus = orderStatus;
+           // waterOrder.OrderStatus = orderStatus;
             waterOrder.OrderType = orderType;
             waterOrder.OrderQuantity = orderQuantity;
             waterOrder.OrderBorrowGallons = orderBorrowGallons;

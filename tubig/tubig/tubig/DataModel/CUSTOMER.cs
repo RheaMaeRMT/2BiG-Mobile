@@ -20,8 +20,8 @@ namespace tubig.DataModel
         [Required]
         public string CusAddress { get; set; }
         [Required]
-        public string CusUsername { get; set; }
-        [Required]
+       
+      
         public string CusPassword { get; set; }
         [Required]
         public string CusSecurityQuestion { get; set; }

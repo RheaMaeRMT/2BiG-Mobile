@@ -57,7 +57,7 @@
                 <StackLayout 
                     Margin="5,5,5,5 "
                     BackgroundColor="#F8E2CF"
-                    HeightRequest="1950">
+                    HeightRequest="1850">
                     
                     
                     <!--First Name entry -->
@@ -105,6 +105,7 @@
                         <Label Text="First Name is required" 
                                 Style="{StaticResource ErrorLabel}"
                                x:Name="entryField_Firstname_errorLabel"
+                               IsVisible="false"
                                />
                     </StackLayout>
                     
@@ -150,6 +151,7 @@
                         <Label Text="Last Name is required"                         
                                Style="{StaticResource ErrorLabel}"
                                x:Name="entryField_Lastname_errorLabel"
+                                IsVisible="false"
                               />
                     </StackLayout>
 
@@ -202,6 +204,7 @@
                         <Label Text="Phone Number is required"                         
                                Style="{StaticResource ErrorLabel}"
                                x:Name="entryField_PhoneNumber_errorLabel"
+                               IsVisible="false"
                               />
                     </StackLayout>
 
@@ -258,6 +261,7 @@
                         <Label Text="Email is required"                         
                                Style="{StaticResource ErrorLabel}"
                                x:Name="entryField_EmailAddress_errorLabel"
+                                IsVisible="false"
                               />
                     </StackLayout>
 
@@ -321,6 +325,7 @@
                         <Label Text="Birthdate is required"                         
                                Style="{StaticResource ErrorLabel}"
                                x:Name="entryField_DateOfBirth_errorLabel"
+                                IsVisible="false"
                               />
                     </StackLayout>
 
@@ -394,54 +399,10 @@
                         <Label Text="Address is required"                         
                                Style="{StaticResource ErrorLabel}"
                                x:Name="entryField_Address_errorLabel"
+                                IsVisible="false"
                               />
                     </StackLayout>
                     
-                    <!--Username entry -->
-                    <Frame
-                        BackgroundColor="Transparent" 
-                        Margin="0,3" 
-                        HeightRequest="50" 
-                        HorizontalOptions="Center"
-                        WidthRequest="320" 
-                        Padding="5" 
-                        BorderColor="Black"
-                        CornerRadius="50">
-                        <StackLayout 
-                            Orientation="Horizontal">
-                            <Frame
-                                BackgroundColor="Transparent"
-                                CornerRadius="50" 
-                                HeightRequest="35" 
-                                WidthRequest="35" 
-                                Padding="7" Margin="0"
-                                HorizontalOptions="Start" 
-                                BorderColor="Black">
-                                <Image 
-                                    Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" 
-                                    Aspect="AspectFill" 
-                                    Margin="0" />
-                            </Frame>
-
-                            <Entry 
-                                Placeholder="Username"
-                                TextColor="Black"
-                                HorizontalOptions="FillAndExpand"
-                                Margin="0,0,15,0"
-                                PlaceholderColor="Black"
-                                x:Name="entryField_Username"
-                                Text="{Binding CUSTOMER.CusUsername}"
-                              />
-                        </StackLayout>
-                    </Frame>
-                    <StackLayout BackgroundColor="Transparent"
-                                 Margin="50,-2,0,0">
-                        <Label Text="Username is required"                         
-                               Style="{StaticResource ErrorLabel}"
-                                x:Name="entryField_Username_errorLabel"
-                              />
-                    </StackLayout>
-
                     <!--password entry -->
                     <Frame 
                         BackgroundColor="Transparent" 
@@ -483,7 +444,7 @@
                                 PlaceholderColor="Black" 
                                 x:Name="entryField_Password"
                                 Keyboard="Text" 
-                                IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger2}, 
+                                IsPassword="{Binding Source={x:Reference ShowPasswordActualTriggerPass2}, 
                                  Path=HidePassword}"
                                 TextTransform="None"
                                  Text="{Binding CUSTOMER.CusPassword}"
@@ -501,7 +462,85 @@
                                             <behavior:ShowPasswordTriggerAction 
                                                 ShowIcon="eye_password_new.png"                         
                                                 HideIcon="hide_eye_password_new.png" 
-                                                x:Name="ShowPasswordActualTrigger2"/>
+                                                x:Name="ShowPasswordActualTriggerPass2"/>
+                                        </EventTrigger>
+                                    </ImageButton.Triggers>
+
+                                </ImageButton>
+
+                            </Grid>
+
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout BackgroundColor="Transparent"
+                                 Margin="50,-2,0,0">
+                        <Label Text="Password is required"                         
+                               Style="{StaticResource ErrorLabel}"
+                                x:Name="entryField_Username_errorLabel"
+                                IsVisible="false"
+                              />
+                    </StackLayout>
+
+                    <!--confirm password entry -->
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,3" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center" 
+                        
+                        WidthRequest="320"
+                        Padding="5" 
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="35"
+                                Padding="7" 
+                                Margin="0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/show-password-icon/show-password-icon-7.jpg" 
+                                    Aspect="AspectFill" 
+                                    
+                                    Margin="0" />
+                            </Frame>
+
+                            <Grid
+                                  BackgroundColor="Transparent"
+                                  HorizontalOptions="Start" 
+                                  WidthRequest="257">
+                                <Entry 
+                                Placeholder="Confirm Password"
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,0,0" 
+                                PlaceholderColor="Black" 
+                                x:Name="entryField_ConfirmPassword"
+                                Keyboard="Text" 
+                                IsPassword="{Binding Source={x:Reference ShowPasswordActualTriggerConfirmPass2}, 
+                                 Path=HidePassword}"
+                                TextTransform="None"
+                                 Text="{Binding CUSTOMER.CusPassword}"
+                               />
+                                <ImageButton
+                                    VerticalOptions="Center" 
+                                    Margin="0,0,13,0" 
+                                    HeightRequest="30 "
+                                    HorizontalOptions="End" 
+                                    Source="hide_eye_password_new.png" 
+                                    BackgroundColor="Transparent" 
+                                    CornerRadius="0">
+                                    <ImageButton.Triggers>
+                                        <EventTrigger Event="Clicked">
+                                            <behavior:ShowPasswordTriggerAction 
+                                                ShowIcon="eye_password_new.png"                         
+                                                HideIcon="hide_eye_password_new.png" 
+                                                x:Name="ShowPasswordActualTriggerConfirmPass2"/>
                                         </EventTrigger>
                                     </ImageButton.Triggers>
                                     
@@ -513,9 +552,10 @@
                     </Frame>
                     <StackLayout BackgroundColor="Transparent"
                                  Margin="50,-2,0,0">
-                        <Label Text="Password is required"                         
+                        <Label Text="Confirm Password is required"                         
                                Style="{StaticResource ErrorLabel}"
-                               x:Name="entryField_Password_errorLabel"
+                               x:Name="entryField_Confirmassword_errorLabel"
+                                IsVisible="false"
                               />
                     </StackLayout>
 
@@ -610,12 +650,13 @@
                         <Label Text="Security question is required"                         
                                Style="{StaticResource ErrorLabel}"
                                x:Name="entryField_SecurityQuestion_errorLabel"
+                               IsVisible="false"
                               />
                     </StackLayout>
 
                     <!--answer entry field-->
                     <Frame BackgroundColor="Transparent" 
-                        Margin="0,2,0,0" 
+                        Margin="0,7,0,0" 
                         HeightRequest="50" 
                         HorizontalOptions="Center" 
                         
@@ -654,6 +695,7 @@
                         <Label Text="Answer is required"                         
                                Style="{StaticResource ErrorLabel}"
                                x:Name="entryField_SecurityQuestionAnswer_errorLabel"
+                                  IsVisible="false"
                               />
                     </StackLayout>
 
@@ -740,6 +782,7 @@
                                 <Label Text="ID type is required"                         
                                 Style="{StaticResource ErrorLabel}"
                                 x:Name="ID_Type_errorLabel"       
+                                          IsVisible="false"
                               />
                             </StackLayout>
 
@@ -791,13 +834,14 @@
                         <Label Text="ID image is required"                         
                                Style="{StaticResource ErrorLabel}"
                                x:Name="Imgresult_errorLabel"
+                                  IsVisible="false"
                               />
                     </StackLayout>
 
                     <!--sign-in button-->
-                    <StackLayout VerticalOptions="CenterAndExpand" Margin="0,0,0,0">
+                    <StackLayout VerticalOptions="CenterAndExpand" Margin="0,-20,0,0">
                         <Button
-                            Text="sign in" 
+                            Text="sign up" 
                             TextColor="Black" 
                             BackgroundColor="LightSkyBlue"
                             FontSize="20" 
@@ -807,7 +851,7 @@
                             CornerRadius="40"
                             HorizontalOptions="Center" 
                             WidthRequest="340" 
-                            Margin="0,10,0,0"
+                            Margin="0,-30,0,0"
                             x:Name="signButton"
                             Clicked="signButton_Clicked">
 
