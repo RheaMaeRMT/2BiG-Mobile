@@ -17,7 +17,7 @@ namespace tubig
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RuntestforPopUp : ContentPage
     {
-        private OrderProductReviewPagePopUp _loginPopup;
+        private OrderPagePopUp _loginPopup;
         CancellationTokenSource cts;
         CUSTOMER customer = new CUSTOMER();
         CustomerRepo customerRepos = new CustomerRepo();
@@ -30,7 +30,7 @@ namespace tubig
             PopupNavigation.Instance.Popping += (sender, e) => Debug.WriteLine($"[Popup] Popping: {e.Page.GetType().Name}");
             PopupNavigation.Instance.Popped += (sender, e) => Debug.WriteLine($"[Popup] Popped: {e.Page.GetType().Name}");
 
-            _loginPopup = new OrderProductReviewPagePopUp();
+            _loginPopup = new OrderPagePopUp();
 
             //GetAddressCommand = new Command(async () => await OnGetAddress())
             //     GetAddresscCommand = new Command(async () => await OnGetPosition());

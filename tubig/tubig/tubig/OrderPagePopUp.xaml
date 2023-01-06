@@ -8,7 +8,7 @@
        xmlns:local="clr-namespace:tubig.Control"
     
      xmlns:xyt="http://xamarin.com/schemas/2020/toolkit"
-    x:Class="tubig.OrderProductReviewPagePopUp"
+    x:Class="tubig.OrderPagePopUp"
     xmlns:rg="http://rotorgames.com"
     NavigationPage.HasNavigationBar="False"
    
@@ -862,28 +862,32 @@
                                                 <Image   Source="popup_waterIcon.png"
                                                          Aspect="AspectFill" 
                                                          Margin="0"/>
-                                                <Grid  
+                                               
+                                                
+                                                       
+                                              <Grid  
                                                     BackgroundColor="Transparent" 
                                                     HorizontalOptions="Start" 
                                                     WidthRequest="257">
                                                     <Picker 
-                                                        Title="Product Type"                                
+                                                        Title="Product Type"                          
                                                         TextColor="Black"
-                                                        HorizontalOptions="StartAndExpand"                                                  TitleColor="Black"
+                                                        HorizontalOptions="StartAndExpand"                                           TitleColor="Black"
                                                         FontSize="18"
                                                         WidthRequest="250"
                                                         x:Name="Picker_ProductType"
-                                                        
-                                                        ItemDisplayBinding="{Binding refillName}"
-                                                        >
+                                                        ItemDisplayBinding="{Binding refillName}">
 
-                                                       
+
+
                                                     </Picker>
-                                                  
+
+
+
+
+                                              </Grid>
                                                         
-
-
-                                                </Grid>
+                                                 
 
                                             </StackLayout>
 
@@ -994,6 +998,71 @@
                                            Text="Ratings and Reviews" >
                                     </Label>
                                 </StackLayout>
+
+                                <Frame  BackgroundColor="Transparent" 
+                                            Margin="0,10,10,0" 
+                                            HeightRequest="50" 
+                                            HorizontalOptions="Center"
+                                            WidthRequest="300" 
+                                            Padding="5" 
+                                            BorderColor="Black"
+                                            CornerRadius="10">
+                                    <StackLayout
+                                                Orientation="Horizontal">
+                                        <Image   Source="popup_waterIcon.png"
+                                                         Aspect="AspectFill" 
+                                                         Margin="0"/>
+
+
+
+                                        <Grid  
+                                                    BackgroundColor="Transparent" 
+                                                    HorizontalOptions="Start" 
+                                                    WidthRequest="257">
+                                            <Picker 
+                                                        Title="Product Type"                          
+                                                        TextColor="Black"
+                                                        HorizontalOptions="StartAndExpand"                                           TitleColor="Black"
+                                                        FontSize="18"
+                                                        WidthRequest="250"
+                                                        x:Name="Picker_ProductTypeTest"
+                                                        ItemDisplayBinding="{Binding refillName}">
+
+
+
+                                            </Picker>
+
+
+
+
+                                        </Grid>
+
+
+
+                                    </StackLayout>
+
+                                </Frame>
+
+                                <Frame
+                                             BackgroundColor="#73a9c2"
+                                            Margin="0,30,10,0" 
+                                            HeightRequest="40" 
+                                            HorizontalOptions="Center"
+                                            WidthRequest="200" 
+                                            Padding="5" 
+                                            BorderColor="Black"
+                                            CornerRadius="50"
+                                            HasShadow="True">
+                                    <Button Text="Place order"
+                                                    FontSize="16"
+                                                    TextColor="Black"
+                                                    BackgroundColor="Transparent"
+                                                    TextTransform="None"
+                                                    FontAttributes="Bold"
+                                                    Clicked="Button_Clicked_1"
+                                                    />
+
+                                </Frame>
 
                             </StackLayout>
                                

@@ -19,7 +19,7 @@ using Xamarin.CommunityToolkit.Extensions;
 namespace tubig
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OrderProductReviewPagePopUp : Rg.Plugins.Popup.Pages.PopupPage
+    public partial class OrderPagePopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
         public List<StationWaterProduct> AllStationInfo { get; set; }
         public List<WATER_GALLONS> AllGallonProduct { get; set; }
@@ -36,7 +36,7 @@ namespace tubig
         Product_RefillRepo productrefill = new Product_RefillRepo();
        // WATER_GALLONS watergallonrepos = new WaterGallonRepo();
        
-        public OrderProductReviewPagePopUp()
+        public OrderPagePopUp()
         {
             InitializeComponent();
             //entryfieldReservationDate.IsEnabled = true;
@@ -50,15 +50,16 @@ namespace tubig
            // AllGallonProduct = new List<StationGallonProducts>(StationGallonProducts.Get());
 
            collectionViewListHorizontal.ItemsSource = AllStationInfo;
-          // CollectionViewList_GallonProduct.ItemsSource = AllGallonProduct;
+          //CollectionViewList_GallonProduct.ItemsSource = AllGallonProduct;
 
             var watergallonproducts = await watergallonRepos.GetAllWaterProduct();
             CollectionViewList_GallonProduct.ItemsSource = watergallonproducts;
 
             allprodrefill = new List<Product_RefillRepo>(Product_RefillRepo.Get());
-            Picker_ProductType.ItemsSource = allprodrefill; 
-            //var productRefill = await productrefill.GetAllProductRefill();
-           // Picker_ProductType.ItemsSource = productRefill;
+            // Picker_ProductType.ItemsSource = allprodrefill; 
+            var productRefill = await productrefill.GetAllProductRefill();
+            Picker_ProductType.ItemsSource = productRefill;
+            Picker_ProductTypeTest.ItemsSource = productRefill;
         }
 
        
@@ -220,24 +221,25 @@ namespace tubig
             //string Ordertype= 
             //string ordertype=
             //Picker picker = sender as Picker;
-            var picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
-            PRODUCT_REFILL prodrefill = Picker_ProductType.SelectedItem as PRODUCT_REFILL;
-
-
+           // var picker = (Picker)sender;
+            //int selectedIndex = picker.SelectedIndex;
+             PRODUCT_REFILL prodrefill = Picker_ProductType.SelectedItem as PRODUCT_REFILL;
+          //  Product_RefillRepo prodrefill = Picker_ProductType.SelectedItem as Product_RefillRepo;
+            
             //string orderType = picker.SelectedItem.ToString();
-            //string orderStatus = "Pending";
+            string orderStatus = "Pending";
             string orderType = Picker_OrderType.SelectedItem.ToString();
-           
-            int orderQuantity = Convert.ToInt32( entryField_Quantity.Text);
-            int orderBorrowGallons = Convert.ToInt32(entryfield_borrowGallons.Text);
-            int orderOwnGallons = Convert.ToInt32(entryfield_ownGallons.Text);
-             string orderProductType = Picker_ProductType.SelectedItem.ToString();
-           // string orderProductType = prodrefill.refillName;
+
+            string orderQuantity =  entryField_Quantity.Text;
+            string orderBorrowGallons = entryfield_borrowGallons.Text;
+            string orderOwnGallons =entryfield_ownGallons.Text;
+            // string orderProductType = Picker_ProductType.SelectedItem.ToString();
+            string orderProductType = prodrefill.refillName;
+            
             var orderDate = entryfieldReservationDate.Date.ToString().Split(" ")[0];
             // var storename = stationinfo.storename;
             //waterOrder.OrderFrom_store = storename;
-           // waterOrder.OrderStatus = orderStatus;
+           waterOrder.OrderStatus = orderStatus;
             waterOrder.OrderType = orderType;
             waterOrder.OrderQuantity = orderQuantity;
             waterOrder.OrderBorrowGallons = orderBorrowGallons;
@@ -265,6 +267,8 @@ namespace tubig
             entryField_Quantity.Text = string.Empty;
             entryfield_ownGallons.Text = string.Empty;
             Picker_ProductType.Items.Clear();
+
+
             //entryField_Firstname.Text = string.Empty;
             //entryField_Lastname.Text = string.Empty;
             //entryField_PhoneNumber.Text = string.Empty;
@@ -279,7 +283,7 @@ namespace tubig
 
             //entryField_SecurityQuestionAnswer.Text = string.Empty;
 
-           
+
             //var childs = ID_Type.Children;
             //foreach (var child in childs)
             //{
@@ -288,6 +292,26 @@ namespace tubig
             //}
             //Imgresult.Source = ImageSource.FromFile("");
 
+        }
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            // string or
+            // Product_RefillRepo prodrefill = Picker_ProductTypeTest.SelectedItem as Product_RefillRepo;
+            PRODUCT_REFILL prodrefill = Picker_ProductTypeTest.SelectedItem as PRODUCT_REFILL;
+            string orderproductype = prodrefill.refillName;
+            waterOrder.OrderProductType = orderproductype;
+
+            var SaveData = await waterorderRepos.Save(waterOrder);
+            if (SaveData)
+            {
+                await this.DisplayToastAsync("Data has been Saved!", 1500);
+                ClearData();
+            }
+            else
+            {
+                await this.DisplayToastAsync("Data can not be save!", 1500);
+            }
         }
 
 

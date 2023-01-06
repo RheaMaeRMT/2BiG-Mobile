@@ -8,9 +8,9 @@ namespace tubig.DataModel
     {
         public string OrderFrom_store { get; set; }
         public string OrderType { get; set; }
-        public int  OrderQuantity { get; set; }
-        public int  OrderBorrowGallons { get; set; }
-        public int  OrderOwnGallons { get; set; }
+        public string  OrderQuantity { get; set; }
+        public string OrderBorrowGallons { get; set; }
+        public string OrderOwnGallons { get; set; }
         public string OrderProductType { get; set; }
         public string OrderReservationDate { get; set; }
 

@@ -54,6 +54,8 @@ namespace tubig.DataModel
             return false;
         }
 
+       
+
       //retrieve data to database
       public async Task<List<CUSTOMER>>GetAll()
       {
@@ -192,5 +194,34 @@ namespace tubig.DataModel
         }
 
         //pubic async Task<bool> CreateAccount
+        //public async Task<StudentModel> GetById(string id)
+        //{
+        //    return (await firebaseClient.Child(nameof(StudentModel) + "/" + id).OnceSingleAsync<StudentModel>());
+        //}
+        //public async Task<bool> Update(StudentModel student)
+        //{
+        //    await firebaseClient.Child(nameof(StudentModel) + "/" + student.Id).PutAsync(JsonConvert.SerializeObject(student));
+        //    return true;
+        //}
+
+        //public async Task<bool> Delete(string id)
+        //{
+        //    await firebaseClient.Child(nameof(StudentModel) + "/" + id).DeleteAsync();
+        //    return true;
+        //}
+
+        //public async Task<bool> ResetPassword(string email)
+        //{
+        //    await authProvider.SendPasswordResetEmailAsync(email);
+        //    return true;
+        //}
+
+        //public async Task<string> ChangePassword(string token, string password)
+        //{
+        //    var auth = await authProvider.ChangeUserPassword(token, password);
+        //    return auth.FirebaseToken;
+        //}
+
+
     }
 }

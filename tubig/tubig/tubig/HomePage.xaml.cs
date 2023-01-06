@@ -16,7 +16,7 @@ namespace tubig
     public partial class HomePage : ContentPage
     {
         public List<WRSinfo> AllContacts { get; set; }
-        private OrderProductReviewPagePopUp OrderPageModal;
+        private OrderPagePopUp OrderPageModal;
         public HomePage()
         {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace tubig
             PopupNavigation.Instance.Popping += (sender, e) => Debug.WriteLine($"[Popup] Popping: {e.Page.GetType().Name}");
             PopupNavigation.Instance.Popped += (sender, e) => Debug.WriteLine($"[Popup] Popped: {e.Page.GetType().Name}");
 
-           OrderPageModal = new OrderProductReviewPagePopUp();
+           OrderPageModal = new OrderPagePopUp();
         }
 
         protected override void OnAppearing()
@@ -61,7 +61,7 @@ namespace tubig
             // await Navigation.PushAsync(new OrderProductReviewPagePopUp(stationname.storename)); //1st way
             // await PopupNavigation.Instance.PushAsync(OrderPageModal(stationname.storename));
 
-            var modalpage = new OrderProductReviewPagePopUp();
+            var modalpage = new OrderPagePopUp();
             modalpage.BindingContext = stationname;
             await PopupNavigation.Instance.PushAsync(modalpage);
             
