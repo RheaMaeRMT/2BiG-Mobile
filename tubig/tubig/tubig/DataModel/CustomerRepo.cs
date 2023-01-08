@@ -12,6 +12,7 @@ using System;
 using System.Diagnostics;
 using tubig.DataModel;
 using Firebase.Auth;
+using Firebase.Database.Query;
 
 namespace tubig.DataModel
 {
@@ -44,14 +45,20 @@ namespace tubig.DataModel
         {
             //var token = await authProvider.CreateUserWithEmailAndPasswordAsync(customer.CusEmail,customer.CusPassword);&& !string.IsNullOrEmpty(token.FirebaseToken);
             var token = await authProvider.CreateUserWithEmailAndPasswordAsync(customer.CusEmail, customer.CusPassword);
-            var data = await firebaseClient.Child(nameof(CUSTOMER)).PostAsync(JsonConvert.SerializeObject(customer));
+            // var data = await firebaseClient.Child(nameof(CUSTOMER)).PostAsync(JsonConvert.SerializeObject(customer));
 
+
+            var data = await firebaseClient.Child(nameof(CUSTOMER)).Child("4815").PostAsync(JsonConvert.SerializeObject(customer)); //but when I try this code, pls see the image I attach.
+
+
+            // await firebaseClient.Child(nameof(CUSTOMER)).Child("4815").PutAsync(JsonConvert.SerializeObject(customer));
 
             if (!string.IsNullOrEmpty(data.Key) && !string.IsNullOrEmpty(token.FirebaseToken))
             {
                 return true;
             }
             return false;
+           // return true;
         }
 
        

@@ -57,7 +57,7 @@
                 <StackLayout 
                     Margin="5,5,5,5 "
                     BackgroundColor="#F8E2CF"
-                    HeightRequest="1850">
+                    HeightRequest="1000">
                     
                     
                     <!--First Name entry -->
@@ -108,7 +108,51 @@
                                IsVisible="false"
                                />
                     </StackLayout>
-                    
+                    <!--Middle Name-->
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,3" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center"
+                        WidthRequest="320" 
+                        Padding="5"
+                        BorderColor="Black"
+                        CornerRadius="50">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35"
+                                WidthRequest="35" 
+                                Padding="9" 
+                                Margin="0"
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" 
+                                    Aspect="AspectFill"
+                                    Margin="0" />
+                            </Frame>
+
+                            <Entry 
+                                Placeholder="Middle Name" 
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,15,0" 
+                                PlaceholderColor="Black" 
+                                x:Name="entryField_Middlename"
+                                Text="{Binding CUSTOMER.CusLastName}"/>
+                        </StackLayout>
+                    </Frame>
+                    <!--<StackLayout BackgroundColor="Transparent"
+                                 Margin="50,-2,0,0">
+                        <Label Text="Last Name is required"                         
+                               Style="{StaticResource ErrorLabel}"
+                               x:Name="entryField_Lastname_errorLabel"
+                                IsVisible="false"
+                              />
+                    </StackLayout>-->
                     <!--Last Name entry -->
                     <Frame 
                         BackgroundColor="Transparent" 
@@ -146,14 +190,7 @@
                                 Text="{Binding CUSTOMER.CusLastName}"/>
                         </StackLayout>
                     </Frame>
-                    <StackLayout BackgroundColor="Transparent"
-                                 Margin="50,-2,0,0">
-                        <Label Text="Last Name is required"                         
-                               Style="{StaticResource ErrorLabel}"
-                               x:Name="entryField_Lastname_errorLabel"
-                                IsVisible="false"
-                              />
-                    </StackLayout>
+                   
 
                     <!--Phone Number entry -->
                     <Frame 
@@ -700,7 +737,7 @@
                     </StackLayout>
 
                     
-                    <Frame 
+                    <!--<Frame 
                         BackgroundColor="#0e3663"
                         Margin="0,50" 
                         HeightRequest="32" 
@@ -721,10 +758,10 @@
                                 
                             </Label>
                         </StackLayout>
-                    </Frame>
+                    </Frame>-->
 
                     <!--Valid ID selection-->
-                    <Frame 
+                    <!--<Frame 
                         BackgroundColor="Transparent" 
                         HeightRequest="470" 
                         HorizontalOptions="Center"
@@ -755,14 +792,18 @@
                                 FontSize="18"                           
                                 TextColor="Black"></Label>
 
-                            <StackLayout RadioButtonGroup.GroupName="IDtype" x:Name="ID_Type" >
-                                <RadioButton Content="National ID"/>
-                                <RadioButton Content="Voters ID"/>
-                                <RadioButton Content="Drivers License"/>
-                                <RadioButton Content="PRC ID"/>
-                                <RadioButton Content="Postal ID"/>
+                            <StackLayout RadioButtonGroup.GroupName="IDtype" x:Name="ID_Type" BackgroundColor="Transparent">
+                                <RadioButton Content="National ID" TextColor="Black" />
+                                <RadioButton Content="Voters ID" TextColor="Black"/>
+                                <RadioButton Content="Drivers License"
+                                             TextColor="Black"/>
+                                <RadioButton Content="PRC ID"
+                                             TextColor="Black"/>
+                                <RadioButton Content="Postal ID"
+                                             TextColor="Black"/>
 
-                                <RadioButton Content="Others:"/>
+                                <RadioButton Content="Others:"
+                                             TextColor="Black"/>
                             
                             </StackLayout>
 
@@ -775,7 +816,10 @@
                                 WidthRequest="220">
                                 <Entry 
                                     Placeholder="Please specify.." 
-                                    BackgroundColor="Transparent"   />
+                                    BackgroundColor="Transparent"  
+                                    TextColor="Black"
+                                    PlaceholderColor="Black"
+                                    FontSize="18"/>
                             </StackLayout>
                             <StackLayout BackgroundColor="Transparent"
                                  Margin="0,-8,0,0">
@@ -790,11 +834,11 @@
 
 
                         </StackLayout>
-                    </Frame>
+                    </Frame>-->
                     
 
                     <!--For Image Choosen by the user-->
-                    <StackLayout
+                    <!--<StackLayout
                         BackgroundColor="Transparent"
                         Margin="0,105,0,0" 
                         HorizontalOptions="Center"
@@ -836,10 +880,10 @@
                                x:Name="Imgresult_errorLabel"
                                   IsVisible="false"
                               />
-                    </StackLayout>
+                    </StackLayout>-->
 
                     <!--sign-in button-->
-                    <StackLayout VerticalOptions="CenterAndExpand" Margin="0,-20,0,0">
+                    <StackLayout VerticalOptions="CenterAndExpand" Margin="0,0,0,0">
                         <Button
                             Text="sign up" 
                             TextColor="Black" 
@@ -851,7 +895,7 @@
                             CornerRadius="40"
                             HorizontalOptions="Center" 
                             WidthRequest="340" 
-                            Margin="0,-30,0,0"
+                            Margin="0,0,0,0"
                             x:Name="signButton"
                             Clicked="signButton_Clicked">
 
@@ -864,7 +908,7 @@
                         FontSize="18" 
                         TextColor="Black" 
                         FontAttributes="Bold"
-                        Margin="40,0,40,20"
+                        Margin="40,-30,40,20"
                         HorizontalOptions="CenterAndExpand"
                         x:Name="existingAcc" >
                         <Label.GestureRecognizers>

@@ -15,7 +15,7 @@ namespace tubig
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
-        public List<WRSinfo> AllContacts { get; set; }
+        public List<WRSinfo> AllStationInfo { get; set; }
         private OrderPagePopUp OrderPageModal;
         public HomePage()
         {
@@ -31,9 +31,9 @@ namespace tubig
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            AllContacts = new List<WRSinfo>(WRSinfo.Get());
+            AllStationInfo = new List<WRSinfo>(WRSinfo.Get());
             // collectionViewListHorizontal.ItemsSource = AllContacts;
-            collectionViewListVertical.ItemsSource = AllContacts;
+            collectionViewListVertical.ItemsSource = AllStationInfo;
         }
 
         async private void RefreshView_Refreshing(object sender, EventArgs e)

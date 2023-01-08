@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using tubig.DataModel;
 [assembly: ExportFont("DynaPuff-VariableFont_wdth,wght.ttf", Alias ="DynaPuff")]
 namespace tubig
 {
@@ -22,9 +22,9 @@ namespace tubig
 
 
             //MainPage = new NavigationPage(new RuntestforPopUp());
-
-           // MainPage = new NavigationPage(new AccountSetting());
-          // MainPage = new NavigationPage(new CreateAcc());
+           // CUSTOMER customer = new CUSTOMER();
+          // MainPage = new NavigationPage(new AccountSetting());
+          //MainPage = new NavigationPage(new CreateAcc());
           //  MainPage = new NavigationPage(new MapPage());
            // MainPage = new NavigationPage(new LoginPage());
              MainPage = new NavigationPage(new MainPage());

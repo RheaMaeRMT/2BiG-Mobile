@@ -675,7 +675,7 @@
                                     <StackLayout BackgroundColor="Transparent"
                                                  HeightRequest="600">
                                         
-                                        <!--type of order entryfield-->
+                                        <!--type of delivery entryfield-->
                                         <Frame
                        
                                             BackgroundColor="Transparent" 
@@ -691,7 +691,7 @@
                            
                                                 Orientation="Horizontal">
                                                 <Image 
-                                                    Source="popup_orderIcon.png"
+                                                    Source="finalDeliveryIcon.png"
                                                     Aspect="AspectFill" 
                                                     Margin="0" />
                                                 
@@ -702,12 +702,12 @@
 
                                                     <Picker 
                                 
-                                                        Title="Type of Order"                                                                TitleColor="Black"
+                                                         Title="Delivery Type"                                                        TitleColor="Black"
                                                         TextColor="Black"
                                                         HorizontalOptions="StartAndExpand"                                 
                                                         FontSize="18"
                                                         WidthRequest="250"
-                                                        x:Name="Picker_OrderType"
+                                                        x:Name="Picker_DeliveryType"
                                                         SelectedIndexChanged="PickerMode_SelectedIndexChanged"
                                                        >
                                                         <Picker.Items >
@@ -732,7 +732,61 @@
                                             </StackLayout>
 
                                         </Frame>
-                                        
+
+                                        <!--order type picker-->
+                                        <Frame
+                       
+                                            BackgroundColor="Transparent" 
+                                            Margin="0,10,10,0" 
+                                            HeightRequest="50" 
+                                            HorizontalOptions="Center"
+                                            WidthRequest="300" 
+                                            Padding="5" 
+                                            BorderColor="Black"
+                                            CornerRadius="10" >
+
+                                            <StackLayout
+                           
+                                                Orientation="Horizontal">
+                                                <Image 
+                                                    Source="popup_orderIcon.png"
+                                                    Aspect="AspectFill" 
+                                                    Margin="0" />
+
+                                                <Grid 
+                                                    BackgroundColor="Transparent" 
+                                                    HorizontalOptions="Start" 
+                                                    WidthRequest="257">
+
+                                                    <Picker 
+                                
+                                                         Title="Order Type"                                                        TitleColor="Black"
+                                                        TextColor="Black"
+                                                        HorizontalOptions="StartAndExpand"                                 
+                                                        FontSize="18"
+                                                        WidthRequest="250"
+                                                        x:Name="Picker_OrderType"
+                                                        SelectedIndexChanged="PickerMode_SelectedIndexChanged"
+                                                       >
+                                                        <Picker.Items >
+
+                                                            <x:String>
+                                                                Refill
+                                                            </x:String>
+                                                            <x:String>
+                                                                New Order
+                                                            </x:String>
+                                                         
+                                                        </Picker.Items>
+
+                                                    </Picker>
+
+                                                </Grid>
+
+                                            </StackLayout>
+
+                                        </Frame>
+
                                         <!--Entry field for Quantity-->
                                         <Frame
                                             BackgroundColor="Transparent"
@@ -777,8 +831,8 @@
 
                                         </Frame>
                                         
-                                        <!--Entry field for borrow gallons-->
-                                        <Frame
+                                        <!--Entry field for own gallons-->
+                                        <!--<Frame
                                             BackgroundColor="Transparent"
                                             
                                             Margin="0,10,10,0" 
@@ -800,11 +854,11 @@
                                                     HorizontalOptions="Start" 
                                                     WidthRequest="257">
                                                     <Entry 
-                                                        Placeholder="Borrow Gallons"
+                                                        Placeholder="Own Gallons"
                                                         TextColor="Black" 
                                                         HorizontalOptions="FillAndExpand"
                                                         Margin="0,12,0,0" 
-                                                        PlaceholderColor="Black"                                                           x:Name="entryfield_borrowGallons"
+                                                        PlaceholderColor="Black"                                                           x:Name="entryfield_ownGallons"
                                                         Keyboard="Numeric" />
 
                                                 </Grid>
@@ -812,11 +866,11 @@
 
                                             </StackLayout>
                                             
-                                        </Frame>
+                                        </Frame>-->
                                         
-                                        <!--Entry field for own gallons-->
+                                        <!--Entry field for borrow gallons-->
                                         
-                                        <Frame 
+                                        <!--<Frame 
                                             BackgroundColor="Transparent"
                                             Margin="0,10,10,0" 
                                             HeightRequest="50" 
@@ -835,18 +889,18 @@
                                                     HorizontalOptions="Start" 
                                                     WidthRequest="257">
                                                     <Entry 
-                                                        Placeholder="Own Gallons"
+                                                        Placeholder="Borrow Gallons"
                                                         TextColor="Black" 
                                                         HorizontalOptions="FillAndExpand"
                                                         Margin="0,12,0,0" 
-                                                        PlaceholderColor="Black"                                                             x:Name="entryfield_ownGallons"
+                                                        PlaceholderColor="Black"                                                             x:Name="entryfield_borrowGallons"
                                                         Keyboard="Numeric" />
 
                                                 </Grid>
                                                 
                                             </StackLayout>
                                             
-                                        </Frame>
+                                        </Frame>-->
                                         
                                         <!-- entry fields for type of water-->
                                         <Frame  BackgroundColor="Transparent" 
@@ -913,15 +967,7 @@
                                                     BackgroundColor="Transparent"
                                                     HorizontalOptions="Start" 
                                                     WidthRequest="257">
-                                                    <!--<Entry
-                                                        Placeholder="Reservation Date"
-                                                        TextColor="Black" 
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Margin="0,12,0,0" 
-                                                        PlaceholderColor="Black"                                   
-                                                        Keyboard="Numeric">
-                                                        
-                                                    </Entry>-->
+                                                    
                                                     <local:DatePickerCtrl
                                                         Format="d"
                                                        x:Name="entryfieldReservationDate"
@@ -943,7 +989,7 @@
                                         <!--button for place order-->
                                         <Frame
                                              BackgroundColor="#73a9c2"
-                                            Margin="0,30,10,0" 
+                                            Margin="0,45,10,0" 
                                             HeightRequest="40" 
                                             HorizontalOptions="Center"
                                             WidthRequest="200" 
@@ -1040,12 +1086,21 @@
 
 
                                     </StackLayout>
+                                  
+                                       
+
+                               
 
                                 </Frame>
+                                <!--<Label HorizontalOptions="CenterAndExpand"
+                                           FontSize="18"
+                                           TextColor="Black"
+                                           Text="Note:Estimated delivery time is 20-30 mins."
+                                       x:Name="labelNote"/>-->
 
                                 <Frame
                                              BackgroundColor="#73a9c2"
-                                            Margin="0,30,10,0" 
+                                            Margin="0,50,10,0" 
                                             HeightRequest="40" 
                                             HorizontalOptions="Center"
                                             WidthRequest="200" 
@@ -1060,6 +1115,7 @@
                                                     TextTransform="None"
                                                     FontAttributes="Bold"
                                                     Clicked="Button_Clicked_1"
+                                                      
                                                     />
 
                                 </Frame>

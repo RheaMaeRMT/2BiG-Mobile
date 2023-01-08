@@ -29,7 +29,30 @@ namespace tubig
         {
             InitializeComponent();
             DisplayCurrentLocation();
-          // this.AddMarkerInCurrentLocation();
+            // this.AddMarkerInCurrentLocation();
+
+            Pin storePin = new Pin()
+            {
+                Type=PinType.Place,
+                Label="Dici Station",
+                Address="V Rama, Cebu City,Philippines",
+                Position= new Position(10.29951935851668, 123.88736288926488),
+                
+            };
+            myMap.Pins.Add(storePin);
+            myMap.MoveToRegion(MapSpan.FromCenterAndRadius(storePin.Position, Distance.FromMeters(500)));
+
+            Pin storePin1 = new Pin()
+            {
+                Type = PinType.Place,
+                Label = "Rhea Station",
+                Address = "V Rama, Cebu City,Philippines",
+                Position = new Position(10.2987896, 123.8873807),
+
+            };
+            myMap.Pins.Add(storePin1);
+            myMap.MoveToRegion(MapSpan.FromCenterAndRadius(storePin1.Position, Distance.FromMeters(500)));
+
         }
 
         //private async void AddMarkerInCurrentLocation()

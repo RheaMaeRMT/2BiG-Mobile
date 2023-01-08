@@ -65,7 +65,7 @@
                 <Setter Property="OutlineColor" Value="Transparent" />
                 <Setter Property="BorderColor" Value="Transparent" />
                 <Setter Property="HasShadow" Value="True" />
-                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="BackgroundColor" Value="Red"/>
             </Style>
 
             <Style x:Key="itemsCardViewStackLayoutStyle" TargetType="StackLayout">

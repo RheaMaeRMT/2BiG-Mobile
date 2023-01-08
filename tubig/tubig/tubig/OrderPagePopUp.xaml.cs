@@ -1,37 +1,33 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Rg.Plugins.Popup;
-using Rg.Plugins.Popup.Extensions;
-using Rg.Plugins.Popup.Services;
-
-
-using Rg.Plugins.Popup.Pages;
 using tubig.DataModel;
-
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Diagnostics;
-using Xamarin.CommunityToolkit.Extensions;
 
 namespace tubig
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OrderPagePopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
-        public List<StationWaterProduct> AllStationInfo { get; set; }
-        public List<WATER_GALLONS> AllGallonProduct { get; set; }
-
-        public List<Product_RefillRepo> allprodrefill { get; set; }
+        
+        public List<StationWaterProduct> StationWaterProduct { get; set; }///*water products display static data for now*/
 
 
+        public List<WATER_GALLONS> AllGallonProduct { get; set; }// water gallon products na ge offer sa station, ang datas is from db na
 
-        WATER_ORDER waterOrder = new WATER_ORDER();
+        public List<Product_RefillRepo> allprodrefill { get; set; } //class which naa dire ang pag fetch sa data from db
+
+
+
+        WATER_ORDER waterOrder = new WATER_ORDER(); 
         WRSinfo stationinfo = new WRSinfo();
 
-        WaterOrderRepo waterorderRepos = new WaterOrderRepo();
+        WaterOrderRepo waterorderRepos = new WaterOrderRepo(); 
         WaterGallonRepo watergallonRepos = new WaterGallonRepo();
         Product_RefillRepo productrefill = new Product_RefillRepo();
        // WATER_GALLONS watergallonrepos = new WaterGallonRepo();
@@ -46,20 +42,22 @@ namespace tubig
         async protected override void OnAppearing()
         {
             base.OnAppearing();
-            AllStationInfo = new List<StationWaterProduct>(StationWaterProduct.Get());
+            StationWaterProduct = new List<StationWaterProduct>(DataModel.StationWaterProduct.Get());
            // AllGallonProduct = new List<StationGallonProducts>(StationGallonProducts.Get());
+           collectionViewListHorizontal.ItemsSource = StationWaterProduct;  //ge bind ang data sa allstationinfoo padung ID sa collection view, pag display na sa  station  water info
 
-           collectionViewListHorizontal.ItemsSource = AllStationInfo;
-          //CollectionViewList_GallonProduct.ItemsSource = AllGallonProduct;
+
+            //CollectionViewList_GallonProduct.ItemsSource = AllGallonProduct;
 
             var watergallonproducts = await watergallonRepos.GetAllWaterProduct();
-            CollectionViewList_GallonProduct.ItemsSource = watergallonproducts;
+            CollectionViewList_GallonProduct.ItemsSource = watergallonproducts;// bind ang data sa GetAllWaterProduct(), ge bind sa ID sa collectionview
 
             allprodrefill = new List<Product_RefillRepo>(Product_RefillRepo.Get());
             // Picker_ProductType.ItemsSource = allprodrefill; 
             var productRefill = await productrefill.GetAllProductRefill();
             Picker_ProductType.ItemsSource = productRefill;
             Picker_ProductTypeTest.ItemsSource = productRefill;
+           // labelNote.IsVisible = true;
         }
 
        
@@ -189,7 +187,7 @@ namespace tubig
             await PopupNavigation.Instance.PopAllAsync();
         }
 
-        private void PickerMode_SelectedIndexChanged(object sender, EventArgs e)
+        private async  void PickerMode_SelectedIndexChanged(object sender, EventArgs e)
         {
             //string pickermode = PickerMode.Items;
             //if (pickermode == "Express")
@@ -203,56 +201,61 @@ namespace tubig
             if (selectedItem == "Standard")
             {
                 // entryfieldReservationDate
-                entryfieldReservationDate.IsEnabled = false;
+               // entryfieldReservationDate.IsEnabled = false;
         
             }
             else if (selectedItem == "Reservation")
             {
-                entryfieldReservationDate.IsEnabled = true;
+               // entryfieldReservationDate.IsEnabled = true;
+            }
+            else if (selectedItem == "Express")
+            {
+                await DisplayAlert("Warning", "Note:Estimated delivery time is 20-30 mins.", "OK");
+                
+               // entryfieldReservationDate.IsEnabled = false;
             }
             else
             {
-               entryfieldReservationDate.IsEnabled = false;
+               //entryfieldReservationDate.IsEnabled = false;
             }
         }
 
          async private void Button_Clicked(object sender, EventArgs e)
          {
-            //string Ordertype= 
-            //string ordertype=
-            //Picker picker = sender as Picker;
-           // var picker = (Picker)sender;
-            //int selectedIndex = picker.SelectedIndex;
-             PRODUCT_REFILL prodrefill = Picker_ProductType.SelectedItem as PRODUCT_REFILL;
+            var modalpage = new OrderPagePopUp();
+            
+            PRODUCT_REFILL prodrefill = Picker_ProductType.SelectedItem as PRODUCT_REFILL;
           //  Product_RefillRepo prodrefill = Picker_ProductType.SelectedItem as Product_RefillRepo;
             
-            //string orderType = picker.SelectedItem.ToString();
+          
             string orderStatus = "Pending";
+            string deliveryType = Picker_DeliveryType.SelectedItem.ToString();
             string orderType = Picker_OrderType.SelectedItem.ToString();
-
             string orderQuantity =  entryField_Quantity.Text;
-            string orderBorrowGallons = entryfield_borrowGallons.Text;
-            string orderOwnGallons =entryfield_ownGallons.Text;
-            // string orderProductType = Picker_ProductType.SelectedItem.ToString();
             string orderProductType = prodrefill.refillName;
-            
             var orderDate = entryfieldReservationDate.Date.ToString().Split(" ")[0];
+
+            // string orderProductType = Picker_ProductType.SelectedItem.ToString();
+
+
+
             // var storename = stationinfo.storename;
             //waterOrder.OrderFrom_store = storename;
-           waterOrder.OrderStatus = orderStatus;
-            waterOrder.OrderType = orderType;
-            waterOrder.OrderQuantity = orderQuantity;
-            waterOrder.OrderBorrowGallons = orderBorrowGallons;
-            waterOrder.OrderOwnGallons = orderOwnGallons;
-            waterOrder.OrderProductType = orderProductType;
-            waterOrder.OrderReservationDate = orderDate;
-          
+            //waterOrder.OrderStatus = orderStatus;
+            //waterOrder.DeliveryType = deliveryType;
+            //waterOrder.OrderQuantity = orderQuantity;
+
+            //waterOrder.OrderProductType = orderProductType;
+            //waterOrder.OrderReservationDate = orderDate;
+
             //var Savedata = await customerRepo.Save(waterOrder);
             var SaveData = await waterorderRepos.Save(waterOrder);
             if (SaveData)
             {
                 await this.DisplayToastAsync("Data has been Saved!", 1500);
                 ClearData();
+
+               // await Navigation.PopAsync(modalpage);
             }
             else
             {
@@ -262,35 +265,13 @@ namespace tubig
          }
         public void ClearData()
         {
-            Picker_OrderType.Items.Clear();
-            entryfield_borrowGallons.Text = string.Empty;
-            entryField_Quantity.Text = string.Empty;
-            entryfield_ownGallons.Text = string.Empty;
-            Picker_ProductType.Items.Clear();
 
+            PRODUCT_REFILL prodrefill = Picker_ProductType.SelectedItem as PRODUCT_REFILL;
+           // Picker_DeliveryType.Items.Clear();
+           
 
-            //entryField_Firstname.Text = string.Empty;
-            //entryField_Lastname.Text = string.Empty;
-            //entryField_PhoneNumber.Text = string.Empty;
-            //entryField_EmailAddress.Text = string.Empty;
-
-
-            //entryField_Address.Text = string.Empty;
-            //entryField_Username.Text = string.Empty;
-            //entryField_Password.Text = string.Empty;
-
-            //entryField_SecurityQuestion.Items.Clear();
-
-            //entryField_SecurityQuestionAnswer.Text = string.Empty;
-
-
-            //var childs = ID_Type.Children;
-            //foreach (var child in childs)
-            //{
-            //    RadioButton radiobutton = child as RadioButton;
-            //    radiobutton.IsChecked = false;
-            //}
-            //Imgresult.Source = ImageSource.FromFile("");
+            // Picker_ProductType.Items.Clear();
+           
 
         }
 

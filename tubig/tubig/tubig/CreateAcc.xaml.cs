@@ -88,12 +88,12 @@ namespace tubig
                 if (file == null) { return; }
 
 
-                Imgresult.Source = ImageSource.FromStream(() =>
-                {
+                //Imgresult.Source = ImageSource.FromStream(() =>
+                //{
 
-                    var imageStream = file.GetStream();
-                    return imageStream;
-                });
+                //    var imageStream = file.GetStream();
+                //    return imageStream;
+                //});
             }
             catch (Exception ex)
             {
@@ -194,10 +194,11 @@ namespace tubig
             int CustomerID = randomID.Next(1, 10000);
             try
             {
-                var selectedradioButton = ID_Type.Children.OfType<RadioButton>().FirstOrDefault(x => x.IsChecked);
+                //var selectedradioButton = ID_Type.Children.OfType<RadioButton>().FirstOrDefault(x => x.IsChecked);
 
                 string firstName = entryField_Firstname.Text;
                 string lastName = entryField_Lastname.Text;
+                string middlename = entryField_Middlename.Text;
                 string contactNumber = entryField_PhoneNumber.Text;
                 string email = entryField_EmailAddress.Text;
                 var dateOfBirth = entryField_DateOfBirth.Date.ToString().Split(" ")[0];
@@ -206,7 +207,7 @@ namespace tubig
                 string confirmpassword = entryField_ConfirmPassword.Text;
                 string securityQuestion = entryField_SecurityQuestion.SelectedItem.ToString();
                 string securityQuestion_answer = entryField_SecurityQuestionAnswer.Text;
-                string idType = selectedradioButton.Content.ToString();
+               // string idType = selectedradioButton.Content.ToString();
                 if (file != null)
                 {
                     string image = await customerRepo.Upload(file.GetStream(), Path.GetFileName(file.Path));
@@ -223,6 +224,11 @@ namespace tubig
                 {
                     // await this.DisplayToastAsync("Please Enter your Last Name", 1500);
                     await this.DisplayAlert("Warning", "Please Enter your Last Name", "OK");
+                    return;
+                }
+                if (string.IsNullOrEmpty(middlename))
+                {
+                    await this.DisplayAlert("Warning", "Please Enter your Middle Name", "OK");
                     return;
                 }
                 if (string.IsNullOrEmpty(contactNumber))
@@ -282,23 +288,13 @@ namespace tubig
                     return;
                 }
 
-                if (string.IsNullOrEmpty(idType))
-                {
-                    // await this.DisplayToastAsync("Please Select a Valid ID", 1500);
-                    await this.DisplayAlert("Warning", "Please Select a Valid ID", "OK");
-                    return;
-                }
-                //if (Imgresult.Source.IsEmpty)
-                //{
-                //   // await this.DisplayToastAsync("Please Upload an Image", 1500);
-                //    await this.DisplayAlert("Warning", "Please Upload an Image", "OK");
-                //    return;
-                //}
-
+             
+             
 
                 customer.CusID = Convert.ToString(CustomerID);
                 customer.CusFirstName = firstName;
                 customer.CusLastName = lastName;
+                customer.CusMiddleName = middlename;
                 customer.CusEmail = email;
                 customer.CusContactNumber = contactNumber;
                 customer.CusAddress = address;
@@ -308,7 +304,7 @@ namespace tubig
 
                 customer.CusPassword = password;
                 customer.CusBirthOfDate = dateOfBirth;
-                customer.CusIdType = idType;
+               
                 bool Savedata = await customerRepo.Save(customer);
                 if (Savedata)
                 {
@@ -364,6 +360,7 @@ namespace tubig
         {
             entryField_Firstname.Text = string.Empty;
             entryField_Lastname.Text = string.Empty;
+            entryField_Middlename.Text = string.Empty;
             entryField_PhoneNumber.Text = string.Empty;
             entryField_EmailAddress.Text = string.Empty;
 
@@ -378,13 +375,13 @@ namespace tubig
             entryField_SecurityQuestionAnswer.Text = string.Empty;
 
             //ID_Type.Children.Clear();
-            var childs = ID_Type.Children;
-            foreach(var child in childs)
-            {
-                RadioButton radiobutton = child as RadioButton;
-                radiobutton.IsChecked = false;
-            }
-            Imgresult.Source = ImageSource.FromFile("");
+            //var childs = ID_Type.Children;
+            //foreach(var child in childs)
+            //{
+            //    RadioButton radiobutton = child as RadioButton;
+            //    radiobutton.IsChecked = false;
+            //}
+            //Imgresult.Source = ImageSource.FromFile("");
 
         }
 

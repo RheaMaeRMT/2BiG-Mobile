@@ -12,6 +12,8 @@ namespace tubig.DataModel
         [Required]
         public string CusLastName { get; set; }
         [Required]
+
+        public string CusMiddleName { get; set; }
         public string CusContactNumber { get; set; }
         [Required]
         public string CusEmail { get; set; }
