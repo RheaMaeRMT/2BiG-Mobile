@@ -13,6 +13,7 @@ using System.Diagnostics;
 using tubig.DataModel;
 using Firebase.Auth;
 using Firebase.Database.Query;
+using System.Linq;
 
 namespace tubig.DataModel
 {
@@ -45,15 +46,17 @@ namespace tubig.DataModel
         {
             //var token = await authProvider.CreateUserWithEmailAndPasswordAsync(customer.CusEmail,customer.CusPassword);&& !string.IsNullOrEmpty(token.FirebaseToken);
             var token = await authProvider.CreateUserWithEmailAndPasswordAsync(customer.CusEmail, customer.CusPassword);
-            // var data = await firebaseClient.Child(nameof(CUSTOMER)).PostAsync(JsonConvert.SerializeObject(customer));
+            var data = await firebaseClient.Child(nameof(CUSTOMER)).PostAsync(JsonConvert.SerializeObject(customer));
 
 
-            var data = await firebaseClient.Child(nameof(CUSTOMER)).Child("4815").PostAsync(JsonConvert.SerializeObject(customer)); //but when I try this code, pls see the image I attach.
-
-
+          // var data = await firebaseClient.Child(nameof(CUSTOMER)).Child("4815").PostAsync(JsonConvert.SerializeObject(customer)); //but when I try this code, pls see the image I attach.
+           //var result= firebaseClient.
+            
             // await firebaseClient.Child(nameof(CUSTOMER)).Child("4815").PutAsync(JsonConvert.SerializeObject(customer));
+            //  await firebaseClient  .Child(nameof(CUSTOMER).
 
-            if (!string.IsNullOrEmpty(data.Key) && !string.IsNullOrEmpty(token.FirebaseToken))
+
+           if(!string.IsNullOrEmpty(data.Key)&& !string.IsNullOrEmpty(token.FirebaseToken))
             {
                 return true;
             }
@@ -77,7 +80,7 @@ namespace tubig.DataModel
                 CusFirstName = item.Object.CusFirstName,
                 CusLastName = item.Object.CusLastName,
                 CusValiIdImage = item.Object.CusValiIdImage,
-                CusID =item.Key
+              //  CusID =item.Key
             }).ToList();
       }
 
@@ -136,7 +139,7 @@ namespace tubig.DataModel
                 CusPassword= item.Object.CusPassword,
                 CusSecurityQuestion= item.Object.CusSecurityQuestion,
                 CusSecurityQuestionAnswer= item.Object.CusSecurityQuestionAnswer,
-                CusID=item.Key
+               // CusID=item.Key
             }).ToList();
         }
         //public async Task<List<CUSTOMER>> GetCustomerByUsernameAndPassword(string username)
@@ -161,33 +164,37 @@ namespace tubig.DataModel
                 CusPassword = item.Object.CusPassword,
                 CusSecurityQuestion = item.Object.CusSecurityQuestion,
                 CusSecurityQuestionAnswer = item.Object.CusSecurityQuestionAnswer,
-                CusID = item.Key
+                CusID = Guid.NewGuid()
             }).Where(c => c.CusFirstName.ToLower().Contains(name.ToLower())).ToList();
         }
-        //public async Task<List<CUSTOMER>> GetCustomerByEmauil(string email)
-        
-        //{
-        //    try
-        //    {
-        //        var allcustomer = await GetAllCustomerData();
-        //        await firebaseClient
-        //        .Child("CUSTOMER")
-        //        .OnceAsync<CUSTOMER>();
-        //        return allcustomer.Where(a => a.CusEmail == email).FirstOrDefault();
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        Debug.WriteLine($"Error:{e}");
-                
-        //        return null;
-        //    }
-               
-            
+        public async Task<CUSTOMER> GetCustomerByEmail(string email,string password)
+
+        {
+
+
+            var allcustomer = await GetAllCustomerData();
+            await firebaseClient
+            .Child("CUSTOMER")
+            .OnceAsync<CUSTOMER>();
+            return allcustomer.Where(a => a.CusEmail == email && a.CusPassword == password).FirstOrDefault();
+
+
+
+            //var allStudent = await GetAllStudent();
+            //await firebase
+            //  .Child("Student")
+            //  .OnceAsync<Student>();
+            //return allStudent.Where(a => a.Idno == id && a.Password == password).FirstOrDefault();
+
+            //    return null;
+            //}
+
+        }
+
+
+
+
           
-            
-               
-            
-        //}
         public async Task<string> Signin(string email, string password)
         {
             //var authProvider
@@ -205,11 +212,12 @@ namespace tubig.DataModel
         //{
         //    return (await firebaseClient.Child(nameof(StudentModel) + "/" + id).OnceSingleAsync<StudentModel>());
         //}
-        //public async Task<bool> Update(StudentModel student)
-        //{
-        //    await firebaseClient.Child(nameof(StudentModel) + "/" + student.Id).PutAsync(JsonConvert.SerializeObject(student));
-        //    return true;
-        //}
+        public async Task<bool> Update(CUSTOMER customer)
+        {
+
+            await firebaseClient.Child(nameof(CUSTOMER) + "/" + customer.CusID).PutAsync(JsonConvert.SerializeObject(customer));
+            return true;
+        }
 
         //public async Task<bool> Delete(string id)
         //{

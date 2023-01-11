@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              x:Class="tubig.AccountSetting"
+             xmlns:local="clr-namespace:tubig.Control"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout BackgroundColor="WhiteSmoke">
@@ -15,16 +16,26 @@
                     HorizontalOptions="CenterAndExpand"
                     Margin="0,10,0,0"
                     BackgroundColor="Transparent"
-                    BorderColor="Red">
-                    <Image Source="logo_dic.png"
+                    BorderColor="LightSkyBlue"
+                    HasShadow="True"
+                    CornerRadius="7">
+                    <Image Source="account_circle.png"
                            Aspect="AspectFill"
                            HeightRequest="100"
-                           WidthRequest="100"/>
+                           WidthRequest="100"
+                           >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+
+
+                        </Image.GestureRecognizers>
+                    </Image>
                 </Frame>
                 <StackLayout BackgroundColor="Transparent">
-                    <Label Text="Jeahael Suhot" 
+                    <Label Text="" 
                            FontSize="22" 
-                           HorizontalOptions="Center" TextColor="Black"/>
+                           HorizontalOptions="Center" TextColor="Black"
+                           x:Name="labelShowname"/>
                 </StackLayout>
 
             </StackLayout>
@@ -41,23 +52,62 @@
 
                 </StackLayout>
                 <ScrollView BackgroundColor="Transparent">
-                    <!--display for full name-->
-                    <StackLayout HeightRequest="500">
+                    <!--display for first name-->
+                    <StackLayout HeightRequest="670">
                         <StackLayout
                     WidthRequest="360"
                     BackgroundColor="Transparent"
                     HorizontalOptions="CenterAndExpand"
                     Margin="0,0,0,0">
                             <inputLayout:SfTextInputLayout
-                              Hint="Full Name" 
+                              Hint="First Name" 
                               ContainerType="Outlined"
                        >
                                 <Entry Text="" 
                                  HeightRequest="60"
-                                       x:Name="entryfieldFullname"/>
+                                       x:Name="entryfieldFirstname"
+                                       />
 
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
+
+                        <!--display for middle name-->
+                        <StackLayout
+                    WidthRequest="360"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="CenterAndExpand"
+                    Margin="0,-10,0,0">
+                            <inputLayout:SfTextInputLayout
+                              Hint="Middle Name" 
+                              ContainerType="Outlined"
+                       >
+                                <Entry Text="" 
+                                 HeightRequest="60"
+                                       x:Name="entryfieldMiddlename"
+                                       />
+
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+
+                        <!--display for last name-->
+                        <StackLayout
+                    WidthRequest="360"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="CenterAndExpand"
+                    Margin="0,-5,0,0">
+                            <inputLayout:SfTextInputLayout
+                              Hint="Last Name" 
+                              ContainerType="Outlined"
+                       >
+                                <Entry Text="" 
+                                 HeightRequest="60"
+                                       x:Name="entryfieldLastname"
+                                       />
+
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
 
                         <!--display for contact number-->
                         <StackLayout
@@ -69,7 +119,7 @@
                               Hint="Contact Number" 
                               ContainerType="Outlined"
                        >
-                                <Entry Text="" 
+                                <Entry Text="{Binding CusContactNumber}" 
                                HeightRequest="60"
                                         x:Name="entryfieldNumber"/>
 
@@ -93,19 +143,70 @@
                         </StackLayout>
 
                         <!--display for Address-->
-                        <StackLayout
-                    WidthRequest="360"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="CenterAndExpand"
-                    Margin="0,-10,0,0">
-                            <inputLayout:SfTextInputLayout
-                     Hint="Address" 
-                     ContainerType="Outlined"
+                        <Frame
+                        BackgroundColor="Transparent"
+                        Margin="0,8,0,30"
+                        HeightRequest="50" 
+                        HorizontalOptions="Center"
+                        WidthRequest="355" Padding="5"
+                        BorderColor="Transparent" 
+                        >
+                            <StackLayout 
+                            Orientation="Horizontal"
+                                BackgroundColor="Transparent"
+                                >
+                                <Grid BackgroundColor="Transparent"
+                                HorizontalOptions="Start"
+                                WidthRequest="355"
+                                      >
+                                    <inputLayout:SfTextInputLayout
+                                Hint="Address" 
+                                ContainerType="Outlined"
+                                        BackgroundColor="Transparent"
+                                        Margin="-5,-11,0,0"
+                                        HeightRequest="100"
                        >
-                                <Entry Text="" 
-                               HeightRequest="60"/>
-                            </inputLayout:SfTextInputLayout>
-                        </StackLayout>
+                                        <Entry 
+                                   
+                                    TextColor="Black"
+                                    HorizontalOptions="FillAndExpand" 
+                                    Margin="0,0,10,0" 
+                                    PlaceholderColor="Black" 
+                                    IsEnabled="False"
+                                    x:Name="entryField_Address"
+                                     HeightRequest="70"
+                                    >
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="Disabled">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="TextColor" Value="black" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            
+                                        </Entry>
+                                        
+                                    </inputLayout:SfTextInputLayout>
+                                    <ImageButton 
+                                    VerticalOptions="Center" 
+                                    Margin="0,10,13,0"
+                                    HeightRequest="30 "
+                                    HorizontalOptions="End" 
+                                    Clicked="update_AddressImageButton_Clicked"
+                                        x:Name="update_AddressImageButton"
+                                    Source="showlocation.png" 
+                                    BackgroundColor="Transparent" 
+                                    CornerRadius="0">
+
+                                    </ImageButton>
+
+                                </Grid>
+
+
+                            </StackLayout>
+                        </Frame>
 
                         <!--display for date of birth-->
                         <StackLayout
@@ -120,7 +221,7 @@
                        >
                                 <Entry Text="" 
                                HeightRequest="60"
-                                        x:Name="entryfieldDOB"/>
+                                       x:Name="entryfieldDOB"/>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
@@ -140,7 +241,7 @@
                             WidthRequest="250" 
                             Margin="0,0,0,0"
                             x:Name="SaveButton"
-                            Clicked="SaveButton_Clicked" 
+                            Clicked="UpdateButton_Clicked" 
                            
                             >
 

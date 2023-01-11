@@ -7,58 +7,55 @@ using System.Threading.Tasks;
 
 namespace tubig.DataModel
 {
-   public  class Product_RefillRepo
+   public  class PRODUCTREPO
     {
         FirebaseClient firebaseClient = new FirebaseClient("https://big-system-64b55-default-rtdb.firebaseio.com/");
 
-        PRODUCT_REFILL productRefill = new PRODUCT_REFILL();
+        PRODUCT stationproduct = new PRODUCT();
+        
 
-        public async Task<List<PRODUCT_REFILL>> GetAllProductRefill()
+        public async Task<List<PRODUCT>> GetAllPRODUCTData()
         {
             return 
                 (await firebaseClient.Child
-                (nameof(PRODUCT_REFILL))
-                .OnceAsync<PRODUCT_REFILL>()).Select(item => new PRODUCT_REFILL
+                (nameof(PRODUCT))
+                .OnceAsync<PRODUCT>()).Select(item => new PRODUCT
             {
-                
-              DeliveryPrice=item.Object.DeliveryPrice,
-              PickUp_Price=item.Object.PickUp_Price,
-              gallonType=item.Object.gallonType,
-              refillName=item.Object.refillName,
-              waterType=item.Object.waterType,
-              refill_id=item.Object.refill_id
 
-            }).ToList();
+            
+              productPrice=item.Object.productPrice,
+              productSize=item.Object.productSize,
+              productType=item.Object.productType,
+              PhotoUrl=item.Object.PhotoUrl,
+              productId =item.Key
+
+                }).ToList();
         }
 
-        public async Task<PRODUCT_REFILL> GetProduct(int refill_id)
+        public async Task<PRODUCT> GetProduct(string refill_id)
         {
-            var allproductWater = await GetAllProductRefill();
+            var allproductWater = await GetAllPRODUCTData();
             await firebaseClient
               .Child("PRODUCT_REFILL")
-              .OnceAsync<PRODUCT_REFILL>();
-            return allproductWater.Where(a => a.refill_id == refill_id).FirstOrDefault();
+              .OnceAsync<PRODUCT>();
+            return allproductWater.Where(a => a.productId == refill_id).FirstOrDefault();
         }
 
-        public static IEnumerable<Product_RefillRepo> Get()
+        public static IEnumerable<PRODUCTREPO> Get()
         {
-            return new List<Product_RefillRepo>
+            return new List<PRODUCTREPO>
             {
-                new Product_RefillRepo()
+                new PRODUCTREPO()
                 {
                    refill_id=1,
-                   refillName="alkaline refill slim gallon"
+                   PhotoUrl="alkaline_raw.png"
                 },
-                new Product_RefillRepo()
+                new PRODUCTREPO()
                 {
                     refill_id=2,
-                   refillName="distilled water refill"
+                   PhotoUrl="mineral_raw.png"
                 },
-                 new Product_RefillRepo()
-                {
-                   refill_id=3,
-                   refillName="distilled round small refill"
-                },
+                 
                 //new StationWaterProduct()
                 //{   UserId="1",
 
@@ -127,5 +124,7 @@ namespace tubig.DataModel
 
         public int refill_id { get; set; }
         public string waterType { get; set; }
+
+        public string PhotoUrl { get; set; }
     }
 }

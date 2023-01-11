@@ -15,38 +15,7 @@
     AndroidTalkbackAccessibilityWorkaround="True">
     <rg:PopupPage.Resources>
         <ResourceDictionary>
-            <!--<ControlTemplate
-                x:Key="TabItemTemplate">
-                <Grid
-                    RowSpacing="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    --><!--<Image
-                        Grid.Row="0"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        WidthRequest="24"
-                        HeightRequest="24"
-                        Margin="6"
-                        Source="{TemplateBinding CurrentIcon}" />-->
-                    <!--set ` TextTransform="Lowercase"` for Label here
-                    
-                   
-                       
-                        TextColor="{TemplateBinding CurrentTextColor}"
-                    
-                    --><!--
-                    <Label
-                       
-                          Grid.Row="1"
-                        HorizontalOptions="Center"
-                       
-                        Text="{TemplateBinding Text}"
-                         TextTransform="Default"/>
-                </Grid>
-            </ControlTemplate>-->
+          
             
             
             <!--Water product label stacklayout code style start here-->
@@ -123,7 +92,7 @@
 
                 <Setter
                     Property="Margin"
-                    Value="0,0,0,0"/>
+                    Value="5,0,0,0"/>
             </Style>
             <!--Gallons Label Stacklayout code end here!-->
 
@@ -133,7 +102,7 @@
             <Style x:Key="ProductNameLabel" TargetType="Label">
                 <Setter 
                     Property="FontSize" 
-                    Value="16" />
+                    Value="20" />
                 <Setter 
                     Property="FontAttributes" 
                     Value="Bold" />
@@ -150,7 +119,7 @@
             <Style x:Key="PriceStyle" TargetType="Label">
                 <Setter
                     Property="FontSize"
-                    Value="15"/>
+                    Value="18"/>
                 <Setter 
                     Property="TextColor" 
                     Value="Black" />
@@ -262,7 +231,7 @@
                     Value="100"/>
                 <Setter 
                     Property="HeightRequest" 
-                    Value="150"/>
+                    Value="190"/>
 
                 <Setter
                     Property="BackgroundColor"
@@ -297,10 +266,10 @@
                     Value="True" />
                 <Setter 
                     Property="WidthRequest" 
-                    Value="110"/>
+                    Value="140"/>
                 <Setter
                     Property="HeightRequest" 
-                    Value="155"/>
+                    Value="190"/>
                 <Setter 
                     Property="BackgroundColor" 
                     Value="Transparent"/>
@@ -363,7 +332,7 @@
 
                 <Setter
                     Property="HeightRequest"
-                    Value="150"/>
+                    Value="200"/>
 
                 <Setter
                     Property="Margin"
@@ -389,7 +358,7 @@
 
                 <Setter
                     Property="HeightRequest"
-                    Value="150"/>
+                    Value="155"/>
 
                 <Setter
                     Property="Margin"
@@ -526,7 +495,7 @@
                                 <StackLayout>
                                     <StackLayout Style="{StaticResource WaterProdLabelStacklayout}" >
                                         <Label Style="{StaticResource WaterProductLabel}"
-                                           Text="Water Products" >
+                                           Text=" Products" >
                                         </Label>
                                     </StackLayout>
                                     <Frame 
@@ -566,11 +535,15 @@
                                                                 <StackLayout 
                                                                     Style="{StaticResource detailsStackLayout}">
                                                                     <Label 
-                                                                            Text="{Binding ProdDescription}" 
+                                                                            Text="{Binding productType}" 
                                                                     Style="{StaticResource ProductNameLabel}"
                                                                              />
-                                                                    <Label Text="{Binding WaterPrice}"
+                                                                    <Label Text="{Binding productSize}"
                                                                        Style="{StaticResource PriceStyle}"/>
+                                                                    <Label Text="{Binding StringFormat='₱'}  "
+                                                                           x:Name="labelProductPrice"
+                                                                           Style="{StaticResource PriceStyle}"/>
+                                                                    
                                                                 </StackLayout>
                                                             </StackLayout>
                                                         </Frame>
@@ -582,12 +555,12 @@
                                     </Frame>
 
                                     <!--Gallons Product-->
-                                    <StackLayout Style="{StaticResource GallonLabelStacklayout}">
+                                    <!--<StackLayout Style="{StaticResource GallonLabelStacklayout}">
                                         <Label Style="{StaticResource WaterProductLabel}"
-                                           Text="Gallons" >
+                                           Text="Reviews" >
                                         </Label>
-                                    </StackLayout>
-                                    <Frame Style="{StaticResource FrameCollecionViewGallonProduct}">
+                                    </StackLayout>-->
+                                    <!-- <Frame Style="{StaticResource FrameCollecionViewGallonProduct}">
                                         <CollectionView  
                                             x:Name="CollectionViewList_GallonProduct"
                                             HeightRequest="250" 
@@ -640,7 +613,7 @@
                                             </CollectionView.ItemTemplate>
 
                                         </CollectionView>
-                                    </Frame>
+                                    </Frame>-->
                                 </StackLayout>
                             </ScrollView>
 
@@ -708,22 +681,11 @@
                                                         FontSize="18"
                                                         WidthRequest="250"
                                                         x:Name="Picker_DeliveryType"
-                                                        SelectedIndexChanged="PickerMode_SelectedIndexChanged"
+                                                                
+                                                        ItemDisplayBinding="{Binding deliveryType}"
+                                                        SelectedIndexChanged="Picker_DeliveryType_SelectedIndexChanged"
                                                        >
-                                                        <Picker.Items >
-
-                                                            <x:String>
-                                                               Standard
-                                                            </x:String>
-                                                            <x:String>
-                                                               Reservation
-                                                            </x:String>
-
-                                                            <x:String>
-                                                               Express
-                                                            </x:String>
-
-                                                        </Picker.Items>
+                                                       
 
                                                     </Picker>
                                                    
@@ -732,8 +694,10 @@
                                             </StackLayout>
 
                                         </Frame>
+                                       
 
                                         <!--order type picker-->
+                                        
                                         <Frame
                        
                                             BackgroundColor="Transparent" 
@@ -765,8 +729,7 @@
                                                         HorizontalOptions="StartAndExpand"                                 
                                                         FontSize="18"
                                                         WidthRequest="250"
-                                                        x:Name="Picker_OrderType"
-                                                        SelectedIndexChanged="PickerMode_SelectedIndexChanged"
+                                                        x:Name="Picker_OrderType"                                           
                                                        >
                                                         <Picker.Items >
 
@@ -787,122 +750,10 @@
 
                                         </Frame>
 
-                                        <!--Entry field for Quantity-->
-                                        <Frame
-                                            BackgroundColor="Transparent"
-                                            
-                                            Margin="0,10,10,0" 
-                                            HeightRequest="50" 
-                                            HorizontalOptions="Center"
-                                            WidthRequest="440" 
-                                            Padding="5" 
-                                            BorderColor="Black"
-                                            CornerRadius="10" >
-                                            <StackLayout
-                           
-                                                Orientation="Horizontal">
-                                              
-                                                    <Image 
-                                                    
-                                                    Source="popup_quantityIcon.png"                              
-                                                    Aspect="AspectFill" 
-                                                    Margin="0" />
-                                               
-                                                
-                                                <Grid 
-                                                    BackgroundColor="Transparent"
-                                                    HorizontalOptions="Start" 
-                                                    WidthRequest="257">
-
-                                                    <Entry 
-                                                        Placeholder="Quantity"
-                                                        TextColor="Black" 
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Margin="0,12,0,0" 
-                                                        PlaceholderColor="Black"                                                           WidthRequest="150"
-                                                        Keyboard="Numeric" 
-                                                        x:Name="entryField_Quantity"
-                                                              />
-                                 
-                         
-                                                </Grid>
-
-                                            </StackLayout>
-
-                                        </Frame>
+                                       
+                                   
                                         
-                                        <!--Entry field for own gallons-->
-                                        <!--<Frame
-                                            BackgroundColor="Transparent"
-                                            
-                                            Margin="0,10,10,0" 
-                                            HeightRequest="50" 
-                                            HorizontalOptions="Center"
-                                            WidthRequest="420" 
-                                            Padding="5" 
-                                            BorderColor="Black"
-                                            CornerRadius="10"
-                                            >
-                                            <StackLayout
-                                                Orientation="Horizontal">
-                                                <Image 
-                                                    Source="popup_gallonIcon.png"                              
-                                                    Aspect="AspectFill" 
-                                                    Margin="0"/>
-                                                <Grid 
-                                                    BackgroundColor="Transparent"
-                                                    HorizontalOptions="Start" 
-                                                    WidthRequest="257">
-                                                    <Entry 
-                                                        Placeholder="Own Gallons"
-                                                        TextColor="Black" 
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Margin="0,12,0,0" 
-                                                        PlaceholderColor="Black"                                                           x:Name="entryfield_ownGallons"
-                                                        Keyboard="Numeric" />
-
-                                                </Grid>
-                                                
-
-                                            </StackLayout>
-                                            
-                                        </Frame>-->
-                                        
-                                        <!--Entry field for borrow gallons-->
-                                        
-                                        <!--<Frame 
-                                            BackgroundColor="Transparent"
-                                            Margin="0,10,10,0" 
-                                            HeightRequest="50" 
-                                            HorizontalOptions="Center"
-                                            WidthRequest="420" 
-                                            Padding="5" 
-                                            BorderColor="Black"
-                                            CornerRadius="10">
-                                            <StackLayout Orientation="Horizontal">
-                                                <Image
-                                                    Source="popup_gallonIcon.png"                              
-                                                    Aspect="AspectFill" 
-                                                    Margin="0"/>
-                                                <Grid 
-                                                    BackgroundColor="Transparent"
-                                                    HorizontalOptions="Start" 
-                                                    WidthRequest="257">
-                                                    <Entry 
-                                                        Placeholder="Borrow Gallons"
-                                                        TextColor="Black" 
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Margin="0,12,0,0" 
-                                                        PlaceholderColor="Black"                                                             x:Name="entryfield_borrowGallons"
-                                                        Keyboard="Numeric" />
-
-                                                </Grid>
-                                                
-                                            </StackLayout>
-                                            
-                                        </Frame>-->
-                                        
-                                        <!-- entry fields for type of water-->
+                                        <!-- entry fields for Product type order-->
                                         <Frame  BackgroundColor="Transparent" 
                                             Margin="0,10,10,0" 
                                             HeightRequest="50" 
@@ -930,7 +781,9 @@
                                                         FontSize="18"
                                                         WidthRequest="250"
                                                         x:Name="Picker_ProductType"
-                                                        ItemDisplayBinding="{Binding refillName}">
+                                                        ItemDisplayBinding="{Binding productType}"
+                                                        SelectedIndexChanged="Picker_ProductType_SelectedIndexChanged"
+                                                      >
 
 
 
@@ -942,6 +795,51 @@
                                               </Grid>
                                                         
                                                  
+
+                                            </StackLayout>
+
+                                        </Frame>
+
+                                        <!--Entry field for Quantity-->
+                                        <Frame
+                                            BackgroundColor="Transparent"
+                                            
+                                            Margin="0,10,10,0" 
+                                            HeightRequest="50" 
+                                            HorizontalOptions="Center"
+                                            WidthRequest="440" 
+                                            Padding="5" 
+                                            BorderColor="Black"
+                                            CornerRadius="10" >
+                                            <StackLayout
+                           
+                                                Orientation="Horizontal">
+
+                                                <Image 
+                                                    
+                                                    Source="popup_quantityIcon.png"                              
+                                                    Aspect="AspectFill" 
+                                                    Margin="0" />
+
+
+                                                <Grid 
+                                                    BackgroundColor="Transparent"
+                                                    HorizontalOptions="Start" 
+                                                    WidthRequest="257">
+
+                                                    <Entry 
+                                                        Placeholder="Quantity"
+                                                        TextColor="Black" 
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Margin="0,0,0,0" 
+                                                        PlaceholderColor="Black"                                                  WidthRequest="150"
+                                                        Keyboard="Numeric" 
+                                                        x:Name="entryField_Quantity"
+                                                        
+                                                              />
+
+
+                                                </Grid>
 
                                             </StackLayout>
 
@@ -985,11 +883,61 @@
                                             </StackLayout>
                                             
                                         </Frame>
+
+                                        <!--delivery fee for express type of delivery-->
+                                        <StackLayout
+                                            BackgroundColor="Transparent"
+                                            HorizontalOptions="StartAndExpand"
+                                            Margin="0,5,0,0">
+                                            <Label Text=""
+                                                   BackgroundColor="Yellow"
+                                                   x:Name="labelDeliveryFee"
+                                                   FontSize="18"
+                                                   FontAttributes="Bold"
+                                                   TextColor="Black"
+                                                   IsVisible="true"/>
+                                        </StackLayout>
+                                        <!--product price-->
+                                        <StackLayout
+                                            BackgroundColor="Transparent"
+                                            HorizontalOptions="StartAndExpand"
+                                            Margin="0,0,0,0">
+                                            <Label Text=""
+                                                   BackgroundColor="Yellow"
+                                                   x:Name="labelProductPrice"
+                                                   FontSize="18"
+                                                   FontAttributes="Bold"
+                                                   TextColor="Black"
+                                                   IsVisible="true"/>
+                                        </StackLayout>
+                                       
+                                        <!--total amount label-->
+                                        <StackLayout
+                                            BackgroundColor="Transparent"
+                                            HorizontalOptions="StartAndExpand"
+                                            Margin="0,0,0,0">
+                                            <Label Text=""
+                                                   BackgroundColor="Red"
+                                                   x:Name="labelTotalAmount"
+                                                   FontSize="18"
+                                                   FontAttributes="Bold"
+                                                   TextColor="Black"
+                                                   IsVisible="true">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label"
+                                                                 Binding="{Binding Source={x:Reference entryField_Quantity },Path=IsFocused}"
+                                                                 Value="true"/>
+
+                                                </Label.Triggers>
+                                            </Label>
+                                        </StackLayout>
                                         
-                                        <!--button for place order-->
+                                       
+
+                                    <!--button for place order-->
                                         <Frame
                                              BackgroundColor="#73a9c2"
-                                            Margin="0,45,10,0" 
+                                            Margin="0,35,10,0" 
                                             HeightRequest="40" 
                                             HorizontalOptions="Center"
                                             WidthRequest="200" 
@@ -1086,12 +1034,18 @@
 
 
                                     </StackLayout>
+
                                   
                                        
 
                                
 
                                 </Frame>
+
+                                
+                                    
+                                    
+                               
                                 <!--<Label HorizontalOptions="CenterAndExpand"
                                            FontSize="18"
                                            TextColor="Black"
@@ -1114,7 +1068,7 @@
                                                     BackgroundColor="Transparent"
                                                     TextTransform="None"
                                                     FontAttributes="Bold"
-                                                    Clicked="Button_Clicked_1"
+                                                    
                                                       
                                                     />
 

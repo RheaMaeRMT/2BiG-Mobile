@@ -4,8 +4,8 @@ namespace tubig.DataModel
 {
     public class CUSTOMER
     {
-        // public int CusID { get; set; }
-        public string CusID { get; set; }
+        //public string CusID { get; set; }
+        public Guid CusID { get; set; }
         //  public int CusID { get; set; }
         [Required]
         public string CusFirstName { get; set; }
@@ -34,5 +34,7 @@ namespace tubig.DataModel
         public string CusValiIdImage { get; set; }
         [Required]
         public string CusIdType { get; set; }
+
+        
     }
 }

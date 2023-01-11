@@ -22,13 +22,14 @@ namespace tubig
 
 
             //MainPage = new NavigationPage(new RuntestforPopUp());
-           // CUSTOMER customer = new CUSTOMER();
-          // MainPage = new NavigationPage(new AccountSetting());
-          //MainPage = new NavigationPage(new CreateAcc());
-          //  MainPage = new NavigationPage(new MapPage());
-           // MainPage = new NavigationPage(new LoginPage());
-             MainPage = new NavigationPage(new MainPage());
+            // CUSTOMER customer = new CUSTOMER();
+            //MainPage = new NavigationPage(new AccountSetting());
+             MainPage = new NavigationPage(new CreateAcc());
+            //  MainPage = new NavigationPage(new MapPage());
+          //  MainPage = new NavigationPage(new LoginPage());
+            // MainPage = new NavigationPage(new MainPage());
             // MainPage = new MainPage();
+           // MainPage = new NavigationPage(new OrderPagePopUp());
         }
 
         protected override void OnStart()

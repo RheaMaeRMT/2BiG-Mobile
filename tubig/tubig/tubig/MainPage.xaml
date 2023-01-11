@@ -29,6 +29,13 @@
             </x:Arguments>
         </NavigationPage>
         <NavigationPage
+            Title="Station"
+            IconImageSource="homepage.png">
+            <x:Arguments>
+                <local:HomePage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage
             Title="Map" 
             IconImageSource="homepin.png">
             <x:Arguments >
@@ -37,13 +44,7 @@
         </NavigationPage>
 
         
-        <NavigationPage
-            Title="Homepage"
-            IconImageSource="homepage.png">
-            <x:Arguments>
-                <local:HomePage />
-            </x:Arguments>
-        </NavigationPage>
+      
 
         <NavigationPage 
             Title="Notification" 

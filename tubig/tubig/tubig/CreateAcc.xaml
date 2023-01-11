@@ -94,7 +94,9 @@
                                 Margin="0,0,15,0" 
                                 PlaceholderColor="Black"
                                 x:Name="entryField_Firstname"
-                                Text="{Binding CUSTOMER.CusFirstName}">
+                                Text="{Binding CUSTOMER.CusFirstName}"
+                                ClearButtonVisibility="WhileEditing"
+                                ReturnType="Next">
                                 
                               
                             </Entry>
@@ -142,7 +144,9 @@
                                 Margin="0,0,15,0" 
                                 PlaceholderColor="Black" 
                                 x:Name="entryField_Middlename"
-                                Text="{Binding CUSTOMER.CusLastName}"/>
+                                
+                                   ClearButtonVisibility="WhileEditing"
+                                ReturnType="Next"/>
                         </StackLayout>
                     </Frame>
                     <!--<StackLayout BackgroundColor="Transparent"
@@ -187,7 +191,9 @@
                                 Margin="0,0,15,0" 
                                 PlaceholderColor="Black" 
                                 x:Name="entryField_Lastname"
-                                Text="{Binding CUSTOMER.CusLastName}"/>
+                                Text="{Binding CUSTOMER.CusLastName}"
+                                   ClearButtonVisibility="WhileEditing"
+                                ReturnType="Next"/>
                         </StackLayout>
                     </Frame>
                    
@@ -228,7 +234,10 @@
                                 PlaceholderColor="Black" 
                                 Keyboard="Telephone"
                                 x:Name="entryField_PhoneNumber"
-                               Text="{Binding CUSTOMER.CusContactNumber}">
+                               Text="{Binding CUSTOMER.CusContactNumber}"
+                                 ClearButtonVisibility="WhileEditing"
+                                ReturnType="Next"
+                                >
                                 <Entry.Behaviors>
                                     <behavior:PhoneNumberMaskBehavior x:Name="PhoneMask" />
                                     <behavior:EntryLengthValidator MaxLength="13"/>
@@ -281,6 +290,8 @@
                                 PlaceholderColor="Black" 
                                 x:Name="entryField_EmailAddress"
                                 Text="{Binding CUSTOMER.CusEmail}"
+                                 ClearButtonVisibility="WhileEditing"
+                                ReturnType="Next"
                                 >
                                 <Entry.Behaviors>
                                     <xct:EmailValidationBehavior
@@ -343,6 +354,7 @@
                                 <local:BirthdayDatePickerControl
                                                         TextColor="Black"
                                                       x:Name="entryField_DateOfBirth"
+                                   
                                                       />
 
 
@@ -485,6 +497,8 @@
                                  Path=HidePassword}"
                                 TextTransform="None"
                                  Text="{Binding CUSTOMER.CusPassword}"
+                                     
+                                ReturnType="Next"
                                />
                                 <ImageButton
                                     VerticalOptions="Center" 
@@ -559,6 +573,7 @@
                                 PlaceholderColor="Black" 
                                 x:Name="entryField_ConfirmPassword"
                                 Keyboard="Text" 
+                                    ReturnType="Next"
                                 IsPassword="{Binding Source={x:Reference ShowPasswordActualTriggerConfirmPass2}, 
                                  Path=HidePassword}"
                                 TextTransform="None"
@@ -724,7 +739,9 @@
                                 PlaceholderColor="Black" 
                                 Text="{Binding CUSTOMER.CusSecurityQuestionAnswer}"
                                 Keyboard="Text"
-                                x:Name="entryField_SecurityQuestionAnswer"/>
+                                x:Name="entryField_SecurityQuestionAnswer"
+                                ClearButtonVisibility="WhileEditing"
+                                ReturnType="Done"/>
                         </StackLayout>
                     </Frame>
                     <StackLayout BackgroundColor="Transparent"

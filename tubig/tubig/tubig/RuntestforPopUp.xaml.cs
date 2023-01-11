@@ -21,7 +21,7 @@ namespace tubig
         CancellationTokenSource cts;
         CUSTOMER customer = new CUSTOMER();
         CustomerRepo customerRepos = new CustomerRepo();
-        Product_RefillRepo prodRefill = new Product_RefillRepo();
+        PRODUCTREPO prodRefill = new PRODUCTREPO();
         public RuntestforPopUp()
         {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace tubig
         {
             // var cus=  await customerRepos.GetAll();
             //  CustomerListview.ItemsSource = cus;
-            var productrefill = await prodRefill.GetAllProductRefill();
+            var productrefill = await prodRefill.GetAllPRODUCTData();
             CustomerListview.ItemsSource = productrefill;
         }
         string geoCodeAddress;

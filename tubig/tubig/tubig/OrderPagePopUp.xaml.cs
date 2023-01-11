@@ -8,7 +8,7 @@ using tubig.DataModel;
 using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using Xamarin.Essentials;
 namespace tubig
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -18,18 +18,21 @@ namespace tubig
         public List<StationWaterProduct> StationWaterProduct { get; set; }///*water products display static data for now*/
 
 
-        public List<WATER_GALLONS> AllGallonProduct { get; set; }// water gallon products na ge offer sa station, ang datas is from db na
+     //   public List<WATER_GALLONS> AllGallonProduct { get; set; }// water gallon products na ge offer sa station, ang datas is from db na
 
-        public List<Product_RefillRepo> allprodrefill { get; set; } //class which naa dire ang pag fetch sa data from db
+        public List<PRODUCTREPO> allprodrefill { get; set; } //class which naa dire ang pag fetch sa data from db
 
-
-
-        WATER_ORDER waterOrder = new WATER_ORDER(); 
+        PRODUCT allproduct = new PRODUCT();
+        DELIVERY deliveryModel = new DELIVERY();
+        ORDER waterOrder = new ORDER(); 
         WRSinfo stationinfo = new WRSinfo();
+        CUSTOMER customer = new CUSTOMER();
+        CUSTOMERNOTIFICATION customerNotification = new CUSTOMERNOTIFICATION();
 
-        WaterOrderRepo waterorderRepos = new WaterOrderRepo(); 
+        OrderRepo waterorderRepos = new OrderRepo(); 
         WaterGallonRepo watergallonRepos = new WaterGallonRepo();
-        Product_RefillRepo productrefill = new Product_RefillRepo();
+        PRODUCTREPO productRepo = new PRODUCTREPO();
+        DeliveryRepo deliveryRepos = new DeliveryRepo();
        // WATER_GALLONS watergallonrepos = new WaterGallonRepo();
        
         public OrderPagePopUp()
@@ -50,21 +53,27 @@ namespace tubig
             //CollectionViewList_GallonProduct.ItemsSource = AllGallonProduct;
 
             var watergallonproducts = await watergallonRepos.GetAllWaterProduct();
-            CollectionViewList_GallonProduct.ItemsSource = watergallonproducts;// bind ang data sa GetAllWaterProduct(), ge bind sa ID sa collectionview
+            //CollectionViewList_GallonProduct.ItemsSource = watergallonproducts;// bind ang data sa GetAllWaterProduct(), ge bind sa ID sa collectionview
 
-            allprodrefill = new List<Product_RefillRepo>(Product_RefillRepo.Get());
+            allprodrefill = new List<PRODUCTREPO>(PRODUCTREPO.Get());
             // Picker_ProductType.ItemsSource = allprodrefill; 
-            var productRefill = await productrefill.GetAllProductRefill();
-            Picker_ProductType.ItemsSource = productRefill;
-            Picker_ProductTypeTest.ItemsSource = productRefill;
-           // labelNote.IsVisible = true;
+            var product_Data = await productRepo.GetAllPRODUCTData();
+            var deliveryRepo = await deliveryRepos.GetAllDeliveryData();
+            Picker_DeliveryType.ItemsSource = deliveryRepo;
+            Picker_ProductType.ItemsSource = product_Data;
+            collectionViewListHorizontal.ItemsSource = product_Data;
+            //labelNote.IsVisible = true;
+
+            labelTotalAmount.IsVisible = true;
+           
+         
         }
 
        
 
         void UpdateSelectionData(IEnumerable<object> previousSelectedContact, IEnumerable<object> currentSelectedContact)
         {
-            var selectedContact = currentSelectedContact.FirstOrDefault() as Contacts;
+            var selectedContact = currentSelectedContact.FirstOrDefault() as DataModel.Contacts;
             Debug.WriteLine("FullName: " + selectedContact.FullName);
             Debug.WriteLine("Email: " + selectedContact.Email);
             Debug.WriteLine("Phone: " + selectedContact.Phone);
@@ -83,13 +92,7 @@ namespace tubig
                 CloseImage.Scale = 1;
                 CloseImage.Opacity = 1; //1
 
-                //1
-                //LoginButton.Scale = 1;
-                //LoginButton.Opacity = 1;
-
-                //UsernameEntry.TranslationX = PasswordEntry.TranslationX = 0;
-                //UsernameEntry.Opacity = PasswordEntry.Opacity = 1;
-
+              
                 return;
             }
 
@@ -97,12 +100,7 @@ namespace tubig
             CloseImage.Scale = 0.3;
             CloseImage.Opacity = 0;
 
-            //#2 comment
-            //LoginButton.Scale = 0.3;
-            //LoginButton.Opacity = 0;
-
-            //UsernameEntry.TranslationX = PasswordEntry.TranslationX = -10;
-            //UsernameEntry.Opacity = PasswordEntry.Opacity = 0;
+           
         }
 
         protected override async Task OnAppearingAnimationEndAsync()
@@ -113,23 +111,13 @@ namespace tubig
             var translateLength = 400u;
 
             await Task.WhenAll(
-              //  UsernameEntry.TranslateTo(0, 0, easing: Easing.SpringOut, length: translateLength),
-              //  UsernameEntry.FadeTo(1),
+             
                 (new Func<Task>(async () =>
                 {
-                    //await Task.Delay(200);
-                    //await Task.WhenAll(
-                    //   PasswordEntry.TranslateTo(0, 0, easing: Easing.SpringOut, length: translateLength),
-                    //   PasswordEntry.FadeTo(1));
+                  
 
                 }))());
 
-            //await Task.WhenAll(
-            //    CloseImage.FadeTo(1),
-            //    CloseImage.ScaleTo(1, easing: Easing.SpringOut),
-            //   CloseImage.RotateTo(0),
-            //   LoginButton.ScaleTo(1),
-            //   LoginButton.FadeTo(1));
 
             await Task.WhenAll(
                 CloseImage.FadeTo(1),
@@ -147,24 +135,7 @@ namespace tubig
 
             var currentHeight = FrameContainer.Height;
 
-            //await Task.WhenAll(
-            //    UsernameEntry.FadeTo(0),
-            //    PasswordEntry.FadeTo(0),
-            //    LoginButton.FadeTo(0));
-
-            //FrameContainer.Animate("HideAnimation", d =>
-            //{
-            //    FrameContainer.HeightRequest = d;
-            //},
-            //start: currentHeight,
-            //end: 170,
-            //finished: async (d, b) =>
-            //{
-            //    await Task.Delay(300);
-            //    taskSource.TrySetResult(true);
-            //});
-
-           // await taskSource.Task;
+           
         }
 
        
@@ -178,7 +149,7 @@ namespace tubig
         protected override bool OnBackgroundClicked()
         {
             CloseAllPopup();
-
+           // await Navigation.PushAsync(new HomePage());
             return false;
         }
 
@@ -187,190 +158,224 @@ namespace tubig
             await PopupNavigation.Instance.PopAllAsync();
         }
 
-        private async  void PickerMode_SelectedIndexChanged(object sender, EventArgs e)
+        //private async  void PickerMode_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+
+        //    DELIVERY delivery_Model = Picker_DeliveryType.SelectedItem as DELIVERY;
+
+        //    Picker picker = sender as Picker;
+        //    var selectedItem = picker.SelectedItem;
+
+        //    if (selectedItem=="Standard")
+        //    {
+
+        //        entryField_Quantity.IsEnabled = true;
+        //    }
+        //    else if (selectedItem == "Reservation")
+        //    {
+
+        //    }
+        //    else if (selectedItem == "Express")
+        //    {
+        //        await DisplayAlert("Warning", "Note:Estimated delivery time is 20-30 mins.", "OK");
+
+
+        //    }
+        //    else
+        //    {
+
+        //    }
+        //}
+
+        async private void Button_Clicked(object sender, EventArgs e)
         {
-            //string pickermode = PickerMode.Items;
-            //if (pickermode == "Express")
-            //{
+            DELIVERY deliverySave = Picker_DeliveryType.SelectedItem as DELIVERY;
+            var modalpage = new OrderPagePopUp();
+            Random randomID = new Random();
+            int order_ID = randomID.Next(1, 10000);
 
-            //}
-            
-            Picker picker = sender as Picker;
-            var selectedItem = picker.SelectedItem;
+            Picker pickerOfDeliveryType = sender as Picker;
+          // pickerOfDeliveryType as SelectedItemChangedEventArgs += pickerOfDeliveryType
 
-            if (selectedItem == "Standard")
+
+
+            var note = deliverySave.deliveryFee;
+
+            //PRODUCT_REFILL prodrefill = Picker_ProductType.SelectedItem as PRODUCT_REFILL;
+
+         
+            PRODUCT chooseProductType = Picker_ProductType.SelectedItem as PRODUCT;
+            string selectedProductItem = chooseProductType.productType;
+            string selectedDeliveryType = deliverySave.deliveryType;
+            string orderStatus = "Pending";
+            string deliveryType = deliverySave.deliveryType;
+            string order_Type = Picker_OrderType.SelectedItem.ToString();
+            int order_Quantity = Convert.ToInt32(entryField_Quantity.Text);
+            string orderProduct_Type = chooseProductType.productType;
+            var orderDate = entryfieldReservationDate.Date.ToString().Split(" ")[0];
+          //  var orderCustomerID = Convert.ToInt32(Preferences.Get("customerID", customer.CusID));
+
+            if (selectedDeliveryType == "Standard")
             {
-                // entryfieldReservationDate
-               // entryfieldReservationDate.IsEnabled = false;
-        
+                if (selectedProductItem == "Mineral")
+                {
+                    int productprice = chooseProductType.productPrice;
+                    int subtotal = productprice * order_Quantity;
+                    int totalprice = subtotal;
+                    labelTotalAmount.Text = Convert.ToString(totalprice);
+                    waterOrder.orderTotalAmount = totalprice;
+                }
+                else
+                {
+                    int productprice = chooseProductType.productPrice;
+                    int subtotal = productprice * order_Quantity;
+                    int totalprice = subtotal;
+                    labelTotalAmount.Text = Convert.ToString(totalprice);
+                    waterOrder.orderTotalAmount = totalprice;
+                }
             }
-            else if (selectedItem == "Reservation")
+            else if (selectedDeliveryType == "Reservation")
             {
-               // entryfieldReservationDate.IsEnabled = true;
-            }
-            else if (selectedItem == "Express")
-            {
-                await DisplayAlert("Warning", "Note:Estimated delivery time is 20-30 mins.", "OK");
-                
-               // entryfieldReservationDate.IsEnabled = false;
+                if (selectedProductItem == "Mineral")
+                {
+                    int productprice = chooseProductType.productPrice;
+                    int subtotal = productprice * order_Quantity;
+                    int totalprice = subtotal;
+                    labelTotalAmount.Text = Convert.ToString(totalprice);
+                    waterOrder.orderTotalAmount = totalprice;
+                }
+                else
+                {
+                    int productprice = chooseProductType.productPrice;
+                    int subtotal = productprice * order_Quantity;
+                    int totalprice = subtotal;
+                    labelTotalAmount.Text = Convert.ToString(totalprice);
+                    waterOrder.orderTotalAmount = totalprice;
+                }
             }
             else
             {
-               //entryfieldReservationDate.IsEnabled = false;
+                int deliveryfee = deliverySave.deliveryFee;
+                if (selectedProductItem == "Mineral")
+                {
+                    int productprice = chooseProductType.productPrice;
+                    int subtotal = productprice * order_Quantity+ deliveryfee;
+                    int totalprice = subtotal;
+                    labelTotalAmount.Text ="Total Amount:" +Convert.ToString(totalprice);
+                    waterOrder.orderTotalAmount = totalprice;
+                }
+                else
+                {
+                    int productprice = chooseProductType.productPrice;
+                    int subtotal = productprice * order_Quantity+ deliveryfee;
+                    int totalprice = subtotal;
+                    labelTotalAmount.Text = Convert.ToString(totalprice);
+                    waterOrder.orderTotalAmount = totalprice;
+                }
+
             }
-        }
 
-         async private void Button_Clicked(object sender, EventArgs e)
-         {
-            var modalpage = new OrderPagePopUp();
-            
-            PRODUCT_REFILL prodrefill = Picker_ProductType.SelectedItem as PRODUCT_REFILL;
-          //  Product_RefillRepo prodrefill = Picker_ProductType.SelectedItem as Product_RefillRepo;
-            
-          
-            string orderStatus = "Pending";
-            string deliveryType = Picker_DeliveryType.SelectedItem.ToString();
-            string orderType = Picker_OrderType.SelectedItem.ToString();
-            string orderQuantity =  entryField_Quantity.Text;
-            string orderProductType = prodrefill.refillName;
-            var orderDate = entryfieldReservationDate.Date.ToString().Split(" ")[0];
-
-            // string orderProductType = Picker_ProductType.SelectedItem.ToString();
-
-
-
-            // var storename = stationinfo.storename;
-            //waterOrder.OrderFrom_store = storename;
-            //waterOrder.OrderStatus = orderStatus;
-            //waterOrder.DeliveryType = deliveryType;
-            //waterOrder.OrderQuantity = orderQuantity;
-
-            //waterOrder.OrderProductType = orderProductType;
-            //waterOrder.OrderReservationDate = orderDate;
-
-            //var Savedata = await customerRepo.Save(waterOrder);
+            waterOrder.orderID = order_ID;
+            waterOrder.OrderStatus = orderStatus;
+            waterOrder.orderDeliveryType = deliveryType;
+            waterOrder.orderType = order_Type;
+            waterOrder.orderQuantity = order_Quantity;
+            waterOrder.OrderProductType = orderProduct_Type;
+            waterOrder.OrderReservationDate = orderDate;
+          //  waterOrder.order_CUSTOMERID = orderCustomerID;
             var SaveData = await waterorderRepos.Save(waterOrder);
+
+            customerNotification.orderStatus = waterOrder.OrderStatus;
+            customerNotification.order_CUSTOMERID = waterOrder.order_CUSTOMERID;
+            customerNotification.orderID = waterOrder.orderID;
+            customerNotification.orderDeliveryType = waterOrder.orderDeliveryType;
+            customerNotification.orderType = waterOrder.orderType;
+            customerNotification.orderQuantity = waterOrder.orderQuantity;
+            customerNotification.OrderProductType = waterOrder.OrderProductType;
+            customerNotification.OrderReservationDate = waterOrder.OrderReservationDate;
+            customerNotification.order_CUSTOMERID = waterOrder.order_CUSTOMERID;
+            customerNotification.customernotificationID = order_ID;
+            var SaveDataToCustomerNotification = await waterorderRepos.SaveCustomerNotification(customerNotification);
             if (SaveData)
             {
-                await this.DisplayToastAsync("Data has been Saved!", 1500);
+                await this.DisplayAlert("Order", "Order successfully", "OK");
                 ClearData();
+                CloseAllPopup();
+                return;
 
-               // await Navigation.PopAsync(modalpage);
             }
             else
             {
-                await this.DisplayToastAsync("Data can not be save!", 1500);
+                await this.DisplayAlert("Order", "We cannot process your order at the moment.", "OK");
             }
-            // string orderQuantity=
-         }
+
+        }
         public void ClearData()
         {
 
-            PRODUCT_REFILL prodrefill = Picker_ProductType.SelectedItem as PRODUCT_REFILL;
-           // Picker_DeliveryType.Items.Clear();
-           
+            // PRODUCT_REFILL prodrefill = Picker_ProductType.SelectedItem as PRODUCT_REFILL;
+            DELIVERY deliverySave = Picker_DeliveryType.SelectedItem as DELIVERY;
+            string selectedDeliveryType = deliverySave.deliveryType;
 
-            // Picker_ProductType.Items.Clear();
-           
-
+            Picker_OrderType.Items.Clear();
+            entryField_Quantity.Text = string.Empty;
+            
         }
 
-        private async void Button_Clicked_1(object sender, EventArgs e)
+        private async void Picker_DeliveryType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // string or
-            // Product_RefillRepo prodrefill = Picker_ProductTypeTest.SelectedItem as Product_RefillRepo;
-            PRODUCT_REFILL prodrefill = Picker_ProductTypeTest.SelectedItem as PRODUCT_REFILL;
-            string orderproductype = prodrefill.refillName;
-            waterOrder.OrderProductType = orderproductype;
-
-            var SaveData = await waterorderRepos.Save(waterOrder);
-            if (SaveData)
+            DELIVERY deliverySave = Picker_DeliveryType.SelectedItem as DELIVERY;
+            var selectedDeliveryItem = deliverySave.deliveryType;
+            var note = deliverySave.deliveryFee;
+            
+            if(selectedDeliveryItem == "Express")
             {
-                await this.DisplayToastAsync("Data has been Saved!", 1500);
-                ClearData();
+                
+                await DisplayAlert("Note", "Estimated Delivery: 2 hours from now", "OK");
+                labelDeliveryFee.Text = "Delivery Fee:" + note;
+                entryfieldReservationDate.IsEnabled = false;
+               
+            }
+            else if(selectedDeliveryItem == "Standard")
+            {
+               
+                await DisplayAlert("Note", "Within the day", "OK");
+                entryfieldReservationDate.IsEnabled = true;
             }
             else
             {
-                await this.DisplayToastAsync("Data can not be save!", 1500);
+                await DisplayAlert("Note", "Enter Reservation Date", "OK");
+                entryfieldReservationDate.IsEnabled = true;
+            }
+          
+        }
+
+        private void Picker_ProductType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+            PRODUCT prod = Picker_ProductType.SelectedItem as PRODUCT;
+            var selectedProductItem = prod.productType;
+            var productPricing = prod.productPrice;
+
+            if (selectedProductItem == "Mineral")
+            {
+                labelProductPrice.Text = Convert.ToString(productPricing);
+            }
+            else
+            {
+                labelProductPrice.Text = Convert.ToString(productPricing);
             }
         }
 
-
-        //private void collectionViewListHorizontal_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        //private void Picker_ProductType_SelectedIndexChanged(object sender, EventArgs e)
         //{
-        //    UpdateSelectionData(e.PreviousSelection, e.CurrentSelection);
-        //}
+        //    var picker = (Picker)sender;
+        //    int selectedIndex = picker.SelectedIndex;
 
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //}
-
-        //protected override void OnDisappearing()
-        //{
-        //    base.OnDisappearing();
-        //}
-
-        //// ### Methods for supporting animations in your popup page ###
-
-        //// Invoked before an animation appearing
-        //protected override void OnAppearingAnimationBegin()
-        //{
-        //    base.OnAppearingAnimationBegin();
-        //}
-
-        //// Invoked after an animation appearing
-        //protected override void OnAppearingAnimationEnd()
-        //{
-        //    base.OnAppearingAnimationEnd();
-        //}
-
-        //// Invoked before an animation disappearing
-        //protected override void OnDisappearingAnimationBegin()
-        //{
-        //    base.OnDisappearingAnimationBegin();
-        //}
-
-        //// Invoked after an animation disappearing
-        //protected override void OnDisappearingAnimationEnd()
-        //{
-        //    base.OnDisappearingAnimationEnd();
-        //}
-
-        //protected override Task OnAppearingAnimationBeginAsync()
-        //{
-        //    return base.OnAppearingAnimationBeginAsync();
-        //}
-
-        //protected override Task OnAppearingAnimationEndAsync()
-        //{
-        //    return base.OnAppearingAnimationEndAsync();
-        //}
-
-        //protected override Task OnDisappearingAnimationBeginAsync()
-        //{
-        //    return base.OnDisappearingAnimationBeginAsync();
-        //}
-
-        //protected override Task OnDisappearingAnimationEndAsync()
-        //{
-        //    return base.OnDisappearingAnimationEndAsync();
-        //}
-
-        //// ### Overrided methods which can prevent closing a popup page ###
-
-        //// Invoked when a hardware back button is pressed
-        //protected override bool OnBackButtonPressed()
-        //{
-        //    // Return true if you don't want to close this popup page when a back button is pressed
-        //    return base.OnBackButtonPressed();
-        //}
-
-        //// Invoked when background is clicked
-        //protected override bool OnBackgroundClicked()
-        //{
-        //    // Return false if you don't want to close this popup page when a background of the popup page is clicked
-        //    return base.OnBackgroundClicked();
+        //    if (selectedIndex != -1)
+        //    {
+        //        labelTotalAmount.Text = picker.Items[selectedIndex];
+        //    }
         //}
     }
 }

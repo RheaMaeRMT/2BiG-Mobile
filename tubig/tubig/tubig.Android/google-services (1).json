@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "668337844782",
+    "firebase_url": "https://big-system-64b55-default-rtdb.firebaseio.com",
+    "project_id": "big-system-64b55",
+    "storage_bucket": "big-system-64b55.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668337844782:android:ba60edf6f5d099d9faa5bf",
+        "android_client_info": {
+          "package_name": "com.companyname.tubig"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668337844782-ek8j6umio1ere7f39cqdps0b65erndol.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzHi2uKKHeJkWFsBndivla9xKOrqMQ0XM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668337844782-ek8j6umio1ere7f39cqdps0b65erndol.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

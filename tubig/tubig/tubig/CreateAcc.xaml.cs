@@ -123,6 +123,12 @@ namespace tubig
 
 
         }
+        public static Guid ToGuid(int value)
+        {
+            byte[] bytes = new byte[16];
+            BitConverter.GetBytes(value).CopyTo(bytes, 0);
+            return new Guid(bytes);
+        }
 
         public async Task GetLocationNew(Location location)
         {
@@ -190,11 +196,11 @@ namespace tubig
 
         async public void signButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            Random randomID = new Random();
+           Random randomID = new Random();
             int CustomerID = randomID.Next(1, 10000);
             try
             {
-                //var selectedradioButton = ID_Type.Children.OfType<RadioButton>().FirstOrDefault(x => x.IsChecked);
+               
 
                 string firstName = entryField_Firstname.Text;
                 string lastName = entryField_Lastname.Text;
@@ -226,11 +232,11 @@ namespace tubig
                     await this.DisplayAlert("Warning", "Please Enter your Last Name", "OK");
                     return;
                 }
-                if (string.IsNullOrEmpty(middlename))
-                {
-                    await this.DisplayAlert("Warning", "Please Enter your Middle Name", "OK");
-                    return;
-                }
+                //if (string.IsNullOrEmpty(middlename))
+                //{
+                //    await this.DisplayAlert("Warning", "Please Enter your Middle Name", "OK");
+                //    return;
+                //}
                 if (string.IsNullOrEmpty(contactNumber))
                 {
                     // await this.DisplayToastAsync("Please Enter your Contact Number", 1500);
@@ -288,10 +294,11 @@ namespace tubig
                     return;
                 }
 
-             
-             
 
-                customer.CusID = Convert.ToString(CustomerID);
+
+
+                //customer.CusID = Convert.ToString(CustomerID);
+                //   customer.CusID =
                 customer.CusFirstName = firstName;
                 customer.CusLastName = lastName;
                 customer.CusMiddleName = middlename;
@@ -311,6 +318,7 @@ namespace tubig
                     //await this.DisplayToastAsync("Data has been Saved!", 1500);
                     await this.DisplayAlert("Register User", "Registration successfull", "OK");
                     ClearData();
+                    await Navigation.PushAsync(new LoginPage());
                 }
                 else
                 {
@@ -370,8 +378,7 @@ namespace tubig
             //entryField_Username.Text = string.Empty;
             entryField_Password.Text = string.Empty;
             entryField_ConfirmPassword.Text = string.Empty;
-            entryField_SecurityQuestion.Items.Clear();
-
+            //entryField_SecurityQuestion.
             entryField_SecurityQuestionAnswer.Text = string.Empty;
 
             //ID_Type.Children.Clear();

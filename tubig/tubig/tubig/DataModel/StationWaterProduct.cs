@@ -24,50 +24,50 @@ namespace tubig.DataModel
                     WaterPrice="₱20.00",
                     PhotoUrl="mineral_raw.png"
                 },
-                new StationWaterProduct()
-                {
-                    UserId="3",
-                    ProdDescription="Alkaline",
-                    WaterPrice="₱25.00",
-                    PhotoUrl="alkaline_raw.png"
-                },
+                //new StationWaterProduct()
+                //{
+                //    UserId="3",
+                //    ProdDescription="Alkaline",
+                //    WaterPrice="₱25.00",
+                //    PhotoUrl="alkaline_raw.png"
+                //},
 
-                new StationWaterProduct()
-                {
-                    UserId="4",
-                   ProdDescription="Mineral",
-                    WaterPrice="₱20.00",
-                    PhotoUrl="mineral_raw.png"
-                },
+                //new StationWaterProduct()
+                //{
+                //    UserId="4",
+                //   ProdDescription="Mineral",
+                //    WaterPrice="₱20.00",
+                //    PhotoUrl="mineral_raw.png"
+                //},
 
-                new StationWaterProduct()
-                {
-                    UserId="5",
-                    ProdDescription="Alkaline",
-                    WaterPrice="₱25.00",
-                    PhotoUrl="alkaline_raw.png"
-                },
+                //new StationWaterProduct()
+                //{
+                //    UserId="5",
+                //    ProdDescription="Alkaline",
+                //    WaterPrice="₱25.00",
+                //    PhotoUrl="alkaline_raw.png"
+                //},
 
-                new StationWaterProduct()
-                {
-                    UserId="6",
-                     ProdDescription="Mineral",
-                    WaterPrice="₱20.00",
-                    PhotoUrl="mineral_raw.png"
-                },
-                new StationWaterProduct()
-                {   UserId="7",
-                    ProdDescription="Alkaline",
-                    WaterPrice="₱25.00",
-                    PhotoUrl="alkaline_raw.png"
-                },
-                new StationWaterProduct()
-                {
-                    UserId="8",
-                    ProdDescription = "Mineral", 
-                    WaterPrice = "₱20.00",
-                    PhotoUrl="mineral_raw.png"
-                },
+                //new StationWaterProduct()
+                //{
+                //    UserId="6",
+                //     ProdDescription="Mineral",
+                //    WaterPrice="₱20.00",
+                //    PhotoUrl="mineral_raw.png"
+                //},
+                //new StationWaterProduct()
+                //{   UserId="7",
+                //    ProdDescription="Alkaline",
+                //    WaterPrice="₱25.00",
+                //    PhotoUrl="alkaline_raw.png"
+                //},
+                //new StationWaterProduct()
+                //{
+                //    UserId="8",
+                //    ProdDescription = "Mineral", 
+                //    WaterPrice = "₱20.00",
+                //    PhotoUrl="mineral_raw.png"
+                //},
             };
         }
 

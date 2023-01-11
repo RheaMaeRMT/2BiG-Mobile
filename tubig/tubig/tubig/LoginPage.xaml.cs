@@ -15,13 +15,23 @@ namespace tubig
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        CUSTOMER customer = new CUSTOMER();
+        CUSTOMER customerModel = new CUSTOMER();
         CustomerRepo CustomerRepo = new CustomerRepo();
         public LoginPage()
         {
             InitializeComponent();
             // labelClickFunction();
             //   ToolbarItem.IsEnabledProperty = false;
+            //bool hasKey = Preferences.ContainsKey("token");
+            //if (hasKey==null)
+            //{
+            //    //string token = Preferences.Get("token", "");
+            //    //if (!string.IsNullOrEmpty(token))
+            //    //{
+            //    //    Navigation.PushAsync(new HomePage());
+            //    //}
+            //    Preferences.Clear();
+            //}
 
         }
         async protected override void OnAppearing()
@@ -41,23 +51,7 @@ namespace tubig
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            //  await btn_login.FadeTo(0, 1000, Easing.Linear);
-            // await btn_login.FadeTo(1, 1000, Easing.Linear);
-            
-            //var customerUsername = await CustomerRepo.GetCustomerByName(username,password);
-           // var buttonlogin = Convert.ToString(btn_login);
-           // var token = await CustomerRepo.Signin(username_email, password);
-
-            //if (string.IsNullOrEmpty(username_email) && string.IsNullOrEmpty(password))
-            //{
-            //    await DisplayAlert("Warning", "Please Enter your Email or Password", "OK");
-            //}
            
-            //if (!string.IsNullOrEmpty(token))
-            //{
-            //    await DisplayAlert("Login", "Login Successfully", "OK");
-            //    await Navigation.PushAsync(new MainPage());
-            //}
             try
             {
                 var email = EmailTextbox.Text;
@@ -74,9 +68,31 @@ namespace tubig
                 }
                 var token = await CustomerRepo.Signin(email, password);
                 if (!string.IsNullOrEmpty(token))
+
                 {
-                     Preferences.Set("token", token);
-                     Preferences.Set("userEmail", email);
+                    string Email = email;
+                    var customer = await CustomerRepo.GetCustomerByEmail(Email, password);
+                    customerModel.CusID = customer.CusID;
+                    customerModel.CusEmail = customer.CusEmail;
+                    customerModel.CusFirstName = customer.CusFirstName;
+                     customerModel.CusLastName = customer.CusLastName;
+                    
+                   customerModel.CusMiddleName = customer.CusMiddleName;
+                    customerModel.CusContactNumber = customer.CusContactNumber;
+                
+                    customerModel.CusBirthOfDate = customer.CusBirthOfDate;
+                    customerModel.CusAddress = customer.CusAddress;
+                   
+                    Preferences.Set("token", token);
+                    Preferences.Set("customerEmail", email);
+                    //Preferences.Set("customerID", customerModel.CusID);
+                    Preferences.Set("customerFirstname", customerModel.CusFirstName);
+                    Preferences.Set("customerMiddlename", customerModel.CusMiddleName);
+                    Preferences.Set("customerLastname", customerModel.CusLastName);
+                    Preferences.Set("customerFullname", customer.CusFirstName + " " + customer.CusMiddleName + " " + customer.CusLastName);
+                    Preferences.Set("customerContactNumber", customerModel.CusContactNumber);
+                    Preferences.Set("customerDOB", customerModel.CusBirthOfDate);
+                    Preferences.Set("customerAddress", customerModel.CusAddress);
                     await DisplayAlert("Login", "Login Successfully", "OK");
                     await Navigation.PushAsync(new MainPage());
                 }
@@ -97,7 +113,7 @@ namespace tubig
                 }
                 else
                 {
-                    //await DisplayAlert("Error", ex.Message, "OK");
+                   // await DisplayAlert("Error", ex.Message, "OK");
                     await DisplayAlert("Error", "Invalid Login", "OK");
                 }
             }
