@@ -17,5 +17,6 @@ namespace tubig.DataModel
         public int orderTotalAmount { get; set; }
         public string OrderStatus { get; set; }
         public int order_CUSTOMERID { get; set; }
+        public string orderDateTime { get; set; }
     }
 }

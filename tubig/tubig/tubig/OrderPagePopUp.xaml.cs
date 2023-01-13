@@ -27,7 +27,7 @@ namespace tubig
         ORDER waterOrder = new ORDER(); 
         WRSinfo stationinfo = new WRSinfo();
         CUSTOMER customer = new CUSTOMER();
-        CUSTOMERNOTIFICATION customerNotification = new CUSTOMERNOTIFICATION();
+        ADMINNOTIFICATION adminNotification = new ADMINNOTIFICATION();
 
         OrderRepo waterorderRepos = new OrderRepo(); 
         WaterGallonRepo watergallonRepos = new WaterGallonRepo();
@@ -190,10 +190,18 @@ namespace tubig
         async private void Button_Clicked(object sender, EventArgs e)
         {
             DELIVERY deliverySave = Picker_DeliveryType.SelectedItem as DELIVERY;
+
+          //  var stationname = ((TappedEventArgs)e).Parameter as WRSinfo;
+           // var result = this;
+           /// this.BindingContext = stationname.storename;
             var modalpage = new OrderPagePopUp();
             Random randomID = new Random();
             int order_ID = randomID.Next(1, 10000);
-
+            int adminNotifID = randomID.Next(1, 1000);
+            
+            const string timeFormatt = "";
+            const string reservationDate = "No Date";
+            DateTime currentDate = DateTime.Now;
             Picker pickerOfDeliveryType = sender as Picker;
           // pickerOfDeliveryType as SelectedItemChangedEventArgs += pickerOfDeliveryType
 
@@ -203,20 +211,27 @@ namespace tubig
 
             //PRODUCT_REFILL prodrefill = Picker_ProductType.SelectedItem as PRODUCT_REFILL;
 
-         
+            
             PRODUCT chooseProductType = Picker_ProductType.SelectedItem as PRODUCT;
             string selectedProductItem = chooseProductType.productType;
             string selectedDeliveryType = deliverySave.deliveryType;
-            string orderStatus = "Pending";
+           
             string deliveryType = deliverySave.deliveryType;
             string order_Type = Picker_OrderType.SelectedItem.ToString();
             int order_Quantity = Convert.ToInt32(entryField_Quantity.Text);
             string orderProduct_Type = chooseProductType.productType;
-            var orderDate = entryfieldReservationDate.Date.ToString().Split(" ")[0];
-          //  var orderCustomerID = Convert.ToInt32(Preferences.Get("customerID", customer.CusID));
+            var orderDate = entryfieldReservationDate.Date.ToString().Split("")[0];
+          //  TimeZone localzone = TimeZone.CurrentTimeZone;
+           // WRSinfo chooseProductTypeNEW = lblTextStorname.BindingContext as WRSinfo;
+
+
+            var orderCustomerID = Convert.ToInt32(Preferences.Get("customerID", customer.CusID));
 
             if (selectedDeliveryType == "Standard")
             {
+               
+                entryfieldReservationDate.IsEnabled = false;
+                
                 if (selectedProductItem == "Mineral")
                 {
                     int productprice = chooseProductType.productPrice;
@@ -224,6 +239,7 @@ namespace tubig
                     int totalprice = subtotal;
                     labelTotalAmount.Text = Convert.ToString(totalprice);
                     waterOrder.orderTotalAmount = totalprice;
+                   
                 }
                 else
                 {
@@ -232,7 +248,10 @@ namespace tubig
                     int totalprice = subtotal;
                     labelTotalAmount.Text = Convert.ToString(totalprice);
                     waterOrder.orderTotalAmount = totalprice;
+                   
                 }
+                waterOrder.OrderReservationDate = "No Date";
+                
             }
             else if (selectedDeliveryType == "Reservation")
             {
@@ -243,6 +262,7 @@ namespace tubig
                     int totalprice = subtotal;
                     labelTotalAmount.Text = Convert.ToString(totalprice);
                     waterOrder.orderTotalAmount = totalprice;
+                    
                 }
                 else
                 {
@@ -251,10 +271,14 @@ namespace tubig
                     int totalprice = subtotal;
                     labelTotalAmount.Text = Convert.ToString(totalprice);
                     waterOrder.orderTotalAmount = totalprice;
+                    
                 }
+               // waterOrder.OrderReservationDate = reservationDate;
             }
             else
             {
+               
+                entryfieldReservationDate.IsEnabled = false;
                 int deliveryfee = deliverySave.deliveryFee;
                 if (selectedProductItem == "Mineral")
                 {
@@ -263,6 +287,7 @@ namespace tubig
                     int totalprice = subtotal;
                     labelTotalAmount.Text ="Total Amount:" +Convert.ToString(totalprice);
                     waterOrder.orderTotalAmount = totalprice;
+                 
                 }
                 else
                 {
@@ -271,31 +296,30 @@ namespace tubig
                     int totalprice = subtotal;
                     labelTotalAmount.Text = Convert.ToString(totalprice);
                     waterOrder.orderTotalAmount = totalprice;
+                    
                 }
-
+                // waterOrder.OrderReservationDate = reservationDate;
+                waterOrder.OrderReservationDate = "No Date";
+               
             }
 
+            waterOrder.orderFrom_store = lblTextStorname.Text;
             waterOrder.orderID = order_ID;
-            waterOrder.OrderStatus = orderStatus;
+           
             waterOrder.orderDeliveryType = deliveryType;
             waterOrder.orderType = order_Type;
             waterOrder.orderQuantity = order_Quantity;
             waterOrder.OrderProductType = orderProduct_Type;
-            waterOrder.OrderReservationDate = orderDate;
-          //  waterOrder.order_CUSTOMERID = orderCustomerID;
+           
+             waterOrder.order_CUSTOMERID = orderCustomerID;
+            waterOrder.orderDateTime =  currentDate.ToString();
             var SaveData = await waterorderRepos.Save(waterOrder);
 
-            customerNotification.orderStatus = waterOrder.OrderStatus;
-            customerNotification.order_CUSTOMERID = waterOrder.order_CUSTOMERID;
-            customerNotification.orderID = waterOrder.orderID;
-            customerNotification.orderDeliveryType = waterOrder.orderDeliveryType;
-            customerNotification.orderType = waterOrder.orderType;
-            customerNotification.orderQuantity = waterOrder.orderQuantity;
-            customerNotification.OrderProductType = waterOrder.OrderProductType;
-            customerNotification.OrderReservationDate = waterOrder.OrderReservationDate;
-            customerNotification.order_CUSTOMERID = waterOrder.order_CUSTOMERID;
-            customerNotification.customernotificationID = order_ID;
-            var SaveDataToCustomerNotification = await waterorderRepos.SaveCustomerNotification(customerNotification);
+
+            adminNotification.OrderStatus = "Pending";
+            adminNotification.orderID = order_ID;     
+            adminNotification.adminnotificationID = adminNotifID;
+           // var SaveDataToCustomerNotification = await waterorderRepos.SaveCustomerNotification(adminNotification);
             if (SaveData)
             {
                 await this.DisplayAlert("Order", "Order successfully", "OK");
@@ -366,6 +390,11 @@ namespace tubig
                 labelProductPrice.Text = Convert.ToString(productPricing);
             }
         }
+
+        
+           
+
+        
 
         //private void Picker_ProductType_SelectedIndexChanged(object sender, EventArgs e)
         //{

@@ -64,7 +64,7 @@
       <Version>2.1.0.4</Version>
     </PackageReference>
     <PackageReference Include="Plugin.FirebasePushNotification">
-      <Version>3.4.35</Version>
+      <Version>3.3.10</Version>
     </PackageReference>
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>2.1.0</Version>
@@ -90,7 +90,6 @@
     <Compile Include="BirthdayDatePickerRenderer.cs" />
     <Compile Include="DatePickerCtrlRenderer.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="MainApplication.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -291,6 +290,7 @@
     <AndroidResource Include="Resources\drawable\water_ref.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\drawable-mdpi\NewFolder1\" />
     <Folder Include="Resources\drawable\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
@@ -352,6 +352,39 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\finalDeliveryIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\userIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\securityAnswerIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\phonenumberIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\email_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bdayIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bdayIconrRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\userLocation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\passwordLockIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\securityQuestionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\check_order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\wrongorder.png" />
   </ItemGroup>
   <!--<ItemGroup>
  HEAD

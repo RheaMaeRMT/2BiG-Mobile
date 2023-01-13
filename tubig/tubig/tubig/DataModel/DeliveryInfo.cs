@@ -12,11 +12,20 @@ namespace tubig.DataModel
             {
                 new DeliveryInfo()
                 {
-                    StationName="Dici's Station Delivery", estimatedtime="30mins", distance="2km",ImageURL="shopnew.png"
+                    StationName="Dici's Station Delivery", 
+                    estimatedtime="30mins",
+                    distance="2km",
+                    ImageURL="shopnew.png",
+                    statusOfOrder="Your order is accepted"
                 },
                  new DeliveryInfo()
                 {
-                    StationName="Ja's Station Delivery", estimatedtime="30mins", distance="2km",ImageURL="shopnew.png"
+                    StationName="Ja's Station Delivery", 
+                     estimatedtime="30mins", 
+                     distance="2km",
+                     ImageURL="shopnew.png",
+                     statusOfOrder="Your order is declined"
+
                 },
 
             };
@@ -29,7 +38,7 @@ namespace tubig.DataModel
              public string ImageURL { get; set; }
              public string Estimatedime_Distance => $"{estimatedtime} | {distance}";
 
-   
+             public string statusOfOrder { get; set; }
 
     }
        

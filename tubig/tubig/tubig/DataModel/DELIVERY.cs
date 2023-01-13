@@ -10,5 +10,7 @@ namespace tubig.DataModel
         public int deliveryId { get; set; }
         public string deliveryType { get; set; }
         public string estimatedTime { get; set; }
+
+       
     }
 }

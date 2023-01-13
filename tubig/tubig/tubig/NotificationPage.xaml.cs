@@ -7,13 +7,16 @@ using tubig.DataModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
-
+using tubig.ViewModel;
 namespace tubig
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotificationPage : ContentPage
     {
         public List<DeliveryInfo> AllContacts { get; set; }
+        DeliveryRepo notif = new DeliveryRepo();
+        CUSTOMERNOTIFICATIONrepo customerNotification = new CUSTOMERNOTIFICATIONrepo();
+        CUSTOMERNOTIFICATION customernotifModel = new CUSTOMERNOTIFICATION();
         public NotificationPage()
         {
             ObservableCollection<DeliveryInfo>   station;
@@ -32,15 +35,19 @@ namespace tubig
             //    new StationInfo{StationName="Ja's WRS incomming delivery", estimatedtime="20mins",ImageURL="shopnew.png", distance="2km"},
             //    new StationInfo{StationName="Dici's WRS incomming delivery", estimatedtime="20mins", ImageURL="shopnew.png"},
             //};
-          //  myCollectionView.ItemsSource = station;
+            //myCollectionView.ItemsSource = station;
+           // BindingContext = new NotificationPageViewModel();
         }
 
-        protected override void OnAppearing()
+        async protected override void OnAppearing()
         {
             base.OnAppearing();
             AllContacts = new List<DeliveryInfo>(DeliveryInfo.Get());
-           // collectionViewListHorizontal.ItemsSource = AllContacts;
-            collectionViewListVertical.ItemsSource = AllContacts;
+            // collectionViewListHorizontal.ItemsSource = AllContacts;
+            // var deliveryRepo = await notif.getAllCustomerNotif();
+            //  collectionViewListVertical.ItemsSource = deliveryRepo;
+            var customernotif = await customerNotification.GetCustomerNotification();
+           collectionViewListVertical.ItemsSource = customernotif;
         }
 
         private void myCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -73,7 +80,7 @@ namespace tubig
             // await Navigation.PopAsync(Order());
             //await Navigation.PopAsync(Order);
             //NavigationPage.SetHasNavigationBar(new MainPage());
-            await Navigation.PushAsync(new Order());
+            await Navigation.PushAsync(new OrderDetails());
             //await NavigationPage = new NavigationPage(new Order());
             //  await Navigation.PopAsync(new Order());
             //   await NavigationPage = new NavigationPage(new Order());

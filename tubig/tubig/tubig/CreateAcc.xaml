@@ -82,7 +82,7 @@
                                 HorizontalOptions="Start" 
                                 BorderColor="Black">
                                 <Image
-                                    Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" 
+                                    Source="userIcon.jpg" 
                                     Aspect="AspectFill" 
                                     Margin="0" />
                             </Frame>
@@ -132,7 +132,7 @@
                                 HorizontalOptions="Start" 
                                 BorderColor="Black">
                                 <Image 
-                                    Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" 
+                                    Source="userIcon.jpg" 
                                     Aspect="AspectFill"
                                     Margin="0" />
                             </Frame>
@@ -179,7 +179,7 @@
                                 HorizontalOptions="Start" 
                                 BorderColor="Black">
                                 <Image 
-                                    Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" 
+                                    Source="userIcon.jpg" 
                                     Aspect="AspectFill"
                                     Margin="0" />
                             </Frame>
@@ -221,7 +221,7 @@
                                 HorizontalOptions="Start"
                                 BorderColor="Black">
                                 <Image 
-                                    Source="https://icon-library.com/images/phone-number-icon-png/phone-number-icon-png-18.jpg"
+                                    Source="phonenumberIcon.jpg"
                                     Aspect="AspectFill"
                                     Margin="0" />
                             </Frame>
@@ -277,7 +277,7 @@
                                 HorizontalOptions="Start" 
                                 BorderColor="Black">
                                 <Image 
-                                    Source="https://icon-library.com/images/flat-email-icon/flat-email-icon-21.jpg"
+                                    Source="email_icon.jpg"
                                     Aspect="AspectFill" 
                                     Margin="0" />
                             </Frame>
@@ -335,7 +335,7 @@
                                 HorizontalOptions="Start" 
                                 BorderColor="Black">
                                 <Image 
-                                    Source="https://icon-library.com/images/up-to-date-icon/up-to-date-icon-14.jpg" 
+                                    Source="bdayIcon.jpg" 
                                     Aspect="AspectFill" 
                                     Margin="0" />
                             </Frame>
@@ -358,7 +358,7 @@
                                                       />
 
 
-                                <Image Source="https://img.icons8.com/windows/2x/calendar-week.png"
+                                <Image Source="bdayIconrRight.png"
                                        WidthRequest="40"
                                        HeightRequest="40"
                                        Aspect="AspectFit"
@@ -399,7 +399,7 @@
                                 HorizontalOptions="Start"
                                 BorderColor="Black">
                                 <Image 
-                                    Source="https://img.icons8.com/ios-filled/2x/address.png" 
+                                    Source="userLocation.png" 
                                     Aspect="AspectFill" 
                                     Margin="0" />
                             </Frame>

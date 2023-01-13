@@ -12,7 +12,7 @@ namespace tubig.DataModel
         FirebaseClient firebaseClient = new FirebaseClient("https://big-system-64b55-default-rtdb.firebaseio.com/");
 
         ORDER waterOrder = new ORDER();
-        CUSTOMERNOTIFICATION customernotification = new CUSTOMERNOTIFICATION();
+        ADMINNOTIFICATION customernotification = new ADMINNOTIFICATION();
         public async Task<bool> Save(ORDER WaterOrder)
         {
             var data = await firebaseClient.Child(nameof(ORDER)).PostAsync(JsonConvert.SerializeObject(WaterOrder));
@@ -25,9 +25,9 @@ namespace tubig.DataModel
             return false;
         }
 
-        public async Task<bool> SaveCustomerNotification(CUSTOMERNOTIFICATION OrderCustomerNotification)
+        public async Task<bool> SaveCustomerNotification(ADMINNOTIFICATION OrderCustomerNotification)
         {
-            var data = await firebaseClient.Child(nameof(CUSTOMERNOTIFICATION)).PostAsync(JsonConvert.SerializeObject(OrderCustomerNotification));
+            var data = await firebaseClient.Child(nameof(ADMINNOTIFICATION)).PostAsync(JsonConvert.SerializeObject(OrderCustomerNotification));
 
 
             if (!string.IsNullOrEmpty(data.Key))

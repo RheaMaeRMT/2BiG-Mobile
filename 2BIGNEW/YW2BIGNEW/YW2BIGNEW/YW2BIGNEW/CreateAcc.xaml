@@ -1,0 +1,944 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YW2BIGNEW.CreateAcc"
+              xmlns:CI="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+                xmlns:local="clr-namespace:YW2BIGNEW.CONTROL"
+               xmlns:behavior="clr-namespace:YW2BIGNEW.PHONENUMBER"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:behavior1="clr-namespace:YW2BIGNEW"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False"
+             >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="PickerItemStyle" TargetType="Picker">
+                <Setter
+                    Property="TextColor"
+                    Value="Red"/>
+            </Style>
+
+            <Style x:Key="ErrorLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="red"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+
+
+            </Style>
+
+            <Style x:Key="InvalidStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="red"/>
+            </Style>
+
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#F8E2CF">
+                <!--for logo-->
+                <CI:CircleImage    
+                                WidthRequest="150"
+                                HeightRequest="150"              
+                                Source="logo_dic.png"
+                                BorderColor="Transparent"
+                                BorderThickness="5"  
+                                Margin="0,5"
+                                BackgroundColor="Transparent" />
+                <Label 
+                    Text="Create Account" 
+                    TextColor="DarkBlue" 
+                    FontAttributes="Bold"
+                    FontSize="30" 
+                    Margin="25,10,15,10"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"/>
+
+                <StackLayout 
+                    Margin="5,5,5,5 "
+                    BackgroundColor="#F8E2CF"
+                    HeightRequest="1000">
+
+
+                    <!--First Name entry -->
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,25" 
+                        HeightRequest="50"
+                        HorizontalOptions="Center"
+                        WidthRequest="320"
+                        Padding="5"
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout 
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent" 
+                                CornerRadius="50"
+                                HeightRequest="35" 
+                                WidthRequest="35" 
+                                Padding="9" 
+                                Margin="0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image
+                                    Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" 
+                                    Aspect="AspectFill" 
+                                    Margin="0" />
+                            </Frame>
+
+                            <Entry 
+                                Placeholder="First Name" 
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,15,0" 
+                                PlaceholderColor="Black"
+                                x:Name="entryField_Firstname"
+                                Text="{Binding CUSTOMER.CusFirstName}"
+                                ClearButtonVisibility="WhileEditing"
+                                ReturnType="Next">
+
+
+                            </Entry>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout BackgroundColor="Transparent"
+                                 Margin="50,-25,0,0">
+                        <Label Text="First Name is required" 
+                                Style="{StaticResource ErrorLabel}"
+                               x:Name="entryField_Firstname_errorLabel"
+                               IsVisible="false"
+                               />
+                    </StackLayout>
+                    <!--Middle Name-->
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,3" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center"
+                        WidthRequest="320" 
+                        Padding="5"
+                        BorderColor="Black"
+                        CornerRadius="50">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35"
+                                WidthRequest="35" 
+                                Padding="9" 
+                                Margin="0"
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" 
+                                    Aspect="AspectFill"
+                                    Margin="0" />
+                            </Frame>
+
+                            <Entry 
+                                Placeholder="Middle Name" 
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,15,0" 
+                                PlaceholderColor="Black" 
+                                x:Name="entryField_Middlename"
+                                
+                                   ClearButtonVisibility="WhileEditing"
+                                ReturnType="Next"/>
+                        </StackLayout>
+                    </Frame>
+                    <!--<StackLayout BackgroundColor="Transparent"
+                                 Margin="50,-2,0,0">
+                        <Label Text="Last Name is required"                         
+                               Style="{StaticResource ErrorLabel}"
+                               x:Name="entryField_Lastname_errorLabel"
+                                IsVisible="false"
+                              />
+                    </StackLayout>-->
+                    <!--Last Name entry -->
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,3" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center"
+                        WidthRequest="320" 
+                        Padding="5"
+                        BorderColor="Black"
+                        CornerRadius="50">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35"
+                                WidthRequest="35" 
+                                Padding="9" 
+                                Margin="0"
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/first-name-icon/first-name-icon-13.jpg" 
+                                    Aspect="AspectFill"
+                                    Margin="0" />
+                            </Frame>
+
+                            <Entry 
+                                Placeholder="Last Name" 
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,15,0" 
+                                PlaceholderColor="Black" 
+                                x:Name="entryField_Lastname"
+                                Text="{Binding CUSTOMER.CusLastName}"
+                                   ClearButtonVisibility="WhileEditing"
+                                ReturnType="Next"/>
+                        </StackLayout>
+                    </Frame>
+
+
+                    <!--Phone Number entry -->
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,5" 
+                        HeightRequest="50"
+                        HorizontalOptions="Center" 
+                        WidthRequest="320" 
+                        Padding="5" 
+                        BorderColor="Black"
+                        CornerRadius="50">
+                        <StackLayout 
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent"
+                                CornerRadius="50" 
+                                HeightRequest="35"
+                                
+                                WidthRequest="35" 
+                                Padding="9"
+                                Margin="0"
+                                HorizontalOptions="Start"
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/phone-number-icon-png/phone-number-icon-png-18.jpg"
+                                    Aspect="AspectFill"
+                                    Margin="0" />
+                            </Frame>
+
+                            <Entry
+                                Placeholder="Phone Number" 
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand" 
+                                Margin="0,0,15,0" 
+                                PlaceholderColor="Black" 
+                                Keyboard="Telephone"
+                                x:Name="entryField_PhoneNumber"
+                               Text="{Binding CUSTOMER.CusContactNumber}"
+                                 ClearButtonVisibility="WhileEditing"
+                                ReturnType="Next"
+                                >
+                                <Entry.Behaviors>
+                                    <behavior:PhoneNumberMaskBehavior x:Name="PhoneMask" />
+                                    <behavior:EntryLengthValidator MaxLength="13"/>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout BackgroundColor="Transparent"
+                                 Margin="50,-5,0,0">
+                        <Label Text="Phone Number is required"                         
+                               Style="{StaticResource ErrorLabel}"
+                               x:Name="entryField_PhoneNumber_errorLabel"
+                               IsVisible="false"
+                              />
+                    </StackLayout>
+
+
+                    <!--Email Add entry -->
+                    <Frame
+                        BackgroundColor="Transparent" 
+                        Margin="0,2"
+                        HeightRequest="50"
+                        HorizontalOptions="Center" 
+                        WidthRequest="320"
+                        Padding="5" 
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent"
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="35" 
+                                Padding="9" 
+                                Margin="0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/flat-email-icon/flat-email-icon-21.jpg"
+                                    Aspect="AspectFill" 
+                                    Margin="0" />
+                            </Frame>
+
+                            <Entry
+                                Placeholder="Email" 
+                                TextColor="Black"
+                                HorizontalOptions="FillAndExpand" 
+                                Margin="0,0,15,0"
+                                PlaceholderColor="Black" 
+                                x:Name="entryField_EmailAddress"
+                                Text="{Binding CUSTOMER.CusEmail}"
+                                 ClearButtonVisibility="WhileEditing"
+                                ReturnType="Next"
+                                >
+                                <Entry.Behaviors>
+                                    <xct:EmailValidationBehavior
+                                        InvalidStyle="{StaticResource InvalidStyle}"
+                                        DecorationFlags="Trim"
+                                        Flags="ValidateOnFocusing" 
+                                        IsValid="{Binding EmailValid}"
+                                        />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout BackgroundColor="Transparent"
+                                 Margin="50,-2,0,0">
+                        <Label Text="Email is required"                         
+                               Style="{StaticResource ErrorLabel}"
+                               x:Name="entryField_EmailAddress_errorLabel"
+                                IsVisible="false"
+                              />
+                    </StackLayout>
+
+                    <!--Date of Birth entry -->
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,5"
+                        HeightRequest="50"
+                        HorizontalOptions="Center" 
+                        WidthRequest="320" 
+                        Padding="5" 
+                        BorderColor="Black"
+                        CornerRadius="50">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="35" 
+                                Padding="9" 
+                                Margin="0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/up-to-date-icon/up-to-date-icon-14.jpg" 
+                                    Aspect="AspectFill" 
+                                    Margin="0" />
+                            </Frame>
+
+
+                            <Grid BackgroundColor="Transparent"
+                                  HorizontalOptions="Start"
+                                  WidthRequest="248">
+
+                                <!--<DatePicker x:Name="entryField_DateOfBirth"
+                                            TextColor="Black"
+                                            
+                                            >
+                                    
+                                </DatePicker>-->
+                                <local:BirthdayDatePickerControl
+                                                        TextColor="Black"
+                                                      x:Name="entryField_DateOfBirth"
+                                   
+                                                      />
+
+
+                                <Image Source="https://img.icons8.com/windows/2x/calendar-week.png"
+                                       WidthRequest="40"
+                                       HeightRequest="40"
+                                       Aspect="AspectFit"
+                                       HorizontalOptions="End"/>
+
+                            </Grid>
+
+
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout BackgroundColor="Transparent"
+                                 Margin="50,-5,0,0">
+                        <Label Text="Birthdate is required"                         
+                               Style="{StaticResource ErrorLabel}"
+                               x:Name="entryField_DateOfBirth_errorLabel"
+                                IsVisible="false"
+                              />
+                    </StackLayout>
+
+                    <!-- Address entry -->
+
+                    <Frame
+                        BackgroundColor="Transparent"
+                        Margin="0,3"
+                        HeightRequest="50" 
+                        HorizontalOptions="Center"
+                        WidthRequest="320" Padding="5"
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout 
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent"
+                                CornerRadius="50" 
+                                HeightRequest="35"
+                                WidthRequest="35" 
+                                Padding="7" Margin="0" 
+                                HorizontalOptions="Start"
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://img.icons8.com/ios-filled/2x/address.png" 
+                                    Aspect="AspectFill" 
+                                    Margin="0" />
+                            </Frame>
+                            <Grid
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="Start"
+                                WidthRequest="257">
+                                <Entry 
+                                    Placeholder="Address" 
+                                    TextColor="Black"
+                                    HorizontalOptions="FillAndExpand" 
+                                    Margin="0,0,10,0" 
+                                    PlaceholderColor="Black" 
+                                    IsEnabled="False"
+                                    x:Name="entryField_Address"
+                                    Text="{Binding CUSTOMER.CusAddress}"
+                                    >
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Disabled">
+                                                <VisualState.Setters>
+                                                    <Setter Property="TextColor" Value="black" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Entry>
+                                <ImageButton 
+                                    VerticalOptions="Center" 
+                                    Margin="0,0,13,0"
+                                    HeightRequest="30 "
+                                    HorizontalOptions="End" 
+                                    Clicked="ImageButton_ClickedAddress"
+                                    Source="showlocation.png" 
+                                    BackgroundColor="Transparent" 
+                                    CornerRadius="0">
+
+                                </ImageButton>
+                            </Grid>
+
+
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout BackgroundColor="Transparent"
+                                 Margin="50,-2,0,0">
+                        <Label Text="Address is required"                         
+                               Style="{StaticResource ErrorLabel}"
+                               x:Name="entryField_Address_errorLabel"
+                                IsVisible="false"
+                              />
+                    </StackLayout>
+
+                    <!--password entry -->
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,3" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center" 
+                        
+                        WidthRequest="320"
+                        Padding="5" 
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="35"
+                                Padding="7" 
+                                Margin="0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/show-password-icon/show-password-icon-7.jpg" 
+                                    Aspect="AspectFill" 
+                                    
+                                    Margin="0" />
+                            </Frame>
+
+                            <Grid
+                                  BackgroundColor="Transparent"
+                                  HorizontalOptions="Start" 
+                                  WidthRequest="257">
+                                <Entry 
+                                Placeholder="Password"
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,0,0" 
+                                PlaceholderColor="Black" 
+                                x:Name="entryField_Password"
+                                Keyboard="Text" 
+                                IsPassword="{Binding Source={x:Reference ShowPasswordActualTriggerPass2}, 
+                                 Path=HidePassword}"
+                                TextTransform="None"
+                                 Text="{Binding CUSTOMER.CusPassword}"
+                                     
+                                ReturnType="Next"
+                               />
+                                <ImageButton
+                                    VerticalOptions="Center" 
+                                    Margin="0,0,13,0" 
+                                    HeightRequest="30 "
+                                    HorizontalOptions="End" 
+                                    Source="hide_eye_password_new.png" 
+                                    BackgroundColor="Transparent" 
+                                    CornerRadius="0">
+                                    <ImageButton.Triggers>
+                                        <EventTrigger Event="Clicked">
+                                            <behavior1:ShowPasswordTriggerAction 
+                                                ShowIcon="eye_password_new.png"                         
+                                                HideIcon="hide_eye_password_new.png" 
+                                                x:Name="ShowPasswordActualTriggerPass2"/>
+                                        </EventTrigger>
+                                    </ImageButton.Triggers>
+
+                                </ImageButton>
+
+                            </Grid>
+
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout BackgroundColor="Transparent"
+                                 Margin="50,-2,0,0">
+                        <Label Text="Password is required"                         
+                               Style="{StaticResource ErrorLabel}"
+                                x:Name="entryField_Username_errorLabel"
+                                IsVisible="false"
+                              />
+                    </StackLayout>
+
+                    <!--confirm password entry -->
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,3" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center" 
+                        
+                        WidthRequest="320"
+                        Padding="5" 
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Frame 
+                                BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="35"
+                                Padding="7" 
+                                Margin="0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icon-library.com/images/show-password-icon/show-password-icon-7.jpg" 
+                                    Aspect="AspectFill" 
+                                    
+                                    Margin="0" />
+                            </Frame>
+
+                            <Grid
+                                  BackgroundColor="Transparent"
+                                  HorizontalOptions="Start" 
+                                  WidthRequest="257">
+                                <Entry 
+                                Placeholder="Confirm Password"
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,0,0" 
+                                PlaceholderColor="Black" 
+                                x:Name="entryField_ConfirmPassword"
+                                Keyboard="Text" 
+                                    ReturnType="Next"
+                                IsPassword="{Binding Source={x:Reference ShowPasswordActualTriggerConfirmPass2}, 
+                                 Path=HidePassword}"
+                                TextTransform="None"
+                                 Text="{Binding CUSTOMER.CusPassword}"
+                               />
+                                <ImageButton
+                                    VerticalOptions="Center" 
+                                    Margin="0,0,13,0" 
+                                    HeightRequest="30 "
+                                    HorizontalOptions="End" 
+                                    Source="hide_eye_password_new.png" 
+                                    BackgroundColor="Transparent" 
+                                    CornerRadius="0">
+                                    <ImageButton.Triggers>
+                                        <EventTrigger Event="Clicked">
+                                            <behavior1:ShowPasswordTriggerAction 
+                                                ShowIcon="eye_password_new.png"                         
+                                                HideIcon="hide_eye_password_new.png" 
+                                                x:Name="ShowPasswordActualTriggerConfirmPass2"/>
+                                        </EventTrigger>
+                                    </ImageButton.Triggers>
+
+                                </ImageButton>
+
+                            </Grid>
+
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout BackgroundColor="Transparent"
+                                 Margin="50,-2,0,0">
+                        <Label Text="Confirm Password is required"                         
+                               Style="{StaticResource ErrorLabel}"
+                               x:Name="entryField_Confirmassword_errorLabel"
+                                IsVisible="false"
+                              />
+                    </StackLayout>
+
+                    <!--security question-->
+                    <Frame 
+                        BackgroundColor="Transparent" 
+                        Margin="0,3,0,0" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center" 
+                        
+                        WidthRequest="320"
+                        Padding="5" 
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame  BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="37"
+                                Padding="7" 
+                                Margin="0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://icons.iconarchive.com/icons/icons8/ios7/256/Very-Basic-Help-Filled-icon.png"
+                                    Aspect="AspectFill" 
+                                    
+                                    Margin="0" />
+
+                            </Frame>
+                            <Picker 
+                                Title="Select Security Question" 
+                                TextColor="Black"
+                                HorizontalOptions="StartAndExpand"
+                                FontSize="Medium"
+                                WidthRequest="250"
+                                TitleColor="Black"
+                                x:Name="entryField_SecurityQuestion"
+                                
+                                >
+                                <Picker.Items 
+                                
+                                    >
+
+                                    <x:String>
+                                        Who is your first love?
+                                    </x:String>
+                                    <x:String>
+                                        Asa ka nakaigit pag elementary?
+                                    </x:String>
+
+                                    <x:String>
+                                        What is your Grandmother's name in your father side ?
+                                    </x:String>
+
+                                    <x:String>
+                                        What is your Grandfather’s name in your father side?
+                                    </x:String>
+
+                                    <x:String>
+                                        What is the name of your first dog?
+                                    </x:String>
+
+                                    <x:String>
+                                        What subject did you fail?
+                                    </x:String>
+
+                                    <x:String>
+                                        What was the name of the boy or the girl you first kissed?
+                                    </x:String>
+
+                                    <x:String>
+                                        Where were you when you had your first kiss?
+                                    </x:String>
+
+                                    <x:String>
+                                        What is the middle name of your youngest child/brother/sister?
+                                    </x:String>
+
+                                    <x:String>
+                                        In what city or town did your mother and father meet?
+                                    </x:String>
+                                </Picker.Items>
+
+                            </Picker>
+
+                        </StackLayout>
+
+                    </Frame>
+                    <StackLayout BackgroundColor="Transparent"
+                                 Margin="50,-2,0,0">
+                        <Label Text="Security question is required"                         
+                               Style="{StaticResource ErrorLabel}"
+                               x:Name="entryField_SecurityQuestion_errorLabel"
+                               IsVisible="false"
+                              />
+                    </StackLayout>
+
+                    <!--answer entry field-->
+                    <Frame BackgroundColor="Transparent" 
+                        Margin="0,7,0,0" 
+                        HeightRequest="50" 
+                        HorizontalOptions="Center" 
+                        
+                        WidthRequest="320"
+                        Padding="5" 
+                        BorderColor="Black" 
+                        CornerRadius="50">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame  BackgroundColor="Transparent" 
+                                CornerRadius="50" 
+                                HeightRequest="35" 
+                                WidthRequest="37"
+                                Padding="7" 
+                                Margin="0,0,0,0" 
+                                HorizontalOptions="Start" 
+                                BorderColor="Black">
+                                <Image 
+                                    Source="https://img.icons8.com/fluency-systems-filled/452/stack-exchange-answer.png"
+                                    Aspect="AspectFill" 
+                                   
+                                    Margin="0,2,0,0" />
+                            </Frame>
+                            <Entry 
+                                Placeholder="Answer"
+                                TextColor="Black" 
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,15,0" 
+                                PlaceholderColor="Black" 
+                                Text="{Binding CUSTOMER.CusSecurityQuestionAnswer}"
+                                Keyboard="Text"
+                                x:Name="entryField_SecurityQuestionAnswer"
+                                ClearButtonVisibility="WhileEditing"
+                                ReturnType="Done"/>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout BackgroundColor="Transparent"
+                                 Margin="50,-2,0,0">
+                        <Label Text="Answer is required"                         
+                               Style="{StaticResource ErrorLabel}"
+                               x:Name="entryField_SecurityQuestionAnswer_errorLabel"
+                                  IsVisible="false"
+                              />
+                    </StackLayout>
+
+
+                    <!--<Frame 
+                        BackgroundColor="#0e3663"
+                        Margin="0,50" 
+                        HeightRequest="32" 
+                        HorizontalOptions="Center" 
+                        WidthRequest="400"
+                        Padding="2"
+                        BorderColor="Black">
+                        <StackLayout 
+                            Orientation="Horizontal">
+                            <Label 
+                                
+                                Text="VERIFICATION"
+                                FontSize="22" 
+                                TextColor="White"
+                                Margin="30,0,40,0" 
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand">
+                                
+                            </Label>
+                        </StackLayout>
+                    </Frame>-->
+
+                    <!--Valid ID selection-->
+                    <!--<Frame 
+                        BackgroundColor="Transparent" 
+                        HeightRequest="470" 
+                        HorizontalOptions="Center"
+                        WidthRequest="330" 
+                        Padding="2"
+                        Margin="0,-80">
+                        <StackLayout>
+                            <Label 
+                                Text="Verify Your Identity!" 
+                                FontSize="22" 
+                                FontAttributes="Bold"
+                                TextColor="Black"
+                                Margin="0,30,40,0" 
+                                HorizontalOptions="Fill">
+
+                            </Label>
+                            <Image 
+                                Source="verifypic.PNG" 
+                                Aspect="AspectFit" 
+                                WidthRequest="150" 
+                                HeightRequest="100"/>
+                            <Label 
+                                Text="In order to complete your registration, please upload a copy of your valid ID"
+                                FontSize="18" 
+                                TextColor="Black"></Label>
+                            <Label 
+                                Text="Choose your ID Type:" 
+                                FontSize="18"                           
+                                TextColor="Black"></Label>
+
+                            <StackLayout RadioButtonGroup.GroupName="IDtype" x:Name="ID_Type" BackgroundColor="Transparent">
+                                <RadioButton Content="National ID" TextColor="Black" />
+                                <RadioButton Content="Voters ID" TextColor="Black"/>
+                                <RadioButton Content="Drivers License"
+                                             TextColor="Black"/>
+                                <RadioButton Content="PRC ID"
+                                             TextColor="Black"/>
+                                <RadioButton Content="Postal ID"
+                                             TextColor="Black"/>
+
+                                <RadioButton Content="Others:"
+                                             TextColor="Black"/>
+                            
+                            </StackLayout>
+
+
+                           
+
+                            <StackLayout 
+                                Margin="90,-47,0,0" 
+                                HorizontalOptions="StartAndExpand" 
+                                WidthRequest="220">
+                                <Entry 
+                                    Placeholder="Please specify.." 
+                                    BackgroundColor="Transparent"  
+                                    TextColor="Black"
+                                    PlaceholderColor="Black"
+                                    FontSize="18"/>
+                            </StackLayout>
+                            <StackLayout BackgroundColor="Transparent"
+                                 Margin="0,-8,0,0">
+                                <Label Text="ID type is required"                         
+                                Style="{StaticResource ErrorLabel}"
+                                x:Name="ID_Type_errorLabel"       
+                                          IsVisible="false"
+                              />
+                            </StackLayout>
+
+
+
+
+                        </StackLayout>
+                    </Frame>-->
+
+
+                    <!--For Image Choosen by the user-->
+                    <!--<StackLayout
+                        BackgroundColor="Transparent"
+                        Margin="0,105,0,0" 
+                        HorizontalOptions="Center"
+                        WidthRequest="330" 
+                        Padding="2"
+                        HeightRequest="250">
+                        <Frame 
+                            BackgroundColor="Transparent"
+                            HeightRequest="250" 
+                            HorizontalOptions="Center"
+                            BorderColor="Black"
+                            WidthRequest="280"
+                            Padding="2"
+                             >
+                            <StackLayout
+                                Padding="10" BackgroundColor="Transparent">
+                                <Image 
+                                    x:Name="Imgresult" 
+                                    HeightRequest="150" 
+                                    Aspect="AspectFill"/>
+                                <Button 
+                                    Text="Upload Valid ID" 
+                                    FontSize="18"
+                                    HeightRequest="45"
+                                    TextColor="White" 
+                                    HorizontalOptions="CenterAndExpand" 
+                                    BackgroundColor="#0e3663" 
+                                    Clicked="ImageButton_Clicked"
+                                    Margin="0,25,0,0"
+                                    CornerRadius="20"/>
+
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Transparent"
+                                 Margin="35,0,0,0">
+                        <Label Text="ID image is required"                         
+                               Style="{StaticResource ErrorLabel}"
+                               x:Name="Imgresult_errorLabel"
+                                  IsVisible="false"
+                              />
+                    </StackLayout>-->
+
+                    <!--sign-in button-->
+                    <StackLayout VerticalOptions="CenterAndExpand" Margin="0,0,0,0">
+                        <Button
+                            Text="sign up" 
+                            TextColor="Black" 
+                            BackgroundColor="LightSkyBlue"
+                            FontSize="20" 
+                            BorderColor="Black" 
+                            BorderWidth="1" 
+                            FontAttributes="Bold" 
+                            CornerRadius="40"
+                            HorizontalOptions="Center" 
+                            WidthRequest="340" 
+                            Margin="0,0,0,0"
+                            x:Name="signButton"
+                            Clicked="signButton_Clicked">
+
+                        </Button>
+                    </StackLayout>
+
+
+                    <Label 
+                        Text="Log-in with Existing Account" 
+                        FontSize="18" 
+                        TextColor="Black" 
+                        FontAttributes="Bold"
+                        Margin="40,-30,40,20"
+                        HorizontalOptions="CenterAndExpand"
+                        x:Name="existingAcc" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
+
+                            </TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

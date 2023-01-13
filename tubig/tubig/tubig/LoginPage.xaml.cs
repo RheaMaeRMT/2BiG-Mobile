@@ -32,9 +32,12 @@ namespace tubig
             //    //}
             //    Preferences.Clear();
             //}
+            //const string timeFormatt = "";
+            //DateTime currentDate = DateTime.Now;
+            //DisplayAlert("Test", timeFormatt + currentDate, "OK");
 
         }
-        async protected override void OnAppearing()
+         protected override void OnAppearing()
         {
           // btn_login.IsEnabled = false;
         }
@@ -85,7 +88,7 @@ namespace tubig
                    
                     Preferences.Set("token", token);
                     Preferences.Set("customerEmail", email);
-                    //Preferences.Set("customerID", customerModel.CusID);
+                    Preferences.Set("customerID", customerModel.CusID);
                     Preferences.Set("customerFirstname", customerModel.CusFirstName);
                     Preferences.Set("customerMiddlename", customerModel.CusMiddleName);
                     Preferences.Set("customerLastname", customerModel.CusLastName);

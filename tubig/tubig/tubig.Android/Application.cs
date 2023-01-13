@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Plugin.FirebasePushNotification;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Plugin.FirebasePushNotification;
 namespace tubig.Droid
 {
     [Application]
@@ -21,16 +20,17 @@ namespace tubig.Droid
 
         public override void OnCreate()
         {
-           base.OnCreate();
+            base.OnCreate();
 
             //Set the default notification channel for your app when running Android Oreo
             if (Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.O)
             {
                 //Change for your default notification channel id here
-             //   FirebasePushNotificationManager.DefaultNotificationChannelId = "FirebasePushNotificationChannel";
+               // FirebasePushNotificationManager.DefaultNotificationChannelId = "FirebasePushNotificationChannel";
+               
 
                 //Change for your default notification channel name here
-              //  FirebasePushNotificationManager.DefaultNotificationChannelName = "General";
+               // FirebasePushNotificationManager.DefaultNotificationChannelName = "General";
             }
 
             //If debug you should reset the token each time.
@@ -43,6 +43,8 @@ namespace tubig.Droid
             //Handle notification when app is closed here
             CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
             {
+
+
             };
         }
     }

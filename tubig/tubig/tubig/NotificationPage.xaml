@@ -94,6 +94,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+       
         <StackLayout 
             BackgroundColor="WhiteSmoke">
            
@@ -211,7 +212,7 @@
                                         <StackLayout
                                             Style="{StaticResource detailsStackLayout}">
                                             <Label 
-                                                Text="{Binding StationName}" 
+                                                Text="{Binding orderFrom_store}" 
                                                 Style="{StaticResource NameLabel}" />
                                             <!--<StackLayout Style="{StaticResource imageLableStackLayout}">
                                                 <Image Source="phone.png" Style="{StaticResource imageStyle}"></Image>
@@ -224,7 +225,7 @@
                                             <StackLayout >
                                                 <!--<Image Source="location.png" Style="{StaticResource imageStyle}"></Image>-->
                                                 <Label 
-                                                    Text="{Binding Estimatedime_Distance}"
+                                                    Text="{Binding OrderStatus}" 
                                                     Style="{StaticResource LabelStyle}" />
                                             </StackLayout>
                                         </StackLayout>

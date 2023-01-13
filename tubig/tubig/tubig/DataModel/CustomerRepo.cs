@@ -10,10 +10,9 @@ using System.Linq;
 using tubig.FIREBASETHING;
 using System;
 using System.Diagnostics;
-using tubig.DataModel;
 using Firebase.Auth;
 using Firebase.Database.Query;
-using System.Linq;
+
 
 namespace tubig.DataModel
 {
@@ -52,11 +51,11 @@ namespace tubig.DataModel
           // var data = await firebaseClient.Child(nameof(CUSTOMER)).Child("4815").PostAsync(JsonConvert.SerializeObject(customer)); //but when I try this code, pls see the image I attach.
            //var result= firebaseClient.
             
-            // await firebaseClient.Child(nameof(CUSTOMER)).Child("4815").PutAsync(JsonConvert.SerializeObject(customer));
+             await firebaseClient.Child(nameof(CUSTOMER)).Child("4815").PutAsync(JsonConvert.SerializeObject(customer));
             //  await firebaseClient  .Child(nameof(CUSTOMER).
 
 
-           if(!string.IsNullOrEmpty(data.Key)&& !string.IsNullOrEmpty(token.FirebaseToken))
+           if( !string.IsNullOrEmpty(token.FirebaseToken))
             {
                 return true;
             }
@@ -139,7 +138,7 @@ namespace tubig.DataModel
                 CusPassword= item.Object.CusPassword,
                 CusSecurityQuestion= item.Object.CusSecurityQuestion,
                 CusSecurityQuestionAnswer= item.Object.CusSecurityQuestionAnswer,
-               // CusID=item.Key
+                CusID=item.Key
             }).ToList();
         }
         //public async Task<List<CUSTOMER>> GetCustomerByUsernameAndPassword(string username)
@@ -164,7 +163,7 @@ namespace tubig.DataModel
                 CusPassword = item.Object.CusPassword,
                 CusSecurityQuestion = item.Object.CusSecurityQuestion,
                 CusSecurityQuestionAnswer = item.Object.CusSecurityQuestionAnswer,
-                CusID = Guid.NewGuid()
+                CusID = item.Key
             }).Where(c => c.CusFirstName.ToLower().Contains(name.ToLower())).ToList();
         }
         public async Task<CUSTOMER> GetCustomerByEmail(string email,string password)

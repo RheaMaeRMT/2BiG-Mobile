@@ -297,7 +297,7 @@ namespace tubig
 
 
 
-                //customer.CusID = Convert.ToString(CustomerID);
+                customer.CusID = Convert.ToString(CustomerID);
                 //   customer.CusID =
                 customer.CusFirstName = firstName;
                 customer.CusLastName = lastName;

@@ -467,6 +467,7 @@
                                TextColor="Black"
                                x:Name="lblTextStorname" 
                                FontAttributes="Bold"/>
+                       
 
                     </StackLayout>
                     <xct:TabView
