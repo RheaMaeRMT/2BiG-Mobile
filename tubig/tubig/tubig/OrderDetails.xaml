@@ -16,7 +16,7 @@
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="Black" />
-                <Setter Property="Margin" Value="30,0,0,0"/>
+                <Setter Property="Margin" Value="0,0,0,0"/>
                
             </Style>
 
@@ -24,6 +24,7 @@
             <Style x:Key="LabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="0,0,0,0"/>
             </Style>
 
             <!--<Style x:Key="imageLableStackLayout" TargetType="StackLayout">
@@ -60,7 +61,7 @@
                 <Setter Property="Margin" Value="5,0,0,0" />
                 <Setter Property="Padding" Value="4" />
                 <Setter Property="IsClippedToBounds" Value="true" />
-                <Setter Property="BackgroundColor" Value="Transparent"
+                <Setter Property="BackgroundColor" Value="transparent"
                         />
                 <Setter Property="HeightRequest" Value="0" />
                 <Setter Property="HeightRequest" Value="0" />
@@ -74,8 +75,8 @@
                 <Setter Property="OutlineColor" Value="Transparent" />
                 <Setter Property="BorderColor" Value="Transparent" />
                 <Setter Property="HasShadow" Value="True" />
-                <Setter Property="BackgroundColor" Value="transparent"/>
-                <Setter Property="HeightRequest" Value="150"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="HeightRequest" Value="220"/>
             </Style>
 
             <Style x:Key="itemsCardViewStackLayoutStyle" TargetType="StackLayout">
@@ -85,7 +86,7 @@
                 <Setter Property="Spacing" Value="8" />
                 <Setter Property="BackgroundColor" Value="Transparent"/>
                 <!--<Setter Property="HasShadow" Value="True" />-->
-
+                <Setter Property="HeightRequest" Value="210"/>
             </Style>
 
             <Style x:Key="itemsInsideCardViewStackLayoutStyle" TargetType="StackLayout">
@@ -93,8 +94,8 @@
                 <Setter Property="Spacing" Value="8" />
 
                 <!--<Setter Property="HasShadow" Value="True" />-->
-                <Setter Property="BackgroundColor" Value="white"/>
-                <Setter Property="HeightRequest" Value="140"/>
+                <Setter Property="BackgroundColor" Value="transparent"/>
+                <Setter Property="HeightRequest" Value="200"/>
             </Style>
 
 
@@ -109,29 +110,48 @@
        
             <StackLayout 
             BackgroundColor="WhiteSmoke"
-                HeightRequest="500"
+                HeightRequest="400"
                 >
 
+          
                 <StackLayout 
                 BackgroundColor="Transparent" 
                 HorizontalOptions="FillAndExpand" 
                 Margin="0" 
-                HeightRequest="200" >
-                    <Label
+                HeightRequest="50" >
+                <Label
                     Text="Order Details" 
                     TextColor="Black"
                     FontSize="20"
                     FontAttributes="Bold" 
                     Padding="10" 
                     Margin="7,0,0,0"/>
+                <StackLayout
+                    BackgroundColor="Transparent"
+                    Margin="0,-40,0,0"
+                    HorizontalOptions="EndAndExpand"
+                    WidthRequest="50"
+                    Padding="0"
+                    HeightRequest="40">
+                    <ImageButton Source="refImagebtn.png"
+                                 HeightRequest="25"
+                                 WidthRequest="30"
+                                 BackgroundColor="Transparent"
+                                 Clicked="ImageButton_Clicked"/>
                 </StackLayout>
+
+            </StackLayout>
+           
+                
+          
                 <CollectionView 
                 x:Name="collectionViewListVertical"
                 SelectionMode="Single" 
                 BackgroundColor="Transparent"
-                Margin="0,-150,0,0"
-                HeightRequest="350" 
-                SelectionChanged="collectionViewListVertical_SelectionChanged">
+                Margin="0,0,0,0"
+                HeightRequest="700" 
+                SelectionChanged="collectionViewListVertical_SelectionChanged"
+                    EmptyView="No order details to display">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
@@ -140,23 +160,27 @@
                             <StackLayout
                             Spacing="10" 
                             BackgroundColor="Transparent"
+                               HeightRequest="230"
                                      >
                                 <Frame
                                 Style="{StaticResource FrameCardViewStyle}" >
 
-                                    <SwipeView>
-                                        
-                                   
-                                  
-                                    <SwipeView.RightItems>
+                                <SwipeView >
+
+                                    <SwipeView.RightItems >
                                         <SwipeItems >
                                             <SwipeItem Text="Received"
                                                        BackgroundColor="#73a9c2"
-                                                      x:Name="swipe_orderstatus"
-                                                       
-                                                      Invoked="SwipeItem_Invoked_1"
+                                                       x:Name="swipe_orderstatus"
+                                                     CommandParameter="{Binding orderID}"
+                                                     Invoked="swipe_orderstatus_Invoked_1"
                                                 />
-                                            
+                                            <SwipeItem Text="Not Receive"
+                                                       BackgroundColor="Red"
+                                                       x:Name="swipe_orderstatus_notReceive"
+                                                       CommandParameter="{Binding orderID}"
+                                                       Invoked="swipe_orderstatus_notReceive_Invoked"/>
+
                                         </SwipeItems>
                                     </SwipeView.RightItems>
                               
@@ -165,8 +189,11 @@
                                     Style="{StaticResource itemsCardViewStackLayoutStyle}">
                                         <StackLayout
                                         Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
+                                        <!--<StackLayout.GestureRecognizers >
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}"/>
+                                        </StackLayout.GestureRecognizers>-->
 
-                                            <Frame 
+                                        <Frame 
                                             Style="{StaticResource stationImageFrameStyle}">
                                                 <!--<Image 
                                                 Style="{StaticResource stationImageStyle}" 
@@ -182,23 +209,36 @@
                                             <StackLayout
                                             Style="{StaticResource detailsStackLayout}">
                                                 <Label 
-                                                Text="{Binding StationName}" 
-                                                Style="{StaticResource NameLabel}" />
+                                                Text="{Binding orderFrom_store}" 
+                                                Style="{StaticResource NameLabel}"
+                                                    x:Name="labelNameofStore"/>
                                                 <StackLayout >
                                                     <!--<Image Source="location.png" Style="{StaticResource imageStyle}"></Image>
                                                      Text="{Binding statusOfOrder, StringFormat='The TimeSpan is '}" 
                                                     -->
                                                     <Label 
-                                                    Text="Order Product"
-                                                    Style="{StaticResource LabelStyle}"/>
+                                                    Text="{Binding orderDeliveryType, StringFormat='Delivery Type: {0:F0} '}"
+                                                    Style="{StaticResource LabelStyle}"
+                                                         x:Name="labelorderDeliveryType"/>
                                                     <Label 
-                                                    Text="Order Type"
-                                                    Style="{StaticResource LabelStyle}"/>
+                                                   Text="{Binding OrderProductType, StringFormat='Product Type: {0:F0} '}"
+                                                    Style="{StaticResource LabelStyle}"
+                                                         x:Name="labelOrderProductType"/>
                                                     <Label 
-                                                    Text="Quantity"
-                                                    Style="{StaticResource LabelStyle}"/>
+                                                     Text="{Binding orderType, StringFormat='Order Type: {0:F0} '}"
+                                                    Style="{StaticResource LabelStyle}"
+                                                        x:Name="labelorderType"/>
                                                     <Label 
-                                                    Text="Total Amount"
+                                                   Text="{Binding orderQuantity, StringFormat='Quantity: {0:F0} '}"
+                                                    Style="{StaticResource LabelStyle}"
+                                                         x:Name="labelorderQuantity"/>
+                                                    <Label 
+                                                   Text="{Binding orderTotalAmount, StringFormat='Total Amount: {0:F0} '}"
+                                                    Style="{StaticResource LabelStyle}"
+                                                         x:Name="labelorderTotalAmount"/>
+                                                    <Label 
+                                                   Text="{Binding OrderStatus, StringFormat='Order Status: {0:F0} '}"
+                                                        x:Name="labelOrderStatus"
                                                     Style="{StaticResource LabelStyle}"/>
                                                 </StackLayout>
 

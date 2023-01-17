@@ -16,7 +16,7 @@ namespace tubig
             // MainPage = new MainPage(); // mao ni ang default start up
             // MainPage = new NavigationPage( new MainPage());
 
-            MainPage = new NavigationPage( new NotificationPage());
+           // MainPage = new NavigationPage( new NotificationPage());
             // Forms.SetFlags("CollectionView_Experimental");
             //  MainPage = new NavigationPage(new MapTest());
 
@@ -26,11 +26,11 @@ namespace tubig
             //MainPage = new NavigationPage(new AccountSetting());
             //  MainPage = new NavigationPage(new CreateAcc());
             //  MainPage = new NavigationPage(new MapPage());
-            //  MainPage = new NavigationPage(new LoginPage());
-            //  MainPage = new NavigationPage(new MainPage());
+             MainPage = new NavigationPage(new LoginPage());
+           // MainPage = new NavigationPage(new MainPage());
             // MainPage = new MainPage();
-            // MainPage = new NavigationPage(new OrderPagePopUp());
-           // MainPage = new NavigationPage(new OrderDetails());
+           // MainPage = new NavigationPage(new OrderPagePopUp());
+         //  MainPage = new NavigationPage(new OrderDetails());
         }
 
         protected override void OnStart()

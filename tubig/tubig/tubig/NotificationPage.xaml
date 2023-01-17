@@ -110,6 +110,19 @@
                     FontAttributes="Bold" 
                     Padding="10" 
                     Margin="7,0,0,0"/>
+                <StackLayout
+                    BackgroundColor="Transparent"
+                    Margin="0,-40,0,0"
+                    HorizontalOptions="EndAndExpand"
+                    WidthRequest="50"
+                    Padding="0"
+                    HeightRequest="40">
+                    <ImageButton Source="refImagebtn.png"
+                                 HeightRequest="25"
+                                 WidthRequest="30"
+                                 BackgroundColor="Transparent"
+                                 Clicked="ImageButton_Clicked"/>
+                </StackLayout>
             </StackLayout>
             <!--<ListView Background="white"
                       HorizontalOptions="FillAndExpand"
@@ -224,9 +237,22 @@
                                             </StackLayout>-->
                                             <StackLayout >
                                                 <!--<Image Source="location.png" Style="{StaticResource imageStyle}"></Image>-->
-                                                <Label 
-                                                    Text="{Binding OrderStatus}" 
+                                                    <AbsoluteLayout BackgroundColor="Transparent">
+                                                        <Label 
+                                                    Text="Your order is " 
+                                                    x:Name="labelOrderStatus"
                                                     Style="{StaticResource LabelStyle}" />
+                                                        <RelativeLayout
+                                                            BackgroundColor="Transparent"
+                                                            Margin="108,0,0,0">
+                                                            <Label 
+                                                    Text="{Binding OrderStatus}" 
+                                                    x:Name="labelOrderStatusBinding"
+                                                    Style="{StaticResource LabelStyle}" />
+
+                                                        </RelativeLayout>
+                                                    </AbsoluteLayout>
+                                             
                                             </StackLayout>
                                         </StackLayout>
                                     </StackLayout>

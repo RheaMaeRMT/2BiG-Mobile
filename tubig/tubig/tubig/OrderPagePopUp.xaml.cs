@@ -35,6 +35,7 @@ namespace tubig
         DeliveryRepo deliveryRepos = new DeliveryRepo();
        // WATER_GALLONS watergallonrepos = new WaterGallonRepo();
        
+
         public OrderPagePopUp()
         {
             InitializeComponent();
@@ -65,8 +66,9 @@ namespace tubig
             //labelNote.IsVisible = true;
 
             labelTotalAmount.IsVisible = true;
-           
-         
+           // labelProductPrice.Text = "₱" + allproduct.productPrice;
+
+
         }
 
        
@@ -237,18 +239,20 @@ namespace tubig
                     int productprice = chooseProductType.productPrice;
                     int subtotal = productprice * order_Quantity;
                     int totalprice = subtotal;
-                    labelTotalAmount.Text = Convert.ToString(totalprice);
+                    labelTotalAmount.Text = "Total Amount: " + Convert.ToString(totalprice);
                     waterOrder.orderTotalAmount = totalprice;
-                   
+                    waterOrder.orderPrice = productprice;
+
                 }
                 else
                 {
                     int productprice = chooseProductType.productPrice;
                     int subtotal = productprice * order_Quantity;
                     int totalprice = subtotal;
-                    labelTotalAmount.Text = Convert.ToString(totalprice);
+                    labelTotalAmount.Text = "Total Amount: " + Convert.ToString(totalprice);
                     waterOrder.orderTotalAmount = totalprice;
-                   
+                    waterOrder.orderPrice = productprice;
+
                 }
                 waterOrder.OrderReservationDate = "No Date";
                 
@@ -260,8 +264,9 @@ namespace tubig
                     int productprice = chooseProductType.productPrice;
                     int subtotal = productprice * order_Quantity;
                     int totalprice = subtotal;
-                    labelTotalAmount.Text = Convert.ToString(totalprice);
+                    labelTotalAmount.Text = "Total Amount: " + Convert.ToString(totalprice);
                     waterOrder.orderTotalAmount = totalprice;
+                    waterOrder.orderPrice = productprice;
                     
                 }
                 else
@@ -269,9 +274,10 @@ namespace tubig
                     int productprice = chooseProductType.productPrice;
                     int subtotal = productprice * order_Quantity;
                     int totalprice = subtotal;
-                    labelTotalAmount.Text = Convert.ToString(totalprice);
+                    labelTotalAmount.Text = "Total Amount: " + Convert.ToString(totalprice);
                     waterOrder.orderTotalAmount = totalprice;
-                    
+                    waterOrder.orderPrice = productprice;
+
                 }
                // waterOrder.OrderReservationDate = reservationDate;
             }
@@ -285,18 +291,20 @@ namespace tubig
                     int productprice = chooseProductType.productPrice;
                     int subtotal = productprice * order_Quantity+ deliveryfee;
                     int totalprice = subtotal;
-                    labelTotalAmount.Text ="Total Amount:" +Convert.ToString(totalprice);
+                    labelTotalAmount.Text ="Total Amount: " +Convert.ToString(totalprice);
                     waterOrder.orderTotalAmount = totalprice;
-                 
+                    waterOrder.orderPrice = productprice;
+
                 }
                 else
                 {
                     int productprice = chooseProductType.productPrice;
                     int subtotal = productprice * order_Quantity+ deliveryfee;
                     int totalprice = subtotal;
-                    labelTotalAmount.Text = Convert.ToString(totalprice);
+                    labelTotalAmount.Text = "Total Amount: " + Convert.ToString(totalprice);
                     waterOrder.orderTotalAmount = totalprice;
-                    
+                    waterOrder.orderPrice = productprice;
+
                 }
                 // waterOrder.OrderReservationDate = reservationDate;
                 waterOrder.OrderReservationDate = "No Date";
@@ -304,7 +312,7 @@ namespace tubig
             }
 
             waterOrder.orderFrom_store = lblTextStorname.Text;
-            waterOrder.orderID = order_ID;
+            waterOrder.orderID = order_ID.ToString();
            
             waterOrder.orderDeliveryType = deliveryType;
             waterOrder.orderType = order_Type;
@@ -312,12 +320,13 @@ namespace tubig
             waterOrder.OrderProductType = orderProduct_Type;
            
              waterOrder.order_CUSTOMERID = orderCustomerID;
+            waterOrder.OrderStatus = "Pending";
             waterOrder.orderDateTime =  currentDate.ToString();
             var SaveData = await waterorderRepos.Save(waterOrder);
 
 
             adminNotification.OrderStatus = "Pending";
-            adminNotification.orderID = order_ID;     
+          //  adminNotification.orderID = order_ID;     
             adminNotification.adminnotificationID = adminNotifID;
            // var SaveDataToCustomerNotification = await waterorderRepos.SaveCustomerNotification(adminNotification);
             if (SaveData)
@@ -331,6 +340,9 @@ namespace tubig
             else
             {
                 await this.DisplayAlert("Order", "We cannot process your order at the moment.", "OK");
+                ClearData();
+                CloseAllPopup();
+                return;
             }
 
         }
@@ -345,7 +357,7 @@ namespace tubig
             entryField_Quantity.Text = string.Empty;
             
         }
-
+      
         private async void Picker_DeliveryType_SelectedIndexChanged(object sender, EventArgs e)
         {
             DELIVERY deliverySave = Picker_DeliveryType.SelectedItem as DELIVERY;
@@ -364,7 +376,7 @@ namespace tubig
             {
                
                 await DisplayAlert("Note", "Within the day", "OK");
-                entryfieldReservationDate.IsEnabled = true;
+                entryfieldReservationDate.IsEnabled = false;
             }
             else
             {
@@ -391,10 +403,54 @@ namespace tubig
             }
         }
 
-        
-           
+        private  void Picker_ProductType_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            PRODUCT prod = Picker_ProductType.SelectedItem as PRODUCT;
+            var selectedProductItem = prod.productType;
+            var productPricing = prod.productPrice.ToString();
 
-        
+            if (selectedProductItem == "Mineral")
+            {
+                labelProductPrice.Text = "Product Price: " + productPricing;
+            }
+            else
+            {
+                // labelProductPrice.Text = Convert.ToString(productPricing);
+                labelProductPrice.Text = "Product Price: " + productPricing;
+            }
+        }
+
+        private async void Picker_DeliveryType_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            DELIVERY deliverySave = Picker_DeliveryType.SelectedItem as DELIVERY;
+            var selectedDeliveryItem = deliverySave.deliveryType;
+            var note = deliverySave.deliveryFee;
+
+             if (selectedDeliveryItem == "Standard")
+            {
+
+                await DisplayAlert("Note", "Within the day", "OK");
+                entryfieldReservationDate.IsEnabled = false;
+            }
+            else if (selectedDeliveryItem == "Reservation")
+            {
+                await DisplayAlert("Note", "Enter reservation date below", "OK");
+                entryfieldReservationDate.IsEnabled = true;
+            }
+            else 
+            {
+                entryfieldReservationDate.IsEnabled = false;
+                await DisplayAlert("Note", "Estimated Delivery: 2 hours from now", "OK");
+                labelDeliveryFee.Text = "Delivery Fee: " + note;
+                
+
+            }
+        }
+
+
+
+
+
 
         //private void Picker_ProductType_SelectedIndexChanged(object sender, EventArgs e)
         //{

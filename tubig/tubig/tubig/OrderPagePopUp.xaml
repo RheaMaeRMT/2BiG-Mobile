@@ -9,10 +9,13 @@
     
      xmlns:xyt="http://xamarin.com/schemas/2020/toolkit"
     x:Class="tubig.OrderPagePopUp"
-    xmlns:rg="http://rotorgames.com"
+    xmlns:rg="http://rotorgames.com" xmlns:pickerapp2023112="clr-namespace:tubig"
     NavigationPage.HasNavigationBar="False"
    
     AndroidTalkbackAccessibilityWorkaround="True">
+    <ContentPage.BindingContext>
+        <pickerapp2023112:MyViewModel></pickerapp2023112:MyViewModel>
+    </ContentPage.BindingContext>
     <rg:PopupPage.Resources>
         <ResourceDictionary>
           
@@ -47,7 +50,7 @@
                  
                 <Setter
                     Property="FontSize"
-                    Value="18"/>
+                    Value="20"/>
 
                 <Setter
                     Property="FontAttributes"
@@ -132,6 +135,22 @@
 
             </Style>
 
+            <Style x:Key="PriceStylenew" TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="18"/>
+                <Setter 
+                    Property="TextColor" 
+                    Value="Black" />
+                <Setter 
+                    Property="HorizontalOptions" 
+                    Value="Center" />
+                <Setter
+                    Property="Margin"
+                    Value="-20,2,0,0"/>
+
+            </Style>
+
             <!--<Style x:Key="LabelStyle" TargetType="Label">
                 <Setter
                     Property="FontSize"
@@ -171,10 +190,10 @@
             <Style x:Key="profileImageStyle" TargetType="Image">
                 <Setter 
                     Property="WidthRequest" 
-                    Value="80" />
+                    Value="100" />
                 <Setter
                     Property="HeightRequest" 
-                    Value="60" />
+                    Value="80" />
                 <Setter 
                     Property="Aspect" 
                     Value="AspectFill" />
@@ -198,10 +217,10 @@
                     Value="True" />
                 <Setter 
                     Property="WidthRequest" 
-                    Value="100"/>
+                    Value="123"/>
                 <Setter 
                     Property="HeightRequest" 
-                    Value="150"/>
+                    Value="170"/>
 
                 <Setter
                     Property="BackgroundColor"
@@ -269,7 +288,7 @@
                     Value="140"/>
                 <Setter
                     Property="HeightRequest" 
-                    Value="190"/>
+                    Value="210"/>
                 <Setter 
                     Property="BackgroundColor" 
                     Value="Transparent"/>
@@ -332,7 +351,7 @@
 
                 <Setter
                     Property="HeightRequest"
-                    Value="200"/>
+                    Value="250"/>
 
                 <Setter
                     Property="Margin"
@@ -493,7 +512,7 @@
                             
                             FontSizeSelected="18" >
                             <ScrollView>
-                                <StackLayout>
+                                <StackLayout BackgroundColor="Transparent">
                                     <StackLayout Style="{StaticResource WaterProdLabelStacklayout}" >
                                         <Label Style="{StaticResource WaterProductLabel}"
                                            Text=" Products" >
@@ -503,7 +522,7 @@
                                     Style="{StaticResource FrameCollectionViewWaterProduct}">
                                         <CollectionView
                                             x:Name="collectionViewListHorizontal" 
-                                            HeightRequest="350" 
+                                            HeightRequest="400" 
                                             WidthRequest="400"
                                             BackgroundColor="Transparent" 
                                             Margin="-23,-10,0,0"
@@ -541,9 +560,22 @@
                                                                              />
                                                                     <Label Text="{Binding productSize}"
                                                                        Style="{StaticResource PriceStyle}"/>
-                                                                    <Label Text="{Binding StringFormat='₱'}  "
+                                                                    <AbsoluteLayout 
+                                                                        BackgroundColor="Transparent"
+                                                                        Margin="40,0,0,0">
+                                                                        <Label Text="₱" 
                                                                            x:Name="labelProductPrice"
-                                                                           Style="{StaticResource PriceStyle}"/>
+                                                                           Style="{StaticResource PriceStylenew}"/>
+                                                                        <RelativeLayout BackgroundColor="Transparent"
+                                                                                        Margin="5,0,0,0">
+                                                                            <Label Text="{Binding productPrice}"                                                              
+                                                                                                                                                                   HorizontalOptions="CenterAndExpand"                                                                    FontSize="18"
+                                                              Margin="-3,2,0,0"                                                           TextColor="Black"/>
+                                                                        </RelativeLayout>
+                                                                    
+
+                                                                    </AbsoluteLayout>
+                                                                 
                                                                     
                                                                 </StackLayout>
                                                             </StackLayout>
@@ -682,9 +714,8 @@
                                                         FontSize="18"
                                                         WidthRequest="250"
                                                         x:Name="Picker_DeliveryType"
-                                                                
-                                                        ItemDisplayBinding="{Binding deliveryType}"
-                                                        SelectedIndexChanged="Picker_DeliveryType_SelectedIndexChanged"
+                                                      ItemDisplayBinding="{Binding deliveryType}"       SelectedIndexChanged="Picker_DeliveryType_SelectedIndexChanged_1"
+                                                        
                                                        >
                                                        
 
@@ -782,8 +813,8 @@
                                                         FontSize="18"
                                                         WidthRequest="250"
                                                         x:Name="Picker_ProductType"
-                                                        ItemDisplayBinding="{Binding productType}"
-                                                        SelectedIndexChanged="Picker_ProductType_SelectedIndexChanged"
+                                                     ItemDisplayBinding="{Binding productType}"
+                                                       SelectedIndexChanged="Picker_ProductType_SelectedIndexChanged_1"
                                                       >
 
 
@@ -831,6 +862,7 @@
                                                     <Entry 
                                                         Placeholder="Quantity"
                                                         TextColor="Black" 
+                                                        
                                                         HorizontalOptions="FillAndExpand"
                                                         Margin="0,0,0,0" 
                                                         PlaceholderColor="Black"                                                  WidthRequest="150"
@@ -891,7 +923,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             Margin="0,5,0,0">
                                             <Label Text=""
-                                                   BackgroundColor="Yellow"
+                                                   BackgroundColor="Transparent"
                                                    x:Name="labelDeliveryFee"
                                                    FontSize="18"
                                                    FontAttributes="Bold"
@@ -904,7 +936,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             Margin="0,0,0,0">
                                             <Label Text=""
-                                                   BackgroundColor="Yellow"
+                                                   BackgroundColor="Transparent"
                                                    x:Name="labelProductPrice"
                                                    FontSize="18"
                                                    FontAttributes="Bold"
@@ -917,8 +949,8 @@
                                             BackgroundColor="Transparent"
                                             HorizontalOptions="StartAndExpand"
                                             Margin="0,0,0,0">
-                                            <Label Text=""
-                                                   BackgroundColor="Red"
+                                            <Label  Text=""
+                                                   BackgroundColor="Transparent"
                                                    x:Name="labelTotalAmount"
                                                    FontSize="18"
                                                    FontAttributes="Bold"

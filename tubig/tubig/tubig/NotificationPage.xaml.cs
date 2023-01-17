@@ -17,6 +17,7 @@ namespace tubig
         DeliveryRepo notif = new DeliveryRepo();
         CUSTOMERNOTIFICATIONrepo customerNotification = new CUSTOMERNOTIFICATIONrepo();
         CUSTOMERNOTIFICATION customernotifModel = new CUSTOMERNOTIFICATION();
+      //  CUSTOMERNOTIFICATION customermodel = labelOrderStatus as CUSTOMERNOTIFICATION;
         public NotificationPage()
         {
             ObservableCollection<DeliveryInfo>   station;
@@ -42,12 +43,15 @@ namespace tubig
         async protected override void OnAppearing()
         {
             base.OnAppearing();
+            //PRODUCT chooseProductType = Picker_ProductType.SelectedItem as PRODUCT;
             AllContacts = new List<DeliveryInfo>(DeliveryInfo.Get());
             // collectionViewListHorizontal.ItemsSource = AllContacts;
             // var deliveryRepo = await notif.getAllCustomerNotif();
             //  collectionViewListVertical.ItemsSource = deliveryRepo;
-            var customernotif = await customerNotification.GetCustomerNotification();
+            var customernotif = await customerNotification.GetAllOrderData();
            collectionViewListVertical.ItemsSource = customernotif;
+          
+          //  CUSTOMERNOTIFICATION customermodel= labelOrderStatus as
         }
 
         private void myCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -81,6 +85,7 @@ namespace tubig
             //await Navigation.PopAsync(Order);
             //NavigationPage.SetHasNavigationBar(new MainPage());
             await Navigation.PushAsync(new OrderDetails());
+            
             //await NavigationPage = new NavigationPage(new Order());
             //  await Navigation.PopAsync(new Order());
             //   await NavigationPage = new NavigationPage(new Order());
@@ -88,6 +93,12 @@ namespace tubig
             //public System.Threading.Tasks.Task<Xamarin.Forms.Page> PopAsync(bool animated);
 
            // await _page.CurrentPage.Navigation.PopToRootAsync();
+        }
+
+        private async void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            var customernotif = await customerNotification.GetCustomerNotificationUpdated();
+            collectionViewListVertical.ItemsSource = customernotif;
         }
     }
 }

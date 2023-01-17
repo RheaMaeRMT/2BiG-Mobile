@@ -386,6 +386,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\wrongorder.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\refImagebtn.png" />
+  </ItemGroup>
   <!--<ItemGroup>
  HEAD
     <AndroidResource Include="Resources\drawable\location.png" />

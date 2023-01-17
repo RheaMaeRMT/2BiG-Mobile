@@ -35,8 +35,8 @@ namespace tubig
             {
                 Type=PinType.Place,
                 Label="Dici Station",
-                Address= "051 Salvador St, Labangon Cebu City",
-                Position= new Position(10.301482, 123.878408),
+                Address= "Lapu-Lapu, Cebu City,Philippines",
+                Position= new Position(10.2972948, 123.9048209),
                 // 10.29951935851668, 123.88736288926488 -whena near location
                 //10.2972948, 123.9048209- near ctu Lapu-Lapu, Cebu City,Philippines
                 //10.301482, 123.878408 051 Salvador St, Labangon Cebu
@@ -49,7 +49,9 @@ namespace tubig
                 Type = PinType.Place,
                 Label = "Rhea Station",
                 Address = "Cebu City, 6000 Cebu",
-                Position = new Position(10.300263, 123.878730),
+                Position = new Position(10.296223, 123.905504), 
+
+
                 //, 10.2987896, 123.8873807 -whena near location
                 //10.2961469, 123.9054378 - near ctu M.J. Cuenco, Cebu City,Philippines
                 //10.300263, 123.878730 cebu city, 6000 cebu
@@ -61,8 +63,8 @@ namespace tubig
             {
                 Type = PinType.Place,
                 Label = "Ja's Station",
-                Address = "65 Salvador St, Labangon Cebu City",
-                Position = new Position(10.3007236, 123.8778691),
+                Address = "M.J. Cuenco, Cebu City,Philippines",
+                Position = new Position(10.2961469, 123.9054378),
                 //, 10.2987896, 123.8873807 -whena near location
                 //10.2961469, 123.9054378 - near ctu  M.J. Cuenco, Cebu City,Philippines
                 //10.3007236,123.8778691- 65 Salvador St, Labangon Cebu City
