@@ -587,66 +587,7 @@
                                         </CollectionView>
                                     </Frame>
 
-                                    <!--Gallons Product-->
-                                    <!--<StackLayout Style="{StaticResource GallonLabelStacklayout}">
-                                        <Label Style="{StaticResource WaterProductLabel}"
-                                           Text="Reviews" >
-                                        </Label>
-                                    </StackLayout>-->
-                                    <!-- <Frame Style="{StaticResource FrameCollecionViewGallonProduct}">
-                                        <CollectionView  
-                                            x:Name="CollectionViewList_GallonProduct"
-                                            HeightRequest="250" 
-                                            WidthRequest="400"
-                                            BackgroundColor="Transparent" 
-                                            Margin="-23,-15,0,0"
-                                            HorizontalOptions="StartAndExpand"
-                                      >
-                                            <CollectionView.ItemsLayout>
-                                                <LinearItemsLayout Orientation="Horizontal"/>
-                                            </CollectionView.ItemsLayout>
-                                            <CollectionView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackLayout 
-                                                    Spacing="8" 
-                                                    HorizontalOptions="FillAndExpand" 
-                                                    BackgroundColor="Transparent"
-                                                    Margin="-5,0,0,0">
-                                                        <Frame 
-                                                        Style="{StaticResource FrameCardViewStyle}">
-
-                                                            <StackLayout 
-                                                            Style="{StaticResource itemsCardViewStackLayoutStyle}">
-
-                                                                <StackLayout 
-                                                                Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
-
-                                                                    <Frame 
-                                                                    Style="{StaticResource profileImageFrameStyleNew}">
-
-                                                                        <Image 
-                                                                        Style="{StaticResource profileImageStyle}" 
-                                                                        Source="{Binding PhotoUrl}" />
-                                                                    </Frame>
-
-                                                                </StackLayout>
-                                                                <StackLayout 
-                                                                    Style="{StaticResource detailsStackLayout}">
-                                                                    <Label 
-                                                                            Text="{Binding gallonType}" 
-                                                                    Style="{StaticResource ProductNameLabel}"
-                                                                             />
-                                                                    <Label Text="{Binding GallonPrice}"
-                                                                       Style="{StaticResource PriceStyle}"/>
-                                                                </StackLayout>
-                                                            </StackLayout>
-                                                        </Frame>
-                                                    </StackLayout>
-                                                </DataTemplate>
-                                            </CollectionView.ItemTemplate>
-
-                                        </CollectionView>
-                                    </Frame>-->
+                             
                                 </StackLayout>
                             </ScrollView>
 
@@ -1075,15 +1016,7 @@
 
                                 </Frame>
 
-                                
-                                    
-                                    
-                               
-                                <!--<Label HorizontalOptions="CenterAndExpand"
-                                           FontSize="18"
-                                           TextColor="Black"
-                                           Text="Note:Estimated delivery time is 20-30 mins."
-                                       x:Name="labelNote"/>-->
+                                                                 
 
                                 <Frame
                                              BackgroundColor="#73a9c2"

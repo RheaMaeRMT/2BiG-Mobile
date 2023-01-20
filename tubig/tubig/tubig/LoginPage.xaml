@@ -8,13 +8,7 @@
              NavigationPage.HasNavigationBar="False"
              >
 
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Entry" x:Key="entryStyle">
-                
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
+   
     <ContentPage.Content>
 
 
@@ -187,16 +181,9 @@
                 
 
             </StackLayout>
-            <!--<RelativeLayout BackgroundColor="Red" HeightRequest="-10" WidthRequest="200" Padding="25" Margin="0,30,-60,40" HorizontalOptions="CenterAndExpand">
-                <Button Text="Forgot Password?" HeightRequest="45" TextColor="Black" FontAttributes="Bold" RelativeLayout.XConstraint="100" RelativeLayout.YConstraint="-10" TextTransform="None" FontSize="17"/>
-            </RelativeLayout>-->
+        
            
-            
-             <!--<Label Text="Privacy Notice" HorizontalTextAlignment="Center" >
-        <Label.Effects>
-            <custom:UnderlineEffect />
-        </Label.Effects>
-    </Label-->
+           
             <!--for Login Button -->
             <StackLayout
                 BackgroundColor="Transparent"

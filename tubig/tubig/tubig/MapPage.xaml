@@ -16,51 +16,8 @@
               
                />
 
-            <!--<maps1:SfMaps x:Name="sfMaps" >
-                <maps1:SfMaps.Layers>
-                    <maps1:ImageryLayer LayerType="OSM"
-                               x:Name="layer">
-
-                        <maps1:ImageryLayer.MarkerTemplate>
-                            <DataTemplate>
-                                <Image x:Name="markerImage"
-                               HorizontalOptions="Center"
-                               Source="{Binding Image}"
-                               VerticalOptions="Center"
-                               HeightRequest="15"
-                               WidthRequest="15" />
-                            </DataTemplate>
-                        </maps1:ImageryLayer.MarkerTemplate>
-                    </maps1:ImageryLayer>
-                </maps1:SfMaps.Layers>
-            </maps1:SfMaps>-->
-
-
-            <!--<local:BindMape MapType="Street" 
-                            MapPosition="{Binding MyPosition}"
-                            MapPins="{Binding PinCollection}"
-                            IsShowingUser="True"
-                            MapClicked="BindMape_MapClicked"/>-->
-
-
-
-
-            <!--<maps:Map>
-                <x:Arguments>
-                    <maps:MapSpan>
-                        <x:Arguments>
-                            <maps:Position>
-                                <x:Arguments>
-                                    <x:Double>10.367180176504233</x:Double> 
-                                    <x:Double>123.91768852643828</x:Double>
-                                </x:Arguments>
-                            </maps:Position>
-                            <x:Double>0.01</x:Double>
-                            <x:Double>0.01</x:Double>
-                        </x:Arguments>
-                    </maps:MapSpan>
-                </x:Arguments>
-            </maps:Map>-->
+            
+           
 
         </StackLayout>
         

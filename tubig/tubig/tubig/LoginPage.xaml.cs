@@ -20,26 +20,12 @@ namespace tubig
         public LoginPage()
         {
             InitializeComponent();
-            // labelClickFunction();
-            //   ToolbarItem.IsEnabledProperty = false;
-            //bool hasKey = Preferences.ContainsKey("token");
-            //if (hasKey==null)
-            //{
-            //    //string token = Preferences.Get("token", "");
-            //    //if (!string.IsNullOrEmpty(token))
-            //    //{
-            //    //    Navigation.PushAsync(new HomePage());
-            //    //}
-            //    Preferences.Clear();
-            //}
-            //const string timeFormatt = "";
-            //DateTime currentDate = DateTime.Now;
-            //DisplayAlert("Test", timeFormatt + currentDate, "OK");
+        
 
         }
          protected override void OnAppearing()
         {
-          // btn_login.IsEnabled = false;
+         
         }
 
         async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -120,53 +106,10 @@ namespace tubig
                     await DisplayAlert("Error", "Invalid Login", "OK");
                 }
             }
-            //if(string.IsNullOrEmpty(username_email) && string.IsNullOrEmpty(password) && string.IsNullOrEmpty(token))
-            //{
-            //    await DisplayAlert("Warning", "Please Enter your Email and Password", "OK");
-
-            //}
-            //else if (!string.IsNullOrEmpty(token) && !string.IsNullOrEmpty(username_email)&&!string.IsNullOrEmpty(password))
-            //{
-
-            //    await DisplayAlert("Login", "Login Successfully", "OK");
-            //    await Navigation.PushAsync(new MainPage());
-            //}
-            //else
-            //{
-            //    await DisplayAlert("Warning", "Login Failed", "OK");
-            //}
-            //var customerPassword;
-            //var userName = usernameTextbox.Text;
-            //var password = password_Textbox.Text;
-            //string UserName = "admin";
-            //string Password = "admin";
-
-
-            //if((userName != UserName) && (password != Password))
-            //{
-            //    await this.DisplayToastAsync("Invalid Username and Password", 10000);
-            //}
-
-            //await this.DisplayPromptAsync("Hellow world", "10000");
-            //  await this.DisplayToastAsync("Invalid Username and Password", 10000);
+           
 
         }
 
-        //async public void labelClickFunction()
-        //{
-        //    //lbl_forgotpass.GestureRecognizers.Add(new TapGestureRecognizer()
-        //    //{
-        //    //    Command = new Command(() =>
-        //    //      {
-        //    //        // await Navigation.PushAsync(new ForgotPasswordPage());
-        //    //        // DisplayAlert("Warning", "Test", "Ok");
-        //    //    })
-
-        //    //});
-
-
-        //}
-
-
+       
     }
 }

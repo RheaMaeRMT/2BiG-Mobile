@@ -76,34 +76,7 @@ namespace tubig
 
         }
 
-        //private async void AddMarkerInCurrentLocation()
-        //{
-        //    try
-        //    {
-        //        var location = await Geolocation.GetLastKnownLocationAsync();
-        //        if (location != null)
-        //        {
-        //            CustomMarker marker = new CustomMarker();
-        //            marker.Latitude = location.Latitude.ToString();
-        //            marker.Longitude = location.Longitude.ToString();
-        //            this.layer.Markers = new ObservableCollection<Syncfusion.SfMaps.XForms.MapMarker> { marker };
-
-        //            this.layer.GeoCoordinates = new Point(location.Latitude, location.Longitude);
-        //            this.layer.Radius = 700;
-        //            this.layer.DistanceType = DistanceType.KiloMeter;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Handle not supported on device exception
-        //        await Application.Current.MainPage.DisplayAlert("Alert", ex.Message, "Ok");
-        //    }
-        //}
-
-
-
-
-
+    
         public async void DisplayCurrentLocation()
         {
             try

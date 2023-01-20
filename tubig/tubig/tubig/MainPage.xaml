@@ -12,13 +12,7 @@
             NavigationPage.HasBackButton="False"
             android:TabbedPage.IsSwipePagingEnabled="False"
             
-            >
-    <!--<local:Order  Title="Orders" IconImageSource="ordernewimg.png"/>
-   
-    <local:MapPage Title="Map" IconImageSource="homepin" x:Name="OpenMap"/>
-    <local:HomePage Title="Homepage" IconImageSource="homepage"/>
-    <local:NotificationPage Title="Notification" IconImageSource="notification"/>
-    <local:AccountSetting Title="Profile" IconImageSource="profileimg" />-->
+  
 
     <TabbedPage.Children>
         <NavigationPage 
@@ -64,92 +58,7 @@
             </x:Arguments>        
         </NavigationPage>
     </TabbedPage.Children>
-
-<!--<TabbedPage.ToolbarItems>
-        <ToolbarItem NavigationPage.IconColor="Red" Name="Order" Order="Primary" Icon="ordernewimg.png" Priority="1"/>
-        <ToolbarItem NavigationPage.IconColor="Red" Name="Map" Order="Primary" Icon="homepin.png" Priority="1"/>
-        <ToolbarItem NavigationPage.IconColor="Red" Name="Homepage" Order="Primary" Icon="homepage.png" Priority="1"/>
-    </TabbedPage.ToolbarItems>-->
-
-       
-<!--<NavigationPage  >
-        <x:Arguments>
-            <ContentPage x:Name="orderpage">
-                <local:Order Title="Orders" BackgroundColor="Aquamarine" IconImageSource="ordernewimg"/>
-                <Button/>
-            </ContentPage>
-        </x:Arguments>
-    </NavigationPage>-->
-    
-    
-    
-    <!--<StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>-->
     
     
 
 </TabbedPage>
-<!--<Shell xmlns="http://xamarin.com/schemas/2014/forms"
-        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        x:Class="tubig.MainPage"
-        xmlns:local="clr-namespace:tubig"
-        xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-       >
-
-    <Shell.Resources>
-        <ResourceDictionary>
-            <Color x:Key="NavigationPrimary">#2196f3</Color>
-            <Style x:Key="BaseStyle" TargetType="Element">
-                --><!--<Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}"/>
-                <Setter Property="Shell.ForegroundColor" Value="Yellow"/>
-                <Setter Property="Shell.Title" Value="White"/>
-                <Setter Property="Shell.DisabledColor" Value="red"/>
-                <Setter Property="Shell.UnselectedColor" Value="Orange"/>
-                <Setter Property="Shell.TabBarBackgroundColor" Value="#73a9c2"/>
-                <Setter Property="Shell.TabBarForegroundColor" Value="red"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="black"/>
-               
-                <Setter Property="Shell.TabBarTitleColor" Value="black"/>--><!--
-                <Setter Property="Shell.NavBarIsVisible" Value="False"/>
-            </Style>
-            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}"/>
-
-           
-        </ResourceDictionary>
-    </Shell.Resources>
-
-    <TabBar Shell.TabBarBackgroundColor="Red">
-        <Tab Title="Order" Icon="ordernewimg.png" >
-            <ShellContent ContentTemplate="{DataTemplate local:Order}"/>
-        </Tab>
-        <Tab Title="Map" Icon="homepin.png">
-            <ShellContent ContentTemplate="{DataTemplate local:MapPage}" />
-        </Tab>
-
-        <Tab Title="Hompage" Icon="homepage.png">
-            <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
-        </Tab>
-
-        <Tab Title="Notificaton" Icon="notification.png">
-            <ShellContent ContentTemplate="{DataTemplate local:NotificationPage}" />
-        </Tab>
-       
-
-    </TabBar>
-        
-</Shell>-->

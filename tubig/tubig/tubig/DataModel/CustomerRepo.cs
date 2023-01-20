@@ -43,16 +43,14 @@ namespace tubig.DataModel
         //save data to database
         public async Task<bool> Save(CUSTOMER customer)
         {
-            //var token = await authProvider.CreateUserWithEmailAndPasswordAsync(customer.CusEmail,customer.CusPassword);&& !string.IsNullOrEmpty(token.FirebaseToken);
+            
             var token = await authProvider.CreateUserWithEmailAndPasswordAsync(customer.CusEmail, customer.CusPassword);
             var data = await firebaseClient.Child(nameof(CUSTOMER)).PostAsync(JsonConvert.SerializeObject(customer));
 
 
-          // var data = await firebaseClient.Child(nameof(CUSTOMER)).Child("4815").PostAsync(JsonConvert.SerializeObject(customer)); //but when I try this code, pls see the image I attach.
-           //var result= firebaseClient.
             
              await firebaseClient.Child(nameof(CUSTOMER)).Child("4815").PutAsync(JsonConvert.SerializeObject(customer));
-            //  await firebaseClient  .Child(nameof(CUSTOMER).
+          
 
 
            if( !string.IsNullOrEmpty(token.FirebaseToken))
@@ -72,14 +70,11 @@ namespace tubig.DataModel
 
             return (await firebaseClient.Child(nameof(CUSTOMER)).OnceAsync<CUSTOMER>()).Select(item => new CUSTOMER
             {
-                //Email = item.Object.Email,
-                //Name = item.Object.Name,
-                //Image = item.Object.Image,
-                //Id = item.Key
+               
                 CusFirstName = item.Object.CusFirstName,
                 CusLastName = item.Object.CusLastName,
                 CusValiIdImage = item.Object.CusValiIdImage,
-              //  CusID =item.Key
+             
             }).ToList();
       }
 
@@ -91,36 +86,11 @@ namespace tubig.DataModel
                 .PutAsync(img);
             return image;
 
-            //var image = await firebaseClient
-            //  .Child("CUSTOMER")
-
-            //  .PutAsync(img);
-            //return image;
+           
         }
 
-        //public async Task<List<CUSTOMER>> GetAllCustomer()
-        //{
-
-        //    return (await firebaseClient
-        //      .Child("CUSTOMER")
-        //      .OnceAsync<CUSTOMER>()).Select(item => new CUSTOMER
-        //      {
-        //          CusFirstName = item.Object.CusFirstName,
-        //          CusID = item.Object.CusID
-        //      }).ToList();
-        //}
-
-        //public async Task<CUSTOMER> GetCustomer(string customerName)
-        //{
-
-        //    var allCustomer = await GetAllCustomer();
-        //    await firebaseClient
-        //      .Child("CUSTOMER")
-        //      .OnceAsync<CUSTOMER>();
-        //    return allCustomer.Where(a => a.CusFirstName == customerName).FirstOrDefault();
-
            
-        //}
+       
 
 
         public async Task<List<CUSTOMER>> GetAllCustomerData()
@@ -141,13 +111,7 @@ namespace tubig.DataModel
                 CusID=item.Key
             }).ToList();
         }
-        //public async Task<List<CUSTOMER>> GetCustomerByUsernameAndPassword(string username)
-        //{
-        //    var allcustomerData = await GetAllCustomerData();
-        //    await firebaseClient.Child("CUSTOMER").OnceAsync<CUSTOMER>();
-        //    return allcustomerData.Where(a => a.CusUsername == username).FirstOrDefault();
-        //}
-
+    
         public async Task<List<CUSTOMER>> GetCustomerByName(string name)
         {
             var allCustomerData = GetAllCustomerData();
@@ -179,14 +143,7 @@ namespace tubig.DataModel
 
 
 
-            //var allStudent = await GetAllStudent();
-            //await firebase
-            //  .Child("Student")
-            //  .OnceAsync<Student>();
-            //return allStudent.Where(a => a.Idno == id && a.Password == password).FirstOrDefault();
-
-            //    return null;
-            //}
+       
 
         }
 
@@ -206,11 +163,7 @@ namespace tubig.DataModel
             return "";
         }
 
-        //pubic async Task<bool> CreateAccount
-        //public async Task<StudentModel> GetById(string id)
-        //{
-        //    return (await firebaseClient.Child(nameof(StudentModel) + "/" + id).OnceSingleAsync<StudentModel>());
-        //}
+        
         public async Task<bool> Update(CUSTOMER customer)
         {
 
@@ -218,24 +171,7 @@ namespace tubig.DataModel
             return true;
         }
 
-        //public async Task<bool> Delete(string id)
-        //{
-        //    await firebaseClient.Child(nameof(StudentModel) + "/" + id).DeleteAsync();
-        //    return true;
-        //}
-
-        //public async Task<bool> ResetPassword(string email)
-        //{
-        //    await authProvider.SendPasswordResetEmailAsync(email);
-        //    return true;
-        //}
-
-        //public async Task<string> ChangePassword(string token, string password)
-        //{
-        //    var auth = await authProvider.ChangeUserPassword(token, password);
-        //    return auth.FirebaseToken;
-        //}
-
+        
 
     }
 }

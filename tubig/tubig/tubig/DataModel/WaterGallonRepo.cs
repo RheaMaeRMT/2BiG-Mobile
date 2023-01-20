@@ -13,15 +13,7 @@ namespace tubig.DataModel
 
         // WATERGALLONS waterGal = new WATERGALLONS();
         WATER_GALLONS watergallonsproduct = new WATER_GALLONS();
-        //public async Task<List<WATERGALLONS>> GetAllCustomerData()
-        //{
-        //    return (await firebaseClient.Child(nameof(WATERGALLONS)).OnceAsync<WATERGALLONS>()).Select(item => new WATERGALLONS
-        //    {
-
-               
-        //         GallonType=item.Object.GallonType
-        //    }).ToList();
-        //}
+      
 
         public async Task<List<WATER_GALLONS>> GetAllWaterProduct()
         {

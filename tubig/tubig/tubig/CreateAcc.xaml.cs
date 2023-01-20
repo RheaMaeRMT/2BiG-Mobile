@@ -232,11 +232,7 @@ namespace tubig
                     await this.DisplayAlert("Warning", "Please Enter your Last Name", "OK");
                     return;
                 }
-                //if (string.IsNullOrEmpty(middlename))
-                //{
-                //    await this.DisplayAlert("Warning", "Please Enter your Middle Name", "OK");
-                //    return;
-                //}
+              
                 if (string.IsNullOrEmpty(contactNumber))
                 {
                     // await this.DisplayToastAsync("Please Enter your Contact Number", 1500);
@@ -341,20 +337,7 @@ namespace tubig
                 }
             }
 
-
-
-
-
-            //if(ex.Message.Contains("USERNAME_EXISTS"))
-            //{
-            //    await this.DisplayToastAsync("Username already Exist", 1500);
-            //}
-            //else
-            //{
-            //    // await this.DisplayAlert("Error", ex.Message, "OK");
-            //    await this.DisplayToastAsync(ex.Message,1500);
-            //}
-
+  
 
         }
 
@@ -375,52 +358,16 @@ namespace tubig
             entryField_DateOfBirth.clear();
             
             entryField_Address.Text = string.Empty;
-            //entryField_Username.Text = string.Empty;
+           
             entryField_Password.Text = string.Empty;
             entryField_ConfirmPassword.Text = string.Empty;
-            //entryField_SecurityQuestion.
+           
             entryField_SecurityQuestionAnswer.Text = string.Empty;
 
-            //ID_Type.Children.Clear();
-            //var childs = ID_Type.Children;
-            //foreach(var child in childs)
-            //{
-            //    RadioButton radiobutton = child as RadioButton;
-            //    radiobutton.IsChecked = false;
-            //}
-            //Imgresult.Source = ImageSource.FromFile("");
 
         }
 
 
-
-        private async void entryField_Username_TextChanged_2(object sender, TextChangedEventArgs e)
-        {
-            //  var oldText = e.OldTextValue;
-            //var newText = e.NewTextValue;
-            var oldText = e.OldTextValue;
-            var newText = e.NewTextValue;
-
-            //  var newText = entryField_Username.Text;
-
-            // var person = await firebaseHelper.GetPerson(Convert.ToString(EntryText.Text);
-
-            // var customerName = await customerRepo.GetCustomer(Convert.ToString(entryField_Username.Text));
-
-            //var customerUserName = await customerRepo.GetCustomerByName(Convert.ToString(entryField_Username.Text));
-            //if (customerUserName.Count != 0)
-            //{
-
-               
-            //    await this.DisplayToastAsync("Username already exist.", 1500);
-            //}
-            //else
-            //{
-
-            //}
-
-
-
-        }
+        
     }
 }

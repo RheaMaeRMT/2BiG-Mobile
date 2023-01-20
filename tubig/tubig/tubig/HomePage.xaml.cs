@@ -45,27 +45,15 @@ namespace tubig
 
         async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            //var loadingPage = new LoadingPopupPage(); TapGestureRecognizer_Tapped
-            //await Navigation.PushPopupAsync(loadingPage);
-            //await Task.Delay(2000);
-            //await Navigation.RemovePopupPageAsync(loadingPage);
-            //await Navigation.PushPopupAsync(new LoginSuccessPopupPage());
-
-            //var loadingPage = new OrderPagePopUp();
-            //await Navigation.PushModalAsync(loadingPage);
-            //await Task.Delay(2000);  await PopupNavigation.Instance.PushAsync(_loginPopup);
-
-            // var current = (e.CurrentSelection.FirstOrDefault() as Subjects);
+          
             var stationname = ((TappedEventArgs)e).Parameter as WRSinfo;
-            //var stationname = ta
-            // await Navigation.PushAsync(new OrderProductReviewPagePopUp(stationname.storename)); //1st way
-            // await PopupNavigation.Instance.PushAsync(OrderPageModal(stationname.storename));
+            
 
             var modalpage = new OrderPagePopUp();
             modalpage.BindingContext = stationname;
             await PopupNavigation.Instance.PushAsync(modalpage);
             
-            // await PopupNavigation.Instance.PushAsync(OrderPageModal);// original approach
+           
         }
     }
 }

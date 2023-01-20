@@ -27,20 +27,6 @@ namespace tubig.DataModel
                 }).ToList();
         }
 
-        //public async Task<List<CUSTOMERNOTIFICATION>> getAllCustomerNotif()
-        //{
-        //    return
-        //       (await firebaseClient.Child
-        //       (nameof(CUSTOMERNOTIFICATION))
-        //       .OnceAsync<CUSTOMERNOTIFICATION>()).Select(item => new CUSTOMERNOTIFICATION
-        //       {
-
-        //       //  OrderStatus=item.Object.OrderStatus
-
-
-
-
-        //       }).ToList();
-        //}
+       
     }
 }

@@ -35,12 +35,9 @@ namespace tubig
         {
             base.OnAppearing();
             var orderdetailsToDisplay = await customernotif.GetAllOrderData();
-         //var deliveryRepo = await deliveryRepos.GetAllDeliveryData();
-           // Picker_DeliveryType.ItemsSource = deliveryRepo;
+        
             AllContacts = new List<DeliveryInfo>(DeliveryInfo.Get());
-            // collectionViewListHorizontal.ItemsSource = AllContacts;
-        //  collectionViewListVertical.ItemsSource = AllContacts;
-           // var deliveryRepo = await notif.getAllCustomerNotif();
+          
             collectionViewListVertical.ItemsSource = orderdetailsToDisplay;
         }
 
@@ -78,6 +75,7 @@ namespace tubig
             adminNotify.orderDateTime = order.orderDateTime;
             adminNotify.orderQuantity = order.orderQuantity;
             adminNotify.orderTotalAmount = order.orderTotalAmount;
+            adminNotify.orderPrice = order.orderPrice;
             //mo gana na
             adminNotify.orderID = order_id;
             adminNotify.order_CUSTOMERID = orderCustomerID;

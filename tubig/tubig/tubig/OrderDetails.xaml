@@ -189,9 +189,7 @@
                                     Style="{StaticResource itemsCardViewStackLayoutStyle}">
                                         <StackLayout
                                         Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
-                                        <!--<StackLayout.GestureRecognizers >
-                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}"/>
-                                        </StackLayout.GestureRecognizers>-->
+                                       
 
                                         <Frame 
                                             Style="{StaticResource stationImageFrameStyle}">
@@ -213,9 +211,7 @@
                                                 Style="{StaticResource NameLabel}"
                                                     x:Name="labelNameofStore"/>
                                                 <StackLayout >
-                                                    <!--<Image Source="location.png" Style="{StaticResource imageStyle}"></Image>
-                                                     Text="{Binding statusOfOrder, StringFormat='The TimeSpan is '}" 
-                                                    -->
+                                                  
                                                     <Label 
                                                     Text="{Binding orderDeliveryType, StringFormat='Delivery Type: {0:F0} '}"
                                                     Style="{StaticResource LabelStyle}"

@@ -149,15 +149,7 @@
                                 ReturnType="Next"/>
                         </StackLayout>
                     </Frame>
-                    <!--<StackLayout BackgroundColor="Transparent"
-                                 Margin="50,-2,0,0">
-                        <Label Text="Last Name is required"                         
-                               Style="{StaticResource ErrorLabel}"
-                               x:Name="entryField_Lastname_errorLabel"
-                                IsVisible="false"
-                              />
-                    </StackLayout>-->
-                    <!--Last Name entry -->
+                  
                     <Frame 
                         BackgroundColor="Transparent" 
                         Margin="0,3" 
@@ -345,12 +337,7 @@
                                   HorizontalOptions="Start"
                                   WidthRequest="248">
                                 
-                                <!--<DatePicker x:Name="entryField_DateOfBirth"
-                                            TextColor="Black"
-                                            
-                                            >
-                                    
-                                </DatePicker>-->
+                               
                                 <local:BirthdayDatePickerControl
                                                         TextColor="Black"
                                                       x:Name="entryField_DateOfBirth"
@@ -754,150 +741,7 @@
                     </StackLayout>
 
                     
-                    <!--<Frame 
-                        BackgroundColor="#0e3663"
-                        Margin="0,50" 
-                        HeightRequest="32" 
-                        HorizontalOptions="Center" 
-                        WidthRequest="400"
-                        Padding="2"
-                        BorderColor="Black">
-                        <StackLayout 
-                            Orientation="Horizontal">
-                            <Label 
-                                
-                                Text="VERIFICATION"
-                                FontSize="22" 
-                                TextColor="White"
-                                Margin="30,0,40,0" 
-                                HorizontalOptions="CenterAndExpand"
-                                VerticalOptions="CenterAndExpand">
-                                
-                            </Label>
-                        </StackLayout>
-                    </Frame>-->
-
-                    <!--Valid ID selection-->
-                    <!--<Frame 
-                        BackgroundColor="Transparent" 
-                        HeightRequest="470" 
-                        HorizontalOptions="Center"
-                        WidthRequest="330" 
-                        Padding="2"
-                        Margin="0,-80">
-                        <StackLayout>
-                            <Label 
-                                Text="Verify Your Identity!" 
-                                FontSize="22" 
-                                FontAttributes="Bold"
-                                TextColor="Black"
-                                Margin="0,30,40,0" 
-                                HorizontalOptions="Fill">
-
-                            </Label>
-                            <Image 
-                                Source="verifypic.PNG" 
-                                Aspect="AspectFit" 
-                                WidthRequest="150" 
-                                HeightRequest="100"/>
-                            <Label 
-                                Text="In order to complete your registration, please upload a copy of your valid ID"
-                                FontSize="18" 
-                                TextColor="Black"></Label>
-                            <Label 
-                                Text="Choose your ID Type:" 
-                                FontSize="18"                           
-                                TextColor="Black"></Label>
-
-                            <StackLayout RadioButtonGroup.GroupName="IDtype" x:Name="ID_Type" BackgroundColor="Transparent">
-                                <RadioButton Content="National ID" TextColor="Black" />
-                                <RadioButton Content="Voters ID" TextColor="Black"/>
-                                <RadioButton Content="Drivers License"
-                                             TextColor="Black"/>
-                                <RadioButton Content="PRC ID"
-                                             TextColor="Black"/>
-                                <RadioButton Content="Postal ID"
-                                             TextColor="Black"/>
-
-                                <RadioButton Content="Others:"
-                                             TextColor="Black"/>
-                            
-                            </StackLayout>
-
-
-                           
-
-                            <StackLayout 
-                                Margin="90,-47,0,0" 
-                                HorizontalOptions="StartAndExpand" 
-                                WidthRequest="220">
-                                <Entry 
-                                    Placeholder="Please specify.." 
-                                    BackgroundColor="Transparent"  
-                                    TextColor="Black"
-                                    PlaceholderColor="Black"
-                                    FontSize="18"/>
-                            </StackLayout>
-                            <StackLayout BackgroundColor="Transparent"
-                                 Margin="0,-8,0,0">
-                                <Label Text="ID type is required"                         
-                                Style="{StaticResource ErrorLabel}"
-                                x:Name="ID_Type_errorLabel"       
-                                          IsVisible="false"
-                              />
-                            </StackLayout>
-
-
-
-
-                        </StackLayout>
-                    </Frame>-->
-                    
-
-                    <!--For Image Choosen by the user-->
-                    <!--<StackLayout
-                        BackgroundColor="Transparent"
-                        Margin="0,105,0,0" 
-                        HorizontalOptions="Center"
-                        WidthRequest="330" 
-                        Padding="2"
-                        HeightRequest="250">
-                        <Frame 
-                            BackgroundColor="Transparent"
-                            HeightRequest="250" 
-                            HorizontalOptions="Center"
-                            BorderColor="Black"
-                            WidthRequest="280"
-                            Padding="2"
-                             >
-                            <StackLayout
-                                Padding="10" BackgroundColor="Transparent">
-                                <Image 
-                                    x:Name="Imgresult" 
-                                    HeightRequest="150" 
-                                    Aspect="AspectFill"/>
-                                <Button 
-                                    Text="Upload Valid ID" 
-                                    FontSize="18"
-                                    HeightRequest="45"
-                                    TextColor="White" 
-                                    HorizontalOptions="CenterAndExpand" 
-                                    BackgroundColor="#0e3663" 
-                                    Clicked="ImageButton_Clicked"
-                                    Margin="0,25,0,0"
-                                    CornerRadius="20"/>
-
-                            </StackLayout>
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout BackgroundColor="Transparent"
-                                 Margin="35,0,0,0">
-                        <Label Text="ID image is required"                         
-                               Style="{StaticResource ErrorLabel}"
-                               x:Name="Imgresult_errorLabel"
-                                  IsVisible="false"
-                              />
-                    </StackLayout>-->
+               
 
                     <!--sign-in button-->
                     <StackLayout VerticalOptions="CenterAndExpand" Margin="0,0,0,0">

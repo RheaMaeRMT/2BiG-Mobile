@@ -16,15 +16,15 @@ namespace tubig.DataModel
         ADMINNOTIFICATION customernotification = new ADMINNOTIFICATION();
         public async Task<bool> Save(ORDER WaterOrder)
         {
-            //var data = await firebaseClient.Child(nameof(ORDER)).PostAsync(JsonConvert.SerializeObject(WaterOrder));
+            var data = await firebaseClient.Child(nameof(ORDER)).PostAsync(JsonConvert.SerializeObject(WaterOrder));
 
 
-            //if (!string.IsNullOrEmpty(data.Key))
-            //{
-            //    return true;
-            //}
-            //return false;
-            await firebaseClient.Child(nameof(ORDER)).Child("1015").PutAsync(JsonConvert.SerializeObject(WaterOrder));
+            if (!string.IsNullOrEmpty(data.Key))
+            {
+                return true;
+            }
+            return false;
+            //  await firebaseClient.Child(nameof(ORDER)).Child("1015").PutAsync(JsonConvert.SerializeObject(WaterOrder));
             return false;
         }
 

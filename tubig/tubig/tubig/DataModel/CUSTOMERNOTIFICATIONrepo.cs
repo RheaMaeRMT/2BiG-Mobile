@@ -24,24 +24,25 @@ namespace tubig.DataModel
                 .OnceAsync<CUSTOMERNOTIFICATION>()).Select(item => new CUSTOMERNOTIFICATION
                 {
 
-                     OrderStatus = item.Object.OrderStatus,
-                     orderFrom_store = item.Object.orderFrom_store,
-                   // orderDeliveryType = item.Object.orderDeliveryType,
-                   // orderType = item.Object.orderType,
-                   // orderQuantity = item.Object.orderQuantity,
-                   // orderPrice = item.Object.orderPrice,
+                    OrderStatus = item.Object.OrderStatus,
+                    orderFrom_store = item.Object.orderFrom_store,
+                    orderDeliveryType = item.Object.orderDeliveryType,
+                    orderType = item.Object.orderType,
+                    orderQuantity = item.Object.orderQuantity,
+                    orderPrice = item.Object.orderPrice,
 
-                   // OrderProductType = item.Object.OrderProductType,
-                   // OrderReservationDate = item.Object.OrderReservationDate,
-                    ///orderTotalAmount = item.Object.orderTotalAmount,
+                    OrderProductType = item.Object.OrderProductType,
+                    OrderReservationDate = item.Object.OrderReservationDate,
+                    orderTotalAmount = item.Object.orderTotalAmount,
                     order_CUSTOMERID = item.Object.order_CUSTOMERID,
-                    //orderDateTime = item.Object.orderDateTime,
+                    orderDateTime = item.Object.orderDateTime,
                    
                     orderID = item.Object.orderID,
+                    // orderID = item.Key
                     notifID = item.Key
 
-                   // notifID=item.Object.notifID,
-                  //  orderID=item.Key
+                    //notifID=item.Object.notifID,
+                   // orderID=item.Key
                 }).ToList();
         }
         public async Task<List<ORDER>> GetAllOrderData()
@@ -69,13 +70,6 @@ namespace tubig.DataModel
                }).ToList();
         }
 
-        //public async Task<List<ORDER>> GetOrderByID(string order_ID)
-        //{
-        //    var allCustomer = await GetAllOrderData();
-        //        await firebaseClient
-        //         .Child("ORDER")
-        //          .OnceAsync<ORDER>();
-        //        return allCustomer.Where(a => a.orderID==order_ID).FirstOrDefault();
-        //}
+       
     }
 }
